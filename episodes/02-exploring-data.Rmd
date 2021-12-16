@@ -34,7 +34,7 @@ We used these functions with just one argument, the object `surveys`, and we did
 
 To learn more about a function, you can type a `?` in front of the name of the function, which will bring up the official documentation for that function:
 
-```{r}
+```{r, head-help}
 ?head
 ```
 
@@ -197,7 +197,7 @@ lvls_reorder(sex, idx = 2:1, ordered = F)
     - I think this is best reserved for one of the SWC lessons
   - what about conditional subsetting? it's relevant to `filter()`, but I'm not sure it's strictly necessary
 - dates/datetimes?
-- assignment: x \<- 10; y \<- x; x \<- 5; y
+- assignment: `x <- 10`; `y <- x`; `x <- 5`; `y`
   - is this absolutely necessary to cover? When is this going to become relevant in a typical data workflow? Should this be kept to SWC lessons?
 
 ## Functions
