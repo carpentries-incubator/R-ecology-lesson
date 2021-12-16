@@ -4,22 +4,19 @@ author: Data Carpentry contributors
 minutes: 45
 ---
 
-
-```{r, echo=FALSE, purl=FALSE, message = FALSE}
+```{r, echo=FALSE, purl=FALSE, message=FALSE}
 source("setup.R")
 ```
-
 
 ```{r load-tidyverse-package, message=FALSE, purl=FALSE}
 library(tidyverse)
 ```
 
-
-```{r load-ratdat-package,message=FALSE, purl=TRUE}
+```{r load-ratdat-package, message=FALSE, purl=TRUE}
 library(ratdat)
 surveys <- left_join(left_join(surveys, species), plots) %>% 
   mutate(across(where(is.factor), as.character))
-```   
+```
 
 We just spent quite a bit of time learning how to create visualizations from the `surveys` data, but we did not talk much about **what** this `surveys` thing is. The `surveys` data is stored in R as a `data.frame`, which is the most common way that R represents tabular data (data that can be stored in a table format). We can check what `surveys` is by using the `class()` function:
 
@@ -37,7 +34,7 @@ We used these functions with just one argument, the object `surveys`, and we did
 
 To learn more about a function, you can type a `?` in front of the name of the function, which will bring up the official documentation for that function:
 
-```{r, head-help}
+```{r}
 ?head
 ```
 
@@ -75,7 +72,7 @@ str(surveys)
 
 We get quite a bit of useful information here. First, we are told that we have a `data.frame` of `r nrow(surveys)` observations, or rows, and 13 variables, or columns.
 
-Next, we get a bit of information on each variable, including its type (`int` or `chr`) and a quick peek at the first 10 values. You might ask why there is a `$` in front of each variable. This is because the `$` is an operator that allows us to select individual columns from a dataframe. 
+Next, we get a bit of information on each variable, including its type (`int` or `chr`) and a quick peek at the first 10 values. You might ask why there is a `$` in front of each variable. This is because the `$` is an operator that allows us to select individual columns from a dataframe.
 
 The `$` operator also allows you to use tab-completion to quickly select which variable you want from a given dataframe. For example, to get the `year` variable, we can type `surveys$` and then hit <kbd>Tab</kbd>. We get a list of the variables that we can move through with up and down arrows. Hit <kbd>Enter</kbd> when you reach `year`, which should finish this code:
 
@@ -168,7 +165,6 @@ We have now seen vectors in a few different forms: as columns in a dataframe and
   - factors can be ordered or unordered
   - they often *look* like character vectors, but behave differently
 
-
 #### Factors
 
 We will spend a bit more time talking about factors, since they are often a challenging type of data to work with.
@@ -187,7 +183,6 @@ lvls_reorder(sex, idx = 2:1, ordered = F)
 
 ```
 
-
 - Vectors can be manipulated into lots of other shapes and forms
   - matrices
   - lists
@@ -197,16 +192,18 @@ lvls_reorder(sex, idx = 2:1, ordered = F)
     - usually goes from character to factor
     - `forcats`
     - should probably make sure `ratdat` data starts with all character cols as `char`, not as factors, since `stringsAsFactors` default has changed, and starting with characters is almost always best practice
-  - should we cover subsetting? *definitely* need to show `%in%`, so perhaps we show that in `filter()` later? 
+  - should we cover subsetting? *definitely* need to show `%in%`, so perhaps we show that in `filter()` later?
   - is concept of recycling important?
     - I think this is best reserved for one of the SWC lessons
   - what about conditional subsetting? it's relevant to `filter()`, but I'm not sure it's strictly necessary
 - dates/datetimes?
-- assignment: x <- 10; y <- x; x <- 5; y
-    - is this absolutely necessary to cover? When is this going to become relevant in a typical data workflow? Should this be kept to SWC lessons?
+- assignment: x \<- 10; y \<- x; x \<- 5; y
+  - is this absolutely necessary to cover? When is this going to become relevant in a typical data workflow? Should this be kept to SWC lessons?
 
 ## Functions
 
 ### What are they?
 
 ## Vectors
+
+

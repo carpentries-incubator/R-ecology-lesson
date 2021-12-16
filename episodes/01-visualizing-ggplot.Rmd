@@ -25,29 +25,31 @@ minutes: 60
 ## notes
 
 - I think bar charts and line charts should still be shown at some point, but both will require some type of summary statistics, so they'll have to come later
-    - I think this is ultimately good though, it will show that plotting should be a big part of any data cleaning and exploration
-    - should cover `geom_bar()` vs `geom_col()`, should show `position_stack()` and `position_dodge()`
-    - should show points and lines together on time series plot, as well as `group` as an aesthetic 
+  - I think this is ultimately good though, it will show that plotting should be a big part of any data cleaning and exploration
+  - should cover `geom_bar()` vs `geom_col()`, should show `position_stack()` and `position_dodge()`
+  - should show points and lines together on time series plot, as well as `group` as an aesthetic
 - I think it might be worth addressing tab completion here somewhere
 - also worth adding comments at this point
 
-
 # Lesson
 
-------------
+***
 
-> ### Learning Objectives
->
-> * Produce scatter plots and boxplots using ggplot.
-> * Map data variables to plot components.
-> * Modify the scales of plot components.
-> * Iteratively build and modify ggplot plots by adding layers.
-> * Change the appearance of existing ggplot plots using premade and customized themes.
-> * Describe what faceting is and apply faceting in ggplot.
-> * Combine and export plots.
+::::::::::::::::::::::::::::::::::::::  objectives
 
---------------
+### Learning Objectives
 
+- Produce scatter plots and boxplots using ggplot.
+- Map data variables to plot components.
+- Modify the scales of plot components.
+- Iteratively build and modify ggplot plots by adding layers.
+- Change the appearance of existing ggplot plots using premade and customized themes.
+- Describe what faceting is and apply faceting in ggplot.
+- Combine and export plots.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+***
 
 ## Setup
 
@@ -61,12 +63,11 @@ library(ggplot2)
 
 Later we will learn how to read data into R, but for now we are going to use a clean and ready-to-use dataset that is provided by the **`ratdat`** data package. To make our dataset available, we need to load this package too.
 
-```{r load-ratdat-package,message=FALSE, purl=TRUE}
+```{r load-ratdat-package, message=FALSE, purl=TRUE}
 library(ratdat)
 surveys <- left_join(left_join(surveys, species), plots) %>% 
   mutate(across(where(is.factor), as.character))
-```                                      
-
+```
 
 ## Plotting with **`ggplot2`**
 
@@ -138,29 +139,37 @@ str(object = surveys)
 
 `str()` will tell us how many observations/rows (obs) and variables/columns we have, as well as some information about each of the variables. We see the name of a variable (such as year), followed by the kind of variable (int for integer, chr for character), and the first 10 entries in that variable. We will talk more about different data types and structures later on.
 
-> ### Challenge
->
-> 1. Try modifying the plot so that the shape of the point varies
-> by `sex`. Do you think this is a good way to represent `sex` 
-> with these data?
->
-> 2. Now try changing is so that the color of the points vary
-> by `year`. Do you notice a difference in the color scale?
-> Why do you think this happened?
+:::::::::::::::::::::::::::::::::::::::  challenge
 
-> ```{r modify-aes-challenge-answer, answer=TRUE, purl=FALSE}
-> # Answer to part 1.
-> ggplot(data = surveys, 
->        mapping = aes(x = weight, y = hindfoot_length, shape = sex)) +
->   geom_point(alpha = 0.2)
-> 
-> # Answer to part 2.
-> ggplot(data = surveys, 
->        mapping = aes(x = weight, y = hindfoot_length, color = year)) +
->   geom_point(alpha = 0.2)
-> ```
+### Challenge
 
-```{r modify-aes-challenge, echo = FALSE, eval = FALSE, purl = TRUE}
+1. Try modifying the plot so that the shape of the point varies
+   by `sex`. Do you think this is a good way to represent `sex`
+   with these data?
+
+2. Now try changing is so that the color of the points vary
+   by `year`. Do you notice a difference in the color scale?
+   Why do you think this happened?
+
+:::::::: solution
+
+```{r modify-aes-challenge-answer, answer=TRUE, purl=FALSE}
+# Answer to part 1.
+ggplot(data = surveys, 
+       mapping = aes(x = weight, y = hindfoot_length, shape = sex)) +
+  geom_point(alpha = 0.2)
+
+# Answer to part 2.
+ggplot(data = surveys, 
+       mapping = aes(x = weight, y = hindfoot_length, color = year)) +
+  geom_point(alpha = 0.2)
+```
+
+:::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+```{r modify-aes-challenge, echo=FALSE, eval=FALSE, purl=TRUE}
 ## 1. Try modifying the plot so that the shape of the point varies
 ## by `sex`. Do you think this is a good way to represent `sex` 
 ## with these data?
@@ -169,7 +178,6 @@ str(object = surveys)
 ## by `year`. Do you notice a difference in the color scale?
 ## Why do you think this happened?
 ```
-
 
 ## Changing scales
 
@@ -189,12 +197,11 @@ ggplot(data = surveys, mapping = aes(x = weight, y = hindfoot_length, color = pl
   scale_x_log10()
 ```
 
-
 One nice thing about **`ggplot`** and the **`tidyverse`** in general is that groups of functions that do similar things are given similar names. Any function that modifies a `ggplot` scale starts with `scale_`, making it easier to search for the right function.
 
 ## Changing position
 
-Since many of our points plot on top of each other, we modified the `alpha` to increase visibility. Another way we can address this issue is by changing the position of the points themselves. We can add a small amount of random noise to the x/y positions of each point, also called "jittering". 
+Since many of our points plot on top of each other, we modified the `alpha` to increase visibility. Another way we can address this issue is by changing the position of the points themselves. We can add a small amount of random noise to the x/y positions of each point, also called "jittering".
 
 To do this, we can specify the `position` argument inside `geom_point()`. We will use the `position_jitter()` function to specify that we want our points to be jittered.
 
@@ -281,26 +288,34 @@ ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
 
 Now we can see all the raw data and our boxplots on top.
 
-> ### Challenge
->
-> Make a plot similar to the last one, but use a violin plot 
-> instead of a boxplot. Remember that all geom functions start
-> with `geom_`, followed by the type of geom.
->
-> For this plot, make the color of the points and outlines of
-> the violins vary by `plot_type`, and set the fill of the
-> violins to white.
->
-> ```{r violin-challenge-answer, answer=TRUE, purl=FALSE}
-> ggplot(data = surveys, 
->        mapping = aes(x = plot_type, 
->                      y = hindfoot_length,
->                      color = plot_type)) +
->   geom_point(alpha = 0.1, position = position_jitter()) +
->   geom_violin(fill = "white")
-> ```
+:::::::::::::::::::::::::::::::::::::::  challenge
 
-```{r violin-challenge, echo = FALSE, eval = FALSE, purl = TRUE}
+### Challenge
+
+Make a plot similar to the last one, but use a violin plot
+instead of a boxplot. Remember that all geom functions start
+with `geom_`, followed by the type of geom.
+
+For this plot, make the color of the points and outlines of
+the violins vary by `plot_type`, and set the fill of the
+violins to white.
+
+:::::::: solution
+
+```{r violin-challenge-answer, answer=TRUE, purl=FALSE}
+ggplot(data = surveys, 
+       mapping = aes(x = plot_type, 
+                     y = hindfoot_length,
+                     color = plot_type)) +
+  geom_point(alpha = 0.1, position = position_jitter()) +
+  geom_violin(fill = "white")
+```
+
+:::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+```{r violin-challenge, echo=FALSE, eval=FALSE, purl=TRUE}
 ## Make a plot similar to the last one, but use a violin plot 
 ## instead of a boxplot. Remember that all geom functions start
 ## with `geom_`, followed by the type of geom.
@@ -341,7 +356,7 @@ ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
   theme(axis.title = element_text(size = 14), panel.grid.major.x = element_blank())
 ```
 
-Another useful change might be to remove the color legend, since that information is already on our x axis. For this one, we will set `legend.position` to "none". 
+Another useful change might be to remove the color legend, since that information is already on our x axis. For this one, we will set `legend.position` to "none".
 
 ```{r legend-remove}
 ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
@@ -387,38 +402,44 @@ ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
        y = "Hindfoot length (mm)")
 ```
 
+:::::::::::::::::::::::::::::::::::::::  challenge
 
-> ### Challenge
->
-> Modify the previous plot by adding a descriptive subtitle
-> and removing the legend. You should also increase the font
-> size for the plot title and make it bold. *Hint*: "bold"
-> is considered a "face" of a font.
->
-> ```{r theme-challenge-answer, answer=TRUE, purl=FALSE}
-> ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
->   geom_point(aes(color = plot_type), position = position_jitter(), alpha = 0.2) +
->   geom_boxplot(fill = NA) +
->   theme_bw() +
->   theme(axis.title = element_text(size = 14), legend.position = "none",
->         plot.title = element_text(face = "bold", size = 20)) +
->   labs(title = "Rodent size by plot type",
->        subtitle = "Long-term dataset from Portal, AZ",
->        x = "Plot type",
->        y = "Hindfoot length (mm)")
-> ```
+### Challenge
 
-```{r theme-challenge, echo = FALSE, eval = FALSE, purl = TRUE}
+Modify the previous plot by adding a descriptive subtitle
+and removing the legend. You should also increase the font
+size for the plot title and make it bold. *Hint*: "bold"
+is considered a "face" of a font.
+
+:::::::: solution
+
+```{r theme-challenge-answer, answer=TRUE, purl=FALSE}
+ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
+  geom_point(aes(color = plot_type), position = position_jitter(), alpha = 0.2) +
+  geom_boxplot(fill = NA) +
+  theme_bw() +
+  theme(axis.title = element_text(size = 14), legend.position = "none",
+        plot.title = element_text(face = "bold", size = 20)) +
+  labs(title = "Rodent size by plot type",
+       subtitle = "Long-term dataset from Portal, AZ",
+       x = "Plot type",
+       y = "Hindfoot length (mm)")
+```
+
+:::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+```{r theme-challenge, echo=FALSE, eval=FALSE, purl=TRUE}
 ## Modify the previous plot by adding a descriptive subtitle
 ## and removing the legend. You should also increase the font
 ## size for the plot title and make it bold. *Hint*: "bold"
 ## is considered a "face" of a font.
 ```
 
-
 ## Faceting
 
-One of the most powerful features of **`ggplot`** is the ability to quickly split a plot into multiple smaller plots based on a categorical variable, which is called **faceting**. 
+One of the most powerful features of **`ggplot`** is the ability to quickly split a plot into multiple smaller plots based on a categorical variable, which is called **faceting**.
 
 So far we've mapped variables to the x axis, the y axis, and color, but trying to add a 4th variable becomes difficult. Changing the shape of a point might work, but only for very few categories, and even then, it can be hard to tell the differences between the shapes of small points.
 
@@ -532,45 +553,36 @@ scatter_plot / box_plot + plot_annotation(title = "Rodent size plots",
 ggsave("~/Desktop/rodent_size_plots.jpg", height = 6, width = 8)
 ```
 
-
 ### CHALLENGE
 
-- try making your own plot! use `str(surveys)` to explore variables you might be able to use. 
+- try making your own plot! use `str(surveys)` to explore variables you might be able to use.
 - suggestions:
-    - try making a histogram of one of the numeric variables
-    - try using a different color `scale_`
-    - try changing the size of points or thickness of lines in a `geom`
-    
-> ### Challenge
->
-> Try making a plot of your own! You can further modify a 
-> previous plot or make a new one altogether. Try using
-> `str(surveys)` to explore variables you might be able to
-> use.
->
-> Here are some examples:
->
-> - make a histogram of one of the numeric variables
-> - use a different color `scale_`
-> - change the size of points or thickness of lines in a `geom`
+  - try making a histogram of one of the numeric variables
+  - try using a different color `scale_`
+  - try changing the size of points or thickness of lines in a `geom`
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+### Challenge
+
+Try making a plot of your own! You can further modify a
+previous plot or make a new one altogether. Try using
+`str(surveys)` to explore variables you might be able to
+use.
+
+Here are some examples:
+
+- make a histogram of one of the numeric variables
+- use a different color `scale_`
+- change the size of points or thickness of lines in a `geom`
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-```{r violin-challenge, echo = FALSE, eval = FALSE, purl = TRUE}
-## Try making a plot of your own! You can further modify a 
-## previous plot or make a new one altogether. Try using
-## `str(surveys)` to explore variables you might be able to
-## use.
-##
-## Here are some examples:
-##
-## - make a histogram of one of the numeric variables
-## - use a different color `scale_`
-## - change the size of points or thickness of lines in a `geom`
-```
-
-    
 ## Conclusion
 
 We have gone through quite a bit of `ggplot2`'s capabilities, but the package can do far, far more than we covered here. It is an extremely flexible and powerful visualization package, and other people have created packages that extend its capabilities even further. By learning the "grammar" of this "grammar of graphics" package, you can learn how to make many more types of visualizations.
 
 For a great, concise overview of more `ggplot2` features, download the [`ggplot2` cheat sheet PDF here](https://github.com/rstudio/cheatsheets/raw/master/data-visualization.pdf).
+
+
