@@ -6,6 +6,8 @@ exercises: 2
 
 - importing complete_old CSV
     - touch on column parsing
+    - talk about file paths and tab completion
+    - should we teach the `here()` package?
 - pipes
 - select
 - filter

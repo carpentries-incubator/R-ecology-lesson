@@ -1,0 +1,85 @@
+---
+title: "Introduction to R and RStudio"
+teaching: 10
+exercises: 2
+---
+
+- open RStudio
+- make an R project on the Desktop
+- introduce RStudio layout
+- concept of a script and console
+- reproducibility
+  - change a few settings
+
+:::::::::::::::::::::::::::::::::::::: questions 
+
+- How do you get started in R and RStudio?
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::: objectives
+
+- Understand the difference between R and RStudio
+- Describe the purpose of the different RStudio panes
+- Organize files and directories into R Projects
+- Use the RStudio help interface to get help with R functions
+- Be able to format questions to get help in the broader R community
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+## What are R and RStudio?
+
+`R` refers to a programming language as well as the software that interprets R code.
+
+[RStudio](https://rstudio.com) is a software interface that can make it easier to write R scripts and interact with the R software. It's a very popular platform, and RStudio also maintains the [`tidyverse`](https://www.tidyverse.org/) series of packages we will use in this lesson.
+
+## Why learn R?
+
+### R does not involve lots of pointing and clicking, and that's a good thing
+
+Since R is a programming language, the results of your analysis do not rely on remembering a succession of pointing and clicking, but instead on a series of written commands, and that's a good thing! So, if you want to redo your analysis because you collected more data, you don't have to remember which button you clicked in which order to obtain your results; you just have to run your script again.
+
+Working with scripts makes the steps you used in your analysis clear, and the code you write can be inspected by someone else who can give you feedback and spot mistakes. 
+
+Working with scripts forces you to have a deeper understanding of what you are doing, and facilitates your learning and comprehension of the methods you use. 
+
+### R code is great for reproducibility
+
+Reproducibility is when someone else (including your future self) can obtain the same results from the same dataset when using the same analysis. 
+
+R integrates with other tools to generate manuscripts from your code. If you collect more data, or fix a mistake in your dataset, the figures and the statistical tests in your manuscript are updated automatically. 
+
+An increasing number of journals and funding agencies expect analyses to be reproducible, so knowing R will give you an edge with these requirements.  
+
+### R is interdisciplinary and extensible
+
+With tens of thousands of packages that can be installed to extend its capabilities, R provides a framework that allows you to combine statistical approaches from many scientific disciplines to best suit the analytical framework you need to analyze your data. For instance, R has packages for image analysis, GIS, time series, population genetics, and a lot more.  
+
+### R works on data of all shapes and sizes
+
+The skills you learn with R scale easily with the size of your dataset. Whether your dataset has hundreds or millions of lines, it won't make much difference to you. 
+
+R is designed for data analysis. It comes with special data structures and data types that make handling of missing data and statistical factors convenient. 
+
+R can connect to spreadsheets, databases, and many other data formats, on your computer or on the web.  
+
+### R produces high-quality graphics
+
+R has well-developed plotting capabilities, and the `ggplot2` package is one of, if not the most powerful plotting language today. We will begin learning to use `ggplot2` in the next episode.
+
+### R has a large and welcoming community
+
+Thousands of people use R daily. Many of them are willing to help you through mailing lists and websites such as [Stack Overflow](https://stackoverflow.com/), or on the [RStudio community](https://community.rstudio.com/).
+
+Since R is very popular among researchers, most of the help communities and learning materials are aimed towards other researchers. Python is a similar language to R, and can accomplish many of the same tasks, but is widely used by software developers and software engineers, so Python resources and communities are not as oriented towards researchers.
+  
+### Not only is R free, but it is also open-source and cross-platform
+
+Anyone can inspect the source code to see how R works. Because of this transparency, there is less chance for mistakes, and if you (or someone else) find some, you can report and fix bugs.
+
+## Navigating RStudio
+
+We will use the RStudio integrated development environment (IDE) to write code into scripts, run code in R, navigate files on our computer, inspect objects we create in R, and look at the plots we make. RStudio has many other features that can help with things like version control, developing R packages, and writing Shiny apps, but we won't cover those in the workshop.
+
+![*RStudio screenshot*](fig/rstudio_screenshot.png)
+In the above screenshot, we can see
