@@ -493,9 +493,9 @@ ggsave("~/Desktop/rodent_size_plots.jpg", height = 6, width = 8)
 Try making your own plot! You can run `str(surveys)` to explore variables you might use in your new plot. Feel free to use variables we have already seen, or some we haven't explored yet.
 
 Here are a couple ideas to get you started:
-    - make a histogram of one of the numeric variables
-    - try using a different color `scale_`
-    - try changing the size of points or thickness of lines in a `geom`
+  - make a histogram of one of the numeric variables
+  - try using a different color `scale_`
+  - try changing the size of points or thickness of lines in a `geom`
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 

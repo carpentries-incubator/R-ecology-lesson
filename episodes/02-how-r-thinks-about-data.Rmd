@@ -12,8 +12,11 @@ exercises: 4
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Explore dataframes
-- Understand the construction of 
+- Explore the structure and content of dataframes
+- Understand vector types and missing data
+- Use vectors as function arguments
+- Create and convert factors
+- Understand how R assigns values to objects
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -323,15 +326,20 @@ This also means you can run multiple nested operations, store intermediate value
 ```{r assignments}
 x <- 5
 
-# first, x gets evaluated to 5, 5/2 gets evaluated to 2.5, then sqrt(2.5) is evaluated
+# first, x gets evaluated to 5
+# then 5/2 gets evaluated to 2.5
+# then sqrt(2.5) is evaluated
 sqrt(x/2)
 
-# we can also store the evaluated value of x/2 in an object y before passing it to sqrt()
+# we can also store the evaluated value of x/2 
+# in an object y before passing it to sqrt()
 y <- x/2
 
 sqrt(y)
 
-# first, the x on the righthand side gets evaluated to 5, then it gets squared, then the resulting value is assigned to the object x
+# first, the x on the righthand side gets evaluated to 5
+# then 5 gets squared
+# then the resulting value is assigned to the object x
 
 x <- x^2
 
@@ -341,13 +349,13 @@ x
 You will be naming a of objects in R, and there are a few common naming rules and conventions:
 
 - make names clear without being too long
-    - `wkg` is probably too short
-    - `weight_in_kilograms` is probably too long
-    - `weight_kg` is great
+  - `wkg` is probably too short
+  - `weight_in_kilograms` is probably too long
+  - `weight_kg` is great
 - names cannot start with a number
 - names are case sensitive
 - you cannot use the names of fundamental functions in R, like `if`, `else`, or `for`
-    - in general, avoid using names of common functions like `c`, `mean`, etc.
+  - in general, avoid using names of common functions like `c`, `mean`, etc.
 - avoid dots `.` in names, as they have a special meaning in R, and may be confusing to others
 - be consistent
 - you can use a style guide like [Google's](https://google.github.io/styleguide/Rguide.xml) or
