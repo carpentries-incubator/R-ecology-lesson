@@ -35,6 +35,20 @@ Finally, the lesson is given a more narrative structure, following up ggplot wit
 - pivot
 - exporting data
 
+## Dataset
+
+Using the `ratdat` package. Currently, we are working with the `complete` dataframe, but I think I prefer moving towards a slightly different split:
+
+#### Old, complete data
+
+We start learners off with about half of the `complete` dataframe, using only older data. This includes the `plots`, `species`, and `survey` data, and does include `NA`s. We could think about not introducing missing data yet, but I think it might get put off too much.
+
+#### New, messy data
+
+After doing basics of working with data, we show them how to import data. We will import a CSV file with the surveys data and species data combined. This file will be messy, with a couple of issues. First, the data won't be in a tidy form. Second, we will throw in a few duplicate rows, and maybe a typo or two.
+
+While working with the new data, we demonstrate the basics of `dplyr` and `tidyr`, the idea of data vaidation and exploration (maybe even some exploratory viz?). Then we say "hey, we've also got all this plot data" and introduce joins. Then when we are done with this part, we use `bind_rows()` to add the new data to the old, and do some data export.
+
 ## Narrative Structure
 
 - visualization with ggplot
