@@ -47,10 +47,11 @@ The `surveys` data is stored in R as a `data.frame`, which is the most common wa
 class(surveys)
 ```
 
-We can view the first few rows with the `head()` functions:
+We can view the first few rows with the `head()` function, and the last few rows with the `tail()` function:
 
 ```{r head}
 head(surveys)
+tail(surveys)
 ```
 
 We used these functions with just one argument, the object `surveys`, and we didn't give the argument a name, like we did with `ggplot2`. In R, a function's arguments come in a particular order, and if you put them in the correct order, you don't need to name them. In this case, the name of the argument is `x`, so we can name it if we want, but since we know it's the first argument, we don't need to.
@@ -135,25 +136,28 @@ As you can see, those values get printed out in the console, just like with `sur
 num <- c(1, 2, 5, 12, 4)
 ```
 
+You can check what kind of object `num` is with the `class()` function.
+
 ```{r}
 class(num)
-typeof(num)
 ```
+
+We see that `num` is a `numeric` vector.
+
+Let's try making a character vector:
 
 ```{r}
 char <- c("apple", "pear", "grape")
+class(char)
 ```
 
-```{r}
-typeof(char)
-```
+Remember that each entry, like `"apple"`, needs to be surrounded by quotes, and entries are separated with commas. If you do something like `"apple, pear, grape"`, you will have only a single entry containing that whole string.
+
+Finally, let's make a logical vector:
 
 ```{r}
 logi <- c(TRUE, FALSE, TRUE, TRUE)
-```
-
-```{r}
-typeof(logi)
+class(logi)
 ```
 
 ::::::::::::::::::::::::::::::::::::: challenge 
@@ -170,7 +174,6 @@ char_logi <- c("a", "b", TRUE)
 
 tricky <- c("a", "b", "1", FALSE)
 ```
-
 
 :::::::::::::::::::::::: solution 
 
@@ -217,7 +220,7 @@ Coercion is not something you will often do intentionally; rather, when combinin
 
 ## Missing data
 
-One of the great things about R is how it handles missing data, which can be tricky in other programming languages. R represents missing data as `NA`, without quotes. Let's make a numeric vector with an `NA` value:
+One of the great things about R is how it handles missing data, which can be tricky in other programming languages. R represents missing data as `NA`, without quotes, in vectors of any type. Let's make a numeric vector with an `NA` value:
 
 ```{r na-vec}
 weights <- c(25, 34, 12, NA, 42)
@@ -237,7 +240,7 @@ min(weights, na.rm = TRUE)
 
 ## Vectors as arguments
 
-A common use for creating vectors from scratch is in function arguments. The `quantile()` function will calculate a quantile for a given vector of numeric values. We set the quantile using the `probs` argument. We also need to set `na.rm = TRUE`, since there are `NA` values in the `weight` column, and R doesn't know how to calculate a quantile if there are `NA`s. This is a common argument for lots of numeric functions.
+A common reason to create a vector from scratch is to use in a function argument. The `quantile()` function will calculate a quantile for a given vector of numeric values. We set the quantile using the `probs` argument. We also need to set `na.rm = TRUE`, since there are `NA` values in the `weight` column, and R doesn't know how to calculate a quantile if there are `NA`s. This is a common argument for lots of numeric functions.
 
 ```{r single-quantile}
 quantile(surveys$weight, probs = 0.25, na.rm = TRUE)
@@ -251,18 +254,76 @@ quantile(surveys$weight, probs = c(0.25, 0.5, 0.75), na.rm = TRUE)
 
 While the `c()` function is very flexible, it doesn't necessarily scale well. If you want to generate a long vector from scratch, you probably don't want to type everything out manually. There are a few functions that can help generate vectors.
 
-First, putting `:` between two numbers will generate a vector of integers starting with the first number and ending with the last. The `seq()` function allows you to generate similar sequences, but changing by any amount. Finally, the `rep()` function allows you to repeat a value, or even a whole vector, as many times as you want, and works with any type of vector.
+First, putting `:` between two numbers will generate a vector of integers starting with the first number and ending with the last. The `seq()` function allows you to generate similar sequences, but changing by any amount.
 
-```{r seq-rep}
+```{r seq}
+# generates a sequence of integers
 1:10
 
+# with seq() you can generate sequences with a combination of:
+# from: starting value
+# to: ending value
+# by: how much should each entry increase
+# length.out: how long should the resulting vector be
 seq(from = 0, to = 1, by = 0.1)
 
+seq(from = 0, to = 1, length.out = 50)
 
-rep("a", 12)
-
-rep(c("a", "b", "c"), 4)
+seq(from = 0, by = 0.01, length.out = 20)
 ```
+
+Finally, the `rep()` function allows you to repeat a value, or even a whole vector, as many times as you want, and works with any type of vector.
+
+```{r rep}
+# repeats "a" 12 times
+rep("a", times = 12)
+
+# repeats this whole sequence 4 times
+rep(c("a", "b", "c"), times = 4)
+
+# repeats each value 4 times
+rep(1:10, each = 4)
+```
+
+::::::::::::::::::::::::::::::::::::: challenge 
+
+## Challenge 2: Creating sequences
+
+1. Write some code to generate the following vector:
+
+```{r seq-chalenge, echo=F}
+rep(-3:3, 3)
+```
+
+:::::::::::::::::::::::: solution 
+
+```{r seq-challenge-answer}
+rep(-3:3, 3)
+
+# this also works
+rep(seq(from = -3, to = 3, by = 1), 3)
+
+# you might also store the sequence as an intermediate vector
+
+my_seq <- seq(from = -3, to = 3, by = 1)
+rep(my_seq, 3)
+```
+
+::::::::::::::::::::::::
+
+2. Calculate the quantiles for the `surveys` hindfoot lengths at every 5% level (0%, 5%, 10%, 15%, etc.)
+
+:::::::::::::::::::::::: solution 
+
+```{r quantiles-challenge-answer}
+quantile(surveys$hindfoot_length, 
+         probs = seq(from = 0, to = 1, by = 0.05),
+         na.rm = T)
+```
+
+::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::
+
 
 ## Building with vectors
 
@@ -346,7 +407,7 @@ We've already created quite a few objects in R using the `<-` assignment arrow, 
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
-## Challenge X:
+## Challenge 3: Assignments and objects
 
 What is the value of `y` after running the following code?
 

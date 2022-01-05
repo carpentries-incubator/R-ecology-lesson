@@ -122,18 +122,34 @@ ggplot(data = surveys, mapping = aes(x = weight, y = hindfoot_length)) +
 
 ::::::::::::::::::::::::::::: callout
 
-Two common issues you might run into when working in R are forgetting a closing quote or a closing bracket. Let's take a look at what each one does.
+Two common issues you might run into when working in R are forgetting a closing bracket or a closing quote. Let's take a look at what each one does.
 
-```{r}
+Try running the following code:
+
+```{r no-closing-bracket, eval=F}
 ggplot(data = surveys, mapping = aes(x = weight, y = hindfoot_length)) +
-  geom_point(alpha = 0.2, color = "blue)
+  geom_point(color = "blue", alpha = 0.2
 ```
 
-```{r}
+You will see a `+` appear in your console. This is R telling you that it expects more input in order to finish running the code. It is missing a closing bracket to end the `geom_point` function call. You can hit <kbd>Esc</kbd> in the console to reset it.
+
+Something similar will happen if you run the following code:
+
+```{r no-closing-quote, eval=F}
 ggplot(data = surveys, mapping = aes(x = weight, y = hindfoot_length)) +
-  geom_point(alpha = 0.2, color = "blue"
+  geom_point(color = "blue, alpha = 0.2)
 ```
 
+A missing quote at the end of `blue` means that the rest of the code is treated as part of the quote, which is a bit easier to see since RStudio displays strings in a different color.
+
+You will get a different error message if you run the following code:
+
+```{r extra-bracket, eval=F}
+ggplot(data = surveys, mapping = aes(x = weight, y = hindfoot_length)) +
+  geom_point(color = "blue", alpha = 0.2))
+```
+
+This time we have an extra closing `)`, which R doesn't know what to do with. It tells you there is an unexpected `)`, but it doesn't pinpoint exactly where. Getting good at finding matching brackets is a useful skill.
 
 :::::::::::::::::::::::::::::
 
