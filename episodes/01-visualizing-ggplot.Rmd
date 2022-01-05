@@ -54,6 +54,12 @@ surveys <- left_join(left_join(surveys, species), plots) %>%
 
 **`ggplot`** plots are built step by step by adding new layers, which allows for extensive flexibility and customization of plots.
 
+::::::::::::::::::::::::::::: callout
+
+R does not care about whitespace or indentation, so any spacing or indentation you see is simply to improve readability of the code.
+
+:::::::::::::::::::::::::::::
+
 To build a plot, we will use a basic template that can be used for different types of plots:
 
 ```r
@@ -82,7 +88,21 @@ ggplot(data = surveys, mapping = aes(x = weight, y = hindfoot_length)) +
 
 You may notice a warning that missing values were removed. If a variable necessary to make the plot is missing from a given row of data (in this case, `hindfoot_length` or `weight`), it can't be plotted. `ggplot2` just uses a warning message to let us know that some rows couldn't be plotted.
 
-One important thing to note is that `R` does not care about whitespace or indentation, so any spacing or indentation you see is simply to improve readability of the code.
+
+::::::::::::::::::::::::::::: callout
+
+**Warning** messages are one of a few ways R will communicate with you. Warnings can be thought of as a "heads up". Nothing necessarily went *wrong*, but the author of that function wanted to draw your attention to something. In the above case, it's worth knowing that some of the rows of your dataframe were not plotted because they had missing data.
+
+A more serious type of message is an **error**. Here's an example:
+
+```{r geom-error}
+ggplot(data = surveys, mapping = aes(x = weight, y = hindfoot_length)) +
+  geom_poit()
+```
+
+As you can see, we only get the error message, with no output, because something has actually gone wrong. This particular error message is fairly common, and it happened because we misspelled `point` as `poit`. Because there is no function named `geom_poit()`, R tells us it can't find a function with that name.
+
+:::::::::::::::::::::::::::::
 
 ## Changing aesthetics
 
@@ -99,6 +119,23 @@ We can also change the color of the points:
 ggplot(data = surveys, mapping = aes(x = weight, y = hindfoot_length)) +
   geom_point(alpha = 0.2, color = "blue")
 ```
+
+::::::::::::::::::::::::::::: callout
+
+Two common issues you might run into when working in R are forgetting a closing quote or a closing bracket. Let's take a look at what each one does.
+
+```{r}
+ggplot(data = surveys, mapping = aes(x = weight, y = hindfoot_length)) +
+  geom_point(alpha = 0.2, color = "blue)
+```
+
+```{r}
+ggplot(data = surveys, mapping = aes(x = weight, y = hindfoot_length)) +
+  geom_point(alpha = 0.2, color = "blue"
+```
+
+
+:::::::::::::::::::::::::::::
 
 ### Adding another variable
 

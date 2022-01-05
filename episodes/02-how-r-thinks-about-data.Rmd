@@ -156,13 +156,64 @@ logi <- c(TRUE, FALSE, TRUE, TRUE)
 typeof(logi)
 ```
 
-```{r}
+::::::::::::::::::::::::::::::::::::: challenge 
+
+## Challenge 1: Coercion
+
+1. What type will each of these vectors be? Try to guess without running any code, but you can use `class()` to verify your answers.
+
+```{r coercion-challenge}
 num_logi <- c(1, 4, 6, TRUE)
-num_char <- c(1, 3, "a", 6)
+num_char <- c(1, 3, "10", 6)
 char_logi <- c("a", "b", TRUE)
+
 
 tricky <- c("a", "b", "1", FALSE)
 ```
+
+
+:::::::::::::::::::::::: solution 
+
+```{r coercion-challenge-answer}
+class(num_logi)
+class(num_char)
+class(char_logi)
+class(tricky)
+```
+
+R will automatically convert values in a vector so that they are all the same type, a process called **coercion**.
+
+::::::::::::::::::::::::
+
+2. How many values in `combined_logical` are `"TRUE"` (as a character)? 
+
+```{r combined-logical-challenge}
+combined_logical <- c(num_logi, char_logi)
+```
+
+:::::::::::::::::::::::: solution 
+
+```{r combined-logical-challenge-answer}
+class(combined_logical)
+```
+ 
+Only one value is `"TRUE"`. Coercion happens when each vector is created, so the `TRUE` in `num_logi` becomes a `1`, while the `TRUE` in `char_logi` becomes `"TRUE"`. When these two vectors are combined, R doesn't remember that the `1` in `num_logi` used to be a `TRUE`, it will just coerce the `1` to `"1"`.
+
+::::::::::::::::::::::::
+
+3. Now that you've seen a few examples of coercion, you might have started to see that there are some rules about what types get converted. There is a hierarchy to coercion. Can you draw a diagram that represents the hierarchy of what types get converted to other types?
+
+:::::::::::::::::::::::: solution 
+
+logical → integer → numeric → character
+
+Logical vectors can only take on two values: `TRUE` or `FALSE`. Integer vectors can only contain integers, so `TRUE` and `FALSE` can be coerced to `1` and `0`. Numeric vectors can contain numbers with decimals, so integers can be coerced from, say, `6` to `6.0` (though R will still display a numeric `6` as `6`.). Finally, any string of characters can be represented as a character vector, so any of the other types can be coerced to a character vector.
+::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+Coercion is not something you will often do intentionally; rather, when combining vectors or reading data into R, a stray character that you missed may change an entire numeric vector into a character vector. It is a good idea to check the `class()` of your results frequently, particularly if you are running into confusing error messages.
 
 ## Missing data
 
