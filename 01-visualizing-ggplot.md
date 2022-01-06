@@ -46,6 +46,8 @@ surveys <- left_join(left_join(surveys, species), plots) %>%
   filter(year < 1990)
 ```
 
+The `ratdat` package contains data from the [Portal Project](https://github.com/weecology/PortalData), which is a long-term dataset from Portal, Arizona, in the Chihuahuan desert.
+
 ## Plotting with **`ggplot2`**
 
 **`ggplot2`** is a powerful package that allows you to create complex plots from tabular data (data that can be stored in a table). The **`gg`** in **`ggplot2`** stands for "grammar of graphics", and the package uses consistent vocabulary to create plots of widely varying types. Therefore, we only need small changes to our code if the underlying data changes or we decide to change from a box plot to a scatter plot. This approach helps you create publication-quality plots with minimal adjusting and tweaking.

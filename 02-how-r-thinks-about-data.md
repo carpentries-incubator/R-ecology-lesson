@@ -1,7 +1,7 @@
 ---
 title: "Exploring and understanding data"
 teaching: 45
-exercises: 4
+exercises: 3
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 
@@ -34,7 +34,8 @@ library(tidyverse)
 ```r
 library(ratdat)
 surveys <- left_join(left_join(surveys, species), plots) %>% 
-  mutate(across(where(is.factor), as.character))
+  mutate(across(where(is.factor), as.character)) %>% 
+  filter(year < 1990)
 ```
 
 ## The data.frame
@@ -82,19 +83,19 @@ tail(surveys)
 
 ```{.output}
       record_id month day year plot_id species_id sex hindfoot_length weight
-35544     35544    12  31 2002      15         US                  NA     NA
-35545     35545    12  31 2002      15         AH                  NA     NA
-35546     35546    12  31 2002      15         AH                  NA     NA
-35547     35547    12  31 2002      10         RM   F              15     14
-35548     35548    12  31 2002       7         DO   M              36     51
-35549     35549    12  31 2002       5                             NA     NA
-                 genus   species   taxa                plot_type
-35544          Sparrow       sp.   Bird Long-term Krat Exclosure
-35545 Ammospermophilus   harrisi Rodent Long-term Krat Exclosure
-35546 Ammospermophilus   harrisi Rodent Long-term Krat Exclosure
-35547  Reithrodontomys megalotis Rodent         Rodent Exclosure
-35548        Dipodomys     ordii Rodent         Rodent Exclosure
-35549             <NA>      <NA>   <NA>         Rodent Exclosure
+16873     16873    12   5 1989       8         DO   M              37     51
+16874     16874    12   5 1989      16         RM   F              18     15
+16875     16875    12   5 1989       5         RM   M              17      9
+16876     16876    12   5 1989       4         DM   M              37     31
+16877     16877    12   5 1989      11         DM   M              37     50
+16878     16878    12   5 1989       8         DM   F              37     42
+                genus   species   taxa        plot_type
+16873       Dipodomys     ordii Rodent          Control
+16874 Reithrodontomys megalotis Rodent Rodent Exclosure
+16875 Reithrodontomys megalotis Rodent Rodent Exclosure
+16876       Dipodomys  merriami Rodent          Control
+16877       Dipodomys  merriami Rodent          Control
+16878       Dipodomys  merriami Rodent          Control
 ```
 
 We used these functions with just one argument, the object `surveys`, and we didn't give the argument a name, like we did with `ggplot2`. In R, a function's arguments come in a particular order, and if you put them in the correct order, you don't need to name them. In this case, the name of the argument is `x`, so we can name it if we want, but since we know it's the first argument, we don't need to.
@@ -197,24 +198,24 @@ summary(surveys)
 ```
 
 ```{.output}
-   record_id         month             day             year         plot_id    
- Min.   :    1   Min.   : 1.000   Min.   : 1.00   Min.   :1977   Min.   : 1.0  
- 1st Qu.: 8888   1st Qu.: 4.000   1st Qu.: 9.00   1st Qu.:1984   1st Qu.: 5.0  
- Median :17775   Median : 6.000   Median :16.00   Median :1990   Median :11.0  
- Mean   :17775   Mean   : 6.478   Mean   :15.99   Mean   :1990   Mean   :11.4  
- 3rd Qu.:26662   3rd Qu.:10.000   3rd Qu.:23.00   3rd Qu.:1997   3rd Qu.:17.0  
- Max.   :35549   Max.   :12.000   Max.   :31.00   Max.   :2002   Max.   :24.0  
+   record_id         month             day            year         plot_id     
+ Min.   :    1   Min.   : 1.000   Min.   : 1.0   Min.   :1977   Min.   : 1.00  
+ 1st Qu.: 4220   1st Qu.: 3.000   1st Qu.: 9.0   1st Qu.:1981   1st Qu.: 5.00  
+ Median : 8440   Median : 6.000   Median :15.0   Median :1983   Median :11.00  
+ Mean   : 8440   Mean   : 6.382   Mean   :15.6   Mean   :1984   Mean   :11.47  
+ 3rd Qu.:12659   3rd Qu.: 9.000   3rd Qu.:23.0   3rd Qu.:1987   3rd Qu.:17.00  
+ Max.   :16878   Max.   :12.000   Max.   :31.0   Max.   :1989   Max.   :24.00  
                                                                                
   species_id            sex            hindfoot_length     weight      
- Length:35549       Length:35549       Min.   : 2.00   Min.   :  4.00  
- Class :character   Class :character   1st Qu.:21.00   1st Qu.: 20.00  
- Mode  :character   Mode  :character   Median :32.00   Median : 37.00  
-                                       Mean   :29.29   Mean   : 42.67  
-                                       3rd Qu.:36.00   3rd Qu.: 48.00  
-                                       Max.   :70.00   Max.   :280.00  
-                                       NA's   :4111    NA's   :3266    
+ Length:16878       Length:16878       Min.   : 6.00   Min.   :  4.00  
+ Class :character   Class :character   1st Qu.:21.00   1st Qu.: 24.00  
+ Mode  :character   Mode  :character   Median :35.00   Median : 42.00  
+                                       Mean   :31.98   Mean   : 53.22  
+                                       3rd Qu.:37.00   3rd Qu.: 53.00  
+                                       Max.   :70.00   Max.   :278.00  
+                                       NA's   :2733    NA's   :1692    
     genus             species              taxa            plot_type        
- Length:35549       Length:35549       Length:35549       Length:35549      
+ Length:16878       Length:16878       Length:16878       Length:16878      
  Class :character   Class :character   Class :character   Class :character  
  Mode  :character   Mode  :character   Mode  :character   Mode  :character  
                                                                             
@@ -231,7 +232,7 @@ str(surveys)
 ```
 
 ```{.output}
-'data.frame':	35549 obs. of  13 variables:
+'data.frame':	16878 obs. of  13 variables:
  $ record_id      : int  1 2 3 4 5 6 7 8 9 10 ...
  $ month          : int  7 7 7 7 7 7 7 7 7 7 ...
  $ day            : int  16 16 16 16 16 16 16 16 16 16 ...
@@ -247,7 +248,7 @@ str(surveys)
  $ plot_type      : chr  "Control" "Long-term Krat Exclosure" "Control" "Rodent Exclosure" ...
 ```
 
-We get quite a bit of useful information here. First, we are told that we have a `data.frame` of 35549 observations, or rows, and 13 variables, or columns.
+We get quite a bit of useful information here. First, we are told that we have a `data.frame` of 16878 observations, or rows, and 13 variables, or columns.
 
 Next, we get a bit of information on each variable, including its type (`int` or `chr`) and a quick peek at the first 10 values. You might ask why there is a `$` in front of each variable. This is because the `$` is an operator that allows us to select individual columns from a dataframe.
 
@@ -266,7 +267,7 @@ surveys$year
  [61] 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977
  [76] 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977
  [91] 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977
- [ reached getOption("max.print") -- omitted 35449 entries ]
+ [ reached getOption("max.print") -- omitted 16778 entries ]
 ```
 
 What we get back is a whole bunch of numbers, the entries in the `year` column printed out in order.
@@ -479,7 +480,7 @@ quantile(surveys$weight, probs = 0.25, na.rm = TRUE)
 
 ```{.output}
 25% 
- 20 
+ 24 
 ```
 
 Now we get back the 25% quantile value for weights. However, we often want to know more than one quantile. Luckily, the `probs` argument is **vectorized**, meaning it can take a whole vector of values. Let's try getting the 25%, 50% (median), and 75% quantiles all at once.
@@ -491,7 +492,7 @@ quantile(surveys$weight, probs = c(0.25, 0.5, 0.75), na.rm = TRUE)
 
 ```{.output}
 25% 50% 75% 
- 20  37  48 
+ 24  42  53 
 ```
 
 While the `c()` function is very flexible, it doesn't necessarily scale well. If you want to generate a long vector from scratch, you probably don't want to type everything out manually. There are a few functions that can help generate vectors.
@@ -634,9 +635,9 @@ quantile(surveys$hindfoot_length,
 
 ```{.output}
   0%   5%  10%  15%  20%  25%  30%  35%  40%  45%  50%  55%  60%  65%  70%  75% 
-   2   16   17   19   20   21   21   22   25   26   32   34   35   35   36   36 
+   6   16   17   19   20   21   22   31   33   34   35   35   36   36   36   37 
  80%  85%  90%  95% 100% 
-  37   37   38   49   70 
+  37   39   49   51   70 
 ```
 
 ::::::::::::::::::::::::
