@@ -1,7 +1,7 @@
 ---
 title: "Introduction to R and RStudio"
-teaching: 10
-exercises: 2
+teaching: 30
+exercises: 0
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 

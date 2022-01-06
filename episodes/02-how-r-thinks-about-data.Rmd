@@ -1,7 +1,7 @@
 ---
 title: "Exploring and understanding data"
 teaching: 45
-exercises: 4
+exercises: 3
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 
@@ -23,7 +23,7 @@ exercises: 4
 
 ## Setup
 
-```{r, include=F}
+```{r setup, include=F}
 knitr::opts_chunk$set(dpi = 200, out.height = 600, out.width = 600, R.options = list(max.print = 100))
 ```
 
@@ -34,7 +34,8 @@ library(tidyverse)
 ```{r load-ratdat-package,message=FALSE}
 library(ratdat)
 surveys <- left_join(left_join(surveys, species), plots) %>% 
-  mutate(across(where(is.factor), as.character))
+  mutate(across(where(is.factor), as.character)) %>% 
+  filter(year < 1990)
 ```   
 
 ## The data.frame

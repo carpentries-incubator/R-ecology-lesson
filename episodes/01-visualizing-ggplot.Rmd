@@ -24,7 +24,7 @@ exercises: 4
 
 ## Setup
 
-```{r, include=F}
+```{r setup, include=F}
 knitr::opts_chunk$set(dpi = 200, out.height = 600, out.width = 600, R.options = list(max.print = 100))
 ```
 
@@ -45,6 +45,8 @@ surveys <- left_join(left_join(surveys, species), plots) %>%
   mutate(across(where(is.factor), as.character)) %>% 
   filter(year < 1990)
 ```   
+
+The `ratdat` package contains data from the [Portal Project](https://github.com/weecology/PortalData), which is a long-term dataset from Portal, Arizona, in the Chihuahuan desert.
 
 ## Plotting with **`ggplot2`**
 
