@@ -1,0 +1,870 @@
+---
+title: "Exploring and understanding data"
+teaching: 45
+exercises: 4
+---
+
+:::::::::::::::::::::::::::::::::::::: questions 
+
+- How does R store and represent data?
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::: objectives
+
+- Explore the structure and content of dataframes
+- Understand vector types and missing data
+- Use vectors as function arguments
+- Create and convert factors
+- Understand how R assigns values to objects
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+## Setup
+
+
+
+
+```r
+library(tidyverse)
+```
+
+
+```r
+library(ratdat)
+surveys <- left_join(left_join(surveys, species), plots) %>% 
+  mutate(across(where(is.factor), as.character))
+```
+
+## The data.frame
+
+We just spent quite a bit of time learning how to create visualizations from the `surveys` data, but we did not talk much about **what** this `surveys` thing is. It's important to understand how R thinks about, represents, and stores data in order for us to have a productive working relationship with R.
+
+The `surveys` data is stored in R as a `data.frame`, which is the most common way that R represents tabular data (data that can be stored in a table format). We can check what `surveys` is by using the `class()` function:
+
+
+```r
+class(surveys)
+```
+
+```{.output}
+[1] "data.frame"
+```
+
+We can view the first few rows with the `head()` function, and the last few rows with the `tail()` function:
+
+
+```r
+head(surveys)
+```
+
+```{.output}
+  record_id month day year plot_id species_id sex hindfoot_length weight
+1         1     7  16 1977       2         NL   M              32     NA
+2         2     7  16 1977       3         NL   M              33     NA
+3         3     7  16 1977       2         DM   F              37     NA
+4         4     7  16 1977       7         DM   M              36     NA
+5         5     7  16 1977       3         DM   M              35     NA
+6         6     7  16 1977       1         PF   M              14     NA
+        genus  species   taxa                plot_type
+1     Neotoma albigula Rodent                  Control
+2     Neotoma albigula Rodent Long-term Krat Exclosure
+3   Dipodomys merriami Rodent                  Control
+4   Dipodomys merriami Rodent         Rodent Exclosure
+5   Dipodomys merriami Rodent Long-term Krat Exclosure
+6 Perognathus   flavus Rodent        Spectab exclosure
+```
+
+```r
+tail(surveys)
+```
+
+```{.output}
+      record_id month day year plot_id species_id sex hindfoot_length weight
+35544     35544    12  31 2002      15         US                  NA     NA
+35545     35545    12  31 2002      15         AH                  NA     NA
+35546     35546    12  31 2002      15         AH                  NA     NA
+35547     35547    12  31 2002      10         RM   F              15     14
+35548     35548    12  31 2002       7         DO   M              36     51
+35549     35549    12  31 2002       5                             NA     NA
+                 genus   species   taxa                plot_type
+35544          Sparrow       sp.   Bird Long-term Krat Exclosure
+35545 Ammospermophilus   harrisi Rodent Long-term Krat Exclosure
+35546 Ammospermophilus   harrisi Rodent Long-term Krat Exclosure
+35547  Reithrodontomys megalotis Rodent         Rodent Exclosure
+35548        Dipodomys     ordii Rodent         Rodent Exclosure
+35549             <NA>      <NA>   <NA>         Rodent Exclosure
+```
+
+We used these functions with just one argument, the object `surveys`, and we didn't give the argument a name, like we did with `ggplot2`. In R, a function's arguments come in a particular order, and if you put them in the correct order, you don't need to name them. In this case, the name of the argument is `x`, so we can name it if we want, but since we know it's the first argument, we don't need to.
+
+To learn more about a function, you can type a `?` in front of the name of the function, which will bring up the official documentation for that function:
+
+
+```r
+?head
+```
+
+Some arguments are optional. For example, the `n` argument in `head()` specifies the number of rows to print. It defaults to 6, but we can override that by specifying a different number:
+
+
+```r
+head(surveys, n = 10)
+```
+
+```{.output}
+  record_id month day year plot_id species_id sex hindfoot_length weight
+1         1     7  16 1977       2         NL   M              32     NA
+2         2     7  16 1977       3         NL   M              33     NA
+3         3     7  16 1977       2         DM   F              37     NA
+4         4     7  16 1977       7         DM   M              36     NA
+5         5     7  16 1977       3         DM   M              35     NA
+6         6     7  16 1977       1         PF   M              14     NA
+7         7     7  16 1977       2         PE   F              NA     NA
+        genus  species   taxa                plot_type
+1     Neotoma albigula Rodent                  Control
+2     Neotoma albigula Rodent Long-term Krat Exclosure
+3   Dipodomys merriami Rodent                  Control
+4   Dipodomys merriami Rodent         Rodent Exclosure
+5   Dipodomys merriami Rodent Long-term Krat Exclosure
+6 Perognathus   flavus Rodent        Spectab exclosure
+7  Peromyscus eremicus Rodent                  Control
+ [ reached 'max' / getOption("max.print") -- omitted 3 rows ]
+```
+
+If we order them correctly, we don't have to name either:
+
+
+```r
+head(surveys, 10)
+```
+
+```{.output}
+  record_id month day year plot_id species_id sex hindfoot_length weight
+1         1     7  16 1977       2         NL   M              32     NA
+2         2     7  16 1977       3         NL   M              33     NA
+3         3     7  16 1977       2         DM   F              37     NA
+4         4     7  16 1977       7         DM   M              36     NA
+5         5     7  16 1977       3         DM   M              35     NA
+6         6     7  16 1977       1         PF   M              14     NA
+7         7     7  16 1977       2         PE   F              NA     NA
+        genus  species   taxa                plot_type
+1     Neotoma albigula Rodent                  Control
+2     Neotoma albigula Rodent Long-term Krat Exclosure
+3   Dipodomys merriami Rodent                  Control
+4   Dipodomys merriami Rodent         Rodent Exclosure
+5   Dipodomys merriami Rodent Long-term Krat Exclosure
+6 Perognathus   flavus Rodent        Spectab exclosure
+7  Peromyscus eremicus Rodent                  Control
+ [ reached 'max' / getOption("max.print") -- omitted 3 rows ]
+```
+
+Additionally, if we name them, we can put them in any order we want:
+
+
+```r
+head(n = 10, x = surveys)
+```
+
+```{.output}
+  record_id month day year plot_id species_id sex hindfoot_length weight
+1         1     7  16 1977       2         NL   M              32     NA
+2         2     7  16 1977       3         NL   M              33     NA
+3         3     7  16 1977       2         DM   F              37     NA
+4         4     7  16 1977       7         DM   M              36     NA
+5         5     7  16 1977       3         DM   M              35     NA
+6         6     7  16 1977       1         PF   M              14     NA
+7         7     7  16 1977       2         PE   F              NA     NA
+        genus  species   taxa                plot_type
+1     Neotoma albigula Rodent                  Control
+2     Neotoma albigula Rodent Long-term Krat Exclosure
+3   Dipodomys merriami Rodent                  Control
+4   Dipodomys merriami Rodent         Rodent Exclosure
+5   Dipodomys merriami Rodent Long-term Krat Exclosure
+6 Perognathus   flavus Rodent        Spectab exclosure
+7  Peromyscus eremicus Rodent                  Control
+ [ reached 'max' / getOption("max.print") -- omitted 3 rows ]
+```
+
+Generally, it's good practice to start with the required arguments, like the dataframe whose rows you want to see, and then to name the optional arguments. If you are ever unsure, it never hurts to explicitly name an argument.
+
+Let's get back to investigating our `surveys` dataframe. We can get some useful summaries of each variable using the `summary()` function:
+
+
+```r
+summary(surveys)
+```
+
+```{.output}
+   record_id         month             day             year         plot_id    
+ Min.   :    1   Min.   : 1.000   Min.   : 1.00   Min.   :1977   Min.   : 1.0  
+ 1st Qu.: 8888   1st Qu.: 4.000   1st Qu.: 9.00   1st Qu.:1984   1st Qu.: 5.0  
+ Median :17775   Median : 6.000   Median :16.00   Median :1990   Median :11.0  
+ Mean   :17775   Mean   : 6.478   Mean   :15.99   Mean   :1990   Mean   :11.4  
+ 3rd Qu.:26662   3rd Qu.:10.000   3rd Qu.:23.00   3rd Qu.:1997   3rd Qu.:17.0  
+ Max.   :35549   Max.   :12.000   Max.   :31.00   Max.   :2002   Max.   :24.0  
+                                                                               
+  species_id            sex            hindfoot_length     weight      
+ Length:35549       Length:35549       Min.   : 2.00   Min.   :  4.00  
+ Class :character   Class :character   1st Qu.:21.00   1st Qu.: 20.00  
+ Mode  :character   Mode  :character   Median :32.00   Median : 37.00  
+                                       Mean   :29.29   Mean   : 42.67  
+                                       3rd Qu.:36.00   3rd Qu.: 48.00  
+                                       Max.   :70.00   Max.   :280.00  
+                                       NA's   :4111    NA's   :3266    
+    genus             species              taxa            plot_type        
+ Length:35549       Length:35549       Length:35549       Length:35549      
+ Class :character   Class :character   Class :character   Class :character  
+ Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+```
+
+And, as we have already done, we can use `str()` to look at the structure of an object:
+
+
+```r
+str(surveys)
+```
+
+```{.output}
+'data.frame':	35549 obs. of  13 variables:
+ $ record_id      : int  1 2 3 4 5 6 7 8 9 10 ...
+ $ month          : int  7 7 7 7 7 7 7 7 7 7 ...
+ $ day            : int  16 16 16 16 16 16 16 16 16 16 ...
+ $ year           : int  1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 ...
+ $ plot_id        : int  2 3 2 7 3 1 2 1 1 6 ...
+ $ species_id     : chr  "NL" "NL" "DM" "DM" ...
+ $ sex            : chr  "M" "M" "F" "M" ...
+ $ hindfoot_length: int  32 33 37 36 35 14 NA 37 34 20 ...
+ $ weight         : int  NA NA NA NA NA NA NA NA NA NA ...
+ $ genus          : chr  "Neotoma" "Neotoma" "Dipodomys" "Dipodomys" ...
+ $ species        : chr  "albigula" "albigula" "merriami" "merriami" ...
+ $ taxa           : chr  "Rodent" "Rodent" "Rodent" "Rodent" ...
+ $ plot_type      : chr  "Control" "Long-term Krat Exclosure" "Control" "Rodent Exclosure" ...
+```
+
+We get quite a bit of useful information here. First, we are told that we have a `data.frame` of 35549 observations, or rows, and 13 variables, or columns.
+
+Next, we get a bit of information on each variable, including its type (`int` or `chr`) and a quick peek at the first 10 values. You might ask why there is a `$` in front of each variable. This is because the `$` is an operator that allows us to select individual columns from a dataframe.
+
+The `$` operator also allows you to use tab-completion to quickly select which variable you want from a given dataframe. For example, to get the `year` variable, we can type `surveys$` and then hit <kbd>Tab</kbd>. We get a list of the variables that we can move through with up and down arrows. Hit <kbd>Enter</kbd> when you reach `year`, which should finish this code:
+
+
+```r
+surveys$year
+```
+
+```{.output}
+  [1] 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977
+ [16] 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977
+ [31] 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977
+ [46] 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977
+ [61] 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977
+ [76] 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977
+ [91] 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977
+ [ reached getOption("max.print") -- omitted 35449 entries ]
+```
+
+What we get back is a whole bunch of numbers, the entries in the `year` column printed out in order.
+
+## Vectors: the building block of data
+
+You might have noticed that our last result looked different from when we printed out the `surveys` dataframe itself. That's because it is not a dataframe, it is a **vector**. A vector is a 1-dimensional series of values, in this case a vector of numbers representing years.
+
+Dataframes are made up of vectors; each column in a dataframe is a vector. Vectors are the basic building blocks of all data in R. Basically, everything in R is a vector, a bunch of vectors stitched together in some way, or a function. Understanding how vectors work is crucial to understanding how R treats data, so we will spend some time learning about them.
+
+There are 4 main types of vectors (also known as *atomic vectors*):
+
+1. `"character"` for strings of characters, like our `genus` or `sex` columns. Each entry in a character vector is wrapped in quotes.
+
+2. `"integer"` for integers. All the numeric values in `surveys` are integers. You may sometimes see integers represented like `2L` or `20L`. The `L` indicates to R that it is an integer, instead of the next data type, `"numeric"`.
+
+3. `"numeric"`, aka `"double"`, vectors can contain numbers including decimals.
+
+4. `"logical"` for `TRUE` and `FALSE`, which can also be represented as `T` and `F`.
+
+Vectors can only be of a **single type**. Since each column in a dataframe is a vector, this means an accidental character following a number, like `29,` can change the type of the whole vector. Mixing up vector types is one of the most common mistakes in R, and it can be tricky to figure out. It's often very useful to check the types of vectors.
+
+To create a vector from scratch, we can use the `c()` function, putting values inside, separated by commas.
+
+
+```r
+c(1, 2, 5, 12, 4)
+```
+
+```{.output}
+[1]  1  2  5 12  4
+```
+
+As you can see, those values get printed out in the console, just like with `surveys$year`. To store this vector so we can continue to work with it, we need to assign it to an object.
+
+
+```r
+num <- c(1, 2, 5, 12, 4)
+```
+
+You can check what kind of object `num` is with the `class()` function.
+
+
+```r
+class(num)
+```
+
+```{.output}
+[1] "numeric"
+```
+
+We see that `num` is a `numeric` vector.
+
+Let's try making a character vector:
+
+
+```r
+char <- c("apple", "pear", "grape")
+class(char)
+```
+
+```{.output}
+[1] "character"
+```
+
+Remember that each entry, like `"apple"`, needs to be surrounded by quotes, and entries are separated with commas. If you do something like `"apple, pear, grape"`, you will have only a single entry containing that whole string.
+
+Finally, let's make a logical vector:
+
+
+```r
+logi <- c(TRUE, FALSE, TRUE, TRUE)
+class(logi)
+```
+
+```{.output}
+[1] "logical"
+```
+
+::::::::::::::::::::::::::::::::::::: challenge 
+
+## Challenge 1: Coercion
+
+1. What type will each of these vectors be? Try to guess without running any code, but you can use `class()` to verify your answers.
+
+
+```r
+num_logi <- c(1, 4, 6, TRUE)
+num_char <- c(1, 3, "10", 6)
+char_logi <- c("a", "b", TRUE)
+
+
+tricky <- c("a", "b", "1", FALSE)
+```
+
+:::::::::::::::::::::::: solution 
+
+
+```r
+class(num_logi)
+```
+
+```{.output}
+[1] "numeric"
+```
+
+```r
+class(num_char)
+```
+
+```{.output}
+[1] "character"
+```
+
+```r
+class(char_logi)
+```
+
+```{.output}
+[1] "character"
+```
+
+```r
+class(tricky)
+```
+
+```{.output}
+[1] "character"
+```
+
+R will automatically convert values in a vector so that they are all the same type, a process called **coercion**.
+
+::::::::::::::::::::::::
+
+2. How many values in `combined_logical` are `"TRUE"` (as a character)? 
+
+
+```r
+combined_logical <- c(num_logi, char_logi)
+```
+
+:::::::::::::::::::::::: solution 
+
+
+```r
+class(combined_logical)
+```
+
+```{.output}
+[1] "character"
+```
+ 
+Only one value is `"TRUE"`. Coercion happens when each vector is created, so the `TRUE` in `num_logi` becomes a `1`, while the `TRUE` in `char_logi` becomes `"TRUE"`. When these two vectors are combined, R doesn't remember that the `1` in `num_logi` used to be a `TRUE`, it will just coerce the `1` to `"1"`.
+
+::::::::::::::::::::::::
+
+3. Now that you've seen a few examples of coercion, you might have started to see that there are some rules about what types get converted. There is a hierarchy to coercion. Can you draw a diagram that represents the hierarchy of what types get converted to other types?
+
+:::::::::::::::::::::::: solution 
+
+logical → integer → numeric → character
+
+Logical vectors can only take on two values: `TRUE` or `FALSE`. Integer vectors can only contain integers, so `TRUE` and `FALSE` can be coerced to `1` and `0`. Numeric vectors can contain numbers with decimals, so integers can be coerced from, say, `6` to `6.0` (though R will still display a numeric `6` as `6`.). Finally, any string of characters can be represented as a character vector, so any of the other types can be coerced to a character vector.
+::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+Coercion is not something you will often do intentionally; rather, when combining vectors or reading data into R, a stray character that you missed may change an entire numeric vector into a character vector. It is a good idea to check the `class()` of your results frequently, particularly if you are running into confusing error messages.
+
+## Missing data
+
+One of the great things about R is how it handles missing data, which can be tricky in other programming languages. R represents missing data as `NA`, without quotes, in vectors of any type. Let's make a numeric vector with an `NA` value:
+
+
+```r
+weights <- c(25, 34, 12, NA, 42)
+```
+
+R doesn't make assumptions about how you want to handle missing data, so if we pass this vector to a numeric function like `min()`, it won't know what to do, so it returns `NA`:
+
+
+```r
+min(weights)
+```
+
+```{.output}
+[1] NA
+```
+
+This is a very good thing, since we won't accidentally forget to consider our missing data. If we decide to exclude our missing values, many functions have an argument to **r**e**m**ove them:
+
+
+```r
+min(weights, na.rm = TRUE)
+```
+
+```{.output}
+[1] 12
+```
+
+## Vectors as arguments
+
+A common reason to create a vector from scratch is to use in a function argument. The `quantile()` function will calculate a quantile for a given vector of numeric values. We set the quantile using the `probs` argument. We also need to set `na.rm = TRUE`, since there are `NA` values in the `weight` column, and R doesn't know how to calculate a quantile if there are `NA`s. This is a common argument for lots of numeric functions.
+
+
+```r
+quantile(surveys$weight, probs = 0.25, na.rm = TRUE)
+```
+
+```{.output}
+25% 
+ 20 
+```
+
+Now we get back the 25% quantile value for weights. However, we often want to know more than one quantile. Luckily, the `probs` argument is **vectorized**, meaning it can take a whole vector of values. Let's try getting the 25%, 50% (median), and 75% quantiles all at once.
+
+
+```r
+quantile(surveys$weight, probs = c(0.25, 0.5, 0.75), na.rm = TRUE)
+```
+
+```{.output}
+25% 50% 75% 
+ 20  37  48 
+```
+
+While the `c()` function is very flexible, it doesn't necessarily scale well. If you want to generate a long vector from scratch, you probably don't want to type everything out manually. There are a few functions that can help generate vectors.
+
+First, putting `:` between two numbers will generate a vector of integers starting with the first number and ending with the last. The `seq()` function allows you to generate similar sequences, but changing by any amount.
+
+
+```r
+# generates a sequence of integers
+1:10
+```
+
+```{.output}
+ [1]  1  2  3  4  5  6  7  8  9 10
+```
+
+```r
+# with seq() you can generate sequences with a combination of:
+# from: starting value
+# to: ending value
+# by: how much should each entry increase
+# length.out: how long should the resulting vector be
+seq(from = 0, to = 1, by = 0.1)
+```
+
+```{.output}
+ [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0
+```
+
+```r
+seq(from = 0, to = 1, length.out = 50)
+```
+
+```{.output}
+ [1] 0.00000000 0.02040816 0.04081633 0.06122449 0.08163265 0.10204082
+ [7] 0.12244898 0.14285714 0.16326531 0.18367347 0.20408163 0.22448980
+[13] 0.24489796 0.26530612 0.28571429 0.30612245 0.32653061 0.34693878
+[19] 0.36734694 0.38775510 0.40816327 0.42857143 0.44897959 0.46938776
+[25] 0.48979592 0.51020408 0.53061224 0.55102041 0.57142857 0.59183673
+[31] 0.61224490 0.63265306 0.65306122 0.67346939 0.69387755 0.71428571
+[37] 0.73469388 0.75510204 0.77551020 0.79591837 0.81632653 0.83673469
+[43] 0.85714286 0.87755102 0.89795918 0.91836735 0.93877551 0.95918367
+[49] 0.97959184 1.00000000
+```
+
+```r
+seq(from = 0, by = 0.01, length.out = 20)
+```
+
+```{.output}
+ [1] 0.00 0.01 0.02 0.03 0.04 0.05 0.06 0.07 0.08 0.09 0.10 0.11 0.12 0.13 0.14
+[16] 0.15 0.16 0.17 0.18 0.19
+```
+
+Finally, the `rep()` function allows you to repeat a value, or even a whole vector, as many times as you want, and works with any type of vector.
+
+
+```r
+# repeats "a" 12 times
+rep("a", times = 12)
+```
+
+```{.output}
+ [1] "a" "a" "a" "a" "a" "a" "a" "a" "a" "a" "a" "a"
+```
+
+```r
+# repeats this whole sequence 4 times
+rep(c("a", "b", "c"), times = 4)
+```
+
+```{.output}
+ [1] "a" "b" "c" "a" "b" "c" "a" "b" "c" "a" "b" "c"
+```
+
+```r
+# repeats each value 4 times
+rep(1:10, each = 4)
+```
+
+```{.output}
+ [1]  1  1  1  1  2  2  2  2  3  3  3  3  4  4  4  4  5  5  5  5  6  6  6  6  7
+[26]  7  7  7  8  8  8  8  9  9  9  9 10 10 10 10
+```
+
+::::::::::::::::::::::::::::::::::::: challenge 
+
+## Challenge 2: Creating sequences
+
+1. Write some code to generate the following vector:
+
+
+```{.output}
+ [1] -3 -2 -1  0  1  2  3 -3 -2 -1  0  1  2  3 -3 -2 -1  0  1  2  3
+```
+
+:::::::::::::::::::::::: solution 
+
+
+```r
+rep(-3:3, 3)
+```
+
+```{.output}
+ [1] -3 -2 -1  0  1  2  3 -3 -2 -1  0  1  2  3 -3 -2 -1  0  1  2  3
+```
+
+```r
+# this also works
+rep(seq(from = -3, to = 3, by = 1), 3)
+```
+
+```{.output}
+ [1] -3 -2 -1  0  1  2  3 -3 -2 -1  0  1  2  3 -3 -2 -1  0  1  2  3
+```
+
+```r
+# you might also store the sequence as an intermediate vector
+
+my_seq <- seq(from = -3, to = 3, by = 1)
+rep(my_seq, 3)
+```
+
+```{.output}
+ [1] -3 -2 -1  0  1  2  3 -3 -2 -1  0  1  2  3 -3 -2 -1  0  1  2  3
+```
+
+::::::::::::::::::::::::
+
+2. Calculate the quantiles for the `surveys` hindfoot lengths at every 5% level (0%, 5%, 10%, 15%, etc.)
+
+:::::::::::::::::::::::: solution 
+
+
+```r
+quantile(surveys$hindfoot_length, 
+         probs = seq(from = 0, to = 1, by = 0.05),
+         na.rm = T)
+```
+
+```{.output}
+  0%   5%  10%  15%  20%  25%  30%  35%  40%  45%  50%  55%  60%  65%  70%  75% 
+   2   16   17   19   20   21   21   22   25   26   32   34   35   35   36   36 
+ 80%  85%  90%  95% 100% 
+  37   37   38   49   70 
+```
+
+::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+## Building with vectors
+
+We have now seen vectors in a few different forms: as columns in a dataframe and as single vectors. However, they can be manipulated into lots of other shapes and forms. Some other common forms are:
+
+- matrices
+  - 2-dimensional numeric representations
+- arrays
+  - many-dimensional numeric
+- lists
+  - lists are very flexible ways to store vectors
+  - a list can contain vectors of many different types and lengths
+  - an entry in a list can be another list, so lists can get deeply nested
+  - a dataframe is just a list where each vector has to be the same length (dataframes are rectangular)
+- factors
+  - a way to represent categorical data
+  - factors can be ordered or unordered
+  - they often *look* like character vectors, but behave differently
+  - under the hood, they are integers with character labels, called **levels**, for each integer
+
+### Factors
+
+We will spend a bit more time talking about factors, since they are often a challenging type of data to work with. We can create a factor from scratch by putting a character vector made using `c()` into the `factor()` function:
+
+
+```r
+sex <- factor(c("male", "female", "female", "male", "female", NA))
+
+sex
+```
+
+```{.output}
+[1] male   female female male   female <NA>  
+Levels: female male
+```
+
+We can inspect the levels of the factor using the `levels()` function:
+
+
+```r
+levels(sex)
+```
+
+```{.output}
+[1] "female" "male"  
+```
+
+The **`forcats`** package from the `tidyverse` has a lot of convenient functions for working with factors. We will show you a few common operations, but the `forcats` package has many more useful functions.
+
+
+```r
+library(forcats)
+
+# change the order of the levels
+fct_relevel(sex, c("male", "female"))
+```
+
+```{.output}
+[1] male   female female male   female <NA>  
+Levels: male female
+```
+
+```r
+# change the names of the levels
+fct_recode(sex, "M" = "male", "F" = "female")
+```
+
+```{.output}
+[1] M    F    F    M    F    <NA>
+Levels: F M
+```
+
+```r
+# turn NAs into explicit missing values (useful for including NAs in plots)
+fct_explicit_na(sex)
+```
+
+```{.output}
+[1] male      female    female    male      female    (Missing)
+Levels: female male (Missing)
+```
+
+In general, it is a good practice to leave your categorical data as a **character** vector until you need to use a factor. Here are some reasons you might need a factor:
+
+1. Another function requires you to use a factor
+2. You are plotting categorical data and want to control the ordering of categories in the plot
+
+Since factors can behave differently from character vectors, it is always a good idea to check what type of data you're working with. You might use a new function for the first time and be confused by the results, only to realize later that it produced a factor as an output, when you thought it was a character vector.
+
+It is fairly straightforward to convert a factor to a character vector:
+
+
+```r
+as.character(sex)
+```
+
+```{.output}
+[1] "male"   "female" "female" "male"   "female" NA      
+```
+
+However, you need to be careful if you're somehow working with a factor that has numbers as its levels:
+
+
+```r
+f_num <- factor(c(1990, 1983, 1977, 1998, 1990))
+
+# this will pull out the underlying integers, not the levels
+as.numeric(f_num)
+```
+
+```{.output}
+[1] 3 2 1 4 3
+```
+
+```r
+# if we first convert to characters, we can then convert to numbers
+as.numeric(as.character(f_num))
+```
+
+```{.output}
+[1] 1990 1983 1977 1998 1990
+```
+
+## Assignment, objects, and values
+
+We've already created quite a few objects in R using the `<-` assignment arrow, but there are a few finer details worth talking about. First, let's start with a quick challenge.
+
+::::::::::::::::::::::::::::::::::::: challenge
+
+## Challenge 3: Assignments and objects
+
+What is the value of `y` after running the following code?
+
+
+```r
+x <- 5
+y <- x
+x <- 10
+```
+
+
+:::::::::::::::::::::::: solution
+
+
+```r
+x <- 5
+y <- x
+x <- 10
+y
+```
+
+```{.output}
+[1] 5
+```
+
+::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+Understanding what's going on here will help you avoid a lot of confusion when working in R. When we assign something to an object, the first thing that happens is the righthand side gets *evaluated*. The same thing happens when you run something in the console: if you type `x` into the console and hit <kbd>Enter</kbd>, R returns the value of `x`. So when we first ran the line `y <- x`, `x` first gets evaluated to the value of `5`, and this gets assigned to `y`. The objects `x` and `y` are not actually linked to each other in any way, so when we change the value of `x` to `10`, `y` is unaffected.
+
+This also means you can run multiple nested operations, store intermediate values as separate objects, or overwrite values:
+
+
+```r
+x <- 5
+
+# first, x gets evaluated to 5
+# then 5/2 gets evaluated to 2.5
+# then sqrt(2.5) is evaluated
+sqrt(x/2)
+```
+
+```{.output}
+[1] 1.581139
+```
+
+```r
+# we can also store the evaluated value of x/2 
+# in an object y before passing it to sqrt()
+y <- x/2
+
+sqrt(y)
+```
+
+```{.output}
+[1] 1.581139
+```
+
+```r
+# first, the x on the righthand side gets evaluated to 5
+# then 5 gets squared
+# then the resulting value is assigned to the object x
+
+x <- x^2
+
+x
+```
+
+```{.output}
+[1] 25
+```
+
+You will be naming a of objects in R, and there are a few common naming rules and conventions:
+
+- make names clear without being too long
+  - `wkg` is probably too short
+  - `weight_in_kilograms` is probably too long
+  - `weight_kg` is great
+- names cannot start with a number
+- names are case sensitive
+- you cannot use the names of fundamental functions in R, like `if`, `else`, or `for`
+  - in general, avoid using names of common functions like `c`, `mean`, etc.
+- avoid dots `.` in names, as they have a special meaning in R, and may be confusing to others
+- two common formats are `snake_case` and `camelCase`
+- be consistent, at least within a script, ideally within a whole project
+- you can use a style guide like [Google's](https://google.github.io/styleguide/Rguide.xml) or
+[tidyverse's](http://style.tidyverse.org/)
+
+::::::::::::::::::::::::::::::::::::: keypoints 
+
+- functions like `head()`, `str()`, and `summary()` are useful for exploring dataframes
+- most things in R are vectors, vectors stitched together, or functions
+- make sure to use `class()` to check vector types, especially when using new functions
+- factors can be useful, but behave differently from character vectors
+
+::::::::::::::::::::::::::::::::::::::::::::::::
