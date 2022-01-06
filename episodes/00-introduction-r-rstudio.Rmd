@@ -4,13 +4,6 @@ teaching: 10
 exercises: 2
 ---
 
-- open RStudio
-- make an R project on the Desktop
-- introduce RStudio layout
-- concept of a script and console
-- reproducibility
-  - change a few settings
-
 :::::::::::::::::::::::::::::::::::::: questions 
 
 - How do you get started in R and RStudio?
@@ -85,7 +78,8 @@ We will use the RStudio integrated development environment (IDE) to write code i
 
 In the above screenshot, we can see 4 "panes" in the default layout:
 
-- Top-Left: the **Source** pane that displays scripts and other files
+- Top-Left: the **Source** pane that displays scripts and other files. 
+  - If you only have 3 panes, and the Console pane is in the top left, press <kbd>Shift+Cmd+N</kbd> (Mac) or <kbd>Shift+Ctrl+N</kbd> (Windows) to open a blank R script, which should make the Source pane appear.
 - Top-Right: the **Environment/History** pane, which shows all the objects in your current R session (Environment) and your command history (History)
   - there are some other tabs here, including Connections, Build, Tutorial, and possibly Git
   - we won't cover any of the other tabs, but RStudio has lots of other useful features
@@ -125,7 +119,7 @@ Make sure your settings match those highlighted in yellow. We don't want RStudio
 
 Using a consistent folder structure across all your projects will help keep a growing project organized, and make it easy to find files in the future. This is especially beneficial if you are working on multiple projects.
 
-We will use a basic structure for this workshop, which is often a good place to start. Here is a diagram describing the structure:
+We will use a basic structure for this workshop, which is often a good place to start, and can be extended to meet your specific needs. Here is a diagram describing the structure:
 
 ```
 R-Ecology-Workshop
@@ -141,4 +135,46 @@ R-Ecology-Workshop
 └─── documents
 ```
 
-Within our project folder (`R-Ecology-Workshop`), we first have a `scripts` folder to hold any scripts we write. We also have a `data` folder containing `cleaned` and `raw` subfolders. In general, you want to keep your `raw` data completely raw, so once you put data into that folder, you do not modify it. Instead, you read it into R, and if you make any modifications, you write that modified file into the `cleaned` folder. We also have an `images` folder for images, and a `documents` folder for any other documents you might produce.
+Within our project folder (`R-Ecology-Workshop`), we first have a `scripts` folder to hold any scripts we write. We also have a `data` folder containing `cleaned` and `raw` subfolders. In general, you want to keep your `raw` data completely raw, so once you put data into that folder, you do not modify it. Instead, you read it into R, and if you make any modifications, you write that modified file into the `cleaned` folder. We also have an `images` folder for plots we make, and a `documents` folder for any other documents you might produce.
+
+Let's start making our new folders. Go to the **Files** pane, and check the current directory, highlighted in yellow below. You should be in the directory for the project you just made, in our case `R-Ecology-Workshop`. You shouldn't see any folders in here yet.
+
+![*Files pane with highlighted directory*](fig/files_pane.png)
+
+Next, click the **New Folder** button, and type in `scripts` to generate your `scripts` folder. It should appear in the Files list now. Repeat the process to make your `data`, `images`, and `documents` folders. Then, click on the `data` folder in the Files pane. This will take you into the `data` folder, which will be empty. Use the **New Folder** button to create `raw` and `cleaned` folders. To return to the `R-Ecology-Workshop` folder, click on it in the file path, which is highlighted in yellow in the previous image. It's worth noting that the **Files** pane helps you create, find, and open files, but moving through your files won't change where the **working directory** of your project is.
+
+## Working in R and RStudio
+
+The basis of programming is that we write down instructions for the computer to follow, and then we tell the computer to follow those instructions. We write these instructions in the form of *code*, which is a common language that is understood by the computer and humans. We call these instructions *commands*, and we tell the computer to follow the instructions by *executing* (also called *running*) the commands.
+
+### Console vs. script
+
+You can run commands directly in the R console, or you can write them into an R script. It may help to think of working in the console vs. working in a script as something like cooking. The console is like making up a new recipe, but not writing anything down. You can carry out a series of steps and produce a nice, tasty dish at the end. However, because you didn't write anything down, it's harder to figure out exactly what you did, and in what order. 
+
+Writing a script is like taking nice notes while cooking- you can tweak and edit the recipe all you want, you can come back in 6 months and try it again, and you don't have to try to remember what went well and what didn't. It's actually even easier than cooking, since you can hit one button and the computer "cooks" the whole recipe for you!
+
+#### Console
+
+- The R console is where code is run/executed
+- The **prompt**, which is the `>` symbol, is where you can type commands 
+- By pressing <kbd>Enter</kbd>, R will execute those commands and print the result.
+- You can work here, and your history is saved in the History pane, but you can't access it in the future
+
+#### Script
+
+- A script is a record of commands to send to R, preserved in a plain text file with a `.R` extension
+- You can new R script by clicking `File → New File → R Script`, clicking the green `+` button in the top left corner of RStudio, or pressing <kbd>Shift+Cmd+N</kbd> (Mac) or <kbd>Shift+Ctrl+N</kbd> (Windows). It will be unsaved, and called "Untitled1"
+- If you type out lines of R code in a script, you can send them to the R console to be evaluated
+  - <kbd>Cmd+Enter</kbd> (Mac) or <kbd>Ctrl+Enter</kbd> (Windows) will run the line of code that your cursor is on
+  - If you highlight multiple lines of code, you can run all of them by pressing <kbd>Cmd+Enter</kbd> (Mac) or <kbd>Ctrl+Enter</kbd> (Windows)
+  - By preserving commands in a script, you can edit and rerun them quickly, save them for later, and share them with others
+  
+
+::::::::::::::::::::::::::::::::::::: keypoints 
+
+- R is a programming language and software used to run commands in that language
+- RStudio is software to make it easier to write and run code in R
+- Use R Projects to keep your work organized and self-contained
+- Write your code in scripts for reproducibility and portability
+
+::::::::::::::::::::::::::::::::::::::::::::::::
