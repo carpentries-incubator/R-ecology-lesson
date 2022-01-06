@@ -5,7 +5,7 @@
 "index.md" "fe56dfea3c4269cceb361470e2ca1437" "site/built/index.md"
 "renv.lock" "a0c59be359f5521a3007ca7fc10998b6" "site/built/renv.lock"
 "update_plan.md" "cbffde7a61ae3ab0976a8515c420fce8" "site/built/update_plan.md"
-"episodes/00-introduction-r-rstudio.Rmd" "c0a534523b346f74b40503c6d9fc3182" "site/built/00-introduction-r-rstudio.md"
+"episodes/00-introduction-r-rstudio.Rmd" "1580da5c06781aa69cc27e4ff524824f" "site/built/00-introduction-r-rstudio.md"
 "episodes/01-visualizing-ggplot.Rmd" "f7500def87dd69a9f0ce037a8b115acc" "site/built/01-visualizing-ggplot.md"
 "episodes/02-how-r-thinks-about-data.Rmd" "9272c8141efba3c77f2d78c541048c90" "site/built/02-how-r-thinks-about-data.md"
 "episodes/03-working-with-data.Rmd" "cfa57efc23b2982cdd7e369f8b809f4f" "site/built/03-working-with-data.md"
