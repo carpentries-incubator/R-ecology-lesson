@@ -31,17 +31,31 @@ library(tidyverse)
 
 ## Importing data
 
-Thing
+Up until this point, we have been working with the `surveys` dataframe contained in the `ratdat` package. However, you typically won't access data from an R package; it is much more common to access data files stored somewhere on your computer. We are going to download a CSV file containing the surveys data to our computer, which we will then read into R.
 
-### File paths
+Click this link to download the file: [https://downgit.github.io/#/home?url=https://github.com/MCMaurer/Rewrite-R-ecology-lesson/blob/main/episodes/data/cleaned/surveys_complete_77_89.csv](https://downgit.github.io/#/home?url=https://github.com/MCMaurer/Rewrite-R-ecology-lesson/blob/main/episodes/data/cleaned/surveys_complete_77_89.csv)
 
-Now, let's read our CSV file into R and store it in an object named `surveys`.
+You will be prompted to save the file on your computer somewhere. Save it inside the `cleaned` data folder, which is in the `data` folder in your `R-Ecology-Workshop` folder. Once it's inside our project, we will be able to point R towards it.
+
+#### File paths
+
+When we reference other files from an R script, we need to give R precise instructions on where those files are. We do that using something called a **file path**. It looks something like this: `"Documents/Manuscripts/Chapter_2.txt"`. This path would tell your computer how to get from whatever folder contains the `Documents` folder all the way to the `.txt` file.
+
+There are two kinds of paths: **absolute** and **relative**. Absolute paths are specific to a particular computer, whereas relative paths are relative to a certain folder. Because we are keeping all of our work in the `R-Ecology-Workshop` folder, all of our paths can be relative to this folder.
+
+Now, let's read our CSV file into R and store it in an object named `surveys`. We will use the `read_csv` function from the `tidyverse`'s `readr` package, and the argument we give will be the **relative path** to the CSV file.
 
 ```{r}
 surveys <- read_csv("data/cleaned/surveys_complete_77_89.csv")
 ```
 
-You may have noticed a bit of feedback from R. We got some useful information about the CSV file we read in. We got:
+:::::::::::::::::::::::::::::::::::::::::: callout
+
+Typing out paths can be error prone, so we can utilize a keyboard shortcut. Inside the parentheses of `read_csv()`, type out a pair of quotes and put your cursor between them. Then hit <kbd>Tab</kbd>. A small menu showing your folders and files should show up. You can use the <kbd>↑</kbd> and <kbd>↓</kbd> keys to move through the options, or start typing to narrow them down. You can hit <kbd>Enter</kbd> to select a file or folder, and hit <kbd>Tab</kbd> again to continue building the file path. This might take a bit of getting used to, but once you get the hang of it, it will speed up writing file paths and reduce the number of mistakes you make.
+
+::::::::::::::::::::::::::::::::::::::::::
+
+You may have noticed a bit of feedback from R when you ran the last line of code. We got some useful information about the CSV file we read in. We got:
 
 - the number of rows and columns
 - the **delimiter** of the file, which is how values are separated, a comma `","`
@@ -56,8 +70,7 @@ When working with the output of a new function, it's often a good idea to check 
 class(surveys)
 ```
 
-Whoa! What is this thing? It has multiple classes? Well, it's called a `tibble`, and it is the `tidyverse` version of a data.frame. It *is* a data.frame, but with some added perks. It prints out a little more nicely, it highlights `NA` values and negative values in red,
-
+Whoa! What is this thing? It has multiple classes? Well, it's called a `tibble`, and it is the `tidyverse` version of a data.frame. It *is* a data.frame, but with some added perks. It prints out a little more nicely, it highlights `NA` values and negative values in red, and it will generally communicate with you more (in terms of warnings and errors, which is a good thing).
 
 :::::::::::::::::::::::::::::::::::::::::: callout
 
@@ -71,3 +84,4 @@ We choose to teach the `tidyverse` set of packages because they share a similar 
 
 ::::::::::::::::::::::::::::::::::::::::::
 
+## Manipulating data
