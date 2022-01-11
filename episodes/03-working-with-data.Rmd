@@ -24,6 +24,24 @@ exercises: 2
 - pivot_wider
 - exporting data
 
+Challenge ideas:
+
+- plotting a time series using the date
+- predicting # of rows before pivoting
+  - important to plan out reshaping steps in advance
+- filter operations
+  - weight between two values
+  - maybe throw in an | example
+- combination filter and select where doing the order wrong yields an error
+  - only has columns record_id, species_id, sex, and hindfoot_length, but weight has to be NA
+- a couple of simple group_by operations
+  - how many combinations of plot id and genus are there
+    - could show that distinct also works here
+  - what will happen if you group by weight?
+  - an operation that requires group_by and mutate
+  - an operation that requires multiple group_by steps
+  
+
 ```{r setup, include=F}
 knitr::opts_chunk$set(dpi = 200, out.height = 600, out.width = 600, R.options = list(max.print = 100))
 ```
@@ -213,7 +231,231 @@ surveys %>%
          weight_lbs = weight_kg * 2.2)
 ```
 
+<!-- This next part could definitely be moved to the next lesson if need be -->
+
+We can also use multiple columns to create a single column. For example, it's often good practice to keep the components of a date in separate columns until necessary, as we've done here. This is because programs like Excel can do automatic things with dates in a way that is not reproducible and sometimes hard to notice. However, now that we are working in R, we can safely put together a date column.
+
+To put together the columns into something that looks like a date, we can use the `paste()` function, which takes arguments of the items to paste together, as well as the argument `sep`, which is the character used to separate the items.
+
+```{r}
+surveys %>% 
+  mutate(date = paste(year, month, day, sep = "-"))
+```
+
+Since our new column gets moved all the way to the end, it doesn't end up printing out. We can use the `relocate()` function to put it after our `year` column:
+
+```{r}
+surveys %>% 
+  mutate(date = paste(year, month, day, sep = "-")) %>% 
+  relocate(date, .after = year)
+```
+
+Now we can see that we have a character column that contains our date string. However, it's not truly a date column. Dates are a type of numeric variable with a defined, ordered scale. To turn this column into a proper date, we will use a function from the `tidyverse`'s `lubridate` package, which has lots of useful functions for working with dates. The function `ymd()` will parse a date string that has the order year-month-day. Let's load the package and use `ymd()`.
+
+```{r}
+library(lubridate)
+
+surveys %>% 
+  mutate(date = paste(year, month, day, sep = "-"),
+         date = ymd(date)) %>% 
+  relocate(date, .after = year)
+```
+
+<!-- This isn't strictly necessary to show, but I think it's good to reenforce what a pipe is really doing, and it's actually a useful approach with more complex mutates -->
+
+Now we can see that our `date` column has the type `date` as well. In this example, we created our column with two separate lines in `mutate()`, but we can combine them into one:
+
+```{r}
+# using nested functions
+surveys %>% 
+  mutate(date = ymd(paste(year, month, day, sep = "-"))) %>% 
+  relocate(date, .after = year)
+
+# using a pipe *inside* mutate()
+surveys %>% 
+  mutate(date = paste(year, month, day, 
+                      sep = "-") %>% ymd()) %>% 
+  relocate(date, .after = year)
+```
 
 ## The split-apply-combine approach
 
+Many data analysis tasks can be achieved using the split-apply-combine approach: you split the data into groups, apply some analysis to each group, and combine the results in some way. `dplyr` has a few convenient functions to enable this approach, the main two being `group_by()` and `summarize()`.
 
+`group_by()` takes a data.frame and the name of one or more columns with categorical values that define the groups. `summarize()` then collapses each group into a one-row summary of the group, giving you back a data.frame with one row per group. The syntax for `summarize()` is similar to `mutate()`, where you define new columns based on values of other columns. Let's try calculating the mean weight of all our animals by sex.
+
+```{r}
+surveys %>% 
+  group_by(sex) %>% 
+  summarize(mean_weight = mean(weight, na.rm = T))
+```
+
+You can see that the mean weight for males is slightly higher than for females, but that animals whose sex is unknown have much higher weights. This is probably due to small sample size, but we should check to be sure. Like `mutate()`, we can define multiple columns in one `summarize()` call. The function `n()` will count the number of rows in each group.
+
+```{r}
+surveys %>% 
+  group_by(sex) %>% 
+  summarize(mean_weight = mean(weight, na.rm = T),
+            n = n())
+```
+
+You will often want to create groups based on multiple columns. For example, we might be interested in the mean weight of every species + sex combination. All we have to do is add another column to our `group_by()` call.
+
+```{r}
+surveys %>% 
+  group_by(species_id, sex) %>% 
+  summarize(mean_weight = mean(weight, na.rm = T),
+            n = n())
+```
+
+Our resulting data.frame is much larger, since we have a greater number of groups. We also see a strange value showing up in our `mean_weight` column: `NaN`. This stands for "Not a Number", and it often results from trying to do an operation a vector with zero entries. How can a vector have zero entries? Well, if a particular group (like the AB species ID + `NA` sex group) has **only** `NA` values for weight, then the `na.rm = T` argument in `mean()` will remove **all** the values prior to calculating the mean. The result will be a value of `NaN`. Since we are not particularly interested in these values, let's add a step to our pipeline to remove rows where weight is `NA` **before** doing any other steps. This means that any groups with only `NA` values will disappear from our data.frame before we formally create the groups with `group_by()`.
+
+```{r}
+surveys %>% 
+  filter(!is.na(weight)) %>% 
+  group_by(species_id, sex) %>% 
+  summarize(mean_weight = mean(weight),
+            n = n())
+```
+
+That looks better! It's often useful to take a look at the results in some order, like the lowest mean weight to highest. We can use the `arrange()` function for that:
+
+```{r}
+surveys %>% 
+  filter(!is.na(weight)) %>% 
+  group_by(species_id, sex) %>% 
+  summarize(mean_weight = mean(weight),
+            n = n()) %>% 
+  arrange(mean_weight)
+```
+
+If we want to reverse the order, we can wrap the column name in `desc()`:
+
+```{r}
+surveys %>% 
+  filter(!is.na(weight)) %>% 
+  group_by(species_id, sex) %>% 
+  summarize(mean_weight = mean(weight),
+            n = n()) %>% 
+  arrange(desc(mean_weight))
+```
+
+You may have seen several messages saying `summarise() has grouped output by 'species_id'. You can override using the .groups argument.` These are warning you that your resulting data.frame has retained some group structure, which means any subsequent operations on that data.frame will happen at the group level. If you look at the resulting data.frame printed out in your console, you will see these lines:
+
+```
+# A tibble: 46 × 4
+# Groups:   species_id [18]
+```
+
+They tell us we have a data.frame with 46 rows, 4 columns, and a group variable `species_id`, for which there are 18 groups. We will see something similar if we use `group_by()` alone:
+
+```{r}
+surveys %>% 
+  group_by(species_id, sex)
+```
+
+What we get back is the entire `surveys` data.frame, but with the grouping variables added: 67 groups of `species_id` + `sex` combinations. Groups are often maintained throughout a pipeline, and if you assign the resulting data.frame to a new object, it will also have those groups. This can lead to confusing results if you forget about the grouping and want to carry out operations on the whole data.frame, not by group. Therefore, it is a good habit to remove the groups at the end of a pipeline containing `group_by()`:
+
+```{r}
+surveys %>% 
+  filter(!is.na(weight)) %>% 
+  group_by(species_id, sex) %>% 
+  summarize(mean_weight = mean(weight),
+            n = n()) %>% 
+  arrange(desc(mean_weight)) %>% 
+  ungroup()
+```
+
+Now our data.frame just says `# A tibble: 46 × 4` at the top, with no groups.
+
+While it is common that you will want to get the one-row-per-group summary that `summarise()` provides, there are times where you want to calculate a per-group value but keep all the rows in your data.frame. For example, we might want to know the mean weight for each species ID + sex combination, and then we might want to know how far from that mean value each observation in the group is. For this, we can use `group_by()` and `mutate()` together:
+
+```{r}
+surveys %>% 
+  filter(!is.na(weight)) %>% 
+  group_by(species_id, sex) %>% 
+  mutate(mean_weight = mean(weight),
+            weight_diff = weight - mean_weight)
+```
+
+Since we get all our columns back, the new columns are at the very end and don't print out in the console. Let's use `select()` to just look at the columns of interest. Inside `select()` we can use the `contains()` function to get any column containing the word "weight" in the name:
+
+```{r}
+surveys %>% 
+  filter(!is.na(weight)) %>% 
+  group_by(species_id, sex) %>% 
+  mutate(mean_weight = mean(weight),
+            weight_diff = weight - mean_weight) %>% 
+  select(species_id, sex, contains("weight"))
+```
+
+What happens with the `group_by()` + `mutate()` combination is similar to using `summarize()`: for each group, the mean weight is calculated. However, instead of reporting only one row per group, the mean weight for each group is added to each row in that group. For each row in a group (like DM species ID + M sex), you will see the same value in `mean_weight`.
+
+## Reshaping data with `tidyr`
+
+Let's say we are interested in comparing the mean weights of each species across our different plots. We can begin this process using our familiar `group_by()` + `summarize()` approach:
+
+```{r}
+surveys %>% 
+  filter(!is.na(weight)) %>% 
+  group_by(species_id, plot_id) %>% 
+  summarise(mean_weight = mean(weight)) %>% 
+  arrange(species_id, plot_id)
+```
+
+That looks great, but it is a bit difficult to compare values across plots. It would be nice if we could reshape this data.frame to make those comparisons easier. Well, the `tidyr` package from the `tidyverse` has a pair of functions that allow you to reshape data by pivoting it: `pivot_wider()` and `pivot_longer()`. `pivot_wider()` will make the data wider, which means increasing the number of columns and reducing the number of rows. `pivot_longer()` will do the opposite, reducing the number of columns and increasing the number of rows.
+
+In this case, it might be nice to create a data.frame where each species has its own row, and each plot has its own column containing the mean weight for a given species. We will use `pivot_wider()` to reshape our data in this way. It takes 3 arguments:
+
+1. the name of the data.frame
+2. `names_from`: which column should be used to generate the names of the new columns?
+3. `values_from`: which column should be used to fill in the values of the new columns?
+
+
+<!-- How many rows do we want our new data.frame to have? -->
+
+In our case, we want the new columns to be named from our `plot_id` column, with the values coming from the `mean_weight` column. We can pipe our data.frame right into `pivot_wider()` and add those two arguments:
+
+```{r}
+surveys %>% 
+  filter(!is.na(weight)) %>% 
+  group_by(species_id, plot_id) %>% 
+  summarise(mean_weight = mean(weight)) %>% 
+  pivot_wider(names_from = plot_id, values_from = mean_weight)
+```
+
+Now we've got our reshaped data.frame. You may notice a lot of `NA`s have appeared. Some species aren't found in every plot, but because a data.frame has to have a value in every row and every column, some mean weight has to be inserted, which is `NA` by default.
+
+## Exporting data
+
+Let's say we want to send the above data.frame to a colleague who doesn't use R. In this case, we might want to save it as a CSV file.
+
+First, we might want to modify the names of the columns, since right now they are bare numbers, which aren't very informative. Luckily, `pivot_wider()` has an argument `names_prefix` which will allow us to add "plot_" to the start of each column.
+
+```{r}
+surveys %>% 
+  filter(!is.na(weight)) %>% 
+  group_by(species_id, plot_id) %>% 
+  summarise(mean_weight = mean(weight)) %>% 
+  pivot_wider(names_from = plot_id, values_from = mean_weight,
+              names_prefix = "plot_")
+```
+
+That looks better! Let's save this data.frame as a new object.
+
+```{r}
+surveys_ps <- surveys %>% 
+  filter(!is.na(weight)) %>% 
+  group_by(species_id, plot_id) %>% 
+  summarise(mean_weight = mean(weight)) %>% 
+  pivot_wider(names_from = plot_id, values_from = mean_weight,
+              names_prefix = "plot_")
+```
+
+Now we can save this data.frame to a CSV using the `write_csv()` function from the `readr` package. The first argument is the name of the data.frame, and the second is the path to the new file we want to create, including the file extension `.csv`.
+
+```{r}
+write_csv(surveys_ps, "data/cleaned/surveys_meanweight_species_plot.csv")
+```
+
+If we go look into our `data/cleaned_data` folder, we will see this new CSV file.
