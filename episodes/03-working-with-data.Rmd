@@ -18,6 +18,9 @@ exercises: 2
 - mutate
 - making a date column
 - group_by
+  - summarize
+  - mutate
+  - ungroup
 - pivot_wider
 - exporting data
 
@@ -55,7 +58,7 @@ Typing out paths can be error prone, so we can utilize a keyboard shortcut. Insi
 
 ::::::::::::::::::::::::::::::::::::::::::
 
-You may have noticed a bit of feedback from R when you ran the last line of code. We got some useful information about the CSV file we read in. We got:
+You may have noticed a bit of feedback from R when you ran the last line of code. We got some useful information about the CSV file we read in. We can see:
 
 - the number of rows and columns
 - the **delimiter** of the file, which is how values are separated, a comma `","`
@@ -85,3 +88,132 @@ We choose to teach the `tidyverse` set of packages because they share a similar 
 ::::::::::::::::::::::::::::::::::::::::::
 
 ## Manipulating data
+
+One of the most important skills for working with data in R is the ability to manipulate, modify, and reshape data. The `dplyr` and `tidyr` packages in the `tidyverse` provide a series of powerful functions for many common data manipulation tasks.
+
+We'll start off with two of the most commonly used `dplyr` functions: `select()`, which selects certain columns of a data.frame, and `filter()`, which filters out rows according to certain criteria.
+
+:::::::::::::::::::::::::::::::::::::::::: callout
+
+Between `select()` and `filter()`, it can be hard to remember which operates on columns and which operates on rows. `sele`**`c`**`t()` has a **c** for **c**olumns and `filte`**`r`**`()` has an **r** for **r**ows.
+
+::::::::::::::::::::::::::::::::::::::::::
+
+#### `select()`
+
+To use the `select()` function, the first argument is the name of the data.frame, and the rest of the arguments are *unquoted* names of the columns you want:
+
+```{r select}
+select(surveys, plot_id, species_id, hindfoot_length)
+```
+
+To select all columns except specific columns, put a `-` in front of the column you want to exclude:
+
+```{r select-minus}
+select(surveys, -record_id, -year)
+```
+
+`select()` also works with numeric vectors for the order of the columns. To select the 3rd, 4th, 5th, and 10th columns, we could run the following code:
+
+```{r select-vector}
+select(surveys, c(3:5, 10))
+```
+
+You should be careful when using this method, since you are being less explicit about which columns you want. However, it can be useful if you have a data.frame with many columns and you don't want to type out too many names.
+
+Finally, you can select columns based on whether they match a certain criteria by using the `where()` function. If we want all numeric columns, we can ask to `select` all the columns `where` the class `is numeric`:
+
+```{r select-where}
+select(surveys, where(is.numeric))
+```
+
+Instead of giving names or positions of columns, we instead pass the `where()` function with the name of another function inside it, in this case `is.numeric()`, and we get all the columns for which that function returns `TRUE`.
+
+We can use this to select any columns that have any `NA` values in them:
+
+```{r select-anyNA}
+select(surveys, where(anyNA))
+```
+
+#### `filter()`
+
+The `filter()` function is used to select rows that meet certain criteria. To get all the rows where the value of `year` is equal to 1985, we would run the following:
+
+```{r filter}
+filter(surveys, year == 1985)
+```
+
+The `==` sign means "is equal to". There are several other operators we can use: >, >=, <, <=, and != (not equal to). Another useful operator is `%in%`, which asks if the value on the lefthand side is found anywhere in the vector on the righthand side. For example, to get rows with specific `species_id` values, we could run:
+
+```{r filter-in}
+filter(surveys, species_id %in% c("RM", "DO"))
+```
+
+We can also use multiple conditions in one `filter()` statement. Here we will get rows with a year less than or equal to 1988 and whose hindfoot length values are not `NA`. The `!` before the `is.na()` function means "not".
+
+```{r filter-multiple}
+filter(surveys, year <= 1988 & !is.na(hindfoot_length))
+```
+
+## The pipe: `%>%`
+
+What happens if we want to both `select()` and `filter()` our data? We have a couple options. First, we could use **nested** functions:
+
+```{r}
+filter(select(surveys, -day), month >= 7)
+```
+
+R will evaluate statements from the inside out. First, `select()` will operate on the `surveys` data.frame, removing the column `day`. The resulting data.frame is then used as the first argument for `filter()`, which selects rows with a month greater than or equal to 7.
+
+Nested functions can be very difficult to read with only a few functions, and nearly impossible when many functions are done at once. An alternative approach is to create **intermediate** objects:
+
+```{r}
+surveys_noday <- select(surveys, -day)
+filter(surveys_noday, month >= 7)
+```
+
+This approach is easier to read, since we can see the steps in order, but after enough steps, we are left with a cluttered mess of intermediate objects, often with confusing names.
+
+An elegant solution to this problem is an operator called the **pipe**, which looks like `%>%`. You can insert it by using the keyboard shortcut <kbd>Shift+Cmd+M</kbd> (Mac) or <kbd>Shift+Ctrl+M</kbd> (Windows). Here's how you could use a pipe to select and filter in one step:
+
+```{r}
+surveys %>% 
+  select(-day) %>% 
+  filter(month >= 7)
+```
+
+
+What it does is take the thing on the lefthand side and insert it as the first argument of the function on the righthand side. By putting each of our functions onto a new line, we can build a nice, readable **pipeline**. It can be useful to think of this as a little assembly line for our data. It starts at the top and gets piped into a `select()` function, and it comes out modified somewhat. It then gets sent into the `filter()` function, where it is further modified, and then the final product gets printed out to our console. It can also be helpful to think of `%>%` as meaning "and then". Since many `tidyverse` functions have verbs for names, a pipeline can be read like a sentence.
+
+If we want to store this final product as an object, we use an assignment arrow at the start:
+
+```{r}
+surveys_sub <- surveys %>% 
+  select(-day) %>% 
+  filter(month >= 7)
+```
+
+A good approach is to build a pipeline step by step prior to assignment. You add functions to the pipeline as you go, with the results printing in the console for you to view. Once you're satisfied with your final result, go back and add the assignment arrow statement at the start. This approach is very interactive, allowing you to see the results of each step as you build the pipeline, and produces nicely readable code.
+
+
+## Making new columns with `mutate()`
+
+Another common task is creating a new column based on values in existing columns. For example, we could add a new column that has the weight in kilograms instead of grams:
+
+```{r}
+surveys %>% 
+  mutate(weight_kg = weight / 1000)
+```
+
+You can create multiple columns in one `mutate()` call, and they will get created in the order you write them. This means you can even reference the first new column in the second new column:
+
+```{r}
+surveys %>% 
+  mutate(weight_kg = weight / 1000,
+         weight_lbs = weight_kg * 2.2)
+```
+
+
+## The split-apply-combine approach
+
+
