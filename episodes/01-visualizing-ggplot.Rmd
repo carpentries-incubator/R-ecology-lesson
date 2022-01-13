@@ -320,9 +320,24 @@ Now we can see all the raw data and our boxplots on top.
 
 ## Challenge 2: Change `geom`s
 
-Make a plot similar to the last one, but use a violin plot instead of a boxplot. Remember that all geom functions start with `geom_`, followed by the type of geom.
+Violin plots are similar to boxplots- try making one using `plot_type` and `hindfoot_length` as the x and y variables. Remember that all geom functions start with `geom_`, followed by the type of geom.
 
-For this plot, make the color of the points and outlines of the violins vary by `plot_type`, and set the fill of the violins to white.
+For an *extra challenge*, 
+
+:::::::::::::::::::::::: solution 
+
+```{r violin-challenge-answer}
+ggplot(data = surveys, 
+       mapping = aes(x = plot_type, 
+                     y = hindfoot_length,
+                     color = plot_type)) +
+  geom_point(alpha = 0.1, position = position_jitter()) +
+  geom_violin(fill = "white")
+```
+
+::::::::::::::::::::::::
+
+Next, make the color of the points and outlines of the violins vary by `plot_type`, and set the fill of the violins to white. Try playing with the order of the layers to see what looks best.
 
 :::::::::::::::::::::::: solution 
 
