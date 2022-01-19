@@ -69,7 +69,6 @@ ggplot(data = <DATA>, mapping = aes(<MAPPINGS>)) + <GEOM_FUNCTION>()
 ```
 
 We use the `ggplot()` function to create a plot. In order to tell it what data to use, we need to specify the `data` **argument**. An argument is an input that a function takes, and you set arguments using the `=` sign.
-
 ```{r bare-plot}
 ggplot(data = surveys)
 ```
@@ -341,7 +340,7 @@ Next, make the color of the points and outlines of the violins vary by `plot_typ
 
 :::::::::::::::::::::::: solution 
 
-```{r violin-challenge-answer}
+```{r violin-challenge-answer-2}
 ggplot(data = surveys, 
        mapping = aes(x = plot_type, 
                      y = hindfoot_length,
