@@ -70,7 +70,6 @@ ggplot(data = <DATA>, mapping = aes(<MAPPINGS>)) + <GEOM_FUNCTION>()
 
 We use the `ggplot()` function to create a plot. In order to tell it what data to use, we need to specify the `data` **argument**. An argument is an input that a function takes, and you set arguments using the `=` sign.
 
-
 ```r
 ggplot(data = surveys)
 ```
@@ -494,9 +493,9 @@ Now we can see all the raw data and our boxplots on top.
 
 ## Challenge 2: Change `geom`s
 
-Make a plot similar to the last one, but use a violin plot instead of a boxplot. Remember that all geom functions start with `geom_`, followed by the type of geom.
+Violin plots are similar to boxplots- try making one using `plot_type` and `hindfoot_length` as the x and y variables. Remember that all geom functions start with `geom_`, followed by the type of geom.
 
-For this plot, make the color of the points and outlines of the violins vary by `plot_type`, and set the fill of the violins to white.
+For an *extra challenge*, 
 
 :::::::::::::::::::::::: solution 
 
@@ -519,6 +518,32 @@ Warning: Removed 2733 rows containing missing values (geom_point).
 ```
 
 <img src="fig/01-visualizing-ggplot-rendered-violin-challenge-answer-1.png" width="600" height="600" style="display: block; margin: auto;" />
+
+::::::::::::::::::::::::
+
+Next, make the color of the points and outlines of the violins vary by `plot_type`, and set the fill of the violins to white. Try playing with the order of the layers to see what looks best.
+
+:::::::::::::::::::::::: solution 
+
+
+```r
+ggplot(data = surveys, 
+       mapping = aes(x = plot_type, 
+                     y = hindfoot_length,
+                     color = plot_type)) +
+  geom_point(alpha = 0.1, position = position_jitter()) +
+  geom_violin(fill = "white")
+```
+
+```{.warning}
+Warning: Removed 2733 rows containing non-finite values (stat_ydensity).
+```
+
+```{.warning}
+Warning: Removed 2733 rows containing missing values (geom_point).
+```
+
+<img src="fig/01-visualizing-ggplot-rendered-violin-challenge-answer-2-1.png" width="600" height="600" style="display: block; margin: auto;" />
 
 ::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::
