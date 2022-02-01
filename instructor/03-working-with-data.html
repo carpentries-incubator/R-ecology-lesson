@@ -235,7 +235,7 @@
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Working with data</h1>
         <p> Last updated on 2022-02-01 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/03-working-with-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-        <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 12 minutes </p>
+        <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 49 minutes </p>
         
         <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -1397,8 +1397,7 @@ Attaching package: 'lubridate'</code></pre>
   <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">n</span>, color <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span></code></pre>
 </div>
-<figure><img src="../fig/03-working-with-data-rendered-time-series-challenge-answer-1.png" width="600" height="600" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>This isn’t necessarily the most useful plot, but we will learn some techniques that will help produce nice time series plots</p>
-</div>
+<figure><img src="../fig/03-working-with-data-rendered-time-series-challenge-answer-1.png" width="600" height="600" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></div>
 </div>
 </div>
 </div>
@@ -1443,36 +1442,8 @@ Attaching package: 'lubridate'</code></pre>
 <code>names_from</code>: which column should be used to generate the names of the new columns?</li>
 <li>
 <code>values_from</code>: which column should be used to fill in the values of the new columns?</li>
-</ol><p>Any columns not used for <code>names_from</code> or <code>values_from</code> will not be pivoted</p>
-<p>In our case, we want the new columns to be named from our <code>plot_id</code> column, with the values coming from the <code>mean_weight</code> column.</p>
-<div id="challenge6" class="callout challenge">
-<div class="callout-square">
-<i class="callout-icon" data-feather="zap"></i>
-</div>
-<div id="challenge-5-plan-before-you-pivot_" class="callout-inner">
-<h3 class="callout-title">Challenge 5: Plan before you <code>pivot_</code>
-</h3>
-<div class="callout-content">
-<p>If we want our new data.frame to use columns for each <code>plot_id</code> and rows for each <code>species_id</code>, how many rows should our new data.frame have? How many new <code>plot_id</code> columns?</p>
-</div>
-</div>
-</div>
-<div id="accordionSolution7" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
-  <h4 class="accordion-header" id="headingSolution7">
-  Show me the solution
-  </h4>
-</button>
-<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
-<div class="accordion-body">
-<p>We will have one row for each <code>species_id</code>, so we need to know how many unique <code>species_id</code> values there are. We will make a new</p>
-<p>This isn’t necessarily the most useful plot, but we will learn some techniques that will help produce nice time series plots</p>
-</div>
-</div>
-</div>
-</div>
-<p>We can pipe our data.frame right into <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider()</a></code> and add those two arguments:</p>
+</ol><p>Any columns not used for <code>names_from</code> or <code>values_from</code> will not be pivoted.</p>
+<p>In our case, we want the new columns to be named from our <code>plot_id</code> column, with the values coming from the <code>mean_weight</code> column. We can pipe our data.frame right into <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider()</a></code> and add those two arguments:</p>
 <div class="codewrapper sourceCode" id="cb78">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>

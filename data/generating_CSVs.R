@@ -37,26 +37,37 @@ surveys_new <- surveys_new %>%
   arrange(record_id)
 
 
-surveys_new$hindfoot_length[823] <- paste0(surveys_new$hindfoot_length[823], "'")
+surveys_new$hindfoot_length[18] <- paste0(surveys_new$hindfoot_length[18], "'")
 
 surveys_new <- surveys_new %>%
   mutate(weight = if_else(is.na(weight), 9999L, weight))
 
-write_csv(complete_old, "data/cleaned/surveys_complete_77_89.csv")
-write_csv(surveys_new, "data/raw/surveys_new.csv")
-write_csv(plots_new, "data/raw/plots_new.csv")
-write_csv(species_new, "data/raw/species_new.csv")
+write_csv(complete_old, "episodes/data/cleaned/surveys_complete_77_89.csv")
+write_csv(surveys_new, "episodes/data/raw/surveys_new.csv")
+write_csv(plots_new, "episodes/data/raw/plots_new.csv")
+write.table(species_new, "episodes/data/raw/species_new.txt", row.names = F)
 
 
 # solutions ---------------------------------------------------------------
 
-surveys_new %>%
-  filter(str_detect(hindfoot_length, pattern = "\\D"))
+
+plots_new <- read_csv("episodes/data/raw/plots_new.csv")
+species_new <- read_delim("episodes/data/raw/species_new.txt", delim = " ")
+
+surveys_new <- read_csv("episodes/data/raw/surveys_new.csv")
+
+summary(surveys_new)
+
+problems(surveys_new)
 
 surveys_new %>%
-  mutate(hindfoot_length = str_remove_all(hindfoot_length, "\\D"),
-         hindfoot_length = as.integer(hindfoot_length),
-         weight = na_if(weight, 9999))
+  print(n=20)
+
+surveys_new %>%
+  mutate(weight = if_else(weight == 9999, NA_real_, weight))
+
+surveys_new %>%
+  mutate(weight = na_if(weight, 9999))
 
 plots_new %>%
   pivot_longer(cols = everything(), names_to = "plot_id", values_to = "plot_type") %>%
