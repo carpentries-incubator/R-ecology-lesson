@@ -1,7 +1,7 @@
 ---
 title: "Working with data"
-teaching: 10
-exercises: 2
+teaching: 45
+exercises: 4
 ---
 
 - importing complete_old CSV
@@ -1053,9 +1053,6 @@ surveys_daily_counts %>%
 
 <img src="fig/03-working-with-data-rendered-time-series-challenge-answer-1.png" width="600" height="600" style="display: block; margin: auto;" />
 
-
-This isn't necessarily the most useful plot, but we will learn some techniques that will help produce nice time series plots
-
 ::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -1101,30 +1098,9 @@ In this case, it might be nice to create a data.frame where each species has its
 2. `names_from`: which column should be used to generate the names of the new columns?
 3. `values_from`: which column should be used to fill in the values of the new columns?
 
-Any columns not used for `names_from` or `values_from` will not be pivoted
+Any columns not used for `names_from` or `values_from` will not be pivoted.
 
-In our case, we want the new columns to be named from our `plot_id` column, with the values coming from the `mean_weight` column. 
-
-::::::::::::::::::::::::::::::::::::: challenge 
-
-## Challenge 5: Plan before you `pivot_`
-
-If we want our new data.frame to use columns for each `plot_id` and rows for each `species_id`, how many rows should our new data.frame have? How many new `plot_id` columns?
-
-:::::::::::::::::::::::: solution 
-
-We will have one row for each `species_id`, so we need to know how many unique `species_id` values there are. We will make a new 
-
-
-
-This isn't necessarily the most useful plot, but we will learn some techniques that will help produce nice time series plots
-
-::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::
-
-
-We can pipe our data.frame right into `pivot_wider()` and add those two arguments:
+In our case, we want the new columns to be named from our `plot_id` column, with the values coming from the `mean_weight` column. We can pipe our data.frame right into `pivot_wider()` and add those two arguments:
 
 
 ```r
