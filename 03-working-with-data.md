@@ -165,6 +165,8 @@ select(surveys, plot_id, species_id, hindfoot_length)
 # … with 16,868 more rows
 ```
 
+The columns are arranged in the order we specified inside `select()`.
+
 To select all columns except specific columns, put a `-` in front of the column you want to exclude:
 
 
@@ -342,6 +344,35 @@ filter(surveys, year <= 1988 & !is.na(hindfoot_length))
 #   taxa <chr>, plot_type <chr>
 ```
 
+
+::::::::::::::::::::::::::::::::::::: challenge
+
+## Challenge 1: Filtering and selecting
+
+1. Use the surveys data to make a data.frame that has only data with years from 1980 to 1985.
+
+:::::::::::::::::::::::: solution
+
+
+```r
+surveys_filtered <- filter(surveys, year >= 1980 & year <= 1985)
+```
+
+::::::::::::::::::::::::
+
+2. Use the surveys data to make a data.frame that has only the following columns, in order: `year`, `month`, `species_id`, `plot_id`.
+
+:::::::::::::::::::::::: solution
+
+
+```r
+surveys_selected <- select(surveys, year, month, species_id, plot_id)
+```
+
+::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
 ## The pipe: `%>%`
 
 What happens if we want to both `select()` and `filter()` our data? We have a couple options. First, we could use **nested** functions:
@@ -439,6 +470,26 @@ surveys_sub <- surveys %>%
 ```
 
 A good approach is to build a pipeline step by step prior to assignment. You add functions to the pipeline as you go, with the results printing in the console for you to view. Once you're satisfied with your final result, go back and add the assignment arrow statement at the start. This approach is very interactive, allowing you to see the results of each step as you build the pipeline, and produces nicely readable code.
+
+<!-- ::::::::::::::::::::::::::::::::::::: challenge  -->
+
+## Challenge 2: Using pipes
+
+Use the surveys data to make a data.frame that has the columns `record_id`, `month`, and `species_id`, with data from the year 1988. Use a pipe between the function calls.
+
+:::::::::::::::::::::::: solution
+
+
+```r
+surveys_1988 <- surveys %>%
+  filter(year == 1988) %>%
+  select(record_id, month, species_id)
+```
+
+Make sure to `filter()` before you `select()`. You need to use the `year` column for filtering rows, but it is discarded in the `select()` step. You also need to make sure to use `==` instead of `=` when you are filtering rows where `year` is equal to 1988.
+
+::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 
 ## Making new columns with `mutate()`
@@ -651,6 +702,34 @@ surveys %>%
 # … with 16,868 more rows, and 6 more variables: hindfoot_length <dbl>,
 #   weight <dbl>, genus <chr>, species <chr>, taxa <chr>, plot_type <chr>
 ```
+
+::::::::::::::::::::::::::::::::::::: challenge 
+
+## Challenge 3: Plotting date
+
+Because the `ggplot()` function takes the data as its first argument, you can actually pipe data straight into `ggplot()`. Try building a pipeline that creates the date column and plots weight across date.
+
+:::::::::::::::::::::::: solution 
+
+
+```r
+surveys %>% 
+  mutate(date = ymd(paste(year, month, day, sep = "-"))) %>% 
+  ggplot(aes(x = date, y = weight)) +
+  geom_jitter(alpha = 0.1)
+```
+
+```{.warning}
+Warning: Removed 1692 rows containing missing values (geom_point).
+```
+
+<img src="fig/03-working-with-data-rendered-date-plot-challenge-answer-1.png" width="600" height="600" style="display: block; margin: auto;" />
+
+This isn't necessarily the most useful plot, but we will learn some techniques that will help produce nice time series plots
+
+::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## The split-apply-combine approach
 
@@ -938,17 +1017,62 @@ surveys %>%
 
 What happens with the `group_by()` + `mutate()` combination is similar to using `summarize()`: for each group, the mean weight is calculated. However, instead of reporting only one row per group, the mean weight for each group is added to each row in that group. For each row in a group (like DM species ID + M sex), you will see the same value in `mean_weight`.
 
-## Reshaping data with `tidyr`
+::::::::::::::::::::::::::::::::::::: challenge 
 
-Let's say we are interested in comparing the mean weights of each species across our different plots. We can begin this process using our familiar `group_by()` + `summarize()` approach:
+## Challenge 4: Making a time series
+
+1. Use the split-apply-combine approach to make a `data.frame` that counts the total number of animals of each sex caught on each day in the `surveys` data.
+
+:::::::::::::::::::::::: solution 
 
 
 ```r
-surveys %>% 
+surveys_daily_counts <- surveys %>% 
+  mutate(date = ymd(paste(year, month, day, sep = "-"))) %>% 
+  group_by(date, sex) %>% 
+  summarize(n = n())
+
+# shorter approach using count()
+surveys_daily_counts <- surveys %>% 
+  mutate(date = ymd(paste(year, month, day, sep = "-"))) %>% 
+  count(date, sex)
+```
+
+::::::::::::::::::::::::
+
+2. Now use the data.frame you just made to plot the daily number of animals of each sex caught over time. It's up to you what `geom` to use, but a `line` plot might be a good choice. You should also think about how to differentiate which data corresponds to which sex.
+
+:::::::::::::::::::::::: solution 
+
+
+```r
+surveys_daily_counts %>% 
+  ggplot(aes(x = date, y = n, color = sex)) +
+  geom_line()
+```
+
+<img src="fig/03-working-with-data-rendered-time-series-challenge-answer-1.png" width="600" height="600" style="display: block; margin: auto;" />
+
+
+This isn't necessarily the most useful plot, but we will learn some techniques that will help produce nice time series plots
+
+::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Reshaping data with `tidyr`
+
+Let's say we are interested in comparing the mean weights of each species across our different plots. We can begin this process using the `group_by()` + `summarize()` approach:
+
+
+```r
+sp_by_plot <- surveys %>% 
   filter(!is.na(weight)) %>% 
   group_by(species_id, plot_id) %>% 
   summarise(mean_weight = mean(weight)) %>% 
   arrange(species_id, plot_id)
+
+sp_by_plot
 ```
 
 ```{.output}
@@ -977,18 +1101,36 @@ In this case, it might be nice to create a data.frame where each species has its
 2. `names_from`: which column should be used to generate the names of the new columns?
 3. `values_from`: which column should be used to fill in the values of the new columns?
 
+Any columns not used for `names_from` or `values_from` will not be pivoted
 
-<!-- How many rows do we want our new data.frame to have? -->
+In our case, we want the new columns to be named from our `plot_id` column, with the values coming from the `mean_weight` column. 
 
-In our case, we want the new columns to be named from our `plot_id` column, with the values coming from the `mean_weight` column. We can pipe our data.frame right into `pivot_wider()` and add those two arguments:
+::::::::::::::::::::::::::::::::::::: challenge 
+
+## Challenge 5: Plan before you `pivot_`
+
+If we want our new data.frame to use columns for each `plot_id` and rows for each `species_id`, how many rows should our new data.frame have? How many new `plot_id` columns?
+
+:::::::::::::::::::::::: solution 
+
+We will have one row for each `species_id`, so we need to know how many unique `species_id` values there are. We will make a new 
+
+
+
+This isn't necessarily the most useful plot, but we will learn some techniques that will help produce nice time series plots
+
+::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+We can pipe our data.frame right into `pivot_wider()` and add those two arguments:
 
 
 ```r
-surveys %>% 
-  filter(!is.na(weight)) %>% 
-  group_by(species_id, plot_id) %>% 
-  summarise(mean_weight = mean(weight)) %>% 
-  pivot_wider(names_from = plot_id, values_from = mean_weight)
+sp_by_plot %>% 
+  pivot_wider(names_from = plot_id, 
+              values_from = mean_weight)
 ```
 
 ```{.output}
@@ -1019,7 +1161,25 @@ surveys %>%
 #   22 <dbl>, 23 <dbl>, 24 <dbl>
 ```
 
-Now we've got our reshaped data.frame. You may notice a lot of `NA`s have appeared. Some species aren't found in every plot, but because a data.frame has to have a value in every row and every column, some mean weight has to be inserted, which is `NA` by default.
+Now we've got our reshaped data.frame. There are a few things to notice. First, we have a new column for each `plot_id` value. There is one old column left in the data.frame: `species_id`. It wasn't used in `pivot_wider()`, so it stays, and now contains a single entry for each unique `species_id` value. 
+
+Finally, a lot of `NA`s have appeared. Some species aren't found in every plot, but because a data.frame has to have a value in every row and every column, an `NA` is inserted. We can double-check this to verify what is going on. 
+
+Looking in our new pivoted data.frame, we can see that there is an `NA` value for the species `BA` in plot `1`. Let's take our `sp_by_plot` data.frame and look for the `mean_weight` of that species + plot combination.
+
+
+```r
+sp_by_plot %>% 
+  filter(species_id == "BA" & plot_id == 1)
+```
+
+```{.output}
+# A tibble: 0 × 3
+# Groups:   species_id [0]
+# … with 3 variables: species_id <chr>, plot_id <dbl>, mean_weight <dbl>
+```
+
+We get back 0 rows. There is no `mean_weight` for the species `BA` in plot `1`. This either happened because no `BA` were ever caught in plot `1`, or because every `BA` caught in plot `1` had an `NA` weight value and all the rows got removed when we used `filter(!is.na(weight))` in the process of making `sp_by_plot`. Because there are no rows with that species + plot combination, in our pivoted data.frame, the value gets filled with `NA`.
 
 ## Exporting data
 
@@ -1029,10 +1189,7 @@ First, we might want to modify the names of the columns, since right now they ar
 
 
 ```r
-surveys %>% 
-  filter(!is.na(weight)) %>% 
-  group_by(species_id, plot_id) %>% 
-  summarise(mean_weight = mean(weight)) %>% 
+sp_by_plot %>% 
   pivot_wider(names_from = plot_id, values_from = mean_weight,
               names_prefix = "plot_")
 ```
@@ -1070,12 +1227,40 @@ That looks better! Let's save this data.frame as a new object.
 
 
 ```r
-surveys_ps <- surveys %>% 
-  filter(!is.na(weight)) %>% 
-  group_by(species_id, plot_id) %>% 
-  summarise(mean_weight = mean(weight)) %>% 
+surveys_sp <- sp_by_plot %>% 
   pivot_wider(names_from = plot_id, values_from = mean_weight,
               names_prefix = "plot_")
+
+surveys_sp
+```
+
+```{.output}
+# A tibble: 18 × 25
+# Groups:   species_id [18]
+   species_id plot_3 plot_21 plot_1 plot_2 plot_4 plot_5 plot_6 plot_7 plot_8
+   <chr>       <dbl>   <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>
+ 1 BA           8       6.5   NA     NA     NA      NA    NA      NA    NA   
+ 2 DM          41.2    41.5   42.7   42.6   41.9    42.6  42.1    43.2  43.4 
+ 3 DO          42.7    NA     50.1   50.3   46.8    50.4  49.0    52    49.2 
+ 4 DS         128.     NA    129.   125.   118.    111.  114.    126.  128.  
+ 5 NL         171.    136.   154.   171.   164.    192.  176.    170.  134.  
+ 6 OL          32.1    28.6   35.5   34     33.0    32.6  31.8    NA    30.3 
+ 7 OT          24.1    24.1   23.7   24.9   26.5    23.6  23.5    22    24.1 
+ 8 OX          22      NA     NA     22     NA      20    NA      NA    NA   
+ 9 PE          22.7    19.6   21.6   22.0   NA      21    21.6    22.8  19.4 
+10 PF           7.12    7.23   6.57   6.89   6.75    7.5   7.54    7     6.78
+11 PH          28      31     NA     NA     NA      29    NA      NA    NA   
+12 PM          20.1    23.6   23.7   23.9   NA      23.7  22.3    23.4  23   
+13 PP          17.1    13.6   14.3   16.4   14.8    19.8  16.8    NA    13.9 
+14 RF          14.8    17     NA     16     NA      14    12.1    13    NA   
+15 RM          10.3     9.89  10.9   10.6   10.4    10.8  10.6    10.7   9   
+16 SF          NA      49     NA     NA     NA      NA    NA      NA    NA   
+17 SH          76.0    79.9   NA     88     NA      82.7  NA      NA    NA   
+18 SS          NA      NA     NA     NA     NA      NA    NA      NA    NA   
+# … with 15 more variables: plot_9 <dbl>, plot_10 <dbl>, plot_11 <dbl>,
+#   plot_12 <dbl>, plot_13 <dbl>, plot_14 <dbl>, plot_15 <dbl>, plot_16 <dbl>,
+#   plot_17 <dbl>, plot_18 <dbl>, plot_19 <dbl>, plot_20 <dbl>, plot_22 <dbl>,
+#   plot_23 <dbl>, plot_24 <dbl>
 ```
 
 Now we can save this data.frame to a CSV using the `write_csv()` function from the `readr` package. The first argument is the name of the data.frame, and the second is the path to the new file we want to create, including the file extension `.csv`.
@@ -1083,6 +1268,10 @@ Now we can save this data.frame to a CSV using the `write_csv()` function from t
 
 ```r
 write_csv(surveys_ps, "data/cleaned/surveys_meanweight_species_plot.csv")
+```
+
+```{.error}
+Error in is.data.frame(x): object 'surveys_ps' not found
 ```
 
 If we go look into our `data/cleaned_data` folder, we will see this new CSV file.
