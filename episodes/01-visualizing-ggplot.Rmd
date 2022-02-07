@@ -109,14 +109,14 @@ As you can see, we only get the error message, with no output, because something
 
 Building **`ggplot`** plots is often an iterative process, so we'll continue developing the scatter plot we just made. You may have noticed that parts of our scatter plot have many overlapping points, making it difficult to see all the data. We can adjust the transparency of the points using the `alpha` argument, which takes a value between 0 and 1:
 
-```{r change-alpha}
+```{r change-alpha, warning=F}
 ggplot(data = surveys, mapping = aes(x = weight, y = hindfoot_length)) +
   geom_point(alpha = 0.2)
 ```
 
 We can also change the color of the points:
 
-```{r change-color}
+```{r change-color, warning=F}
 ggplot(data = surveys, mapping = aes(x = weight, y = hindfoot_length)) +
   geom_point(alpha = 0.2, color = "blue")
 ```
@@ -127,7 +127,7 @@ Two common issues you might run into when working in R are forgetting a closing 
 
 Try running the following code:
 
-```{r no-closing-bracket, eval=F}
+```{r no-closing-bracket, eval=F, warning=F}
 ggplot(data = surveys, mapping = aes(x = weight, y = hindfoot_length)) +
   geom_point(color = "blue", alpha = 0.2
 ```
@@ -136,7 +136,7 @@ You will see a `+` appear in your console. This is R telling you that it expects
 
 Something similar will happen if you run the following code:
 
-```{r no-closing-quote, eval=F}
+```{r no-closing-quote, eval=F, warning=F}
 ggplot(data = surveys, mapping = aes(x = weight, y = hindfoot_length)) +
   geom_point(color = "blue, alpha = 0.2)
 ```
@@ -145,7 +145,7 @@ A missing quote at the end of `blue` means that the rest of the code is treated 
 
 You will get a different error message if you run the following code:
 
-```{r extra-bracket, eval=F}
+```{r extra-bracket, eval=F, warning=F}
 ggplot(data = surveys, mapping = aes(x = weight, y = hindfoot_length)) +
   geom_point(color = "blue", alpha = 0.2))
 ```
@@ -158,7 +158,7 @@ This time we have an extra closing `)`, which R doesn't know what to do with. It
 
 Let's try coloring our points according to the plot type. Since we're now mapping a variable (`plot_type`) to a component of the plot (`color`), we need to put the argument inside `aes()`:
 
-```{r color-plot-type}
+```{r color-plot-type, warning=F}
 ggplot(data = surveys, mapping = aes(x = weight, y = hindfoot_length, color = plot_type)) +
   geom_point(alpha = 0.2)
 ```
@@ -180,7 +180,7 @@ str(object = surveys)
 
 :::::::::::::::::::::::: solution 
 
-```{r modify-points-challenge-answer}
+```{r modify-points-challenge-answer, warning=F}
 ggplot(data = surveys, 
        mapping = aes(x = weight, y = hindfoot_length, shape = sex)) +
   geom_point(alpha = 0.2)
@@ -192,7 +192,7 @@ ggplot(data = surveys,
 
 :::::::::::::::::::::::: solution 
 
-```{r modify-color-challenge-answer}
+```{r modify-color-challenge-answer, warning=F}
 ggplot(data = surveys, 
        mapping = aes(x = weight, y = hindfoot_length, color = year)) +
   geom_point(alpha = 0.2)
@@ -207,7 +207,7 @@ ggplot(data = surveys,
 
 The default color scale isn't always ideal: it isn't friendly to viewers with colorblindness and it doesn't translate well to grayscale. However, **`ggplot2`** comes with quite a few other color scales, including the fantastic `viridis` scales, which are designed to be colorblind and grayscale friendly. We can change scales by adding `scale_` functions to our plots:
 
-```{r scale-viridis}
+```{r scale-viridis, warning=F}
 ggplot(data = surveys, mapping = aes(x = weight, y = hindfoot_length, color = plot_type)) +
   geom_point(alpha = 0.2) +
   scale_color_viridis_d()
@@ -215,7 +215,7 @@ ggplot(data = surveys, mapping = aes(x = weight, y = hindfoot_length, color = pl
 
 Scales don't just apply to colors- any plot component that you put inside `aes()` can be modified with `scale_` functions. Just as we modified the scale used to map `plot_type` to `color`, we can modify the way that `weight` is mapped to the `x` axis by using the `scale_x_log10()` function:
 
-```{r scale-log}
+```{r scale-log, warning=F}
 ggplot(data = surveys, mapping = aes(x = weight, y = hindfoot_length, color = plot_type)) +
   geom_point(alpha = 0.2) +
   scale_x_log10()
@@ -230,7 +230,7 @@ Since many of our points plot on top of each other, we modified the `alpha` to i
 
 To do this, we can specify the `position` argument inside `geom_point()`. We will use the `position_jitter()` function to specify that we want our points to be jittered.
 
-```{r position-jitter}
+```{r position-jitter, warning=F}
 ggplot(data = surveys, mapping = aes(x = weight, y = hindfoot_length, color = plot_type)) +
   geom_point(alpha = 0.2, position = position_jitter()) +
   scale_color_viridis_d()
@@ -257,14 +257,14 @@ ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
 
 Just as we colored the points before, we can color our boxplot by `plot_type` as well:
 
-```{r boxplot-color}
+```{r boxplot-color, warning=F}
 ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length, color = plot_type)) +
   geom_boxplot()
 ```
 
 It looks like `color` has only affected the outlines of the boxplot, not the rectangular portions. This is because the `color` only impacts 1-dimensional parts of a `ggplot`: points and lines. To change the color of 2-dimensional parts of a plot, we use `fill`:
 
-```{r boxplot-fill}
+```{r boxplot-fill, warning=F}
 ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length, fill = plot_type)) +
   geom_boxplot()
 ```
@@ -273,7 +273,7 @@ ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length, fill = 
 
 One of the most powerful aspects of **`ggplot`** is the way we can add components to a plot in successive layers. While boxplots can be very useful for summarizing data, it is often helpful to show the raw data as well. With **`ggplot`**, we can easily add another `geom_` to our plot to show the raw data. Let's add `geom_point()` like we did in our scatterplot:
 
-```{r boxplot-points}
+```{r boxplot-points, warning=F}
 ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
   geom_boxplot() +
   geom_point(position = position_jitter(), alpha = 0.2)
@@ -281,7 +281,7 @@ ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
 
 Just as before, we can map `plot_type` to `color` by putting it inside `aes()`.
 
-```{r global-color}
+```{r global-color, warning=F}
 ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length, color = plot_type)) +
   geom_boxplot() +
   geom_point(position = position_jitter(), alpha = 0.2)
@@ -291,7 +291,7 @@ Notice that both the color of the points and the color of the boxplot lines chan
 
 If we want to limit the mapping to a single `geom`, we can put the mapping into the specific `geom_` function, like this:
 
-```{r geom-color}
+```{r geom-color, warning=F}
 ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
   geom_boxplot() +
   geom_point(aes(color = plot_type), position = position_jitter(), alpha = 0.2)
@@ -299,7 +299,7 @@ ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
 
 Now our points are colored according to `plot_type`, but the boxplots are all the same color. One thing you might notice is that even with `alpha = 0.2`, the points obscure parts of the boxplot. This is because the `geom_point()` layer comes after the `geom_boxplot()` layer, which means the points are plotted on top of the boxes. To put the boxplots on top, we just switch the order of the layers:
 
-```{r reverse-layers}
+```{r reverse-layers, warning=F}
 ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
   geom_point(aes(color = plot_type), position = position_jitter(), alpha = 0.2) +
   geom_boxplot()
@@ -307,7 +307,7 @@ ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
 
 Now we have the opposite problem! The white `fill` of the boxplots completely obscures some of the points. To address this problem, we can remove the `fill` from the boxplots altogether, leaving only the black lines. To do this, we set `fill` to `NA`:
 
-```{r fill-na}
+```{r fill-na, warning=F}
 ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
   geom_point(aes(color = plot_type), position = position_jitter(), alpha = 0.2) +
   geom_boxplot(fill = NA)
@@ -325,7 +325,7 @@ For an *extra challenge*,
 
 :::::::::::::::::::::::: solution 
 
-```{r violin-challenge-answer}
+```{r violin-challenge-answer, warning=F}
 ggplot(data = surveys, 
        mapping = aes(x = plot_type, 
                      y = hindfoot_length,
@@ -340,7 +340,7 @@ Next, make the color of the points and outlines of the violins vary by `plot_typ
 
 :::::::::::::::::::::::: solution 
 
-```{r violin-challenge-answer-2}
+```{r violin-challenge-answer-2, warning=F}
 ggplot(data = surveys, 
        mapping = aes(x = plot_type, 
                      y = hindfoot_length,
@@ -356,7 +356,7 @@ ggplot(data = surveys,
 
 So far we've been changing the appearance of parts of our plot related to our data and the `geom_` functions, but we can also change many of the non-data components of our plot. We can change the overall appearance using `theme_` functions. Let's try a black-and-white theme by adding `theme_bw()` to our plot:
 
-```{r theme-bw}
+```{r theme-bw, warning=F}
 ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
   geom_point(aes(color = plot_type), position = position_jitter(), alpha = 0.2) +
   geom_boxplot(fill = NA) +
@@ -365,7 +365,7 @@ ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
 
 As you can see, a number of parts of the plot have changed. `theme_` functions usually control many aspects of a plot's appearance all at once, for the sake of convenience. To individually change parts of a plot, we can use the `theme()` function, which can take many different arguments to change things about the text, grid lines, background color, and more. Let's try changing the size of the text on our axis titles. We can do this by specifying that the `axis.title` should be an `element_text()` with `size` set to 14.
 
-```{r text-size}
+```{r text-size, warning=F}
 ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
   geom_boxplot(fill = NA) +
   geom_point(aes(color = plot_type), position = position_jitter(), alpha = 0.2) +
@@ -375,7 +375,7 @@ ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
 
 Another change we might want to make is to remove the vertical grid lines. Since our x axis is categorical, those grid lines aren't useful. To do this, inside `theme()`, we will change the `panel.grid.major.x` to an `element_blank()`.
 
-```{r element-blank}
+```{r element-blank, warning=F}
 ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
   geom_point(aes(color = plot_type), position = position_jitter(), alpha = 0.2) +
   geom_boxplot(fill = NA) +
@@ -385,7 +385,7 @@ ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
 
 Another useful change might be to remove the color legend, since that information is already on our x axis. For this one, we will set `legend.position` to "none". 
 
-```{r legend-remove}
+```{r legend-remove, warning=F}
 ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
   geom_point(aes(color = plot_type), position = position_jitter(), alpha = 0.2) +
   geom_boxplot(fill = NA) +
@@ -398,7 +398,7 @@ ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
 
 Our plot is really shaping up now. However, we probably want to make our axis labels nicer, and perhaps add a title to the plot. We can do this using the `labs()` function:
 
-```{r labels}
+```{r labels, warning=F}
 ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
   geom_point(aes(color = plot_type), position = position_jitter(), alpha = 0.2) +
   geom_boxplot(fill = NA) +
@@ -421,7 +421,7 @@ Modify the previous plot by adding a descriptive subtitle and removing the legen
 
 :::::::::::::::::::::::: solution 
 
-```{r customizing-challenge-answer}
+```{r customizing-challenge-answer, warning=F}
 ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
   geom_point(aes(color = plot_type), position = position_jitter(), alpha = 0.2) +
   geom_boxplot(fill = NA) +
@@ -445,7 +445,7 @@ So far we've mapped variables to the x axis, the y axis, and color, but trying t
 
 Instead of cramming one more variable into a single plot, we will use the `facet_wrap()` function to generate a series of smaller plots, split out by `sex`:
 
-```{r facet-wrap}
+```{r facet-wrap, warning=F}
 ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
   geom_point(aes(color = plot_type), position = position_jitter(), alpha = 0.2) +
   geom_boxplot(fill = NA) +
@@ -467,7 +467,7 @@ Faceting comes in handy in many scenarios. It can be useful when:
 
 One issue with faceting is that the small plots are all packed together into a small space, which can cause things to get crammed together. You may have noticed that our x axis labels are overlapping, making them impossible to read. There are several ways we could fix this, but one is to turn the whole plot by 90 degrees, which we can do by adding `coord_flip()`:
 
-```{r coord-flip}
+```{r coord-flip, warning=F}
 ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
   geom_point(aes(color = plot_type), position = position_jitter(), alpha = 0.2) +
   geom_boxplot(fill = NA) +
@@ -491,26 +491,26 @@ Let's create a series of plots that we can later stitch together.
 
 First, we will make a scatter plot, which we will then assign to the **object** `scatter_plot`, using the **assignment arrow** `<-`. Our plot is now stored as the object `scatter_plot`. This process of assigning something to an **object** is not specific to `ggplot2`, but rather a general feature of `R`. We will be using it a lot in this lesson.
 
-```{r save-scatter}
+```{r save-scatter, warning=F}
 scatter_plot <- ggplot(data = surveys, mapping = aes(x = weight, y = hindfoot_length)) +
   geom_point()
 ```
 
 Assigning something to an object does not generate any output. To view our plot, we can run the name of the object, `scatter_plot`.
 
-```{r print-scatter}
+```{r print-scatter, warning=F}
 scatter_plot
 ```
 
 Now that we have our plot saved as an object, we can work with and manipulate it further. This object acts like any other `ggplot`, which means we can continue to add layers to it. For example, we can add a theme:
 
-```{r add-theme}
+```{r add-theme, warning=F}
 scatter_plot + theme_minimal()
 ```
 
 Let's go ahead and save another plot, this time a boxplot:
 
-```{r save-box}
+```{r save-box, warning=F}
 box_plot <- ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
   geom_boxplot()
 
@@ -524,19 +524,19 @@ library(patchwork)
 
 With `patchwork` loaded, all we have to do to put our two plots side by side is combine them with a `+`.
 
-```{r add-plots}
+```{r add-plots, warning=F}
 scatter_plot + box_plot
 ```
 
 To put the plots one on top of another, we can use the `/` symbol:
 
-```{r divide-plots}
+```{r divide-plots, warning=F}
 scatter_plot / box_plot
 ```
 
 Finally, using the `&` symbol, we can add a theme to the entire multi-plot:
 
-```{r divide-plots-theme}
+```{r divide-plots-theme, warning=F}
 scatter_plot / box_plot & theme_bw()
 ```
 
@@ -544,7 +544,7 @@ scatter_plot / box_plot & theme_bw()
 
 Finally, once we are happy with our plot, we probably want to save it in a format that we can share with others or put into a document. To do this, we will use the `ggsave()` function. First we will combine our plots using `patchwork`, and use the `plot_annotation()` function to add a title to our multi-plot, as well as label the individual plots as **A** and **B**.
 
-```{r patchwork-annotation}
+```{r patchwork-annotation, warning=F}
 scatter_plot / box_plot + plot_annotation(title = "Rodent size plots",
                                                        tag_levels = "A") & theme_minimal() 
 ```

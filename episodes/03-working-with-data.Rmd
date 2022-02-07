@@ -242,7 +242,7 @@ surveys_sub <- surveys %>%
 
 A good approach is to build a pipeline step by step prior to assignment. You add functions to the pipeline as you go, with the results printing in the console for you to view. Once you're satisfied with your final result, go back and add the assignment arrow statement at the start. This approach is very interactive, allowing you to see the results of each step as you build the pipeline, and produces nicely readable code.
 
-<!-- ::::::::::::::::::::::::::::::::::::: challenge  -->
+::::::::::::::::::::::::::::::::::::: challenge
 
 ## Challenge 2: Using pipes
 

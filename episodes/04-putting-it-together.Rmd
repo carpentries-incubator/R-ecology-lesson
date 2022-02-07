@@ -9,8 +9,11 @@ exercises: 2
     - str()
     - summary()
     - maybe a quick plot or two
+    - you can pipe into ggplot()
 - explore, find errors
 - show how to change 9999 to NA
+  - if_else()
+  - replace_na()
 - show how to find errant characters
 - show how to remove errant characters and change to numeric
 - make date column, find bad dates
@@ -18,3 +21,309 @@ exercises: 2
 - separate on species data
 - joins
 - bind_rows to old data
+
+```{r setup, include=F}
+knitr::opts_chunk$set(dpi = 200, out.height = 600, out.width = 600, R.options = list(max.print = 100))
+```
+
+```{r load-tidyverse-package, message=FALSE}
+library(tidyverse)
+```
+
+So far we have been working with surveys data from 1977 to 1989, and our data have been pretty neat and tidy. There are some `NA` values, but for the most part, the data have been formatted nicely. However, as many of us know, we do not always receive data in such nice shape. It's pretty common to get data with all sorts of formatting issues, maybe some strange file formats, and possibly spread across several different sources.
+
+Well, it turns out we have just that situation! We have received a newer batch of surveys data, from 1990 to 2002, and we want to add it to our older dataset so we can work with them together. Unfortunately, the data are not formatted quite as nicely as our old data. Our collaborators have told us to "look them over" for any errors, but have not given us very much specific information. We will have to explore the new data to make sure we understand it and verify that there aren't any errors. 
+
+You can download a `.zip` file containing three new data files here: [https://downgit.github.io/#/home?url=https://github.com/MCMaurer/Rewrite-R-ecology-lesson/blob/main/episodes/data/raw_data.zip](https://downgit.github.io/#/home?url=https://github.com/MCMaurer/Rewrite-R-ecology-lesson/blob/main/episodes/data/raw_data.zip). When prompted, save the file to your `data/` folder. Then navigate to the `data/` folder in RStudio's **Files** pane, and click on the `.zip` file. This will "unzip" the file, and you should now have a `raw/` folder in your `data/` folder. If you look inside it, you will see the three files: `plots_new.csv`, `species_new.txt`, and `surveys_new.csv`.
+
+## Reading the new surveys data
+
+Let's start off with the new surveys data. First we will read it into R:
+
+```{r read-surveys-new}
+surveys_new <- read_csv("episodes/data/raw/surveys_new.csv")
+```
+
+First thing we want to do is fix that `date` column name with spaces in it. R can handle them, but they are often very annoying. We can use the `rename()` function to change the column name.
+
+```{r}
+surveys_new <- surveys_new %>% 
+  rename(date = `date (mm/dd/yyyy)`)
+```
+
+
+Let's take a look at a summary of our data using `summary()`.
+
+```{r summary}
+summary(surveys_new)
+```
+
+The `summary()` function is often useful for detecting outliers or clearly incorrect values, since we get a `Min.` and `Max.` value for each numeric column. For example, we see that `month` goes from 1 to 12 and `day` goes from 1 to 31, so no issues there. However, we do notice that `weight` has a max value of 9999. Sometimes people will use extreme and impossible values to denote a missing value. It is worth checking with our collaborators to make sure this is the case, but we will assume that's what happened. 
+
+Finally, we actually got a warning message about a **parsing** issue. This message actually comes from `read_csv()`, even though it only showed up now. **Parsing** is what `read_csv()` does when it tries to guess what type of vector each CSV column should be. Sometimes it will warn us about issues that occurred, which we can then investigate with the `problems()` function.
+
+```{r problems}
+problems(surveys_new)
+```
+
+The output shows that in the 19th row and 8th column of the CSV, `read_csv()` expected a double, or numeric, value. Instead, what it got was `19'`. That stray quotation mark was unexpected, so `read_csv()` notified us. Let's go see what value is actually there for `surveys_new`. It was in the 19th row of the CSV, which includes the header row containing column names, so we should look at the 18th row of our data.frame. The 8th column is `hindfoot_length`. We can use the `head()` function to look at the first 20 rows.
+
+```{r}
+surveys_new %>% 
+  head(n=20)
+```
+
+Because `read_csv()` didn't know what to do with the value `19'`, there is an `NA` for `hindfoot_length` in row 18. It is likely that the true value was `19` and the stray quotation mark was simply a typo. If we want to change that value, we can do it by referring to the `record_id`, since it is a unique identifier for each row. We will use the function `if_else()` to actually replace the value. This function takes a logical statement as its first argument, then a value to return if that statement is `TRUE`, and a value to return if it is `FALSE`. Take a look at this example:
+
+```{r if-else}
+x <- 1:10
+ifelse(x > 6, "bigger than 6", "not bigger than 6")
+```
+
+What we will do is take `surveys_new` and mutate the `hindfoot_length` column. It will be equal to the result of an `ifelse()` statement. If the `record_id` is `16896`, the row we are trying to change, then `hindfoot_length` will be set to 19. If the `record_id` is not `16896`, then it will stay as the current `hindfoot_length` value.
+
+```{r replace-single-value}
+surveys_new <- surveys_new %>% 
+  mutate(hindfoot_length = ifelse(record_id == 16896, 19, hindfoot_length)) 
+
+surveys_new %>% 
+  head(n=20)
+```
+
+We can actually use `ifelse()` to fix the values of `9999` in the `weight` column as well. 
+
+```{r if-else-na-error}
+surveys_new <- surveys_new %>% 
+  mutate(weight = ifelse(weight == 9999, NA, weight))
+
+surveys_new %>% 
+  head(n=20)
+```
+
+::::::::::::::::::::::::::::::::::::: challenge 
+
+## Challenge 1: Find a specialized function
+
+The `tidyverse` often has specialized functions for common data manipulation tasks, such as replacing a certain values with `NA`. There is a `tidyverse` function to replace a value in a vector with `NA`. Put your Googling skills to work and see if you can find the correct function. 
+
+For an extra challenge, write out code that could use this function to replace `weight` values of 9999 with `NA`.
+
+:::::::::::::::::::::::: solution 
+
+The `dplyr` function `na_if()` will replace specific values in a vector to `NA`. To find this function, you can Google "tidyverse replace value with NA". One of the first results is the [`dplyr` documentation page](https://dplyr.tidyverse.org/reference/na_if.html) for the `na_if()` function.
+
+If you scroll down to the bottom section of the documentation, you will find several examples, including how to use the function inside `mutate()`.
+
+```{r na-if-challenge-answer, eval=F}
+surveys_new %>% 
+  mutate(weight = na_if(weight, 9999))
+```
+
+::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+The last thing we have to do is deal with our date column. It's currently a character column, but our old `surveys` data had separate columns for `year`, `month`, and `day`. Another thing we should do is check for any errors in our dates, since they are an error-prone data type.
+
+There are a few ways we could approach this problem, which is a common theme in R: there are often many ways to accomplish the same task. It is often useful to plan your approach ahead of time, so we will describe two possible methods:
+
+1. Turn the current column into a date column, validate the dates, then use `lubridate` functions to extract the year, month, and day into their own columns.
+
+2. Use the `separate()` function to split our current date column into 3 new character columns, containing the month, day and year. Then turn those columns into numeric columns. Then it will match our old `surveys` data, and we can later make a date column to validate our dates.
+
+```{r}
+library(lubridate)
+
+surveys_new <- surveys_new %>% 
+  mutate(date = mdy(date))
+```
+
+```{r}
+surveys_new %>% 
+  filter(is.na(date))
+```
+
+::::::::::::::::::::::::::::::::::::: challenge 
+
+## Challenge 2: Find the bad dates
+
+Some dates failed to parse, and they now show up as `NA` in the `date` column of `surveys_new`. Figure out what those dates were and why they might have been wrong.
+
+**Hint**: you will have to look at a previous version of the data, before we modified the `date` column.
+
+:::::::::::::::::::::::: solution
+
+There are two basic approaches you could take. First, you could look directly at the old CSV and find the rows with bad dates based on their `record_id`.
+
+You could also read the data back into R and use `filter()` to pick out those specific rows via `record_id`:
+
+```{r}
+read_csv("episodes/data/raw/surveys_new.csv") %>% 
+  filter(record_id %in% c(22258, 22261, 30595, 30610, 30638, 31394))
+```
+
+The dates are wrong because they are the 31st day in a month that only has 30 days, like April or September. `lubridate` doesn't recognize these as valid dates. The same thing can happen with things like dates in February during non-leap years.
+
+::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+```{r}
+surveys_new <- surveys_new %>% 
+  mutate(year = lubridate::year(date),
+         month = lubridate::month(date),
+         day = lubridate::day(date)) %>% 
+  select(-date)
+```
+
+::::::::::::::::::::::::::::::::::::: challenge 
+
+## Optional challenge: Try the other method
+
+
+:::::::::::::::::::::::: solution 
+
+
+
+```{r na-if-challenge-answer}
+read_csv("episodes/data/raw/surveys_new.csv") %>% 
+  rename(date = `date (mm/dd/yyyy)`) %>% 
+  separate(date, into = c("month", "day", "year"), sep = "/") %>% 
+  mutate(across(c(month, day, year), as.numeric)) %>% 
+  mutate(date = paste(year, month, day) %>% 
+           lubridate::ymd())
+```
+
+::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Reading the new species data
+
+Our `surveys_new` data look good at this point, so let's move on to the species data. You may have noticed that our species data came in a different file format, `species_new.txt`. So far we have been working with CSV files, in which values are separated by commas. However, R is capable of reading many different file types. The `.txt` extension means it is a plain-text file, which means the data could be formatted in quite a few different ways. Let's take a look at the file directly to see how it is structured.
+
+Click on the `species_new.txt` file in the **Files** pane to open it in RStudio. We see that our data are still structured in columns and rows, with column names in the header row. Each value is wrapped in quotes, values are separated by spaces, and each row ends with a new line.
+
+This is a generic data structure called "delimited" data. A CSV is a form of delimited data, where values are "delimited", or separated, by commas. Luckily, the `readr` package has a function for dealing with more generic delimited data, called `read_delim()`.
+
+We have to give `read_delim()` three arguments. First is the file path, just like `read_csv()`. The second argument is what character string is used to delimit each item in the file. In our case, it is a space, so we make a character string that is just a space. Finally, we need to identify what is used to quote each entry in our file. Our values are wrapped in double-quotes, so we need to type a double quote. However, we can't just type 3 double-quotes, or R will get upset with us (give it a try if you want). Luckily, R recognizes both single- and double-quotes for creating character strings. So we can use single-quotes to make our character string, and put one double-quote character inside it.
+
+```{r read-species-new}
+species_new <- read_delim("episodes/data/raw/species_new.txt", delim = " ", quote = '"')
+
+species_new
+```
+
+What we get back is a tibble, formatted just like it would have been if our data were in a CSV.
+
+One thing we might notice is that our species and genus are combined into one column called `species_name`, whereas in our old data, we had separate columns for `genus` and `species`. It is fairly common to have data in one column that could be separated into two or more columns. Luckily, `tidyr` has a convenient function for solving this problem, called `separate()`.
+
+We pipe `species_new` into the `separate()` function, then give it several other arguments. First, the name of the column to be separated, `species_name`. Next, we give the argument `into` a character vector of the new columns we want. Finally, we give a string for what is currently separating each of the new values in the current column. In `species_name`, the genus and species are separated by a space.
+
+```{r separate}
+species_new <- species_new %>%
+  separate(species_name, into = c("genus", "species"), sep = " ")
+
+species_new
+```
+
+There we go, now `species_new` is formatted like the similar columns in the older `surveys` data.
+
+## Reading the new plots data
+
+Finally, we can move on to the new `plots` data, in the `plots_new.csv` file. We can go back to `read_csv()` to get it into R.
+
+```{r read-plots-new}
+plots_new <- read_csv("episodes/data/raw/plots_new.csv")
+
+plots_new
+```
+
+It looks like our data are in a bit of a strange format. We have a column for each plot, and then a single row of data containing the plot type. If you look at our old `surveys` data, we had a single row for `plot_id` and a single row for `plot_type`. However, our data are in a **wide** format. In the last episode, we took some **long** data and used `pivot_wider()` to reshape it into a wide format. There is a similar function to move from wide to long format, called `pivot_longer()`.
+
+We pipe the `plots_new` data into `pivot_longer()`, and then add 3 other argumens. `cols` takes the names of the columns that we want to pivot; in our case, we want all the columns, so we can use the function `everything()` to use all the columns. `names_to` is the name of the new column that will contain the old column names, and `values_to` is the name of the new column that will contain the values in the old columns.
+
+```{r pivot-longer}
+plots_new <- plots_new %>% 
+  pivot_longer(cols = everything(), names_to = "plot_id", values_to = "plot_type")
+
+plots_new
+```
+
+Data are often recorded in spreadsheets in a wider format, but lots of `tidyverse` tools, especially `ggplot2`, like data in a longer format, so `pivot_longer()` is often very useful.
+
+Our old `surveys` data had `plot_id` as a numeric variable, but ours is a character string with `"Plot "` in front of the number. This is a pretty common issue, but we can use a function from the `stringr` package to fix it.
+
+We will use `mutate()` to modify the `plot_id` column, and we will replace it with the results of the `str_replace()` function. The first argument to `str_replace()` is the character vector we want to modify, which is the current `plot_id` column. Next is the string of characters that we want to replace, which is `"Plot "`, including the space at the end. Finally, we have the replacement string. Since we want to remove `"Plot "`, we replace it with a blank string `""`.
+
+```{r str-replace}
+plots_new <- plots_new %>% 
+  mutate(plot_id = str_replace(plot_id, "Plot ", ""))
+
+plots_new
+```
+
+We successfully removed `"Plot "` from our `plot_id` column entries, so we are left with just the numbers. However, it is still a `character` column. The last step is to convert it to a numeric column.
+
+```{r as-numeric}
+plots_new <- plots_new %>% 
+  mutate(plot_id = as.numeric(plot_id))
+
+plots_new
+```
+
+## Joining the new data
+
+Now that we have each individual data.frame formatted nicely, we would like to be able to combine them. Our `surveys` data has all of the data combined into one data.frame. However, our data.frames are different sizes. `surveys_new` has 18676 rows, and it contains the individual data for each animal. This is the same basic size of the old `surveys` data. However, our `plots_new` and `species_new` data are much smaller. They only contain data on specific plots and species.
+
+If we look at the column names for `surveys_new` and `plots_new`, we see that they share a `plot_id` column. What we want to do now is take the data of our actual observations, `surveys_new`, and add the data for each associated plot. If a row in `surveys_new` has a `plot_id` of 2, we want to associate the `plot_type` of that plot with that row. We can accomplish this using a **join**.
+
+There are several types of joins in the `dplyr` package, which you can [read more about here](https://stat545.com/join-cheatsheet.html). We will use a function called `left_join()`, which takes two dataframes and adds the columns from the second dataframe to the first dataframe, matching rows based on the column name supplied to the `by` argument.
+
+```{r left-join}
+left_join(surveys_new, plots_new, by = "plot_id")
+```
+
+Now we have our `surveys_new` dataframe, still with 18676 rows, but now each row has a value for `plot_type`, corresponding to its entry in `plot_id`. We can assign this back to `surveys_new`, so that it now contains the information from both dataframes.
+
+```{r left-join-assign}
+surveys_new <- left_join(surveys_new, plots_new, by = "plot_id")
+```
+
+We can repeat this process to get the information from `species_new`. `surveys_new` and `species_new` both have a `species_id` column, but we would like to add the `genus`, `species`, and `taxa` information to `surveys_new`.
+
+```{r left-join-species}
+surveys_new <- left_join(surveys_new, species_new, by = "species_id")
+
+surveys_new
+```
+
+Now our `surveys_new` dataframe has all the information from our 3 files, and the same number of columns as our original `surveys` data.
+
+## Adding to the old data
+
+Now that our old `surveys` data and `surveys_new` data are formatted in the same way, we can bind them together so we have data from all years in one data.frame. First let's read our `surveys' data back in.
+
+```{r read-old-surveys}
+surveys <- read_csv("episodes/data/cleaned/surveys_complete_77_89.csv")
+```
+
+Now we can use the `bind_rows()` function to bind the rows of our two data.frames together. The fact that our columns are not in the same order doesn't matter, `bind_rows()` will detect thatt the column names are the same, and will rearrange them to match the first data.frame.
+
+```{r bind-rows}
+surveys_complete <- bind_rows(surveys, surveys_new)
+
+surveys_complete
+```
+
+We have now successfully cleaned our new data and reshaped it to match our old data so they could be arranged into one data.frame covering all the years.
+
+## Final outputs
+
+Let's go ahead and write our data to a CSV file so we can share it with others.
+
+```{r, eval = F}
+surveys_complete %>% 
+  write_csv("data/cleaned/surveys_complete.csv")
+```
+
