@@ -216,50 +216,36 @@
         </div>
 
         
-
-<ul><li>importing complete_old CSV
-<ul><li>touch on column parsing</li>
-<li>talk about file paths and tab completion</li>
-<li>should we teach the <code>here()</code> package?</li>
-</ul></li>
-<li>base vs. tidyverse</li>
-<li>pipes</li>
-<li>select</li>
-<li>filter
-<ul><li>idea of conditional subsetting</li>
-<li>==, &gt;, !, |, &amp;</li>
-<li>show %in%</li>
-</ul></li>
-<li>mutate</li>
-<li>making a date column</li>
-<li>group_by
-<ul><li>summarize</li>
-<li>mutate</li>
-<li>ungroup</li>
-</ul></li>
-<li>pivot_wider</li>
-<li>exporting data</li>
-</ul><p>Challenge ideas:</p>
-<ul><li>plotting a time series using the date</li>
-<li>predicting # of rows before pivoting
-<ul><li>important to plan out reshaping steps in advance</li>
-</ul></li>
-<li>filter operations
-<ul><li>weight between two values</li>
-<li>maybe throw in an | example</li>
-</ul></li>
-<li>combination filter and select where doing the order wrong yields an error
-<ul><li>only has columns record_id, species_id, sex, and hindfoot_length, but weight has to be NA</li>
-</ul></li>
-<li>a couple of simple group_by operations
-<ul><li>how many combinations of plot id and genus are there
-<ul><li>could show that distinct also works here</li>
-</ul></li>
-<li>what will happen if you group by weight?</li>
-<li>an operation that requires group_by and mutate</li>
-<li>an operation that requires multiple group_by steps</li>
-</ul></li>
-</ul><div class="codewrapper sourceCode" id="cb1">
+<!-- - importing complete_old CSV --><!--     - touch on column parsing --><!--     - talk about file paths and tab completion --><!--     - should we teach the `here()` package? --><!-- - base vs. tidyverse --><!-- - pipes --><!-- - select --><!-- - filter --><!--     - idea of conditional subsetting --><!--     - ==, >, !, |, & --><!--     - show %in% --><!-- - mutate --><!-- - making a date column --><!-- - group_by --><!--   - summarize --><!--   - mutate --><!--   - ungroup --><!-- - pivot_wider --><!-- - exporting data --><!-- Challenge ideas: --><!-- - plotting a time series using the date --><!-- - predicting # of rows before pivoting --><!--   - important to plan out reshaping steps in advance --><!-- - filter operations --><!--   - weight between two values --><!--   - maybe throw in an | example --><!-- - combination filter and select where doing the order wrong yields an error --><!--   - only has columns record_id, species_id, sex, and hindfoot_length, but weight has to be NA --><!-- - a couple of simple group_by operations --><!--   - how many combinations of plot id and genus are there --><!--     - could show that distinct also works here --><!--   - what will happen if you group by weight? --><!--   - an operation that requires group_by and mutate --><!--   - an operation that requires multiple group_by steps -->
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
+<ul><li>How do you manipulate tabular data in R?</li>
+</ul></div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul><li>Import CSV data into R.</li>
+<li>Understand the difference between base R and <code>tidyverse</code> approaches.</li>
+<li>Subset rows and columns of data.frames.</li>
+<li>Use pipes to link steps together into pipelines.</li>
+<li>Create new data.frame columns using existing columns.</li>
+<li>Utilize the concept of split-apply-combine data analysis.</li>
+<li>Reshape data between wide and long formats.</li>
+<li>Export data to a CSV file.</li>
+</ul></div>
+</div>
+</div>
+</div>
+</div>
+<div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1634,6 +1620,23 @@ Attaching package: 'lubridate'</code></pre>
 <pre class="error" tabindex="0"><code>Error in is.data.frame(x): object 'surveys_ps' not found</code></pre>
 </div>
 <p>If we go look into our <code>data/cleaned_data</code> folder, we will see this new CSV file.</p>
+<div id="keypoints1" class="callout keypoints">
+<div class="callout-square">
+<i class="callout-icon" data-feather="key"></i>
+</div>
+<div class="callout-inner">
+<h3 class="callout-title">Keypoints</h3>
+<div class="callout-content">
+<ul><li>use <code><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter()</a></code> to subset rows and <code><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select()</a></code> to subset columns</li>
+<li>build up pipelines one step at a time before assigning the result</li>
+<li>it is often best to keep components of dates separate until needed, then use <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate()</a></code> to make a date column</li>
+<li>
+<code><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by()</a></code> can be used with <code><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize()</a></code> to collapse rows or <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate()</a></code> to keep the same number of rows</li>
+<li>
+<code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider()</a></code> and <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer()</a></code> are powerful for reshaping data, but you should plan out how to use them thoughtfully</li>
+</ul></div>
+</div>
+</div>
 </section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="02-how-r-thinks-about-data.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>

@@ -221,10 +221,20 @@
 <li>make sure to use <code><a href="https://rdrr.io/r/base/class.html" class="external-link">class()</a></code> to check vector types, especially when using new functions</li>
 <li>factors can be useful, but behave differently from character vectors</li>
 </ul></section><section id="working-with-data"><h2 class="section-heading"><a href="../03-working-with-data.html">Working with data</a></h2>
-<hr class="half-width"><p>No keypoints</p>
-</section><section id="putting-it-together"><h2 class="section-heading"><a href="../04-putting-it-together.html">Putting it together</a></h2>
-<hr class="half-width"><p>No keypoints</p>
-</section></div>
+<hr class="half-width"><ul><li>use <code><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter()</a></code> to subset rows and <code><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select()</a></code> to subset columns</li>
+<li>build up pipelines one step at a time before assigning the result</li>
+<li>it is often best to keep components of dates separate until needed, then use <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate()</a></code> to make a date column</li>
+<li>
+<code><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by()</a></code> can be used with <code><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize()</a></code> to collapse rows or <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate()</a></code> to keep the same number of rows</li>
+<li>
+<code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider()</a></code> and <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer()</a></code> are powerful for reshaping data, but you should plan out how to use them thoughtfully</li>
+</ul></section><section id="putting-it-together"><h2 class="section-heading"><a href="../04-putting-it-together.html">Putting it together</a></h2>
+<hr class="half-width"><ul><li>it is always good to do preliminary investigations of new data</li>
+<li>there are often many ways to achieve the same goal, describing them with plain English or pseudocode can help you choose an approach</li>
+<li>the <code>read_delimited()</code> function can read tabular data from multiple file formats</li>
+<li>joins are powerful ways to combine multiple datasets</li>
+<li>it is a good idea to plan out the steps of your data cleaning and combining</li>
+</ul></section></div>
     </main></div>
 <!-- END  : inst/pkgdown/templates/content-extra.html -->
 

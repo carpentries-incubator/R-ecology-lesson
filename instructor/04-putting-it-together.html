@@ -233,34 +233,41 @@
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Putting it together</h1>
         <p> Last updated on 2022-02-09 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/04-putting-it-together.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-        <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 12 minutes </p>
+        <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 48 minutes </p>
         
         <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
 
         
-
-<ul><li>read in new surveys data</li>
-<li>EDA
-<ul><li>str()</li>
-<li>summary()</li>
-<li>maybe a quick plot or two</li>
-<li>you can pipe into ggplot()</li>
-</ul></li>
-<li>explore, find errors</li>
-<li>show how to change 9999 to NA
-<ul><li>if_else()</li>
-<li>replace_na()</li>
-</ul></li>
-<li>show how to find errant characters</li>
-<li>show how to remove errant characters and change to numeric</li>
-<li>make date column, find bad dates</li>
-<li>pivot_longer on plots data</li>
-<li>separate on species data</li>
-<li>joins</li>
-<li>bind_rows to old data</li>
-</ul><div class="codewrapper sourceCode" id="cb1">
+<!-- - read in new surveys data --><!-- - EDA --><!--     - str() --><!--     - summary() --><!--     - maybe a quick plot or two --><!--     - you can pipe into ggplot() --><!-- - explore, find errors --><!-- - show how to change 9999 to NA --><!--   - if_else() --><!--   - replace_na() --><!-- - show how to find errant characters --><!-- - show how to remove errant characters and change to numeric --><!-- - make date column, find bad dates --><!-- - pivot_longer on plots data --><!-- - separate on species data --><!-- - joins --><!-- - bind_rows to old data -->
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
+<ul><li>How do you apply data manipulation skills to multiple new files?</li>
+</ul></div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul><li>Read in messy data and find issues.</li>
+<li>Replace incorrect values.</li>
+<li>Read data from multiple file formats.</li>
+<li>Utilize <code>pivot_</code> functions to reshape untidy data.</li>
+<li>Combine multiple datasets.</li>
+<li>Understand the process of formatting new data similarly to existing data.</li>
+</ul></div>
+</div>
+</div>
+</div>
+</div>
+<div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1063,6 +1070,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight</code></p
 <code class="sourceCode R"><span class="va">surveys_complete</span> <span class="op">%&gt;%</span> 
   <span class="fu">write_csv</span><span class="op">(</span><span class="st">"data/cleaned/surveys_complete.csv"</span><span class="op">)</span></code></pre>
 </div>
+<p>Now we might be interested in looking at all of our data together. Try making some plots of your own to look at the whole dataset!</p>
 <div class="codewrapper sourceCode" id="cb66">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1077,7 +1085,22 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight</code></p
 </h3>
 <pre class="warning" tabindex="0"><code>Warning: Removed 4812 rows containing missing values (geom_point).</code></pre>
 </div>
-<figure><img src="../fig/04-putting-it-together-rendered-unnamed-chunk-4-1.png" width="600" height="600" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></section></div> <!-- / div.lesson-content -->
+<figure><img src="../fig/04-putting-it-together-rendered-complete-plot-1.png" width="600" height="600" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="keypoints1" class="callout keypoints">
+<div class="callout-square">
+<i class="callout-icon" data-feather="key"></i>
+</div>
+<div class="callout-inner">
+<h3 class="callout-title">Keypoints</h3>
+<div class="callout-content">
+<ul><li>it is always good to do preliminary investigations of new data</li>
+<li>there are often many ways to achieve the same goal, describing them with plain English or pseudocode can help you choose an approach</li>
+<li>the <code>read_delimited()</code> function can read tabular data from multiple file formats</li>
+<li>joins are powerful ways to combine multiple datasets</li>
+<li>it is a good idea to plan out the steps of your data cleaning and combining</li>
+</ul></div>
+</div>
+</div>
+</section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="../instructor/03-working-with-data.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
         <a class="chapter-link float-end" href="../instructor/index.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>

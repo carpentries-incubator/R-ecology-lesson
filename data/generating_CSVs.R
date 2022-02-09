@@ -42,6 +42,11 @@ surveys_new$hindfoot_length[18] <- paste0(surveys_new$hindfoot_length[18], "'")
 surveys_new <- surveys_new %>%
   mutate(weight = if_else(is.na(weight), 9999L, weight))
 
+surveys_new <- surveys_new %>%
+  mutate(`date (mm/dd/yyyy)` = paste(month, day, year, sep = "/")) %>%
+  relocate(`date (mm/dd/yyyy)`, .after = record_id) %>%
+  select(-year, -month, -day)
+
 write_csv(complete_old, "episodes/data/cleaned/surveys_complete_77_89.csv")
 write_csv(surveys_new, "episodes/data/raw/surveys_new.csv")
 write_csv(plots_new, "episodes/data/raw/plots_new.csv")
