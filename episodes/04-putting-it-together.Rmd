@@ -1,26 +1,43 @@
 ---
 title: "Putting it together"
-teaching: 10
-exercises: 2
+teaching: 45
+exercises: 3
 ---
 
-- read in new surveys data
-- EDA
-    - str()
-    - summary()
-    - maybe a quick plot or two
-    - you can pipe into ggplot()
-- explore, find errors
-- show how to change 9999 to NA
-  - if_else()
-  - replace_na()
-- show how to find errant characters
-- show how to remove errant characters and change to numeric
-- make date column, find bad dates
-- pivot_longer on plots data
-- separate on species data
-- joins
-- bind_rows to old data
+<!-- - read in new surveys data -->
+<!-- - EDA -->
+<!--     - str() -->
+<!--     - summary() -->
+<!--     - maybe a quick plot or two -->
+<!--     - you can pipe into ggplot() -->
+<!-- - explore, find errors -->
+<!-- - show how to change 9999 to NA -->
+<!--   - if_else() -->
+<!--   - replace_na() -->
+<!-- - show how to find errant characters -->
+<!-- - show how to remove errant characters and change to numeric -->
+<!-- - make date column, find bad dates -->
+<!-- - pivot_longer on plots data -->
+<!-- - separate on species data -->
+<!-- - joins -->
+<!-- - bind_rows to old data -->
+
+:::::::::::::::::::::::::::::::::::::: questions 
+
+- How do you apply data manipulation skills to multiple new files?
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::: objectives
+
+- Read in messy data and find issues.
+- Replace incorrect values.
+- Read data from multiple file formats.
+- Utilize `pivot_` functions to reshape untidy data.
+- Combine multiple datasets.
+- Understand the process of formatting new data similarly to existing data.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 ```{r setup, include=F}
 knitr::opts_chunk$set(dpi = 200, out.height = 600, out.width = 600, R.options = list(max.print = 100))
@@ -347,15 +364,26 @@ We have now successfully cleaned our new data and reshaped it to match our old d
 
 Let's go ahead and write our data to a CSV file so we can share it with others.
 
-```{r, eval = F}
+```{r write-complete, eval = F}
 surveys_complete %>% 
   write_csv("data/cleaned/surveys_complete.csv")
 ```
 
-```{r}
+Now we might be interested in looking at all of our data together. Try making some plots of your own to look at the whole dataset!
+
+```{r complete-plot}
 surveys_complete %>% 
   ggplot(aes(x = weight, y = hindfoot_length)) +
   geom_point(alpha = 0.05) +
   facet_wrap(vars(source))
 ```
 
+::::::::::::::::::::::::::::::::::::: keypoints 
+
+- it is always good to do preliminary investigations of new data
+- there are often many ways to achieve the same goal, describing them with plain English or pseudocode can help you choose an approach
+- the `read_delimited()` function can read tabular data from multiple file formats
+- joins are powerful ways to combine multiple datasets
+- it is a good idea to plan out the steps of your data cleaning and combining
+
+::::::::::::::::::::::::::::::::::::::::::::::::
