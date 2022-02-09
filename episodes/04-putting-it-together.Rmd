@@ -265,6 +265,13 @@ plots_new
 
 It looks like our data are in a bit of a strange format. We have a column for each plot, and then a single row of data containing the plot type. If you look at our old `surveys` data, we had a single row for `plot_id` and a single row for `plot_type`. `surveys` contained this data in a **long** format, whereas `plots_new` has a **wide** format.
 
+
+::::::::::::::::::::::::::::::::::::: instructor
+
+The next Challenge is mandatory for later steps in the lesson- if you choose to not use it as a Challenge, you should still go through the code to get the data into long format.
+
+:::::::::::::::::::::::::::::::::::::
+
 ::::::::::::::::::::::::::::::::::::: challenge 
 
 ## Challenge 3: Reshape `plots_new`
