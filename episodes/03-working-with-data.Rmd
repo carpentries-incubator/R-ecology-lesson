@@ -521,12 +521,16 @@ In this case, it might be nice to create a data.frame where each species has its
 
 Any columns not used for `names_from` or `values_from` will not be pivoted.
 
+![Diagram displaying the behavior of `pivot_wider()`.](fig/pivot_wider.png)
+
 In our case, we want the new columns to be named from our `plot_id` column, with the values coming from the `mean_weight` column. We can pipe our data.frame right into `pivot_wider()` and add those two arguments:
 
 ```{r pivot-wider}
-sp_by_plot %>% 
+sp_by_plot_wide <- sp_by_plot %>% 
   pivot_wider(names_from = plot_id, 
               values_from = mean_weight)
+
+sp_by_plot_wide
 ```
 
 Now we've got our reshaped data.frame. There are a few things to notice. First, we have a new column for each `plot_id` value. There is one old column left in the data.frame: `species_id`. It wasn't used in `pivot_wider()`, so it stays, and now contains a single entry for each unique `species_id` value. 
@@ -542,9 +546,30 @@ sp_by_plot %>%
 
 We get back 0 rows. There is no `mean_weight` for the species `BA` in plot `1`. This either happened because no `BA` were ever caught in plot `1`, or because every `BA` caught in plot `1` had an `NA` weight value and all the rows got removed when we used `filter(!is.na(weight))` in the process of making `sp_by_plot`. Because there are no rows with that species + plot combination, in our pivoted data.frame, the value gets filled with `NA`.
 
+There is another `pivot_` function that does the opposite, moving data from a wide to long format, called `pivot_longer()`. It takes 3 arguments: `cols` for the columns you want to pivot, `names_to` for the name of the new column which will contain the old column names, and `values_to` for the name of the new column which will contain the old values.
+
+![Diagram displaying the behavior of `pivot_longer()`.](fig/pivot_longer.png)
+
+We can pivot our new wide data.frame to a long format using `pivot_longer()`. We want to pivot all the columns except `species_id`, and we will use `PLOT` for the new column of plot IDs, and `MEAN_WT` for the new column of mean weight values.
+
+```{r pivot-longer}
+sp_by_plot_wide %>% 
+  pivot_longer(cols = -species_id, names_to = "PLOT", values_to = "MEAN_WT")
+```
+
+One thing you will notice is that all those `NA` values that got generated when we pivoted wider. However, we can filter those out, which gets us back to the same data as `sp_by_plot`, before we pivoted it wider.
+
+```{r pivot-longer-filter}
+sp_by_plot_wide %>% 
+  pivot_longer(cols = -species_id, names_to = "PLOT", values_to = "MEAN_WT") %>% 
+  filter(!is.na(MEAN_WT))
+```
+
+Data are often recorded in spreadsheets in a wider format, but lots of `tidyverse` tools, especially `ggplot2`, like data in a longer format, so `pivot_longer()` is often very useful.
+
 ## Exporting data
 
-Let's say we want to send the above data.frame to a colleague who doesn't use R. In this case, we might want to save it as a CSV file.
+Let's say we want to send the wide version of our `sb_by_plot` data.frame to a colleague who doesn't use R. In this case, we might want to save it as a CSV file.
 
 First, we might want to modify the names of the columns, since right now they are bare numbers, which aren't very informative. Luckily, `pivot_wider()` has an argument `names_prefix` which will allow us to add "plot_" to the start of each column.
 

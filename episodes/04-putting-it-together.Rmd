@@ -41,7 +41,7 @@ You can download a `.zip` file containing three new data files here: [https://do
 Let's start off with the new surveys data. First we will read it into R:
 
 ```{r read-surveys-new}
-surveys_new <- read_csv("episodes/data/raw/surveys_new.csv")
+surveys_new <- read_csv("data/raw/surveys_new.csv")
 ```
 
 First thing we want to do is fix that `date` column name with spaces in it. R can handle them, but they are often very annoying. We can use the `rename()` function to change the column name.
@@ -131,14 +131,20 @@ There are a few ways we could approach this problem, which is a common theme in 
 
 2. Use the `separate()` function to split our current date column into 3 new character columns, containing the month, day and year. Then turn those columns into numeric columns. Then it will match our old `surveys` data, and we can later make a date column to validate our dates.
 
-```{r}
+It is often useful to plan out your approach, or several approaches, before you start writing code. It can be in the form of plain English like above, or in **"pseudo-code"**, which is laid out like code, but doesn't have explicit, functioning code.
+
+We will go ahead and use the first approach. First we will load `lubridate` and use the `mdy()` function to turn our `date` column into a date instead of character column.
+
+```{r make-date-col}
 library(lubridate)
 
 surveys_new <- surveys_new %>% 
   mutate(date = mdy(date))
 ```
 
-```{r}
+We got a warning message about 6 dates failing to parse. This means that the `mdy()` function encountered 6 dates that it wasn't able to identify correctly. When `lubridate` functions fail to parse dates, they will return an `NA` value instead. To find the rows where this happened, we can use `filter()`:
+
+```{r na-dates}
 surveys_new %>% 
   filter(is.na(date))
 ```
@@ -147,7 +153,7 @@ surveys_new %>%
 
 ## Challenge 2: Find the bad dates
 
-Some dates failed to parse, and they now show up as `NA` in the `date` column of `surveys_new`. Figure out what those dates were and why they might have been wrong.
+We have now located the rows with `NA` dates, but we probably want to know what the original date character strings looked like. Figure out what those dates were and why they might have been wrong.
 
 **Hint**: you will have to look at a previous version of the data, before we modified the `date` column.
 
@@ -157,8 +163,8 @@ There are two basic approaches you could take. First, you could look directly at
 
 You could also read the data back into R and use `filter()` to pick out those specific rows via `record_id`:
 
-```{r}
-read_csv("episodes/data/raw/surveys_new.csv") %>% 
+```{r find-dates-challenge-answer, message=F}
+read_csv("data/raw/surveys_new.csv") %>% 
   filter(record_id %in% c(22258, 22261, 30595, 30610, 30638, 31394))
 ```
 
@@ -168,35 +174,36 @@ The dates are wrong because they are the 31st day in a month that only has 30 da
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-```{r}
+The last thing to do is extract the year, month, and day values from our `date` column. `lubridate` has functions to extract each component of a date. We will then get rid of the `date` column, since it doesn't appear in our original `surveys` data, and we can always remake it from the component columns.
+
+```{r date-components}
 surveys_new <- surveys_new %>% 
-  mutate(year = lubridate::year(date),
-         month = lubridate::month(date),
-         day = lubridate::day(date)) %>% 
+  mutate(year = year(date),
+         month = month(date),
+         day = day(date)) %>% 
   select(-date)
+
+surveys_new
 ```
 
-::::::::::::::::::::::::::::::::::::: challenge 
+<!-- ::::::::::::::::::::::::::::::::::::: challenge  -->
 
-## Optional challenge: Try the other method
+<!-- ## Optional challenge: Try the other method -->
 
+<!-- :::::::::::::::::::::::: solution  -->
 
-:::::::::::::::::::::::: solution 
+<!-- ```{r na-if-challenge-answer} -->
+<!-- read_csv("data/raw/surveys_new.csv") %>%  -->
+<!--   rename(date = `date (mm/dd/yyyy)`) %>%  -->
+<!--   separate(date, into = c("month", "day", "year"), sep = "/") %>%  -->
+<!--   mutate(across(c(month, day, year), as.numeric)) %>%  -->
+<!--   mutate(date = paste(year, month, day) %>%  -->
+<!--            lubridate::ymd()) -->
+<!-- ``` -->
 
+<!-- :::::::::::::::::::::::: -->
 
-
-```{r na-if-challenge-answer}
-read_csv("episodes/data/raw/surveys_new.csv") %>% 
-  rename(date = `date (mm/dd/yyyy)`) %>% 
-  separate(date, into = c("month", "day", "year"), sep = "/") %>% 
-  mutate(across(c(month, day, year), as.numeric)) %>% 
-  mutate(date = paste(year, month, day) %>% 
-           lubridate::ymd())
-```
-
-::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::: -->
 
 ## Reading the new species data
 
@@ -209,7 +216,7 @@ This is a generic data structure called "delimited" data. A CSV is a form of del
 We have to give `read_delim()` three arguments. First is the file path, just like `read_csv()`. The second argument is what character string is used to delimit each item in the file. In our case, it is a space, so we make a character string that is just a space. Finally, we need to identify what is used to quote each entry in our file. Our values are wrapped in double-quotes, so we need to type a double quote. However, we can't just type 3 double-quotes, or R will get upset with us (give it a try if you want). Luckily, R recognizes both single- and double-quotes for creating character strings. So we can use single-quotes to make our character string, and put one double-quote character inside it.
 
 ```{r read-species-new}
-species_new <- read_delim("episodes/data/raw/species_new.txt", delim = " ", quote = '"')
+species_new <- read_delim("data/raw/species_new.txt", delim = " ", quote = '"')
 
 species_new
 ```
@@ -234,23 +241,33 @@ There we go, now `species_new` is formatted like the similar columns in the olde
 Finally, we can move on to the new `plots` data, in the `plots_new.csv` file. We can go back to `read_csv()` to get it into R.
 
 ```{r read-plots-new}
-plots_new <- read_csv("episodes/data/raw/plots_new.csv")
+plots_new <- read_csv("data/raw/plots_new.csv")
 
 plots_new
 ```
 
-It looks like our data are in a bit of a strange format. We have a column for each plot, and then a single row of data containing the plot type. If you look at our old `surveys` data, we had a single row for `plot_id` and a single row for `plot_type`. However, our data are in a **wide** format. In the last episode, we took some **long** data and used `pivot_wider()` to reshape it into a wide format. There is a similar function to move from wide to long format, called `pivot_longer()`.
+It looks like our data are in a bit of a strange format. We have a column for each plot, and then a single row of data containing the plot type. If you look at our old `surveys` data, we had a single row for `plot_id` and a single row for `plot_type`. `surveys` contained this data in a **long** format, whereas `plots_new` has a **wide** format.
 
-We pipe the `plots_new` data into `pivot_longer()`, and then add 3 other argumens. `cols` takes the names of the columns that we want to pivot; in our case, we want all the columns, so we can use the function `everything()` to use all the columns. `names_to` is the name of the new column that will contain the old column names, and `values_to` is the name of the new column that will contain the values in the old columns.
+::::::::::::::::::::::::::::::::::::: challenge 
 
-```{r pivot-longer}
+## Challenge 3: Reshape `plots_new`
+
+Take the `plots_new` data.frame and shape it into a long format. You should end up with two columns: `plot_id` containing the ID for each plot, and `plot_type` containing the type for each plot.
+
+**Hint**: the function `everything()` means "every column" when selecting columns.
+
+:::::::::::::::::::::::: solution 
+
+```{r pivot-longer-challenge-answer}
 plots_new <- plots_new %>% 
   pivot_longer(cols = everything(), names_to = "plot_id", values_to = "plot_type")
 
 plots_new
 ```
 
-Data are often recorded in spreadsheets in a wider format, but lots of `tidyverse` tools, especially `ggplot2`, like data in a longer format, so `pivot_longer()` is often very useful.
+::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 Our old `surveys` data had `plot_id` as a numeric variable, but ours is a character string with `"Plot "` in front of the number. This is a pretty common issue, but we can use a function from the `stringr` package to fix it.
 
@@ -305,13 +322,21 @@ Now our `surveys_new` dataframe has all the information from our 3 files, and th
 Now that our old `surveys` data and `surveys_new` data are formatted in the same way, we can bind them together so we have data from all years in one data.frame. First let's read our `surveys' data back in.
 
 ```{r read-old-surveys}
-surveys <- read_csv("episodes/data/cleaned/surveys_complete_77_89.csv")
+surveys <- read_csv("data/cleaned/surveys_complete_77_89.csv")
 ```
 
 Now we can use the `bind_rows()` function to bind the rows of our two data.frames together. The fact that our columns are not in the same order doesn't matter, `bind_rows()` will detect thatt the column names are the same, and will rearrange them to match the first data.frame.
 
 ```{r bind-rows}
 surveys_complete <- bind_rows(surveys, surveys_new)
+
+surveys_complete
+```
+
+We might be interested in indicating which rows of our data came from which source: the old data or the new. We can name the data.frames inside `bind_rows()`, and then give a new argument `.id`. This will give us a new column called `source` that contains a value of `"old"` for rows that came from `surveys`, and a value of `"new"` for rows that came from `surveys_new`.
+
+```{r bind-rows-id}
+surveys_complete <- bind_rows(old = surveys, new = surveys_new, .id = "source")
 
 surveys_complete
 ```
@@ -325,5 +350,12 @@ Let's go ahead and write our data to a CSV file so we can share it with others.
 ```{r, eval = F}
 surveys_complete %>% 
   write_csv("data/cleaned/surveys_complete.csv")
+```
+
+```{r}
+surveys_complete %>% 
+  ggplot(aes(x = weight, y = hindfoot_length)) +
+  geom_point(alpha = 0.05) +
+  facet_wrap(vars(source))
 ```
 
