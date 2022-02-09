@@ -133,10 +133,6 @@ ggplot(data = surveys, mapping = aes(x = weight, y = hindfoot_length)) +
   geom_point(alpha = 0.2)
 ```
 
-```{.warning}
-Warning: Removed 3081 rows containing missing values (geom_point).
-```
-
 <img src="fig/01-visualizing-ggplot-rendered-change-alpha-1.png" width="600" height="600" style="display: block; margin: auto;" />
 
 We can also change the color of the points:
@@ -145,10 +141,6 @@ We can also change the color of the points:
 ```r
 ggplot(data = surveys, mapping = aes(x = weight, y = hindfoot_length)) +
   geom_point(alpha = 0.2, color = "blue")
-```
-
-```{.warning}
-Warning: Removed 3081 rows containing missing values (geom_point).
 ```
 
 <img src="fig/01-visualizing-ggplot-rendered-change-color-1.png" width="600" height="600" style="display: block; margin: auto;" />
@@ -199,10 +191,6 @@ ggplot(data = surveys, mapping = aes(x = weight, y = hindfoot_length, color = pl
   geom_point(alpha = 0.2)
 ```
 
-```{.warning}
-Warning: Removed 3081 rows containing missing values (geom_point).
-```
-
 <img src="fig/01-visualizing-ggplot-rendered-color-plot-type-1.png" width="600" height="600" style="display: block; margin: auto;" />
 
 So far, we've told you what variables to put into your plots, but what if you want to know what else is in the `surveys` data? To explore the **str**ucture, you can use the `str()` function:
@@ -247,10 +235,6 @@ ggplot(data = surveys,
   geom_point(alpha = 0.2)
 ```
 
-```{.warning}
-Warning: Removed 3081 rows containing missing values (geom_point).
-```
-
 <img src="fig/01-visualizing-ggplot-rendered-modify-points-challenge-answer-1.png" width="600" height="600" style="display: block; margin: auto;" />
 
 ::::::::::::::::::::::::
@@ -264,10 +248,6 @@ Warning: Removed 3081 rows containing missing values (geom_point).
 ggplot(data = surveys, 
        mapping = aes(x = weight, y = hindfoot_length, color = year)) +
   geom_point(alpha = 0.2)
-```
-
-```{.warning}
-Warning: Removed 3081 rows containing missing values (geom_point).
 ```
 
 <img src="fig/01-visualizing-ggplot-rendered-modify-color-challenge-answer-1.png" width="600" height="600" style="display: block; margin: auto;" />
@@ -288,10 +268,6 @@ ggplot(data = surveys, mapping = aes(x = weight, y = hindfoot_length, color = pl
   scale_color_viridis_d()
 ```
 
-```{.warning}
-Warning: Removed 3081 rows containing missing values (geom_point).
-```
-
 <img src="fig/01-visualizing-ggplot-rendered-scale-viridis-1.png" width="600" height="600" style="display: block; margin: auto;" />
 
 Scales don't just apply to colors- any plot component that you put inside `aes()` can be modified with `scale_` functions. Just as we modified the scale used to map `plot_type` to `color`, we can modify the way that `weight` is mapped to the `x` axis by using the `scale_x_log10()` function:
@@ -301,10 +277,6 @@ Scales don't just apply to colors- any plot component that you put inside `aes()
 ggplot(data = surveys, mapping = aes(x = weight, y = hindfoot_length, color = plot_type)) +
   geom_point(alpha = 0.2) +
   scale_x_log10()
-```
-
-```{.warning}
-Warning: Removed 3081 rows containing missing values (geom_point).
 ```
 
 <img src="fig/01-visualizing-ggplot-rendered-scale-log-1.png" width="600" height="600" style="display: block; margin: auto;" />
@@ -323,10 +295,6 @@ To do this, we can specify the `position` argument inside `geom_point()`. We wil
 ggplot(data = surveys, mapping = aes(x = weight, y = hindfoot_length, color = plot_type)) +
   geom_point(alpha = 0.2, position = position_jitter()) +
   scale_color_viridis_d()
-```
-
-```{.warning}
-Warning: Removed 3081 rows containing missing values (geom_point).
 ```
 
 <img src="fig/01-visualizing-ggplot-rendered-position-jitter-1.png" width="600" height="600" style="display: block; margin: auto;" />
@@ -368,10 +336,6 @@ ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length, color =
   geom_boxplot()
 ```
 
-```{.warning}
-Warning: Removed 2733 rows containing non-finite values (stat_boxplot).
-```
-
 <img src="fig/01-visualizing-ggplot-rendered-boxplot-color-1.png" width="600" height="600" style="display: block; margin: auto;" />
 
 It looks like `color` has only affected the outlines of the boxplot, not the rectangular portions. This is because the `color` only impacts 1-dimensional parts of a `ggplot`: points and lines. To change the color of 2-dimensional parts of a plot, we use `fill`:
@@ -380,10 +344,6 @@ It looks like `color` has only affected the outlines of the boxplot, not the rec
 ```r
 ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length, fill = plot_type)) +
   geom_boxplot()
-```
-
-```{.warning}
-Warning: Removed 2733 rows containing non-finite values (stat_boxplot).
 ```
 
 <img src="fig/01-visualizing-ggplot-rendered-boxplot-fill-1.png" width="600" height="600" style="display: block; margin: auto;" />
@@ -399,14 +359,6 @@ ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
   geom_point(position = position_jitter(), alpha = 0.2)
 ```
 
-```{.warning}
-Warning: Removed 2733 rows containing non-finite values (stat_boxplot).
-```
-
-```{.warning}
-Warning: Removed 2733 rows containing missing values (geom_point).
-```
-
 <img src="fig/01-visualizing-ggplot-rendered-boxplot-points-1.png" width="600" height="600" style="display: block; margin: auto;" />
 
 Just as before, we can map `plot_type` to `color` by putting it inside `aes()`.
@@ -416,14 +368,6 @@ Just as before, we can map `plot_type` to `color` by putting it inside `aes()`.
 ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length, color = plot_type)) +
   geom_boxplot() +
   geom_point(position = position_jitter(), alpha = 0.2)
-```
-
-```{.warning}
-Warning: Removed 2733 rows containing non-finite values (stat_boxplot).
-```
-
-```{.warning}
-Warning: Removed 2733 rows containing missing values (geom_point).
 ```
 
 <img src="fig/01-visualizing-ggplot-rendered-global-color-1.png" width="600" height="600" style="display: block; margin: auto;" />
@@ -439,14 +383,6 @@ ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
   geom_point(aes(color = plot_type), position = position_jitter(), alpha = 0.2)
 ```
 
-```{.warning}
-Warning: Removed 2733 rows containing non-finite values (stat_boxplot).
-```
-
-```{.warning}
-Warning: Removed 2733 rows containing missing values (geom_point).
-```
-
 <img src="fig/01-visualizing-ggplot-rendered-geom-color-1.png" width="600" height="600" style="display: block; margin: auto;" />
 
 Now our points are colored according to `plot_type`, but the boxplots are all the same color. One thing you might notice is that even with `alpha = 0.2`, the points obscure parts of the boxplot. This is because the `geom_point()` layer comes after the `geom_boxplot()` layer, which means the points are plotted on top of the boxes. To put the boxplots on top, we just switch the order of the layers:
@@ -458,14 +394,6 @@ ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
   geom_boxplot()
 ```
 
-```{.warning}
-Warning: Removed 2733 rows containing non-finite values (stat_boxplot).
-```
-
-```{.warning}
-Warning: Removed 2733 rows containing missing values (geom_point).
-```
-
 <img src="fig/01-visualizing-ggplot-rendered-reverse-layers-1.png" width="600" height="600" style="display: block; margin: auto;" />
 
 Now we have the opposite problem! The white `fill` of the boxplots completely obscures some of the points. To address this problem, we can remove the `fill` from the boxplots altogether, leaving only the black lines. To do this, we set `fill` to `NA`:
@@ -475,14 +403,6 @@ Now we have the opposite problem! The white `fill` of the boxplots completely ob
 ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
   geom_point(aes(color = plot_type), position = position_jitter(), alpha = 0.2) +
   geom_boxplot(fill = NA)
-```
-
-```{.warning}
-Warning: Removed 2733 rows containing non-finite values (stat_boxplot).
-```
-
-```{.warning}
-Warning: Removed 2733 rows containing missing values (geom_point).
 ```
 
 <img src="fig/01-visualizing-ggplot-rendered-fill-na-1.png" width="600" height="600" style="display: block; margin: auto;" />
@@ -509,14 +429,6 @@ ggplot(data = surveys,
   geom_violin(fill = "white")
 ```
 
-```{.warning}
-Warning: Removed 2733 rows containing non-finite values (stat_ydensity).
-```
-
-```{.warning}
-Warning: Removed 2733 rows containing missing values (geom_point).
-```
-
 <img src="fig/01-visualizing-ggplot-rendered-violin-challenge-answer-1.png" width="600" height="600" style="display: block; margin: auto;" />
 
 ::::::::::::::::::::::::
@@ -533,14 +445,6 @@ ggplot(data = surveys,
                      color = plot_type)) +
   geom_point(alpha = 0.1, position = position_jitter()) +
   geom_violin(fill = "white")
-```
-
-```{.warning}
-Warning: Removed 2733 rows containing non-finite values (stat_ydensity).
-```
-
-```{.warning}
-Warning: Removed 2733 rows containing missing values (geom_point).
 ```
 
 <img src="fig/01-visualizing-ggplot-rendered-violin-challenge-answer-2-1.png" width="600" height="600" style="display: block; margin: auto;" />
@@ -560,14 +464,6 @@ ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
   theme_bw()
 ```
 
-```{.warning}
-Warning: Removed 2733 rows containing non-finite values (stat_boxplot).
-```
-
-```{.warning}
-Warning: Removed 2733 rows containing missing values (geom_point).
-```
-
 <img src="fig/01-visualizing-ggplot-rendered-theme-bw-1.png" width="600" height="600" style="display: block; margin: auto;" />
 
 As you can see, a number of parts of the plot have changed. `theme_` functions usually control many aspects of a plot's appearance all at once, for the sake of convenience. To individually change parts of a plot, we can use the `theme()` function, which can take many different arguments to change things about the text, grid lines, background color, and more. Let's try changing the size of the text on our axis titles. We can do this by specifying that the `axis.title` should be an `element_text()` with `size` set to 14.
@@ -579,14 +475,6 @@ ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
   geom_point(aes(color = plot_type), position = position_jitter(), alpha = 0.2) +
   theme_bw() +
   theme(axis.title = element_text(size = 14))
-```
-
-```{.warning}
-Warning: Removed 2733 rows containing non-finite values (stat_boxplot).
-```
-
-```{.warning}
-Warning: Removed 2733 rows containing missing values (geom_point).
 ```
 
 <img src="fig/01-visualizing-ggplot-rendered-text-size-1.png" width="600" height="600" style="display: block; margin: auto;" />
@@ -602,14 +490,6 @@ ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
   theme(axis.title = element_text(size = 14), panel.grid.major.x = element_blank())
 ```
 
-```{.warning}
-Warning: Removed 2733 rows containing non-finite values (stat_boxplot).
-```
-
-```{.warning}
-Warning: Removed 2733 rows containing missing values (geom_point).
-```
-
 <img src="fig/01-visualizing-ggplot-rendered-element-blank-1.png" width="600" height="600" style="display: block; margin: auto;" />
 
 Another useful change might be to remove the color legend, since that information is already on our x axis. For this one, we will set `legend.position` to "none". 
@@ -622,14 +502,6 @@ ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
   theme_bw() +
   theme(axis.title = element_text(size = 14), 
         panel.grid.major.x =element_blank(), legend.position = "none")
-```
-
-```{.warning}
-Warning: Removed 2733 rows containing non-finite values (stat_boxplot).
-```
-
-```{.warning}
-Warning: Removed 2733 rows containing missing values (geom_point).
 ```
 
 <img src="fig/01-visualizing-ggplot-rendered-legend-remove-1.png" width="600" height="600" style="display: block; margin: auto;" />
@@ -648,14 +520,6 @@ ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
   labs(title = "Rodent size by plot type",
        x = "Plot type",
        y = "Hindfoot length (mm)")
-```
-
-```{.warning}
-Warning: Removed 2733 rows containing non-finite values (stat_boxplot).
-```
-
-```{.warning}
-Warning: Removed 2733 rows containing missing values (geom_point).
 ```
 
 <img src="fig/01-visualizing-ggplot-rendered-labels-1.png" width="600" height="600" style="display: block; margin: auto;" />
@@ -686,14 +550,6 @@ ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
        y = "Hindfoot length (mm)")
 ```
 
-```{.warning}
-Warning: Removed 2733 rows containing non-finite values (stat_boxplot).
-```
-
-```{.warning}
-Warning: Removed 2733 rows containing missing values (geom_point).
-```
-
 <img src="fig/01-visualizing-ggplot-rendered-customizing-challenge-answer-1.png" width="600" height="600" style="display: block; margin: auto;" />
 
 ::::::::::::::::::::::::
@@ -719,14 +575,6 @@ ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
        y = "Hindfoot length (mm)",
        color = "Plot type") +
   facet_wrap(vars(sex))
-```
-
-```{.warning}
-Warning: Removed 2733 rows containing non-finite values (stat_boxplot).
-```
-
-```{.warning}
-Warning: Removed 2733 rows containing missing values (geom_point).
 ```
 
 <img src="fig/01-visualizing-ggplot-rendered-facet-wrap-1.png" width="600" height="600" style="display: block; margin: auto;" />
@@ -755,14 +603,6 @@ ggplot(data = surveys, mapping = aes(x = plot_type, y = hindfoot_length)) +
   coord_flip()
 ```
 
-```{.warning}
-Warning: Removed 2733 rows containing non-finite values (stat_boxplot).
-```
-
-```{.warning}
-Warning: Removed 2733 rows containing missing values (geom_point).
-```
-
 <img src="fig/01-visualizing-ggplot-rendered-coord-flip-1.png" width="600" height="600" style="display: block; margin: auto;" />
 
 This flips the coordinates of our plot, which allows the horizontal `plot_type` labels to spread out without overlapping each other.
@@ -788,10 +628,6 @@ Assigning something to an object does not generate any output. To view our plot,
 scatter_plot
 ```
 
-```{.warning}
-Warning: Removed 3081 rows containing missing values (geom_point).
-```
-
 <img src="fig/01-visualizing-ggplot-rendered-print-scatter-1.png" width="600" height="600" style="display: block; margin: auto;" />
 
 Now that we have our plot saved as an object, we can work with and manipulate it further. This object acts like any other `ggplot`, which means we can continue to add layers to it. For example, we can add a theme:
@@ -799,10 +635,6 @@ Now that we have our plot saved as an object, we can work with and manipulate it
 
 ```r
 scatter_plot + theme_minimal()
-```
-
-```{.warning}
-Warning: Removed 3081 rows containing missing values (geom_point).
 ```
 
 <img src="fig/01-visualizing-ggplot-rendered-add-theme-1.png" width="600" height="600" style="display: block; margin: auto;" />
@@ -829,14 +661,6 @@ With `patchwork` loaded, all we have to do to put our two plots side by side is 
 scatter_plot + box_plot
 ```
 
-```{.warning}
-Warning: Removed 3081 rows containing missing values (geom_point).
-```
-
-```{.warning}
-Warning: Removed 2733 rows containing non-finite values (stat_boxplot).
-```
-
 <img src="fig/01-visualizing-ggplot-rendered-add-plots-1.png" width="600" height="600" style="display: block; margin: auto;" />
 
 To put the plots one on top of another, we can use the `/` symbol:
@@ -846,14 +670,6 @@ To put the plots one on top of another, we can use the `/` symbol:
 scatter_plot / box_plot
 ```
 
-```{.warning}
-Warning: Removed 3081 rows containing missing values (geom_point).
-```
-
-```{.warning}
-Warning: Removed 2733 rows containing non-finite values (stat_boxplot).
-```
-
 <img src="fig/01-visualizing-ggplot-rendered-divide-plots-1.png" width="600" height="600" style="display: block; margin: auto;" />
 
 Finally, using the `&` symbol, we can add a theme to the entire multi-plot:
@@ -861,14 +677,6 @@ Finally, using the `&` symbol, we can add a theme to the entire multi-plot:
 
 ```r
 scatter_plot / box_plot & theme_bw()
-```
-
-```{.warning}
-Warning: Removed 3081 rows containing missing values (geom_point).
-```
-
-```{.warning}
-Warning: Removed 2733 rows containing non-finite values (stat_boxplot).
 ```
 
 <img src="fig/01-visualizing-ggplot-rendered-divide-plots-theme-1.png" width="600" height="600" style="display: block; margin: auto;" />
@@ -881,14 +689,6 @@ Finally, once we are happy with our plot, we probably want to save it in a forma
 ```r
 scatter_plot / box_plot + plot_annotation(title = "Rodent size plots",
                                                        tag_levels = "A") & theme_minimal() 
-```
-
-```{.warning}
-Warning: Removed 3081 rows containing missing values (geom_point).
-```
-
-```{.warning}
-Warning: Removed 2733 rows containing non-finite values (stat_boxplot).
 ```
 
 <img src="fig/01-visualizing-ggplot-rendered-patchwork-annotation-1.png" width="600" height="600" style="display: block; margin: auto;" />
