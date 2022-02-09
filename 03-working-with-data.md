@@ -1,45 +1,64 @@
 ---
 title: "Working with data"
-teaching: 45
+teaching: 90
 exercises: 4
 ---
 
-- importing complete_old CSV
-    - touch on column parsing
-    - talk about file paths and tab completion
-    - should we teach the `here()` package?
-- base vs. tidyverse
-- pipes
-- select
-- filter
-    - idea of conditional subsetting
-    - ==, >, !, |, &
-    - show %in%
-- mutate
-- making a date column
-- group_by
-  - summarize
-  - mutate
-  - ungroup
-- pivot_wider
-- exporting data
+<!-- - importing complete_old CSV -->
+<!--     - touch on column parsing -->
+<!--     - talk about file paths and tab completion -->
+<!--     - should we teach the `here()` package? -->
+<!-- - base vs. tidyverse -->
+<!-- - pipes -->
+<!-- - select -->
+<!-- - filter -->
+<!--     - idea of conditional subsetting -->
+<!--     - ==, >, !, |, & -->
+<!--     - show %in% -->
+<!-- - mutate -->
+<!-- - making a date column -->
+<!-- - group_by -->
+<!--   - summarize -->
+<!--   - mutate -->
+<!--   - ungroup -->
+<!-- - pivot_wider -->
+<!-- - exporting data -->
 
-Challenge ideas:
+<!-- Challenge ideas: -->
 
-- plotting a time series using the date
-- predicting # of rows before pivoting
-  - important to plan out reshaping steps in advance
-- filter operations
-  - weight between two values
-  - maybe throw in an | example
-- combination filter and select where doing the order wrong yields an error
-  - only has columns record_id, species_id, sex, and hindfoot_length, but weight has to be NA
-- a couple of simple group_by operations
-  - how many combinations of plot id and genus are there
-    - could show that distinct also works here
-  - what will happen if you group by weight?
-  - an operation that requires group_by and mutate
-  - an operation that requires multiple group_by steps
+<!-- - plotting a time series using the date -->
+<!-- - predicting # of rows before pivoting -->
+<!--   - important to plan out reshaping steps in advance -->
+<!-- - filter operations -->
+<!--   - weight between two values -->
+<!--   - maybe throw in an | example -->
+<!-- - combination filter and select where doing the order wrong yields an error -->
+<!--   - only has columns record_id, species_id, sex, and hindfoot_length, but weight has to be NA -->
+<!-- - a couple of simple group_by operations -->
+<!--   - how many combinations of plot id and genus are there -->
+<!--     - could show that distinct also works here -->
+<!--   - what will happen if you group by weight? -->
+<!--   - an operation that requires group_by and mutate -->
+<!--   - an operation that requires multiple group_by steps -->
+  
+:::::::::::::::::::::::::::::::::::::: questions 
+
+- How do you manipulate tabular data in R?
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::: objectives
+
+- Import CSV data into R.
+- Understand the difference between base R and `tidyverse` approaches.
+- Subset rows and columns of data.frames.
+- Use pipes to link steps together into pipelines.
+- Create new data.frame columns using existing columns.
+- Utilize the concept of split-apply-combine data analysis.
+- Reshape data between wide and long formats.
+- Export data to a CSV file.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
   
 
 
@@ -1314,3 +1333,13 @@ Error in is.data.frame(x): object 'surveys_ps' not found
 ```
 
 If we go look into our `data/cleaned_data` folder, we will see this new CSV file.
+
+::::::::::::::::::::::::::::::::::::: keypoints 
+
+- use `filter()` to subset rows and `select()` to subset columns
+- build up pipelines one step at a time before assigning the result
+- it is often best to keep components of dates separate until needed, then use `mutate()` to make a date column
+- `group_by()` can be used with `summarize()` to collapse rows or `mutate()` to keep the same number of rows
+- `pivot_wider()` and `pivot_longer()` are powerful for reshaping data, but you should plan out how to use them thoughtfully
+
+::::::::::::::::::::::::::::::::::::::::::::::::
