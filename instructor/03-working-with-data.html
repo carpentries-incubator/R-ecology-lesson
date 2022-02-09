@@ -17,7 +17,7 @@
     <header id="top" class="navbar navbar-expand-md navbar-light bg-white top-nav carpentries"><a class="visually-hidden-focusable skip-link" href="#main-content">Skip to main content</a>
   <div class="container-fluid top-nav-container">
     <div class="col-md-6">
-      <div class="large-logo"><img alt="cp logo" src="../assets/images/carpentries-logo.svg"></div>
+      <div class="large-logo"><img alt="The Carpentries" src="../assets/images/carpentries-logo.svg"></div>
     </div>
     <div class="selector-container ">
       
@@ -35,7 +35,7 @@
       <span class="menu-title">Menu</span>
     </button>
     <div class="nav-logo">
-      <img class="small-logo" alt="cp logo" src="../assets/images/carpentries-logo-sm.svg"></div>
+      <img class="small-logo" alt="The Carpentries" src="../assets/images/carpentries-logo-sm.svg"></div>
     <div class="lesson-title-md">
       Rewrite-R-ecology-lesson
     </div>
@@ -171,7 +171,6 @@
         <ul><li><a href="#importing-data">Importing data</a></li>
 <li><a href="#manipulating-data">Manipulating data</a></li>
 <li><a href="#the-pipe">The pipe: <code>%&gt;%</code></a></li>
-<li><a href="#challenge-2-using-pipes">Challenge 2: Using pipes</a></li>
 <li><a href="#making-new-columns-with-mutate">Making new columns with <code>mutate()</code></a></li>
 <li><a href="#the-split-apply-combine-approach">The split-apply-combine approach</a></li>
 <li><a href="#reshaping-data-with-tidyr">Reshaping data with <code>tidyr</code></a></li>
@@ -234,7 +233,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Working with data</h1>
-        <p> Last updated on 2022-02-01 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/03-working-with-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <p> Last updated on 2022-02-09 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/03-working-with-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 49 minutes </p>
         
         <div class="text-end">
@@ -616,7 +615,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight</code></p
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -647,7 +646,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight</code></p
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -756,9 +755,17 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight</code></p
   <span class="fu">filter</span><span class="op">(</span><span class="va">month</span> <span class="op">&gt;=</span> <span class="fl">7</span><span class="op">)</span></code></pre>
 </div>
 <p>A good approach is to build a pipeline step by step prior to assignment. You add functions to the pipeline as you go, with the results printing in the console for you to view. Once you’re satisfied with your final result, go back and add the assignment arrow statement at the start. This approach is very interactive, allowing you to see the results of each step as you build the pipeline, and produces nicely readable code.</p>
-<!-- ::::::::::::::::::::::::::::::::::::: challenge  -->
-</section><section id="challenge-2-using-pipes"><h2 class="section-heading">Challenge 2: Using pipes</h2>
-<hr class="half-width"><p>Use the surveys data to make a data.frame that has the columns <code>record_id</code>, <code>month</code>, and <code>species_id</code>, with data from the year 1988. Use a pipe between the function calls.</p>
+<div id="challenge3" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<div id="challenge-2-using-pipes" class="callout-inner">
+<h3 class="callout-title">Challenge 2: Using pipes</h3>
+<div class="callout-content">
+<p>Use the surveys data to make a data.frame that has the columns <code>record_id</code>, <code>month</code>, and <code>species_id</code>, with data from the year 1988. Use a pipe between the function calls.</p>
+</div>
+</div>
+</div>
 <div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
@@ -766,7 +773,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight</code></p
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -781,7 +788,6 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight</code></p
 </div>
 </div>
 </div>
-<p>::::::::::::::::::::::::::::::::::::::::::::::::</p>
 </section><section id="making-new-columns-with-mutate"><h2 class="section-heading">Making new columns with <code>mutate()</code>
 </h2>
 <hr class="half-width"><p>Another common task is creating a new column based on values in existing columns. For example, we could add a new column that has the weight in kilograms instead of grams:</p>
@@ -1003,7 +1009,7 @@ Attaching package: 'lubridate'</code></pre>
 # … with 16,868 more rows, and 6 more variables: hindfoot_length &lt;dbl&gt;,
 #   weight &lt;dbl&gt;, genus &lt;chr&gt;, species &lt;chr&gt;, taxa &lt;chr&gt;, plot_type &lt;chr&gt;</code></pre>
 </div>
-<div id="challenge3" class="callout challenge">
+<div id="challenge4" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
@@ -1021,7 +1027,7 @@ Attaching package: 'lubridate'</code></pre>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb51">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1330,7 +1336,7 @@ Attaching package: 'lubridate'</code></pre>
 # … with 15,176 more rows</code></pre>
 </div>
 <p>What happens with the <code><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by()</a></code> + <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate()</a></code> combination is similar to using <code><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize()</a></code>: for each group, the mean weight is calculated. However, instead of reporting only one row per group, the mean weight for each group is added to each row in that group. For each row in a group (like DM species ID + M sex), you will see the same value in <code>mean_weight</code>.</p>
-<div id="challenge4" class="callout challenge">
+<div id="challenge5" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
@@ -1348,7 +1354,7 @@ Attaching package: 'lubridate'</code></pre>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb74">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1368,7 +1374,7 @@ Attaching package: 'lubridate'</code></pre>
 </div>
 </div>
 </div>
-<div id="challenge5" class="callout challenge">
+<div id="challenge6" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
@@ -1387,7 +1393,7 @@ Attaching package: 'lubridate'</code></pre>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb75">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1443,14 +1449,16 @@ Attaching package: 'lubridate'</code></pre>
 <li>
 <code>values_from</code>: which column should be used to fill in the values of the new columns?</li>
 </ol><p>Any columns not used for <code>names_from</code> or <code>values_from</code> will not be pivoted.</p>
-<p>In our case, we want the new columns to be named from our <code>plot_id</code> column, with the values coming from the <code>mean_weight</code> column. We can pipe our data.frame right into <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider()</a></code> and add those two arguments:</p>
+<figure><img src="../fig/pivot_wider.png" alt="" class="figure mx-auto d-block"><figcaption>Diagram displaying the behavior of <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider()</a></code>.</figcaption></figure><p>In our case, we want the new columns to be named from our <code>plot_id</code> column, with the values coming from the <code>mean_weight</code> column. We can pipe our data.frame right into <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider()</a></code> and add those two arguments:</p>
 <div class="codewrapper sourceCode" id="cb78">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sp_by_plot</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">sp_by_plot_wide</span> <span class="op">&lt;-</span> <span class="va">sp_by_plot</span> <span class="op">%&gt;%</span> 
   <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">plot_id</span>, 
-              values_from <span class="op">=</span> <span class="va">mean_weight</span><span class="op">)</span></code></pre>
+              values_from <span class="op">=</span> <span class="va">mean_weight</span><span class="op">)</span>
+
+<span class="va">sp_by_plot_wide</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1499,10 +1507,67 @@ Attaching package: 'lubridate'</code></pre>
 <span class="co"># … with 3 variables: species_id &lt;chr&gt;, plot_id &lt;dbl&gt;, mean_weight &lt;dbl&gt;</span></code></pre>
 </div>
 <p>We get back 0 rows. There is no <code>mean_weight</code> for the species <code>BA</code> in plot <code>1</code>. This either happened because no <code>BA</code> were ever caught in plot <code>1</code>, or because every <code>BA</code> caught in plot <code>1</code> had an <code>NA</code> weight value and all the rows got removed when we used <code>filter(!is.na(weight))</code> in the process of making <code>sp_by_plot</code>. Because there are no rows with that species + plot combination, in our pivoted data.frame, the value gets filled with <code>NA</code>.</p>
-</section><section id="exporting-data"><h2 class="section-heading">Exporting data</h2>
-<hr class="half-width"><p>Let’s say we want to send the above data.frame to a colleague who doesn’t use R. In this case, we might want to save it as a CSV file.</p>
-<p>First, we might want to modify the names of the columns, since right now they are bare numbers, which aren’t very informative. Luckily, <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider()</a></code> has an argument <code>names_prefix</code> which will allow us to add “plot_” to the start of each column.</p>
+<p>There is another <code>pivot_</code> function that does the opposite, moving data from a wide to long format, called <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer()</a></code>. It takes 3 arguments: <code>cols</code> for the columns you want to pivot, <code>names_to</code> for the name of the new column which will contain the old column names, and <code>values_to</code> for the name of the new column which will contain the old values.</p>
+<figure><img src="../fig/pivot_longer.png" alt="" class="figure mx-auto d-block"><figcaption>Diagram displaying the behavior of <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer()</a></code>.</figcaption></figure><p>We can pivot our new wide data.frame to a long format using <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer()</a></code>. We want to pivot all the columns except <code>species_id</code>, and we will use <code>PLOT</code> for the new column of plot IDs, and <code>MEAN_WT</code> for the new column of mean weight values.</p>
 <div class="codewrapper sourceCode" id="cb82">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sp_by_plot_wide</span> <span class="op">%&gt;%</span> 
+  <span class="fu">pivot_longer</span><span class="op">(</span>cols <span class="op">=</span> <span class="op">-</span><span class="va">species_id</span>, names_to <span class="op">=</span> <span class="st">"PLOT"</span>, values_to <span class="op">=</span> <span class="st">"MEAN_WT"</span><span class="op">)</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code># A tibble: 432 × 3
+# Groups:   species_id [18]
+   species_id PLOT  MEAN_WT
+   &lt;chr&gt;      &lt;chr&gt;   &lt;dbl&gt;
+ 1 BA         3         8  
+ 2 BA         21        6.5
+ 3 BA         1        NA  
+ 4 BA         2        NA  
+ 5 BA         4        NA  
+ 6 BA         5        NA  
+ 7 BA         6        NA  
+ 8 BA         7        NA  
+ 9 BA         8        NA  
+10 BA         9        NA  
+# … with 422 more rows</code></pre>
+</div>
+<p>One thing you will notice is that all those <code>NA</code> values that got generated when we pivoted wider. However, we can filter those out, which gets us back to the same data as <code>sp_by_plot</code>, before we pivoted it wider.</p>
+<div class="codewrapper sourceCode" id="cb84">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sp_by_plot_wide</span> <span class="op">%&gt;%</span> 
+  <span class="fu">pivot_longer</span><span class="op">(</span>cols <span class="op">=</span> <span class="op">-</span><span class="va">species_id</span>, names_to <span class="op">=</span> <span class="st">"PLOT"</span>, values_to <span class="op">=</span> <span class="st">"MEAN_WT"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">filter</span><span class="op">(</span><span class="op">!</span><span class="fu">is.na</span><span class="op">(</span><span class="va">MEAN_WT</span><span class="op">)</span><span class="op">)</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code># A tibble: 300 × 3
+# Groups:   species_id [18]
+   species_id PLOT  MEAN_WT
+   &lt;chr&gt;      &lt;chr&gt;   &lt;dbl&gt;
+ 1 BA         3         8  
+ 2 BA         21        6.5
+ 3 DM         3        41.2
+ 4 DM         21       41.5
+ 5 DM         1        42.7
+ 6 DM         2        42.6
+ 7 DM         4        41.9
+ 8 DM         5        42.6
+ 9 DM         6        42.1
+10 DM         7        43.2
+# … with 290 more rows</code></pre>
+</div>
+<p>Data are often recorded in spreadsheets in a wider format, but lots of <code>tidyverse</code> tools, especially <code>ggplot2</code>, like data in a longer format, so <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer()</a></code> is often very useful.</p>
+</section><section id="exporting-data"><h2 class="section-heading">Exporting data</h2>
+<hr class="half-width"><p>Let’s say we want to send the wide version of our <code>sb_by_plot</code> data.frame to a colleague who doesn’t use R. In this case, we might want to save it as a CSV file.</p>
+<p>First, we might want to modify the names of the columns, since right now they are bare numbers, which aren’t very informative. Luckily, <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider()</a></code> has an argument <code>names_prefix</code> which will allow us to add “plot_” to the start of each column.</p>
+<div class="codewrapper sourceCode" id="cb86">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1541,7 +1606,7 @@ Attaching package: 'lubridate'</code></pre>
 #   plot_23 &lt;dbl&gt;, plot_24 &lt;dbl&gt;</code></pre>
 </div>
 <p>That looks better! Let’s save this data.frame as a new object.</p>
-<div class="codewrapper sourceCode" id="cb84">
+<div class="codewrapper sourceCode" id="cb88">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1582,7 +1647,7 @@ Attaching package: 'lubridate'</code></pre>
 #   plot_23 &lt;dbl&gt;, plot_24 &lt;dbl&gt;</code></pre>
 </div>
 <p>Now we can save this data.frame to a CSV using the <code><a href="https://readr.tidyverse.org/reference/write_delim.html" class="external-link">write_csv()</a></code> function from the <code>readr</code> package. The first argument is the name of the data.frame, and the second is the path to the new file we want to create, including the file extension <code>.csv</code>.</p>
-<div class="codewrapper sourceCode" id="cb86">
+<div class="codewrapper sourceCode" id="cb90">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1618,9 +1683,9 @@ Attaching package: 'lubridate'</code></pre>
         <p>Materials licensed under <a href="../LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper" class="external-link">sandpaper (0.1.1)</a>,
-      <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.1.0)</a>,
-      and <a href="https://github.com/carpentries/varnish" class="external-link">varnish (0.1.0)</a>.</p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper" class="external-link">sandpaper (0.1.3)</a>,
+      <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.1.1)</a>,
+      and <a href="https://github.com/carpentries/varnish" class="external-link">varnish (0.1.4)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1632,20 +1697,36 @@ Attaching package: 'lubridate'</code></pre>
     {
   "@context": "https://schema.org",
   "@type": "TrainingMaterial",
-  "@id": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson/instructor/03-working-with-data.html",
+  "@id": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson//instructor/03-working-with-data.html",
   "dct:conformsTo": "https://bioschemas.org/profiles/TrainingMaterial/0.9-DRAFT-2020_12_08",
   "description": "A Carpentries Lesson teaching foundational data and coding skills to researchers worldwide",
   "keywords": "software,data,lesson,The Carpentries",
   "name": "Working with data",
   "creativeWorkStatus": "active",
-  "url": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson/instructor/03-working-with-data.html",
-  "identifier": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson/instructor/03-working-with-data.html",
-  "dateCreated": "2022-02-01",
-  "dateModified": "2022-02-01",
-  "datePublished": "2022-02-01"
+  "url": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson//instructor/03-working-with-data.html",
+  "identifier": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson//instructor/03-working-with-data.html",
+  "dateCreated": "2022-02-09",
+  "dateModified": "2022-02-09",
+  "datePublished": "2022-02-09"
 }
 
   </script><script>
 		feather.replace();
-	</script></body></html><!-- END:   inst/pkgdown/templates/layout.html-->
+	</script><!-- Matomo --><script>
+          var _paq = window._paq = window._paq || [];
+          /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+          _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+          _paq.push(["setDomains", ["*.lessons.carpentries.org","*.datacarpentry.github.io","*.datacarpentry.org","*.librarycarpentry.github.io","*.librarycarpentry.org","*.swcarpentry.github.io", "*.carpentries.github.io"]]);
+          _paq.push(["setDoNotTrack", true]);
+          _paq.push(["disableCookies"]);
+          _paq.push(['trackPageView']);
+          _paq.push(['enableLinkTracking']);
+          (function() {
+              var u="https://carpentries.matomo.cloud/";
+              _paq.push(['setTrackerUrl', u+'matomo.php']);
+              _paq.push(['setSiteId', '1']);
+              var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+              g.async=true; g.src='https://cdn.matomo.cloud/carpentries.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+          })();
+        </script><!-- End Matomo Code --></body></html><!-- END:   inst/pkgdown/templates/layout.html-->
 

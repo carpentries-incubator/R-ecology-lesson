@@ -1,84 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xml2ns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lesson00-introduction-r-rstudio.html</loc>
+    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lesson/00-introduction-r-rstudio.html</loc>
   </url>
   <url>
-    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lesson01-introduction.html</loc>
+    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lesson/01-introduction.html</loc>
   </url>
   <url>
-    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lesson01-visualizing-ggplot.html</loc>
+    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lesson/01-visualizing-ggplot.html</loc>
   </url>
   <url>
-    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lesson02-how-r-thinks-about-data.html</loc>
+    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lesson/02-how-r-thinks-about-data.html</loc>
   </url>
   <url>
-    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lesson03-working-with-data.html</loc>
+    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lesson/03-working-with-data.html</loc>
   </url>
   <url>
-    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lesson04-putting-it-together.html</loc>
+    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lesson/04-putting-it-together.html</loc>
   </url>
   <url>
-    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lessonCODE_OF_CONDUCT.html</loc>
+    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lesson/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
-    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lessonLICENSE.html</loc>
+    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lesson/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lessonindex.html</loc>
+    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lesson/index.html</loc>
   </url>
   <url>
-    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lessoninstructor/00-introduction-r-rstudio.html</loc>
+    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lesson/instructor/00-introduction-r-rstudio.html</loc>
   </url>
   <url>
-    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lessoninstructor/01-visualizing-ggplot.html</loc>
+    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lesson/instructor/01-visualizing-ggplot.html</loc>
   </url>
   <url>
-    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lessoninstructor/02-how-r-thinks-about-data.html</loc>
+    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lesson/instructor/02-how-r-thinks-about-data.html</loc>
   </url>
   <url>
-    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lessoninstructor/03-working-with-data.html</loc>
+    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lesson/instructor/03-working-with-data.html</loc>
   </url>
   <url>
-    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lessoninstructor/04-putting-it-together.html</loc>
+    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lesson/instructor/04-putting-it-together.html</loc>
   </url>
   <url>
-    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lessoninstructor/CODE_OF_CONDUCT.html</loc>
+    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lesson/instructor/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
-    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lessoninstructor/LICENSE.html</loc>
+    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lesson/instructor/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lessoninstructor/index.html</loc>
+    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lesson/instructor/index.html</loc>
   </url>
   <url>
-    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lessoninstructor/instructor-notes.html</loc>
+    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lesson/instructor/instructor-notes.html</loc>
   </url>
   <url>
-    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lessoninstructor/key-points.html</loc>
+    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lesson/instructor/key-points.html</loc>
   </url>
   <url>
-    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lessoninstructor/profiles.html</loc>
+    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lesson/instructor/profiles.html</loc>
   </url>
   <url>
-    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lessoninstructor/update_plan.html</loc>
+    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lesson/instructor/update_plan.html</loc>
   </url>
   <url>
-    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lessoninstructor-notes.html</loc>
+    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lesson/instructor-notes.html</loc>
   </url>
   <url>
-    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lessonkey-points.html</loc>
+    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lesson/key-points.html</loc>
   </url>
   <url>
-    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lessonlearner-profiles.html</loc>
+    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lesson/learner-profiles.html</loc>
   </url>
   <url>
-    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lessonprofiles.html</loc>
+    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lesson/profiles.html</loc>
   </url>
   <url>
-    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lessonsetup.html</loc>
+    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lesson/setup.html</loc>
   </url>
   <url>
-    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lessonupdate_plan.html</loc>
+    <loc>https://MCMaurer.github.io/Rewrite-R-ecology-lesson/update_plan.html</loc>
   </url>
 </urlset>
