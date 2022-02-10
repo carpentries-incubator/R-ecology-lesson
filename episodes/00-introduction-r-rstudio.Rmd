@@ -29,11 +29,17 @@ exercises: 0
 
 ## Why learn R?
 
-#### Your new pedantic collaborator...
-
 <br>
 
-:::::::::::::::::::::::: hint
+:::::::::::::::::::::::: instructor
+
+You can walk through this analogy if you want, or skip over it if you don't find it useful.
+
+::::::::::::::::::::::::
+
+:::::::::::::::::::::::: solution
+
+## Your new pedantic collaborator...
 
 You're working on a project when your advisor tells you that you should work with one of their long-time collaborators to help you get your work done. According to your advisor, this collaborator is very talented, but only speaks a language that you don't know. Your advisor assures you that this is ok, the collaborator won't judge you for starting to learn the language, and will happily answer your questions. However, the collaborator is also quite pedantic. While they don't mind that you don't speak their language fluently yet, they are always going to answer you quite literally.
 
