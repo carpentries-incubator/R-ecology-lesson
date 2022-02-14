@@ -659,6 +659,8 @@ Now that we have each individual data.frame formatted nicely, we would like to b
 
 If we look at the column names for `surveys_new` and `plots_new`, we see that they share a `plot_id` column. What we want to do now is take the data of our actual observations, `surveys_new`, and add the data for each associated plot. If a row in `surveys_new` has a `plot_id` of 2, we want to associate the `plot_type` of that plot with that row. We can accomplish this using a **join**.
 
+![Diagram displaying how a `left_join()` works.](fig/left_join.png)
+
 There are several types of joins in the `dplyr` package, which you can [read more about here](https://stat545.com/join-cheatsheet.html). We will use a function called `left_join()`, which takes two dataframes and adds the columns from the second dataframe to the first dataframe, matching rows based on the column name supplied to the `by` argument.
 
 
