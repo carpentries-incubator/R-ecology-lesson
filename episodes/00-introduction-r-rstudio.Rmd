@@ -23,7 +23,7 @@ exercises: 0
 
 ## What are R and RStudio?
 
-`R` refers to a programming language as well as the software that interprets R code.
+R refers to a programming language as well as the software that runs R code.
 
 [RStudio](https://rstudio.com) is a software interface that can make it easier to write R scripts and interact with the R software. It's a very popular platform, and RStudio also maintains the [`tidyverse`](https://www.tidyverse.org/) series of packages we will use in this lesson.
 
@@ -41,15 +41,15 @@ You can walk through this analogy if you want, or skip over it if you don't find
 
 ## Your new pedantic collaborator...
 
-You're working on a project when your advisor tells you that you should work with one of their long-time collaborators to help you get your work done. According to your advisor, this collaborator is very talented, but only speaks a language that you don't know. Your advisor assures you that this is ok, the collaborator won't judge you for starting to learn the language, and will happily answer your questions. However, the collaborator is also quite pedantic. While they don't mind that you don't speak their language fluently yet, they are always going to answer you quite literally.
+You're working on a project when your advisor suggests that you begin working with one of their long-time collaborators. According to your advisor, this collaborator is very talented, but only speaks a language that you don't know. Your advisor assures you that this is ok, the collaborator won't judge you for starting to learn the language, and will happily answer your questions. However, the collaborator is also quite pedantic. While they don't mind that you don't speak their language fluently yet, they are always going to answer you quite literally.
 
 You decide to reach out to the collaborator. You find that they email you back very quickly, almost immediately most of the time. Since you're just learning their language, you often make mistakes. Sometimes, they tell you that you've made a grammatical error or warn you that what you asked for doesn't make a lot of sense. Sometimes these warnings are difficult to understand, because you don't really have a grasp of the underlying grammar. Sometimes you get an answer back, with no warnings, but you realize that it doesn't make sense, because what you asked for isn't quite what you *wanted*. Since this collaborator responds almost immediately, without tiring, you can quickly reformulate your question and send it again.
 
 In this way, you begin to learn the language your collaborator speaks, as well as the particular way they think about your work. Eventually, the two of you develop a good working relationship, where you understand how to ask them questions effectively, and how to work through any issues in communication that might arise.
 
-This collaborator's name is `R`.
+This collaborator's name is R.
 
-When you send commands to `R`, you get a response back. Sometimes, when you make mistakes, you will get back a nice, informative error message or warning. However, sometimes the warnings seem to reference a much "deeper" level of R than you're familiar with. Or, even worse, you may get the wrong answer with no warning because the command you sent is perfectly valid, but isn't what you actually want. While you may first have some success working with R by memorizing certain commands or reusing other scripts, this is akin to using a collection of tourist phrases or pre-written statements when having a conversation. You might make a mistake (like getting directions to the library when you need a bathroom), and you are going to be limited in your flexibility (like furiously paging through a tourist guide looking for the term for "thrift store").
+When you send commands to R, you get a response back. Sometimes, when you make mistakes, you will get back a nice, informative error message or warning. However, sometimes the warnings seem to reference a much "deeper" level of R than you're familiar with. Or, even worse, you may get the wrong answer with no warning because the command you sent is perfectly valid, but isn't what you actually want. While you may first have some success working with R by memorizing certain commands or reusing other scripts, this is akin to using a collection of tourist phrases or pre-written statements when having a conversation. You might make a mistake (like getting directions to the library when you need a bathroom), and you are going to be limited in your flexibility (like furiously paging through a tourist guide looking for the term for "thrift store").
 
 This is all to say that we are going to spend a bit of time digging into some of the more fundamental aspects of the R language, and these concepts may not feel as immediately useful as, say, learning to make plots with `ggplot2`. However, learning these more fundamental concepts will help you develop an understanding of how R thinks about data and code, how to interpret error messages, and how to flexibly expand your skills to new situations.
 
@@ -81,11 +81,11 @@ The skills you learn with R scale easily with the size of your dataset. Whether 
 
 R is designed for data analysis. It comes with special data structures and data types that make handling of missing data and statistical factors convenient. 
 
-R can connect to spreadsheets, databases, and many other data formats, on your computer or on the web.  
+R can read data from many different file types, including geospatial data, and connect to local and remote databases.
 
 ### R produces high-quality graphics
 
-R has well-developed plotting capabilities, and the `ggplot2` package is one of, if not the most powerful plotting language today. We will begin learning to use `ggplot2` in the next episode.
+R has well-developed plotting capabilities, and the `ggplot2` package is one of, if not the most powerful pieces of plotting software available today. We will begin learning to use `ggplot2` in the next episode.
 
 ### R has a large and welcoming community
 
@@ -116,11 +116,11 @@ In the above screenshot, we can see 4 "panes" in the default layout:
 
 You can customize the layout of these panes, as well as many settings such as RStudio color scheme, font, and even keyboard shortcuts. You can access these settings by going to the menu bar, then clicking on Tools → Global Options.
 
-RStudio puts most of the things you need to work in R into a single window, and also includes features like keyboard shortcuts, autocompletion of code, and syntax highlighting (different types of code are colored differently).
+RStudio puts most of the things you need to work in R into a single window, and also includes features like keyboard shortcuts, autocompletion of code, and syntax highlighting (different types of code are colored differently, making it easier to navigate your code).
 
 ## Getting set up in RStudio
 
-It is a good practice to get into the habit of organizing your projects into self-contained folders right from the start. A well-organized project is easier to navigate, more reproducible, and easier to share with others. Your project should contain a top-level folder that contains everything necessary for the project, including data, scripts, and images, all organized into sub-folders.
+It is a good practice to organize your projects into self-contained folders right from the start, so we will start building that habit now. A well-organized project is easier to navigate, more reproducible, and easier to share with others. Your project should start with a top-level folder that contains everything necessary for the project, including data, scripts, and images, all organized into sub-folders.
 
 RStudio provides a "Projects" feature that can make it easier to work on individual projects in R. We will create a project that we will keep everything for this workshop.
 
@@ -134,17 +134,17 @@ RStudio provides a "Projects" feature that can make it easier to work on individ
 
 Next time you open RStudio, you can click that 3D cube icon, and you will see options to open existing projects, like the one you just made.
 
-One of the benefits to using RStudio Projects is that they automatically set the **working directory** to the top-level folder for the project. The working directory is the folder where R is working, so it views the location of all files (including data and scripts) as being relative to the working directory. You may come across scripts that include something like `setwd("/Users/YourUserName/MyCoolProject")`, which directly sets a working directory. This is usually much less portable, since that specific directory might not be found on someone else's computer. Using RStudio Projects means we don't have to deal with manually setting the working directory.
+One of the benefits to using RStudio Projects is that they automatically set the **working directory** to the top-level folder for the project. The working directory is the folder where R is working, so it views the location of all files (including data and scripts) as being relative to the working directory. You may come across scripts that include something like `setwd("/Users/YourUserName/MyCoolProject")`, which directly sets a working directory. This is usually much less portable, since that specific directory might not be found on someone else's computer (they probably don't have the same username as you). Using RStudio Projects means we don't have to deal with manually setting the working directory.
 
 There are a few settings we will need to adjust to improve the reproducibility of our work. Go to your menu bar, then click Tools → Global Options to open up the Options window.
 
 ![*RStudio Global Options*](fig/rstudio_settings.png)
 
-Make sure your settings match those highlighted in yellow. We don't want RStudio to store the current status of our R session and reload it the next time we start R. This might sound convenient, but for the sake of reproducibility, we want to start with a clean, empty R session every time we work. That means that we have to record everything we do into scripts, save any data we need into files, and store outputs like images as files. We want to get used to everything we generate in a single R session being *disposable*. We want our scripts to be able to regenerate anything we need, any time we need it.
+Make sure your settings match those highlighted in yellow. We don't want RStudio to store the current status of our R session and reload it the next time we start R. This might sound convenient, but for the sake of reproducibility, we want to start with a clean, empty R session every time we work. That means that we have to record everything we do into scripts, save any data we need into files, and store outputs like images as files. We want to get used to everything we generate in a single R session being *disposable*. We want our scripts to be able to regenerate things we need, other than "raw materials" like data.
 
 ## Organizing your project directory
 
-Using a consistent folder structure across all your projects will help keep a growing project organized, and make it easy to find files in the future. This is especially beneficial if you are working on multiple projects.
+Using a consistent folder structure across all your new projects will help keep a growing project organized, and make it easy to find files in the future. This is especially beneficial if you are working on multiple projects, since you will know where to look for particular kinds of files.
 
 We will use a basic structure for this workshop, which is often a good place to start, and can be extended to meet your specific needs. Here is a diagram describing the structure:
 
@@ -162,7 +162,7 @@ R-Ecology-Workshop
 └─── documents
 ```
 
-Within our project folder (`R-Ecology-Workshop`), we first have a `scripts` folder to hold any scripts we write. We also have a `data` folder containing `cleaned` and `raw` subfolders. In general, you want to keep your `raw` data completely raw, so once you put data into that folder, you do not modify it. Instead, you read it into R, and if you make any modifications, you write that modified file into the `cleaned` folder. We also have an `images` folder for plots we make, and a `documents` folder for any other documents you might produce.
+Within our project folder (`R-Ecology-Workshop`), we first have a `scripts` folder to hold any scripts we write. We also have a `data` folder containing `cleaned` and `raw` subfolders. In general, you want to keep your `raw` data completely untouched, so once you put data into that folder, you do not modify it. Instead, you read it into R, and if you make any modifications, you write that modified file into the `cleaned` folder. We also have an `images` folder for plots we make, and a `documents` folder for any other documents you might produce.
 
 Let's start making our new folders. Go to the **Files** pane, and check the current directory, highlighted in yellow below. You should be in the directory for the project you just made, in our case `R-Ecology-Workshop`. You shouldn't see any folders in here yet.
 
@@ -172,7 +172,7 @@ Next, click the **New Folder** button, and type in `scripts` to generate your `s
 
 ## Working in R and RStudio
 
-The basis of programming is that we write down instructions for the computer to follow, and then we tell the computer to follow those instructions. We write these instructions in the form of *code*, which is a common language that is understood by the computer and humans. We call these instructions *commands*, and we tell the computer to follow the instructions by *executing* (also called *running*) the commands.
+The basis of programming is that we write down instructions for the computer to follow, and then we tell the computer to follow those instructions. We write these instructions in the form of *code*, which is a common language that is understood by the computer and humans (after some practice). We call these instructions *commands*, and we tell the computer to follow the instructions by *running* (also called *executing*) the commands.
 
 ### Console vs. script
 
@@ -190,7 +190,7 @@ Writing a script is like taking nice notes while cooking- you can tweak and edit
 #### Script
 
 - A script is a record of commands to send to R, preserved in a plain text file with a `.R` extension
-- You can new R script by clicking `File → New File → R Script`, clicking the green `+` button in the top left corner of RStudio, or pressing <kbd>Shift+Cmd+N</kbd> (Mac) or <kbd>Shift+Ctrl+N</kbd> (Windows). It will be unsaved, and called "Untitled1"
+- You can make a new R script by clicking `File → New File → R Script`, clicking the green `+` button in the top left corner of RStudio, or pressing <kbd>Shift+Cmd+N</kbd> (Mac) or <kbd>Shift+Ctrl+N</kbd> (Windows). It will be unsaved, and called "Untitled1"
 - If you type out lines of R code in a script, you can send them to the R console to be evaluated
   - <kbd>Cmd+Enter</kbd> (Mac) or <kbd>Ctrl+Enter</kbd> (Windows) will run the line of code that your cursor is on
   - If you highlight multiple lines of code, you can run all of them by pressing <kbd>Cmd+Enter</kbd> (Mac) or <kbd>Ctrl+Enter</kbd> (Windows)
