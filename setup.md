@@ -13,10 +13,12 @@ Setup instructions live in this document. Please specify the tools and the data 
 
 R and RStudio are two separate pieces of software: 
 
-* **R** is a programming language that is especially powerful for data exploration, visualization, and statistical analysis
+* **R** is a programming language and software used to run code written in R.
 * **RStudio** is an integrated development environment (IDE) that makes using R easier. In this course we use RStudio to interact with R. 
   
 If you don't already have R and RStudio installed, follow the instructions for your operating system below. You have to install R before you install RStudio. 
+
+<br>
 
 :::::::::::::::: solution
 
@@ -87,7 +89,7 @@ During the course we will need a number of R packages. Packages contain useful R
 
 To try to install these packages, open RStudio and copy and paste the following command into the console window (look for a blinking cursor on the bottom left), then press the <kbd>Enter</kbd> (Windows and Linux) or <kbd>Return</kbd> (MacOS) to execute the command.
 
-```{r eval=FALSE}
+```{r}
 install.packages(c("tidyverse", "lubridate", "patchwork"))
 ```
 
@@ -95,7 +97,7 @@ Alternatively, you can install the packages using RStudio's graphical user inter
 
 R tries to download and install the packages on your machine. When the installation has finished, you can try to load the packages by pasting the following code into the console:
 
-```{r eval=FALSE}
+```{r}
 library(tidyverse)
 library(lubridate)
 library(patchwork)
@@ -105,7 +107,7 @@ If you do not see an error like `there is no package called ‘...’` you are g
 
 ### Updating R packages
 
-Generally, it is recommended to keep your R version and all packages up to date, because new versions bring improvements and important bugfixes. To update the packages that you have installed, click `Update` in the `Packages` tab in the bottom right panel of RStudio, or go to `Tools > Check for Package Updates...`. 
+Generally, it is recommended to keep your R version and all packages up to date, because new versions bring improvements and important bugfixes. To update the packages that you have installed, click `Update` in the `Packages` tab in the bottom right panel of RStudio, or go to `Tools > Check for Package Updates...` 
 
 You should update **all of the packages** required for the lesson, even if you installed them relatively recently.
 
@@ -115,4 +117,4 @@ Sometimes, package updates introduce changes that break your old code, which can
 
 We will download the data directly from R during the lessons. However, if you are expecting problems with the network, it may be better to download the data beforehand and store it on your machine.
 
-The data files for the lesson can be downloaded manually here: <https://doi.org/10.6084/m9.figshare.1314459>
+The data files for the lesson can be downloaded manually here: <https://downgit.github.io/#/home?url=https://github.com/MCMaurer/Rewrite-R-ecology-lesson/blob/main/episodes/data/cleaned/surveys_complete_77_89.csv> and <https://downgit.github.io/#/home?url=https://github.com/MCMaurer/Rewrite-R-ecology-lesson/blob/main/episodes/data/raw_data.zip>

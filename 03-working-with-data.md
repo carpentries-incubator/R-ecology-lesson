@@ -72,7 +72,7 @@ library(tidyverse)
 
 Up until this point, we have been working with the `surveys` dataframe contained in the `ratdat` package. However, you typically won't access data from an R package; it is much more common to access data files stored somewhere on your computer. We are going to download a CSV file containing the surveys data to our computer, which we will then read into R.
 
-Click this link to download the file: [https://downgit.github.io/#/home?url=https://github.com/MCMaurer/Rewrite-R-ecology-lesson/blob/main/episodes/data/cleaned/surveys_complete_77_89.csv](https://downgit.github.io/#/home?url=https://github.com/MCMaurer/Rewrite-R-ecology-lesson/blob/main/episodes/data/cleaned/surveys_complete_77_89.csv)
+Click this link to download the file: <https://downgit.github.io/#/home?url=https://github.com/MCMaurer/Rewrite-R-ecology-lesson/blob/main/episodes/data/cleaned/surveys_complete_77_89.csv>.
 
 You will be prompted to save the file on your computer somewhere. Save it inside the `cleaned` data folder, which is in the `data` folder in your `R-Ecology-Workshop` folder. Once it's inside our project, we will be able to point R towards it.
 
@@ -476,8 +476,14 @@ surveys %>%
 #   plot_type <chr>
 ```
 
-
 What it does is take the thing on the lefthand side and insert it as the first argument of the function on the righthand side. By putting each of our functions onto a new line, we can build a nice, readable **pipeline**. It can be useful to think of this as a little assembly line for our data. It starts at the top and gets piped into a `select()` function, and it comes out modified somewhat. It then gets sent into the `filter()` function, where it is further modified, and then the final product gets printed out to our console. It can also be helpful to think of `%>%` as meaning "and then". Since many `tidyverse` functions have verbs for names, a pipeline can be read like a sentence.
+
+
+:::::::::::::::::::::::::::::::::::::::::::: instructor
+It's worth showing the learners that you can run a **pipeline** without highlighting the whole thing. If your cursor is on any line of a pipeline, running that line will run the whole thing.
+
+You can also show that by highlighting a section of a pipeline, you can run only the first X steps of it.
+::::::::::::::::::::::::::::::::::::::::::::
 
 If we want to store this final product as an object, we use an assignment arrow at the start:
 
