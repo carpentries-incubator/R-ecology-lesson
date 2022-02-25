@@ -231,7 +231,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Working with data</h1>
-        <p> Last updated on 2022-02-22 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/03-working-with-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <p> Last updated on 2022-02-25 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/03-working-with-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -274,7 +274,7 @@
 </div>
 <section id="importing-data"><h2 class="section-heading">Importing data</h2>
 <hr class="half-width"><p>Up until this point, we have been working with the <code>surveys</code> dataframe contained in the <code>ratdat</code> package. However, you typically won’t access data from an R package; it is much more common to access data files stored somewhere on your computer. We are going to download a CSV file containing the surveys data to our computer, which we will then read into R.</p>
-<p>Click this link to download the file: <a href="https://downgit.github.io/#/home?url=https://github.com/MCMaurer/Rewrite-R-ecology-lesson/blob/main/episodes/data/cleaned/surveys_complete_77_89.csv" class="external-link">https://downgit.github.io/#/home?url=https://github.com/MCMaurer/Rewrite-R-ecology-lesson/blob/main/episodes/data/cleaned/surveys_complete_77_89.csv</a></p>
+<p>Click this link to download the file: <a href="https://downgit.github.io/#/home?url=https://github.com/MCMaurer/Rewrite-R-ecology-lesson/blob/main/episodes/data/cleaned/surveys_complete_77_89.csv" class="external-link uri">https://downgit.github.io/#/home?url=https://github.com/MCMaurer/Rewrite-R-ecology-lesson/blob/main/episodes/data/cleaned/surveys_complete_77_89.csv</a>.</p>
 <p>You will be prompted to save the file on your computer somewhere. Save it inside the <code>cleaned</code> data folder, which is in the <code>data</code> folder in your <code>R-Ecology-Workshop</code> folder. Once it’s inside our project, we will be able to point R towards it.</p>
 <div class="section level4">
 <h4 id="file-paths">File paths<a class="anchor" aria-label="anchor" href="#file-paths"></a></h4>
@@ -727,6 +727,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight</code></p
 #   plot_type &lt;chr&gt;</code></pre>
 </div>
 <p>What it does is take the thing on the lefthand side and insert it as the first argument of the function on the righthand side. By putting each of our functions onto a new line, we can build a nice, readable <strong>pipeline</strong>. It can be useful to think of this as a little assembly line for our data. It starts at the top and gets piped into a <code><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select()</a></code> function, and it comes out modified somewhat. It then gets sent into the <code><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter()</a></code> function, where it is further modified, and then the final product gets printed out to our console. It can also be helpful to think of <code>%&gt;%</code> as meaning “and then”. Since many <code>tidyverse</code> functions have verbs for names, a pipeline can be read like a sentence.</p>
+
 <p>If we want to store this final product as an object, we use an assignment arrow at the start:</p>
 <div class="codewrapper sourceCode" id="cb32">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1682,8 +1683,8 @@ Attaching package: 'lubridate'</code></pre>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper" class="external-link">sandpaper (0.2.0)</a>,
-      <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.2.1)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper" class="external-link">sandpaper (0.3.2)</a>,
+      <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.2.4)</a>,
       and <a href="https://github.com/carpentries/varnish" class="external-link">varnish (0.1.4)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
@@ -1704,9 +1705,9 @@ Attaching package: 'lubridate'</code></pre>
   "creativeWorkStatus": "active",
   "url": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson/03-working-with-data.html",
   "identifier": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson/03-working-with-data.html",
-  "dateCreated": "2022-02-14",
-  "dateModified": "2022-02-22",
-  "datePublished": "2022-02-22"
+  "dateCreated": "2022-02-25",
+  "dateModified": "2022-02-25",
+  "datePublished": "2022-02-25"
 }
 
   </script><script>
