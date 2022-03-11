@@ -61,7 +61,9 @@ Let's start off with the new surveys data. First we will read it into R:
 surveys_new <- read_csv("data/raw/surveys_new.csv")
 ```
 
-First thing we want to do is fix that `date` column name with spaces in it. R can handle them, but they are often very annoying. We can use the `rename()` function to change the column name.
+You will notice it contains a lot of columns from our previous `surveys` data, but not all of the columns. Some of them are only found in our other `plots_new.csv` and `species_new.txt` files. 
+
+First thing we want to do with `surveys_new` is fix that `date` column name with spaces in it. R can handle them, but they are often very annoying. We can use the `rename()` function to change the column name.
 
 ```{r}
 surveys_new <- surveys_new %>% 
