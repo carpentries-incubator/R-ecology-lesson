@@ -500,7 +500,7 @@ Faceting comes in handy in many scenarios. It can be useful when:
 - your data overlap heavily, obscuring categories
 - you want to show more than 3 variables at once
 - you want to see each category in isolation while allowing for general comparisons between categories
-::::::::::::::::::::::::::::: callout
+:::::::::::::::::::::::::::::::::::::
 
 ## Arranging plots
 
@@ -540,7 +540,7 @@ To combine entire `ggplot` plots together, we will use the package `patchwork`. 
 
 ::::::::::::::::::::::::::::: callout
 It is a good practice not to put `install.packages()` into a script. This is because every time you run that whole script, the package will be reinstalled, which is typically unnecessary. You want to install the package to your computer once, and then load it with `library()` in each script where you need to use it.
-::::::::::::::::::::::::::::: callout
+:::::::::::::::::::::::::::::::::::::
 
 ```{r patchwork}
 library(patchwork)
