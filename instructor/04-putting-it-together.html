@@ -72,11 +72,11 @@
   Rewrite-R-ecology-lesson
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 100%" class="percentage">
-    100%
+<aside class="col-md-12 lesson-progress"><div style="width: 80%" class="percentage">
+    80%
   </div>
   <div class="progress carpentries">
-    <div class="progress-bar carpentries" role="progressbar" style="width: 100%" aria-valuenow="100" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar carpentries" role="progressbar" style="width: 80%" aria-valuenow="80" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -189,6 +189,15 @@
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
+<div class="accordion accordion-flush" id="accordionFlush7">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading7">
+        <a href="05-extra-challenges.html">Extra Challenges</a>
+    </div><!--/div.accordion-header-->
+        
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
                 </div>
               </div>
             </div>
@@ -223,16 +232,16 @@
   <div class="col-xl-8 col-lg-12 primary-content">
     <nav class="lesson-content mx-md-4" aria-label="Previous and Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="../instructor/03-working-with-data.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="../instructor/index.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="../instructor/05-extra-challenges.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
         <a class="chapter-link" href="../instructor/03-working-with-data.html" rel="prev"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous: Working with data</a>
-        <a class="chapter-link float-end" href="../instructor/index.html" rel="next">Next... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="../instructor/05-extra-challenges.html" rel="next">Next: Extra Challenges... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Putting it together</h1>
-        <p> Last updated on 2022-02-25 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/04-putting-it-together.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <p> Last updated on 2022-03-15 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/04-putting-it-together.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 48 minutes </p>
         
         <div class="text-end">
@@ -285,27 +294,25 @@
 <code class="sourceCode R"><span class="va">surveys_new</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"data/raw/surveys_new.csv"</span><span class="op">)</span></code></pre>
 </div>
 <div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<h3 class="code-label">WARNING<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>Rows: 18676 Columns: 7</code></pre>
+<pre class="warning" tabindex="0"><code>Warning: One or more parsing issues, see `problems()` for details</code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>── Column specification ────────────────────────────────────────────────────────
+<pre class="output" tabindex="0"><code>Rows: 18676 Columns: 7
+── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
 chr (3): date (mm/dd/yyyy), species_id, sex
-dbl (4): record_id, plot_id, hindfoot_length, weight</code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>
+dbl (4): record_id, plot_id, hindfoot_length, weight
+
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<p>First thing we want to do is fix that <code>date</code> column name with spaces in it. R can handle them, but they are often very annoying. We can use the <code><a href="https://dplyr.tidyverse.org/reference/rename.html" class="external-link">rename()</a></code> function to change the column name.</p>
-<div class="codewrapper sourceCode" id="cb6">
+<p>You will notice it contains a lot of columns from our previous <code>surveys</code> data, but not all of the columns. Some of them are only found in our other <code>plots_new.csv</code> and <code>species_new.txt</code> files.</p>
+<p>First thing we want to do with <code>surveys_new</code> is fix that <code>date</code> column name with spaces in it. R can handle them, but they are often very annoying. We can use the <code><a href="https://dplyr.tidyverse.org/reference/rename.html" class="external-link">rename()</a></code> function to change the column name.</p>
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -313,16 +320,11 @@ dbl (4): record_id, plot_id, hindfoot_length, weight</code></pre>
   <span class="fu">rename</span><span class="op">(</span>date <span class="op">=</span> <span class="va">`date (mm/dd/yyyy)`</span><span class="op">)</span></code></pre>
 </div>
 <p>Let’s take a look at a summary of our data using <code><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary()</a></code>.</p>
-<div class="codewrapper sourceCode" id="cb7">
+<div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">summary</span><span class="op">(</span><span class="va">surveys_new</span><span class="op">)</span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">WARNING<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="warning" tabindex="0"><code>Warning: One or more parsing issues, see `problems()` for details</code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -346,7 +348,7 @@ dbl (4): record_id, plot_id, hindfoot_length, weight</code></pre>
 </div>
 <p>The <code><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary()</a></code> function is often useful for detecting outliers or clearly incorrect values, since we get a <code>Min.</code> and <code>Max.</code> value for each numeric column. For example, we see that <code>month</code> goes from 1 to 12 and <code>day</code> goes from 1 to 31, so no issues there. However, we do notice that <code>weight</code> has a max value of 9999. Sometimes people will use extreme and impossible values to denote a missing value. It is worth checking with our collaborators to make sure this is the case, but we will assume that’s what happened.</p>
 <p>Finally, we actually got a warning message about a <strong>parsing</strong> issue. This message actually comes from <code><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv()</a></code>, even though it only showed up now. <strong>Parsing</strong> is what <code><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv()</a></code> does when it tries to guess what type of vector each CSV column should be. Sometimes it will warn us about issues that occurred, which we can then investigate with the <code><a href="https://readr.tidyverse.org/reference/problems.html" class="external-link">problems()</a></code> function.</p>
-<div class="codewrapper sourceCode" id="cb10">
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -361,7 +363,7 @@ dbl (4): record_id, plot_id, hindfoot_length, weight</code></pre>
 1    19     6 a double 19'    /home/runner/work/Rewrite-R-ecology-lesson/Rewrit…</code></pre>
 </div>
 <p>The output shows that in the 19th row and 8th column of the CSV, <code><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv()</a></code> expected a double, or numeric, value. Instead, what it got was <code>19'</code>. That stray quotation mark was unexpected, so <code><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv()</a></code> notified us. Let’s go see what value is actually there for <code>surveys_new</code>. It was in the 19th row of the CSV, which includes the header row containing column names, so we should look at the 18th row of our data.frame. The 8th column is <code>hindfoot_length</code>. We can use the <code><a href="https://rdrr.io/r/utils/head.html" class="external-link">head()</a></code> function to look at the first 20 rows.</p>
-<div class="codewrapper sourceCode" id="cb12">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -396,7 +398,7 @@ dbl (4): record_id, plot_id, hindfoot_length, weight</code></pre>
 20     16898 1/6/1990      23 RM         M                  18     11</code></pre>
 </div>
 <p>Because <code><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv()</a></code> didn’t know what to do with the value <code>19'</code>, there is an <code>NA</code> for <code>hindfoot_length</code> in row 18. It is likely that the true value was <code>19</code> and the stray quotation mark was simply a typo. If we want to change that value, we can do it by referring to the <code>record_id</code>, since it is a unique identifier for each row. We will use the function <code><a href="https://dplyr.tidyverse.org/reference/if_else.html" class="external-link">if_else()</a></code> to actually replace the value. This function takes a logical statement as its first argument, then a value to return if that statement is <code>TRUE</code>, and a value to return if it is <code>FALSE</code>. Take a look at this example:</p>
-<div class="codewrapper sourceCode" id="cb14">
+<div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -412,7 +414,7 @@ dbl (4): record_id, plot_id, hindfoot_length, weight</code></pre>
 [10] "bigger than 6"    </code></pre>
 </div>
 <p>What we will do is take <code>surveys_new</code> and mutate the <code>hindfoot_length</code> column. It will be equal to the result of an <code><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse()</a></code> statement. If the <code>record_id</code> is <code>16896</code>, the row we are trying to change, then <code>hindfoot_length</code> will be set to 19. If the <code>record_id</code> is not <code>16896</code>, then it will stay as the current <code>hindfoot_length</code> value.</p>
-<div class="codewrapper sourceCode" id="cb16">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -450,7 +452,7 @@ dbl (4): record_id, plot_id, hindfoot_length, weight</code></pre>
 20     16898 1/6/1990      23 RM         M                  18     11</code></pre>
 </div>
 <p>We can actually use <code><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse()</a></code> to fix the values of <code>9999</code> in the <code>weight</code> column as well.</p>
-<div class="codewrapper sourceCode" id="cb18">
+<div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -510,7 +512,7 @@ dbl (4): record_id, plot_id, hindfoot_length, weight</code></pre>
 <div class="accordion-body">
 <p>The <code>dplyr</code> function <code><a href="https://dplyr.tidyverse.org/reference/na_if.html" class="external-link">na_if()</a></code> will replace specific values in a vector to <code>NA</code>. To find this function, you can Google “tidyverse replace value with NA”. One of the first results is the <a href="https://dplyr.tidyverse.org/reference/na_if.html" class="external-link"><code>dplyr</code> documentation page</a> for the <code><a href="https://dplyr.tidyverse.org/reference/na_if.html" class="external-link">na_if()</a></code> function.</p>
 <p>If you scroll down to the bottom section of the documentation, you will find several examples, including how to use the function inside <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate()</a></code>.</p>
-<div class="codewrapper sourceCode" id="cb20">
+<div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -527,7 +529,7 @@ dbl (4): record_id, plot_id, hindfoot_length, weight</code></pre>
 <li><p>Use the <code><a href="https://tidyr.tidyverse.org/reference/separate.html" class="external-link">separate()</a></code> function to split our current date column into 3 new character columns, containing the month, day and year. Then turn those columns into numeric columns. Then it will match our old <code>surveys</code> data, and we can later make a date column to validate our dates.</p></li>
 </ol><p>It is often useful to plan out your approach, or several approaches, before you start writing code. It can be in the form of plain English like above, or in <strong>“pseudo-code”</strong>, which is laid out like code, but doesn’t have explicit, functioning code.</p>
 <p>We will go ahead and use the first approach. First we will load <code>lubridate</code> and use the <code><a href="https://lubridate.tidyverse.org/reference/ymd.html" class="external-link">mdy()</a></code> function to turn our <code>date</code> column into a date instead of character column.</p>
-<div class="codewrapper sourceCode" id="cb21">
+<div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -546,7 +548,7 @@ Attaching package: 'lubridate'</code></pre>
 
     date, intersect, setdiff, union</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb24">
+<div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -559,7 +561,7 @@ Attaching package: 'lubridate'</code></pre>
 <pre class="warning" tabindex="0"><code>Warning: 6 failed to parse.</code></pre>
 </div>
 <p>We got a warning message about 6 dates failing to parse. This means that the <code><a href="https://lubridate.tidyverse.org/reference/ymd.html" class="external-link">mdy()</a></code> function encountered 6 dates that it wasn’t able to identify correctly. When <code>lubridate</code> functions fail to parse dates, they will return an <code>NA</code> value instead. To find the rows where this happened, we can use <code><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter()</a></code>:</p>
-<div class="codewrapper sourceCode" id="cb26">
+<div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -602,12 +604,17 @@ Attaching package: 'lubridate'</code></pre>
 <div class="accordion-body">
 <p>There are two basic approaches you could take. First, you could look directly at the old CSV and find the rows with bad dates based on their <code>record_id</code>.</p>
 <p>You could also read the data back into R and use <code><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter()</a></code> to pick out those specific rows via <code>record_id</code>:</p>
-<div class="codewrapper sourceCode" id="cb28">
+<div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">read_csv</span><span class="op">(</span><span class="st">"data/raw/surveys_new.csv"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">filter</span><span class="op">(</span><span class="va">record_id</span> <span class="op">%in%</span> <span class="fu">c</span><span class="op">(</span><span class="fl">22258</span>, <span class="fl">22261</span>, <span class="fl">30595</span>, <span class="fl">30610</span>, <span class="fl">30638</span>, <span class="fl">31394</span><span class="op">)</span><span class="op">)</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">WARNING<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="warning" tabindex="0"><code>Warning: One or more parsing issues, see `problems()` for details</code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -628,7 +635,7 @@ Attaching package: 'lubridate'</code></pre>
 </div>
 </div>
 <p>The last thing to do is extract the year, month, and day values from our <code>date</code> column. <code>lubridate</code> has functions to extract each component of a date. We will then get rid of the <code>date</code> column, since it doesn’t appear in our original <code>surveys</code> data, and we can always remake it from the component columns.</p>
-<div class="codewrapper sourceCode" id="cb30">
+<div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -676,7 +683,7 @@ Attaching package: 'lubridate'</code></pre>
 <p>Click on the <code>species_new.txt</code> file in the <strong>Files</strong> pane to open it in RStudio. We see that our data are still structured in columns and rows, with column names in the header row. Each value is wrapped in quotes, values are separated by spaces, and each row ends with a new line.</p>
 <p>This is a generic data structure called “delimited” data. A CSV is a form of delimited data, where values are “delimited”, or separated, by commas. Luckily, the <code>readr</code> package has a function for dealing with more generic delimited data, called <code><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_delim()</a></code>.</p>
 <p>We have to give <code><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_delim()</a></code> three arguments. First is the file path, just like <code><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv()</a></code>. The second argument is what character string is used to delimit each item in the file. In our case, it is a space, so we make a character string that is just a space. Finally, we need to identify what is used to quote each entry in our file. Our values are wrapped in double-quotes, so we need to type a double quote. However, we can’t just type 3 double-quotes, or R will get upset with us (give it a try if you want). Luckily, R recognizes both single- and double-quotes for creating character strings. So we can use single-quotes to make our character string, and put one double-quote character inside it.</p>
-<div class="codewrapper sourceCode" id="cb32">
+<div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -685,23 +692,15 @@ Attaching package: 'lubridate'</code></pre>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>Rows: 54 Columns: 3</code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>── Column specification ────────────────────────────────────────────────────────
+<pre class="output" tabindex="0"><code>Rows: 54 Columns: 3
+── Column specification ────────────────────────────────────────────────────────
 Delimiter: " "
-chr (3): species_id, species_name, taxa</code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>
+chr (3): species_id, species_name, taxa
+
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb36">
+<div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -728,7 +727,7 @@ chr (3): species_id, species_name, taxa</code></pre>
 <p>What we get back is a tibble, formatted just like it would have been if our data were in a CSV.</p>
 <p>One thing we might notice is that our species and genus are combined into one column called <code>species_name</code>, whereas in our old data, we had separate columns for <code>genus</code> and <code>species</code>. It is fairly common to have data in one column that could be separated into two or more columns. Luckily, <code>tidyr</code> has a convenient function for solving this problem, called <code><a href="https://tidyr.tidyverse.org/reference/separate.html" class="external-link">separate()</a></code>.</p>
 <p>We pipe <code>species_new</code> into the <code><a href="https://tidyr.tidyverse.org/reference/separate.html" class="external-link">separate()</a></code> function, then give it several other arguments. First, the name of the column to be separated, <code>species_name</code>. Next, we give the argument <code>into</code> a character vector of the new columns we want. Finally, we give a string for what is currently separating each of the new values in the current column. In <code>species_name</code>, the genus and species are separated by a space.</p>
-<div class="codewrapper sourceCode" id="cb38">
+<div class="codewrapper sourceCode" id="cb35">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -758,7 +757,7 @@ chr (3): species_id, species_name, taxa</code></pre>
 <p>There we go, now <code>species_new</code> is formatted like the similar columns in the older <code>surveys</code> data.</p>
 </section><section id="reading-the-new-plots-data"><h2 class="section-heading">Reading the new plots data</h2>
 <hr class="half-width"><p>Finally, we can move on to the new <code>plots</code> data, in the <code>plots_new.csv</code> file. We can go back to <code><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv()</a></code> to get it into R.</p>
-<div class="codewrapper sourceCode" id="cb40">
+<div class="codewrapper sourceCode" id="cb37">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -767,23 +766,15 @@ chr (3): species_id, species_name, taxa</code></pre>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>Rows: 1 Columns: 24</code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>── Column specification ────────────────────────────────────────────────────────
+<pre class="output" tabindex="0"><code>Rows: 1 Columns: 24
+── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
-chr (24): Plot 1, Plot 2, Plot 3, Plot 4, Plot 5, Plot 6, Plot 7, Plot 8, Pl...</code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>
+chr (24): Plot 1, Plot 2, Plot 3, Plot 4, Plot 5, Plot 6, Plot 7, Plot 8, Pl...
+
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb44">
+<div class="codewrapper sourceCode" id="cb39">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -793,13 +784,14 @@ chr (24): Plot 1, Plot 2, Plot 3, Plot 4, Plot 5, Plot 6, Plot 7, Plot 8, Pl...<
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code># A tibble: 1 × 24
-  `Plot 1`   `Plot 2` `Plot 3`   `Plot 4` `Plot 5`  `Plot 6`   `Plot 7` `Plot 8`
-  &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt;   
-1 Spectab e… Control  Long-term… Control  Rodent E… Short-ter… Rodent … Control 
-# … with 16 more variables: Plot 9 &lt;chr&gt;, Plot 10 &lt;chr&gt;, Plot 11 &lt;chr&gt;,
-#   Plot 12 &lt;chr&gt;, Plot 13 &lt;chr&gt;, Plot 14 &lt;chr&gt;, Plot 15 &lt;chr&gt;, Plot 16 &lt;chr&gt;,
-#   Plot 17 &lt;chr&gt;, Plot 18 &lt;chr&gt;, Plot 19 &lt;chr&gt;, Plot 20 &lt;chr&gt;, Plot 21 &lt;chr&gt;,
-#   Plot 22 &lt;chr&gt;, Plot 23 &lt;chr&gt;, Plot 24 &lt;chr&gt;</code></pre>
+  `Plot 1`        `Plot 2` `Plot 3` `Plot 4` `Plot 5` `Plot 6` `Plot 7` `Plot 8`
+  &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;   
+1 Spectab exclos… Control  Long-te… Control  Rodent … Short-t… Rodent … Control 
+# … with 16 more variables: `Plot 9` &lt;chr&gt;, `Plot 10` &lt;chr&gt;, `Plot 11` &lt;chr&gt;,
+#   `Plot 12` &lt;chr&gt;, `Plot 13` &lt;chr&gt;, `Plot 14` &lt;chr&gt;, `Plot 15` &lt;chr&gt;,
+#   `Plot 16` &lt;chr&gt;, `Plot 17` &lt;chr&gt;, `Plot 18` &lt;chr&gt;, `Plot 19` &lt;chr&gt;,
+#   `Plot 20` &lt;chr&gt;, `Plot 21` &lt;chr&gt;, `Plot 22` &lt;chr&gt;, `Plot 23` &lt;chr&gt;,
+#   `Plot 24` &lt;chr&gt;</code></pre>
 </div>
 <p>It looks like our data are in a bit of a strange format. We have a column for each plot, and then a single row of data containing the plot type. If you look at our old <code>surveys</code> data, we had a single row for <code>plot_id</code> and a single row for <code>plot_type</code>. <code>surveys</code> contained this data in a <strong>long</strong> format, whereas <code>plots_new</code> has a <strong>wide</strong> format.</p>
 <div id="accordionInstructor1" class="accordion instructor-note accordion-flush">
@@ -839,7 +831,7 @@ chr (24): Plot 1, Plot 2, Plot 3, Plot 4, Plot 5, Plot 6, Plot 7, Plot 8, Pl...<
 </button>
 <div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb46">
+<div class="codewrapper sourceCode" id="cb41">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -872,7 +864,7 @@ chr (24): Plot 1, Plot 2, Plot 3, Plot 4, Plot 5, Plot 6, Plot 7, Plot 8, Pl...<
 </div>
 <p>Our old <code>surveys</code> data had <code>plot_id</code> as a numeric variable, but ours is a character string with <code>"Plot "</code> in front of the number. This is a pretty common issue, but we can use a function from the <code>stringr</code> package to fix it.</p>
 <p>We will use <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate()</a></code> to modify the <code>plot_id</code> column, and we will replace it with the results of the <code><a href="https://stringr.tidyverse.org/reference/str_replace.html" class="external-link">str_replace()</a></code> function. The first argument to <code><a href="https://stringr.tidyverse.org/reference/str_replace.html" class="external-link">str_replace()</a></code> is the character vector we want to modify, which is the current <code>plot_id</code> column. Next is the string of characters that we want to replace, which is <code>"Plot "</code>, including the space at the end. Finally, we have the replacement string. Since we want to remove <code>"Plot "</code>, we replace it with a blank string <code>""</code>.</p>
-<div class="codewrapper sourceCode" id="cb48">
+<div class="codewrapper sourceCode" id="cb43">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -900,7 +892,7 @@ chr (24): Plot 1, Plot 2, Plot 3, Plot 4, Plot 5, Plot 6, Plot 7, Plot 8, Pl...<
 # … with 14 more rows</code></pre>
 </div>
 <p>We successfully removed <code>"Plot "</code> from our <code>plot_id</code> column entries, so we are left with just the numbers. However, it is still a <code>character</code> column. The last step is to convert it to a numeric column.</p>
-<div class="codewrapper sourceCode" id="cb50">
+<div class="codewrapper sourceCode" id="cb45">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -931,7 +923,7 @@ chr (24): Plot 1, Plot 2, Plot 3, Plot 4, Plot 5, Plot 6, Plot 7, Plot 8, Pl...<
 <hr class="half-width"><p>Now that we have each individual data.frame formatted nicely, we would like to be able to combine them. Our <code>surveys</code> data has all of the data combined into one data.frame. However, our data.frames are different sizes. <code>surveys_new</code> has 18676 rows, and it contains the individual data for each animal. This is the same basic size of the old <code>surveys</code> data. However, our <code>plots_new</code> and <code>species_new</code> data are much smaller. They only contain data on specific plots and species.</p>
 <p>If we look at the column names for <code>surveys_new</code> and <code>plots_new</code>, we see that they share a <code>plot_id</code> column. What we want to do now is take the data of our actual observations, <code>surveys_new</code>, and add the data for each associated plot. If a row in <code>surveys_new</code> has a <code>plot_id</code> of 2, we want to associate the <code>plot_type</code> of that plot with that row. We can accomplish this using a <strong>join</strong>.</p>
 <figure><img src="../fig/left_join.png" alt="" class="figure mx-auto d-block"><figcaption>Diagram displaying how a <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join()</a></code> works.</figcaption></figure><p>There are several types of joins in the <code>dplyr</code> package, which you can <a href="https://stat545.com/join-cheatsheet.html" class="external-link">read more about here</a>. We will use a function called <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join()</a></code>, which takes two dataframes and adds the columns from the second dataframe to the first dataframe, matching rows based on the column name supplied to the <code>by</code> argument.</p>
-<div class="codewrapper sourceCode" id="cb52">
+<div class="codewrapper sourceCode" id="cb47">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -956,14 +948,14 @@ chr (24): Plot 1, Plot 2, Plot 3, Plot 4, Plot 5, Plot 6, Plot 7, Plot 8, Pl...<
 # … with 18,666 more rows, and 1 more variable: plot_type &lt;chr&gt;</code></pre>
 </div>
 <p>Now we have our <code>surveys_new</code> dataframe, still with 18676 rows, but now each row has a value for <code>plot_type</code>, corresponding to its entry in <code>plot_id</code>. We can assign this back to <code>surveys_new</code>, so that it now contains the information from both dataframes.</p>
-<div class="codewrapper sourceCode" id="cb54">
+<div class="codewrapper sourceCode" id="cb49">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">surveys_new</span> <span class="op">&lt;-</span> <span class="fu">left_join</span><span class="op">(</span><span class="va">surveys_new</span>, <span class="va">plots_new</span>, by <span class="op">=</span> <span class="st">"plot_id"</span><span class="op">)</span></code></pre>
 </div>
 <p>We can repeat this process to get the information from <code>species_new</code>. <code>surveys_new</code> and <code>species_new</code> both have a <code>species_id</code> column, but we would like to add the <code>genus</code>, <code>species</code>, and <code>taxa</code> information to <code>surveys_new</code>.</p>
-<div class="codewrapper sourceCode" id="cb55">
+<div class="codewrapper sourceCode" id="cb50">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -993,7 +985,7 @@ chr (24): Plot 1, Plot 2, Plot 3, Plot 4, Plot 5, Plot 6, Plot 7, Plot 8, Pl...<
 <p>Now our <code>surveys_new</code> dataframe has all the information from our 3 files, and the same number of columns as our original <code>surveys</code> data.</p>
 </section><section id="adding-to-the-old-data"><h2 class="section-heading">Adding to the old data</h2>
 <hr class="half-width"><p>Now that our old <code>surveys</code> data and <code>surveys_new</code> data are formatted in the same way, we can bind them together so we have data from all years in one data.frame. First let’s read our `surveys’ data back in.</p>
-<div class="codewrapper sourceCode" id="cb57">
+<div class="codewrapper sourceCode" id="cb52">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1002,25 +994,17 @@ chr (24): Plot 1, Plot 2, Plot 3, Plot 4, Plot 5, Plot 6, Plot 7, Plot 8, Pl...<
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>Rows: 16878 Columns: 13</code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>── Column specification ────────────────────────────────────────────────────────
+<pre class="output" tabindex="0"><code>Rows: 16878 Columns: 13
+── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
 chr (6): species_id, sex, genus, species, taxa, plot_type
-dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight</code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>
+dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
+
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
 <p>Now we can use the <code><a href="https://dplyr.tidyverse.org/reference/bind.html" class="external-link">bind_rows()</a></code> function to bind the rows of our two data.frames together. The fact that our columns are not in the same order doesn’t matter, <code><a href="https://dplyr.tidyverse.org/reference/bind.html" class="external-link">bind_rows()</a></code> will detect thatt the column names are the same, and will rearrange them to match the first data.frame.</p>
-<div class="codewrapper sourceCode" id="cb61">
+<div class="codewrapper sourceCode" id="cb54">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1048,7 +1032,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight</code></p
 #   taxa &lt;chr&gt;, plot_type &lt;chr&gt;</code></pre>
 </div>
 <p>We might be interested in indicating which rows of our data came from which source: the old data or the new. We can name the data.frames inside <code><a href="https://dplyr.tidyverse.org/reference/bind.html" class="external-link">bind_rows()</a></code>, and then give a new argument <code>.id</code>. This will give us a new column called <code>source</code> that contains a value of <code>"old"</code> for rows that came from <code>surveys</code>, and a value of <code>"new"</code> for rows that came from <code>surveys_new</code>.</p>
-<div class="codewrapper sourceCode" id="cb63">
+<div class="codewrapper sourceCode" id="cb56">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1078,7 +1062,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight</code></p
 <p>We have now successfully cleaned our new data and reshaped it to match our old data so they could be arranged into one data.frame covering all the years.</p>
 </section><section id="final-outputs"><h2 class="section-heading">Final outputs</h2>
 <hr class="half-width"><p>Let’s go ahead and write our data to a CSV file so we can share it with others.</p>
-<div class="codewrapper sourceCode" id="cb65">
+<div class="codewrapper sourceCode" id="cb58">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1086,7 +1070,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight</code></p
   <span class="fu">write_csv</span><span class="op">(</span><span class="st">"data/cleaned/surveys_complete.csv"</span><span class="op">)</span></code></pre>
 </div>
 <p>Now we might be interested in looking at all of our data together. Try making some plots of your own to look at the whole dataset!</p>
-<div class="codewrapper sourceCode" id="cb66">
+<div class="codewrapper sourceCode" id="cb59">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1118,12 +1102,12 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight</code></p
 </section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="../instructor/03-working-with-data.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="../instructor/index.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="../instructor/05-extra-challenges.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
         <a class="chapter-link" href="../instructor/03-working-with-data.html" rel="prev"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous: Working with data</a>
-        <a class="chapter-link float-end" href="../instructor/index.html" rel="next">Next... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="../instructor/05-extra-challenges.html" rel="next">Next: Extra Challenges... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
     </nav></div> <!-- / div.primary-content.col-xs-12 -->
 <!-- END:   inst/pkgdown/templates/content-instructor.html-->
@@ -1139,9 +1123,9 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight</code></p
         <p>Materials licensed under <a href="../LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper" class="external-link">sandpaper (0.3.2)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper" class="external-link">sandpaper (0.3.5)</a>,
       <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.2.4)</a>,
-      and <a href="https://github.com/carpentries/varnish" class="external-link">varnish (0.1.4)</a>.</p>
+      and <a href="https://github.com/carpentries/varnish" class="external-link">varnish (0.1.7)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1161,9 +1145,9 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight</code></p
   "creativeWorkStatus": "active",
   "url": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson/instructor/04-putting-it-together.html",
   "identifier": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson/instructor/04-putting-it-together.html",
-  "dateCreated": "2022-02-25",
-  "dateModified": "2022-02-25",
-  "datePublished": "2022-02-25"
+  "dateCreated": "2022-03-15",
+  "dateModified": "2022-03-15",
+  "datePublished": "2022-03-15"
 }
 
   </script><script>

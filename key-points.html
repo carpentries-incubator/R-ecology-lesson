@@ -57,6 +57,11 @@
         <li class="nav-item">
           <a class="nav-link" href="profiles.html">Learner Profiles</a>
         </li>
+        <li class="nav-item dropdown">
+          <button class="nav-link dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            More <i data-feather="chevron-down"></i>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul></li>
       </ul></div>
     <form class="d-flex col-md-2 search-form">
       <input class="form-control me-2 searchbox" type="search" placeholder="Search" aria-label="Search"><button class="btn btn-outline-success tablet-search-button" type="submit"><i class="search-icon" data-feather="search" role="img" aria-label="search button"></i></button>
@@ -121,6 +126,7 @@
         
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
+
 <div class="accordion accordion-flush" id="accordionFlush2">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading2">
@@ -129,6 +135,7 @@
         
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
+
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
@@ -137,6 +144,7 @@
         
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
+
 <div class="accordion accordion-flush" id="accordionFlush4">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading4">
@@ -145,6 +153,7 @@
         
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
+
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
@@ -153,6 +162,7 @@
         
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
+
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
@@ -162,11 +172,36 @@
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
+<div class="accordion accordion-flush" id="accordionFlush7">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading7">
+        <a href="05-extra-challenges.html">Extra Challenges</a>
+    </div><!--/div.accordion-header-->
+        
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
                 </div>
               </div>
             </div>
 
-            <hr class="half-width"><hr class="d-none d-sm-block d-md-none"><div class="d-grid gap-1">
+            <hr class="half-width"><div class="accordion accordion-flush resources" id="accordionFlush12">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingTwelve">
+                  <button class="accordion-button collapsed" id="resources" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwelve" aria-expanded="false" aria-controls="flush-collapseTwelve">
+                    RESOURCES
+                  </button>
+                </h2>
+                <div id="flush-collapseTwelve" class="accordion-collapse collapse" aria-labelledby="flush-headingTwelve" data-bs-parent="#accordionFlush12">
+                  <div class="accordion-body">
+                    <ul></ul></div>
+                </div>
+              </div>
+            </div>
+
+            
+
+            <hr class="d-none d-sm-block d-md-none"><div class="d-grid gap-1">
             
             </div>
           </div><!-- /div.accordion -->
@@ -193,7 +228,7 @@
 <li>use premade <code>theme_</code> functions to broadly change appearance, and the <code><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme()</a></code> function to fine-tune</li>
 <li>start simple and build your plots iteratively</li>
 </ul></section><section id="exploring-and-understanding-data"><h2 class="section-heading"><a href="02-how-r-thinks-about-data.html">Exploring and understanding data</a></h2>
-<hr class="half-width"><ul><li>functions like <code><a href="https://rdrr.io/r/utils/head.html" class="external-link">head()</a></code>, <code><a href="https://rdrr.io/r/utils/str.html" class="external-link">str()</a></code>, and <code><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary()</a></code> are useful for exploring dataframes</li>
+<hr class="half-width"><ul><li>functions like <code><a href="https://rdrr.io/r/utils/head.html" class="external-link">head()</a></code>, <code><a href="https://rdrr.io/r/utils/str.html" class="external-link">str()</a></code>, and <code><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary()</a></code> are useful for exploring data.frames</li>
 <li>most things in R are vectors, vectors stitched together, or functions</li>
 <li>make sure to use <code><a href="https://rdrr.io/r/base/class.html" class="external-link">class()</a></code> to check vector types, especially when using new functions</li>
 <li>factors can be useful, but behave differently from character vectors</li>
@@ -211,7 +246,9 @@
 <li>the <code>read_delimited()</code> function can read tabular data from multiple file formats</li>
 <li>joins are powerful ways to combine multiple datasets</li>
 <li>it is a good idea to plan out the steps of your data cleaning and combining</li>
-</ul></section></div>
+</ul></section><section id="extra-challenges"><h2 class="section-heading"><a href="05-extra-challenges.html">Extra Challenges</a></h2>
+<hr class="half-width"><p>No keypoints</p>
+</section></div>
     </main></div>
 <!-- END  : inst/pkgdown/templates/content-extra.html -->
 
@@ -226,9 +263,9 @@
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper" class="external-link">sandpaper (0.1.4)</a>,
-      <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.1.1)</a>,
-      and <a href="https://github.com/carpentries/varnish" class="external-link">varnish (0.1.4)</a>.</p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper" class="external-link">sandpaper (0.3.5)</a>,
+      <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.2.4)</a>,
+      and <a href="https://github.com/carpentries/varnish" class="external-link">varnish (0.1.7)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -240,17 +277,17 @@
     {
   "@context": "https://schema.org",
   "@type": "TrainingMaterial",
-  "@id": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson//instructor/key-points.html",
+  "@id": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson/key-points.html",
   "dct:conformsTo": "https://bioschemas.org/profiles/TrainingMaterial/0.9-DRAFT-2020_12_08",
   "description": "A Carpentries Lesson teaching foundational data and coding skills to researchers worldwide",
   "keywords": "software,data,lesson,The Carpentries",
   "name": "Keypoints",
   "creativeWorkStatus": "active",
-  "url": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson//instructor/key-points.html",
-  "identifier": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson//instructor/key-points.html",
-  "dateCreated": "2022-02-10",
-  "dateModified": "2022-02-10",
-  "datePublished": "2022-02-10"
+  "url": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson/key-points.html",
+  "identifier": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson/key-points.html",
+  "dateCreated": "2022-03-15",
+  "dateModified": "2022-03-15",
+  "datePublished": "2022-03-15"
 }
 
   </script><script>
