@@ -70,7 +70,7 @@ library(tidyverse)
 
 ## Importing data
 
-Up until this point, we have been working with the `surveys` dataframe contained in the `ratdat` package. However, you typically won't access data from an R package; it is much more common to access data files stored somewhere on your computer. We are going to download a CSV file containing the surveys data to our computer, which we will then read into R.
+Up until this point, we have been working with the `complete_old` dataframe contained in the `ratdat` package. However, you typically won't access data from an R package; it is much more common to access data files stored somewhere on your computer. We are going to download a CSV file containing the surveys data to our computer, which we will then read into R.
 
 Click this link to download the file: <https://downgit.github.io/#/home?url=https://github.com/MCMaurer/Rewrite-R-ecology-lesson/blob/main/episodes/data/cleaned/surveys_complete_77_89.csv>.
 
@@ -91,16 +91,10 @@ surveys <- read_csv("data/cleaned/surveys_complete_77_89.csv")
 
 ```{.output}
 Rows: 16878 Columns: 13
-```
-
-```{.output}
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
 chr (6): species_id, sex, genus, species, taxa, plot_type
 dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
-```
-
-```{.output}
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
@@ -195,18 +189,18 @@ select(surveys, -record_id, -year)
 
 ```{.output}
 # A tibble: 16,878 × 11
-   month   day plot_id species_id sex   hindfoot_length weight genus       species
-   <dbl> <dbl>   <dbl> <chr>      <chr>           <dbl>  <dbl> <chr>       <chr>  
- 1     7    16       2 NL         M                  32     NA Neotoma     albigu…
- 2     7    16       3 NL         M                  33     NA Neotoma     albigu…
- 3     7    16       2 DM         F                  37     NA Dipodomys   merria…
- 4     7    16       7 DM         M                  36     NA Dipodomys   merria…
- 5     7    16       3 DM         M                  35     NA Dipodomys   merria…
- 6     7    16       1 PF         M                  14     NA Perognathus flavus 
- 7     7    16       2 PE         F                  NA     NA Peromyscus  eremic…
- 8     7    16       1 DM         M                  37     NA Dipodomys   merria…
- 9     7    16       1 DM         F                  34     NA Dipodomys   merria…
-10     7    16       6 PF         F                  20     NA Perognathus flavus 
+   month   day plot_id species_id sex   hindfoot_length weight genus     species
+   <dbl> <dbl>   <dbl> <chr>      <chr>           <dbl>  <dbl> <chr>     <chr>  
+ 1     7    16       2 NL         M                  32     NA Neotoma   albigu…
+ 2     7    16       3 NL         M                  33     NA Neotoma   albigu…
+ 3     7    16       2 DM         F                  37     NA Dipodomys merria…
+ 4     7    16       7 DM         M                  36     NA Dipodomys merria…
+ 5     7    16       3 DM         M                  35     NA Dipodomys merria…
+ 6     7    16       1 PF         M                  14     NA Perognat… flavus 
+ 7     7    16       2 PE         F                  NA     NA Peromysc… eremic…
+ 8     7    16       1 DM         M                  37     NA Dipodomys merria…
+ 9     7    16       1 DM         F                  34     NA Dipodomys merria…
+10     7    16       6 PF         F                  20     NA Perognat… flavus 
 # … with 16,868 more rows, and 2 more variables: taxa <chr>, plot_type <chr>
 ```
 
@@ -613,18 +607,18 @@ surveys %>%
 
 ```{.output}
 # A tibble: 16,878 × 14
-   record_id month   day  year date      plot_id species_id sex   hindfoot_length
-       <dbl> <dbl> <dbl> <dbl> <chr>       <dbl> <chr>      <chr>           <dbl>
- 1         1     7    16  1977 1977-7-16       2 NL         M                  32
- 2         2     7    16  1977 1977-7-16       3 NL         M                  33
- 3         3     7    16  1977 1977-7-16       2 DM         F                  37
- 4         4     7    16  1977 1977-7-16       7 DM         M                  36
- 5         5     7    16  1977 1977-7-16       3 DM         M                  35
- 6         6     7    16  1977 1977-7-16       1 PF         M                  14
- 7         7     7    16  1977 1977-7-16       2 PE         F                  NA
- 8         8     7    16  1977 1977-7-16       1 DM         M                  37
- 9         9     7    16  1977 1977-7-16       1 DM         F                  34
-10        10     7    16  1977 1977-7-16       6 PF         F                  20
+   record_id month   day  year date     plot_id species_id sex   hindfoot_length
+       <dbl> <dbl> <dbl> <dbl> <chr>      <dbl> <chr>      <chr>           <dbl>
+ 1         1     7    16  1977 1977-7-…       2 NL         M                  32
+ 2         2     7    16  1977 1977-7-…       3 NL         M                  33
+ 3         3     7    16  1977 1977-7-…       2 DM         F                  37
+ 4         4     7    16  1977 1977-7-…       7 DM         M                  36
+ 5         5     7    16  1977 1977-7-…       3 DM         M                  35
+ 6         6     7    16  1977 1977-7-…       1 PF         M                  14
+ 7         7     7    16  1977 1977-7-…       2 PE         F                  NA
+ 8         8     7    16  1977 1977-7-…       1 DM         M                  37
+ 9         9     7    16  1977 1977-7-…       1 DM         F                  34
+10        10     7    16  1977 1977-7-…       6 PF         F                  20
 # … with 16,868 more rows, and 5 more variables: weight <dbl>, genus <chr>,
 #   species <chr>, taxa <chr>, plot_type <chr>
 ```
@@ -1161,9 +1155,9 @@ sp_by_plot_wide
 16 SF          NA     49     NA     NA     NA     NA    NA     NA    NA   
 17 SH          76.0   79.9   NA     88     NA     82.7  NA     NA    NA   
 18 SS          NA     NA     NA     NA     NA     NA    NA     NA    NA   
-# … with 15 more variables: 9 <dbl>, 10 <dbl>, 11 <dbl>, 12 <dbl>, 13 <dbl>,
-#   14 <dbl>, 15 <dbl>, 16 <dbl>, 17 <dbl>, 18 <dbl>, 19 <dbl>, 20 <dbl>,
-#   22 <dbl>, 23 <dbl>, 24 <dbl>
+# … with 15 more variables: `9` <dbl>, `10` <dbl>, `11` <dbl>, `12` <dbl>,
+#   `13` <dbl>, `14` <dbl>, `15` <dbl>, `16` <dbl>, `17` <dbl>, `18` <dbl>,
+#   `19` <dbl>, `20` <dbl>, `22` <dbl>, `23` <dbl>, `24` <dbl>
 ```
 
 Now we've got our reshaped data.frame. There are a few things to notice. First, we have a new column for each `plot_id` value. There is one old column left in the data.frame: `species_id`. It wasn't used in `pivot_wider()`, so it stays, and now contains a single entry for each unique `species_id` value. 

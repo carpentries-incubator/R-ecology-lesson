@@ -61,24 +61,24 @@ Let's start off with the new surveys data. First we will read it into R:
 surveys_new <- read_csv("data/raw/surveys_new.csv")
 ```
 
-```{.output}
-Rows: 18676 Columns: 7
+```{.warning}
+Warning: One or more parsing issues, see `problems()` for details
 ```
 
 ```{.output}
+Rows: 18676 Columns: 7
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
 chr (3): date (mm/dd/yyyy), species_id, sex
 dbl (4): record_id, plot_id, hindfoot_length, weight
-```
-
-```{.output}
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ```
 
-First thing we want to do is fix that `date` column name with spaces in it. R can handle them, but they are often very annoying. We can use the `rename()` function to change the column name.
+You will notice it contains a lot of columns from our previous `surveys` data, but not all of the columns. Some of them are only found in our other `plots_new.csv` and `species_new.txt` files. 
+
+First thing we want to do with `surveys_new` is fix that `date` column name with spaces in it. R can handle them, but they are often very annoying. We can use the `rename()` function to change the column name.
 
 
 ```r
@@ -92,10 +92,6 @@ Let's take a look at a summary of our data using `summary()`.
 
 ```r
 summary(surveys_new)
-```
-
-```{.warning}
-Warning: One or more parsing issues, see `problems()` for details
 ```
 
 ```{.output}
@@ -357,6 +353,10 @@ read_csv("data/raw/surveys_new.csv") %>%
   filter(record_id %in% c(22258, 22261, 30595, 30610, 30638, 31394))
 ```
 
+```{.warning}
+Warning: One or more parsing issues, see `problems()` for details
+```
+
 ```{.output}
 # A tibble: 6 × 7
   record_id `date (mm/dd/yyyy)` plot_id species_id sex   hindfoot_length weight
@@ -441,15 +441,9 @@ species_new <- read_delim("data/raw/species_new.txt", delim = " ", quote = '"')
 
 ```{.output}
 Rows: 54 Columns: 3
-```
-
-```{.output}
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: " "
 chr (3): species_id, species_name, taxa
-```
-
-```{.output}
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
@@ -520,15 +514,9 @@ plots_new <- read_csv("data/raw/plots_new.csv")
 
 ```{.output}
 Rows: 1 Columns: 24
-```
-
-```{.output}
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
 chr (24): Plot 1, Plot 2, Plot 3, Plot 4, Plot 5, Plot 6, Plot 7, Plot 8, Pl...
-```
-
-```{.output}
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
@@ -540,13 +528,14 @@ plots_new
 
 ```{.output}
 # A tibble: 1 × 24
-  `Plot 1`   `Plot 2` `Plot 3`   `Plot 4` `Plot 5`  `Plot 6`   `Plot 7` `Plot 8`
-  <chr>      <chr>    <chr>      <chr>    <chr>     <chr>      <chr>    <chr>   
-1 Spectab e… Control  Long-term… Control  Rodent E… Short-ter… Rodent … Control 
-# … with 16 more variables: Plot 9 <chr>, Plot 10 <chr>, Plot 11 <chr>,
-#   Plot 12 <chr>, Plot 13 <chr>, Plot 14 <chr>, Plot 15 <chr>, Plot 16 <chr>,
-#   Plot 17 <chr>, Plot 18 <chr>, Plot 19 <chr>, Plot 20 <chr>, Plot 21 <chr>,
-#   Plot 22 <chr>, Plot 23 <chr>, Plot 24 <chr>
+  `Plot 1`        `Plot 2` `Plot 3` `Plot 4` `Plot 5` `Plot 6` `Plot 7` `Plot 8`
+  <chr>           <chr>    <chr>    <chr>    <chr>    <chr>    <chr>    <chr>   
+1 Spectab exclos… Control  Long-te… Control  Rodent … Short-t… Rodent … Control 
+# … with 16 more variables: `Plot 9` <chr>, `Plot 10` <chr>, `Plot 11` <chr>,
+#   `Plot 12` <chr>, `Plot 13` <chr>, `Plot 14` <chr>, `Plot 15` <chr>,
+#   `Plot 16` <chr>, `Plot 17` <chr>, `Plot 18` <chr>, `Plot 19` <chr>,
+#   `Plot 20` <chr>, `Plot 21` <chr>, `Plot 22` <chr>, `Plot 23` <chr>,
+#   `Plot 24` <chr>
 ```
 
 It looks like our data are in a bit of a strange format. We have a column for each plot, and then a single row of data containing the plot type. If you look at our old `surveys` data, we had a single row for `plot_id` and a single row for `plot_type`. `surveys` contained this data in a **long** format, whereas `plots_new` has a **wide** format.
@@ -732,16 +721,10 @@ surveys <- read_csv("data/cleaned/surveys_complete_77_89.csv")
 
 ```{.output}
 Rows: 16878 Columns: 13
-```
-
-```{.output}
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
 chr (6): species_id, sex, genus, species, taxa, plot_type
 dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
-```
-
-```{.output}
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.

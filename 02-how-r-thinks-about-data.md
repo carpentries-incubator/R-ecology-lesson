@@ -12,7 +12,7 @@ exercises: 3
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Explore the structure and content of dataframes
+- Explore the structure and content of data.frames
 - Understand vector types and missing data
 - Use vectors as function arguments
 - Create and convert factors
@@ -28,25 +28,18 @@ exercises: 3
 
 ```r
 library(tidyverse)
-```
-
-
-```r
 library(ratdat)
-surveys <- left_join(left_join(surveys, species), plots) %>% 
-  mutate(across(where(is.factor), as.character)) %>% 
-  filter(year < 1990)
 ```
 
 ## The data.frame
 
-We just spent quite a bit of time learning how to create visualizations from the `surveys` data, but we did not talk much about **what** this `surveys` thing is. It's important to understand how R thinks about, represents, and stores data in order for us to have a productive working relationship with R.
+We just spent quite a bit of time learning how to create visualizations from the `complete_old` data, but we did not talk much about **what** this `complete_old` thing is. It's important to understand how R thinks about, represents, and stores data in order for us to have a productive working relationship with R.
 
-The `surveys` data is stored in R as a `data.frame`, which is the most common way that R represents tabular data (data that can be stored in a table format). We can check what `surveys` is by using the `class()` function:
+The `complete_old` data is stored in R as a **data.frame**, which is the most common way that R represents tabular data (data that can be stored in a table format, like a spreadsheet). We can check what `complete_old` is by using the `class()` function:
 
 
 ```r
-class(surveys)
+class(complete_old)
 ```
 
 ```{.output}
@@ -57,7 +50,7 @@ We can view the first few rows with the `head()` function, and the last few rows
 
 
 ```r
-head(surveys)
+head(complete_old)
 ```
 
 ```{.output}
@@ -78,7 +71,7 @@ head(surveys)
 ```
 
 ```r
-tail(surveys)
+tail(complete_old)
 ```
 
 ```{.output}
@@ -98,7 +91,7 @@ tail(surveys)
 16878       Dipodomys  merriami Rodent          Control
 ```
 
-We used these functions with just one argument, the object `surveys`, and we didn't give the argument a name, like we did with `ggplot2`. In R, a function's arguments come in a particular order, and if you put them in the correct order, you don't need to name them. In this case, the name of the argument is `x`, so we can name it if we want, but since we know it's the first argument, we don't need to.
+We used these functions with just one argument, the object `complete_old`, and we didn't give the argument a name, like we often did with `ggplot2`. In R, a function's arguments come in a particular order, and if you put them in the correct order, you don't need to name them. In this case, the name of the argument is `x`, so we can name it if we want, but since we know it's the first argument, we don't need to.
 
 To learn more about a function, you can type a `?` in front of the name of the function, which will bring up the official documentation for that function:
 
@@ -107,11 +100,23 @@ To learn more about a function, you can type a `?` in front of the name of the f
 ?head
 ```
 
+::::::::::::::::::::::::::::: callout
+
+Function documentation is written by the authors of the functions, so they can vary pretty widely in their style and readability. The first section, **Description**, gives you a concise description of what the function does, but it may not always be enough. The **Arguments** section defines all the arguments for the function and is usually worth reading thoroughly. Finally, the **Examples** section at the end will often have some helpful examples that you can run to get a sense of what the function is doing.
+
+Another great source of information is **package vignettes**. Many packages have vignettes, which are like tutorials that introduce the package, specific functions, or general methods. You can run `vignette(package = "package_name")` to see a list of vignettes in that package. Once you have a name, you can run `vignette("vignette_name", "package_name")` to view that vignette. You can also use a web browser to go to `https://cran.r-project.org/web/packages/package_name/vignettes/` where you will find a list of links to each vignette. Some packages will have their own websites, which often have nicely formatted vignettes and tutorials.
+
+Finally, learning to search for help is probably the most useful skill for any R user. The key skill is figuring out what you should actually search for. It's often a good idea to start your search with `R` or `R programming`. If you have the name of a package you want to use, start with `R package_name`. 
+
+Many of the answers you find will be from a website called Stack Overflow, where people ask programming questions and others provide answers. It is generally poor form to ask duplicate questions, so before you decide to post your own, do some thorough searching to see if it has been answered before (it likely has). If you do decide to post a question on Stack Overflow, or any other help forum, you will want to create a **reproducible example** or **reprex**. If you are asking a complicated question requiring your own data and a whole bunch of code, people probably won't be able or willing to help you. However, if you can hone in on the specific thing you want help with, and create a minimal example using smaller, fake data, it will be much easier for others to help you. If you search `how to make a reproducible example in R`, you will find some great resources to help you out.
+
+:::::::::::::::::::::::::::::
+
 Some arguments are optional. For example, the `n` argument in `head()` specifies the number of rows to print. It defaults to 6, but we can override that by specifying a different number:
 
 
 ```r
-head(surveys, n = 10)
+head(complete_old, n = 10)
 ```
 
 ```{.output}
@@ -138,7 +143,7 @@ If we order them correctly, we don't have to name either:
 
 
 ```r
-head(surveys, 10)
+head(complete_old, 10)
 ```
 
 ```{.output}
@@ -165,7 +170,7 @@ Additionally, if we name them, we can put them in any order we want:
 
 
 ```r
-head(n = 10, x = surveys)
+head(n = 10, x = complete_old)
 ```
 
 ```{.output}
@@ -188,13 +193,13 @@ head(n = 10, x = surveys)
  [ reached 'max' / getOption("max.print") -- omitted 3 rows ]
 ```
 
-Generally, it's good practice to start with the required arguments, like the dataframe whose rows you want to see, and then to name the optional arguments. If you are ever unsure, it never hurts to explicitly name an argument.
+Generally, it's good practice to start with the required arguments, like the data.frame whose rows you want to see, and then to name the optional arguments. If you are ever unsure, it never hurts to explicitly name an argument.
 
-Let's get back to investigating our `surveys` dataframe. We can get some useful summaries of each variable using the `summary()` function:
+Let's get back to investigating our `complete_old` data.frame. We can get some useful summaries of each variable using the `summary()` function:
 
 
 ```r
-summary(surveys)
+summary(complete_old)
 ```
 
 ```{.output}
@@ -228,7 +233,7 @@ And, as we have already done, we can use `str()` to look at the structure of an 
 
 
 ```r
-str(surveys)
+str(complete_old)
 ```
 
 ```{.output}
@@ -248,15 +253,15 @@ str(surveys)
  $ plot_type      : chr  "Control" "Long-term Krat Exclosure" "Control" "Rodent Exclosure" ...
 ```
 
-We get quite a bit of useful information here. First, we are told that we have a `data.frame` of 16878 observations, or rows, and 13 variables, or columns.
+We get quite a bit of useful information here. First, we are told that we have a data.frame of 16878 observations, or rows, and 13 variables, or columns.
 
-Next, we get a bit of information on each variable, including its type (`int` or `chr`) and a quick peek at the first 10 values. You might ask why there is a `$` in front of each variable. This is because the `$` is an operator that allows us to select individual columns from a dataframe.
+Next, we get a bit of information on each variable, including its type (`int` or `chr`) and a quick peek at the first 10 values. You might ask why there is a `$` in front of each variable. This is because the `$` is an operator that allows us to select individual columns from a data.frame.
 
-The `$` operator also allows you to use tab-completion to quickly select which variable you want from a given dataframe. For example, to get the `year` variable, we can type `surveys$` and then hit <kbd>Tab</kbd>. We get a list of the variables that we can move through with up and down arrows. Hit <kbd>Enter</kbd> when you reach `year`, which should finish this code:
+The `$` operator also allows you to use tab-completion to quickly select which variable you want from a given data.frame. For example, to get the `year` variable, we can type `complete_old$` and then hit <kbd>Tab</kbd>. We get a list of the variables that we can move through with up and down arrow keys. Hit <kbd>Enter</kbd> when you reach `year`, which should finish this code:
 
 
 ```r
-surveys$year
+complete_old$year
 ```
 
 ```{.output}
@@ -274,21 +279,21 @@ What we get back is a whole bunch of numbers, the entries in the `year` column p
 
 ## Vectors: the building block of data
 
-You might have noticed that our last result looked different from when we printed out the `surveys` dataframe itself. That's because it is not a dataframe, it is a **vector**. A vector is a 1-dimensional series of values, in this case a vector of numbers representing years.
+You might have noticed that our last result looked different from when we printed out the `complete_old` data.frame itself. That's because it is not a data.frame, it is a **vector**. A vector is a 1-dimensional series of values, in this case a vector of numbers representing years.
 
-Dataframes are made up of vectors; each column in a dataframe is a vector. Vectors are the basic building blocks of all data in R. Basically, everything in R is a vector, a bunch of vectors stitched together in some way, or a function. Understanding how vectors work is crucial to understanding how R treats data, so we will spend some time learning about them.
+Data.frames are made up of vectors; each column in a data.frame is a vector. Vectors are the basic building blocks of all data in R. Basically, everything in R is a vector, a bunch of vectors stitched together in some way, or a function. Understanding how vectors work is crucial to understanding how R treats data, so we will spend some time learning about them.
 
 There are 4 main types of vectors (also known as *atomic vectors*):
 
 1. `"character"` for strings of characters, like our `genus` or `sex` columns. Each entry in a character vector is wrapped in quotes.
 
-2. `"integer"` for integers. All the numeric values in `surveys` are integers. You may sometimes see integers represented like `2L` or `20L`. The `L` indicates to R that it is an integer, instead of the next data type, `"numeric"`.
+2. `"integer"` for integers. All the numeric values in `complete_old` are integers. You may sometimes see integers represented like `2L` or `20L`. The `L` indicates to R that it is an integer, instead of the next data type, `"numeric"`.
 
 3. `"numeric"`, aka `"double"`, vectors can contain numbers including decimals.
 
 4. `"logical"` for `TRUE` and `FALSE`, which can also be represented as `T` and `F`.
 
-Vectors can only be of a **single type**. Since each column in a dataframe is a vector, this means an accidental character following a number, like `29,` can change the type of the whole vector. Mixing up vector types is one of the most common mistakes in R, and it can be tricky to figure out. It's often very useful to check the types of vectors.
+Vectors can only be of a **single type**. Since each column in a data.frame is a vector, this means an accidental character following a number, like `29,` can change the type of the whole vector. Mixing up vector types is one of the most common mistakes in R, and it can be tricky to figure out. It's often very useful to check the types of vectors.
 
 To create a vector from scratch, we can use the `c()` function, putting values inside, separated by commas.
 
@@ -301,7 +306,7 @@ c(1, 2, 5, 12, 4)
 [1]  1  2  5 12  4
 ```
 
-As you can see, those values get printed out in the console, just like with `surveys$year`. To store this vector so we can continue to work with it, we need to assign it to an object.
+As you can see, those values get printed out in the console, just like with `complete_old$year`. To store this vector so we can continue to work with it, we need to assign it to an object.
 
 
 ```r
@@ -351,7 +356,9 @@ class(logi)
 
 ## Challenge 1: Coercion
 
-1. What type will each of these vectors be? Try to guess without running any code, but you can use `class()` to verify your answers.
+Since vectors can only hold one type of data, something has to be done when we try to combine different types of data into one vector.
+
+1. What type will each of these vectors be? Try to guess without running any code at first, then run the code and use `class()` to verify your answers.
 
 
 ```r
@@ -424,7 +431,7 @@ Only one value is `"TRUE"`. Coercion happens when each vector is created, so the
 
 ::::::::::::::::::::::::
 
-3. Now that you've seen a few examples of coercion, you might have started to see that there are some rules about what types get converted. There is a hierarchy to coercion. Can you draw a diagram that represents the hierarchy of what types get converted to other types?
+3. Now that you've seen a few examples of coercion, you might have started to see that there are some rules about how types get converted. There is a hierarchy to coercion. Can you draw a diagram that represents the hierarchy of what types get converted to other types?
 
 :::::::::::::::::::::::: solution 
 
@@ -434,7 +441,6 @@ Logical vectors can only take on two values: `TRUE` or `FALSE`. Integer vectors 
 ::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
-
 
 Coercion is not something you will often do intentionally; rather, when combining vectors or reading data into R, a stray character that you missed may change an entire numeric vector into a character vector. It is a good idea to check the `class()` of your results frequently, particularly if you are running into confusing error messages.
 
@@ -458,7 +464,7 @@ min(weights)
 [1] NA
 ```
 
-This is a very good thing, since we won't accidentally forget to consider our missing data. If we decide to exclude our missing values, many functions have an argument to **r**e**m**ove them:
+This is a very good thing, since we won't accidentally forget to consider our missing data. If we decide to exclude our missing values, many basic math functions have an argument to **r**e**m**ove them:
 
 
 ```r
@@ -471,11 +477,11 @@ min(weights, na.rm = TRUE)
 
 ## Vectors as arguments
 
-A common reason to create a vector from scratch is to use in a function argument. The `quantile()` function will calculate a quantile for a given vector of numeric values. We set the quantile using the `probs` argument. We also need to set `na.rm = TRUE`, since there are `NA` values in the `weight` column, and R doesn't know how to calculate a quantile if there are `NA`s. This is a common argument for lots of numeric functions.
+A common reason to create a vector from scratch is to use in a function argument. The `quantile()` function will calculate a quantile for a given vector of numeric values. We set the quantile using the `probs` argument. We also need to set `na.rm = TRUE`, since there are `NA` values in the `weight` column.
 
 
 ```r
-quantile(surveys$weight, probs = 0.25, na.rm = TRUE)
+quantile(complete_old$weight, probs = 0.25, na.rm = TRUE)
 ```
 
 ```{.output}
@@ -487,7 +493,7 @@ Now we get back the 25% quantile value for weights. However, we often want to kn
 
 
 ```r
-quantile(surveys$weight, probs = c(0.25, 0.5, 0.75), na.rm = TRUE)
+quantile(complete_old$weight, probs = c(0.25, 0.5, 0.75), na.rm = TRUE)
 ```
 
 ```{.output}
@@ -622,13 +628,13 @@ rep(my_seq, 3)
 
 ::::::::::::::::::::::::
 
-2. Calculate the quantiles for the `surveys` hindfoot lengths at every 5% level (0%, 5%, 10%, 15%, etc.)
+2. Calculate the quantiles for the `complete_old` hindfoot lengths at every 5% level (0%, 5%, 10%, 15%, etc.)
 
 :::::::::::::::::::::::: solution 
 
 
 ```r
-quantile(surveys$hindfoot_length, 
+quantile(complete_old$hindfoot_length, 
          probs = seq(from = 0, to = 1, by = 0.05),
          na.rm = T)
 ```
@@ -646,7 +652,7 @@ quantile(surveys$hindfoot_length,
 
 ## Building with vectors
 
-We have now seen vectors in a few different forms: as columns in a dataframe and as single vectors. However, they can be manipulated into lots of other shapes and forms. Some other common forms are:
+We have now seen vectors in a few different forms: as columns in a data.frame and as single vectors. However, they can be manipulated into lots of other shapes and forms. Some other common forms are:
 
 - matrices
   - 2-dimensional numeric representations
@@ -656,7 +662,7 @@ We have now seen vectors in a few different forms: as columns in a dataframe and
   - lists are very flexible ways to store vectors
   - a list can contain vectors of many different types and lengths
   - an entry in a list can be another list, so lists can get deeply nested
-  - a dataframe is just a list where each vector has to be the same length (dataframes are rectangular)
+  - a data.frame is a type of list where each column is an individual vector and each vector has to be the same length, since a data.frame has an entry in every column for each row 
 - factors
   - a way to represent categorical data
   - factors can be ordered or unordered
@@ -716,7 +722,7 @@ Levels: F M
 ```
 
 ```r
-# turn NAs into explicit missing values (useful for including NAs in plots)
+# turn NAs into an actual factor level (useful for including NAs in plots)
 fct_explicit_na(sex)
 ```
 
@@ -850,7 +856,7 @@ You will be naming a of objects in R, and there are a few common naming rules an
 - make names clear without being too long
   - `wkg` is probably too short
   - `weight_in_kilograms` is probably too long
-  - `weight_kg` is great
+  - `weight_kg` is good
 - names cannot start with a number
 - names are case sensitive
 - you cannot use the names of fundamental functions in R, like `if`, `else`, or `for`
@@ -863,7 +869,7 @@ You will be naming a of objects in R, and there are a few common naming rules an
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
-- functions like `head()`, `str()`, and `summary()` are useful for exploring dataframes
+- functions like `head()`, `str()`, and `summary()` are useful for exploring data.frames
 - most things in R are vectors, vectors stitched together, or functions
 - make sure to use `class()` to check vector types, especially when using new functions
 - factors can be useful, but behave differently from character vectors
