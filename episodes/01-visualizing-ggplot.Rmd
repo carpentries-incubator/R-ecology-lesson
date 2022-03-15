@@ -50,7 +50,9 @@ The `ratdat` package contains data from the [Portal Project](https://github.com/
 ## Plotting with **`ggplot2`**
 
 :::::::::::::::::::::::::::::::::::::::::::: instructor
+
 Probably worth mentioning that people often just say **ggplot** when referring to the package `ggplot2`.
+
 ::::::::::::::::::::::::::::::::::::::::::::
 
 **`ggplot2`** is a powerful package that allows you to create complex plots from tabular data (data in a table format with rows and columns). The **`gg`** in **`ggplot2`** stands for "grammar of graphics", and the package uses consistent vocabulary to create plots of widely varying types. Therefore, we only need small changes to our code if the underlying data changes or we decide to make a box plot instead of a scatter plot. This approach helps you create publication-quality plots with minimal adjusting and tweaking.
@@ -60,7 +62,9 @@ Probably worth mentioning that people often just say **ggplot** when referring t
 **`ggplot`** plots are built step by step by adding new layers, which allows for extensive flexibility and customization of plots.
 
 ::::::::::::::::::::::::::::: callout
+
 R does not care about whitespace or indentation, so any spacing or indentation you see is only to improve readability of the code.
+
 :::::::::::::::::::::::::::::
 
 To build a plot, we will use a basic template that can be used for different types of plots:
@@ -239,7 +243,9 @@ ggplot(data = complete_old, mapping = aes(x = weight, y = hindfoot_length, color
 ```
 
 ::::::::::::::::::::::::::::: callout
+
 Another common use for `position_` functions is when specifying whether you want a stacked or side-by-side bar chart. We won't cover bar charts in this lesson, but you can check out `geom_bar()` and `geom_col()` to learn more.
+
 :::::::::::::::::::::::::::::
 
 ## Boxplot
@@ -399,6 +405,7 @@ theme()
 ```
 
 ::::::::::::::::::::::::::::: callout
+
 Because there are so many possible arguments to the `theme()` function, it can sometimes be hard to find the right one. Here are some tips for figuring out how to modify a plot element:
 
 - type out `theme()`, put your cursor between the parentheses, and hit <kbd>Tab</kbd> to bring up a list of arguments
@@ -409,6 +416,7 @@ Because there are so many possible arguments to the `theme()` function, it can s
     - `text` controls all text in the whole plot
     - `axis.title` controls the text for the axis titles
     - `axis.title.x` controls the text for the x axis title
+
 :::::::::::::::::::::::::::::
 
 ## Changing labels
@@ -494,12 +502,14 @@ ggplot(data = complete_old, mapping = aes(x = plot_type, y = hindfoot_length)) +
 This flips the coordinates of our plot, which allows the horizontal `plot_type` labels to spread out without overlapping each other.
 
 ::::::::::::::::::::::::::::: callout
+
 Faceting comes in handy in many scenarios. It can be useful when:
 
 - a categorical variable has too many levels to differentiate by color (such as a dataset with 50 countries)
 - your data overlap heavily, obscuring categories
 - you want to show more than 3 variables at once
 - you want to see each category in isolation while allowing for general comparisons between categories
+
 :::::::::::::::::::::::::::::::::::::
 
 ## Arranging plots
@@ -539,7 +549,9 @@ box_plot <- ggplot(data = complete_old,
 To combine entire `ggplot` plots together, we will use the package `patchwork`. If you do not have it installed, you can run `install.packages("patchwork")` in the **console**.
 
 ::::::::::::::::::::::::::::: callout
+
 It is a good practice not to put `install.packages()` into a script. This is because every time you run that whole script, the package will be reinstalled, which is typically unnecessary. You want to install the package to your computer once, and then load it with `library()` in each script where you need to use it.
+
 :::::::::::::::::::::::::::::::::::::
 
 ```{r patchwork}
