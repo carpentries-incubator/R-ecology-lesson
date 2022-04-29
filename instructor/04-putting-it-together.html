@@ -14,10 +14,10 @@
       }
     });
     </script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><!-- Responsive Favicon for The Carpentries --><link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png"><link rel="manifest" href="../site.webmanifest"><link rel="mask-icon" href="../safari-pinned-tab.svg" color="#5bbad5"><meta name="msapplication-TileColor" content="#da532c"><meta name="theme-color" content="#ffffff"></head><body>
-    <header id="top" class="navbar navbar-expand-md navbar-light bg-white top-nav carpentries"><a class="visually-hidden-focusable skip-link" href="#main-content">Skip to main content</a>
+    <header id="top" class="navbar navbar-expand-md navbar-light bg-white top-nav data"><a class="visually-hidden-focusable skip-link" href="#main-content">Skip to main content</a>
   <div class="container-fluid top-nav-container">
     <div class="col-md-6">
-      <div class="large-logo"><img alt="The Carpentries" src="../assets/images/carpentries-logo.svg"></div>
+      <div class="large-logo"><img alt="Data Carpentry" src="../assets/images/data-logo.svg"></div>
     </div>
     <div class="selector-container ">
       
@@ -29,13 +29,13 @@
         </ul></div>
     </div>
   </div>
-  <hr></header><nav class="navbar navbar-expand-xl navbar-light bg-white bottom-nav carpentries" aria-label="Main Navigation"><div class="container-fluid nav-container">
+  <hr></header><nav class="navbar navbar-expand-xl navbar-light bg-white bottom-nav data" aria-label="Main Navigation"><div class="container-fluid nav-container">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
       <span class="menu-title">Menu</span>
     </button>
     <div class="nav-logo">
-      <img class="small-logo" alt="The Carpentries" src="../assets/images/carpentries-logo-sm.svg"></div>
+      <img class="small-logo" alt="Data Carpentry" src="../assets/images/data-logo-sm.svg"></div>
     <div class="lesson-title-md">
       Rewrite-R-ecology-lesson
     </div>
@@ -75,8 +75,8 @@
 <aside class="col-md-12 lesson-progress"><div style="width: 80%" class="percentage">
     80%
   </div>
-  <div class="progress carpentries">
-    <div class="progress-bar carpentries" role="progressbar" style="width: 80%" aria-valuenow="80" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+  <div class="progress data">
+    <div class="progress-bar data" role="progressbar" style="width: 80%" aria-valuenow="80" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -241,7 +241,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Putting it together</h1>
-        <p> Last updated on 2022-04-26 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/04-putting-it-together.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <p> Last updated on 2022-04-29 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/04-putting-it-together.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 48 minutes </p>
         
         <div class="text-end">
@@ -508,7 +508,7 @@ dbl (4): record_id, plot_id, hindfoot_length, weight
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>The <code>dplyr</code> function <code><a href="https://dplyr.tidyverse.org/reference/na_if.html" class="external-link">na_if()</a></code> will replace specific values in a vector to <code>NA</code>. To find this function, you can Google “tidyverse replace value with NA”. One of the first results is the <a href="https://dplyr.tidyverse.org/reference/na_if.html" class="external-link"><code>dplyr</code> documentation page</a> for the <code><a href="https://dplyr.tidyverse.org/reference/na_if.html" class="external-link">na_if()</a></code> function.</p>
 <p>If you scroll down to the bottom section of the documentation, you will find several examples, including how to use the function inside <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate()</a></code>.</p>
@@ -600,7 +600,7 @@ Attaching package: 'lubridate'</code></pre>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>There are two basic approaches you could take. First, you could look directly at the old CSV and find the rows with bad dates based on their <code>record_id</code>.</p>
 <p>You could also read the data back into R and use <code><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter()</a></code> to pick out those specific rows via <code>record_id</code>:</p>
@@ -802,7 +802,7 @@ chr (24): Plot 1, Plot 2, Plot 3, Plot 4, Plot 5, Plot 6, Plot 7, Plot 8, Pl...
   Instructor Note
   </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>The next Challenge is mandatory for later steps in the lesson- if you choose to not use it as a Challenge, you should still go through the code to get the data into long format.</p>
 </div>
@@ -829,7 +829,7 @@ chr (24): Plot 1, Plot 2, Plot 3, Plot 4, Plot 5, Plot 6, Plot 7, Plot 8, Pl...
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb41">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1145,9 +1145,9 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
   "creativeWorkStatus": "active",
   "url": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson/instructor/04-putting-it-together.html",
   "identifier": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson/instructor/04-putting-it-together.html",
-  "dateCreated": "2022-03-15",
-  "dateModified": "2022-04-26",
-  "datePublished": "2022-04-26"
+  "dateCreated": "2022-04-29",
+  "dateModified": "2022-04-29",
+  "datePublished": "2022-04-29"
 }
 
   </script><script>
