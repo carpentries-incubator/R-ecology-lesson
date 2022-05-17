@@ -240,7 +240,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Working with data</h1>
-        <p> Last updated on 2022-05-10 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/03-working-with-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <p> Last updated on 2022-05-17 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/03-working-with-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -315,7 +315,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
 <div class="callout-inner">
 <h3 class="callout-title">Callout</h3>
 <div class="callout-content">
-<p>Typing out paths can be error prone, so we can utilize a keyboard shortcut. Inside the parentheses of <code><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv()</a></code>, type out a pair of quotes and put your cursor between them. Then hit <kbd>Tab</kbd>. A small menu showing your folders and files should show up. You can use the <kbd>↑</kbd> and <kbd>↓</kbd> keys to move through the options, or start typing to narrow them down. You can hit <kbd>Enter</kbd> to select a file or folder, and hit <kbd>Tab</kbd> again to continue building the file path. This might take a bit of getting used to, but once you get the hang of it, it will speed up writing file paths and reduce the number of mistakes you make.</p>
+<p>Typing out paths can be error prone, so we can utilize a keyboard shortcut. Inside the parentheses of <code>read_csv()</code>, type out a pair of quotes and put your cursor between them. Then hit <kbd>Tab</kbd>. A small menu showing your folders and files should show up. You can use the <kbd>↑</kbd> and <kbd>↓</kbd> keys to move through the options, or start typing to narrow them down. You can hit <kbd>Enter</kbd> to select a file or folder, and hit <kbd>Tab</kbd> again to continue building the file path. This might take a bit of getting used to, but once you get the hang of it, it will speed up writing file paths and reduce the number of mistakes you make.</p>
 </div>
 </div>
 </div>
@@ -327,7 +327,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
 <ul><li>the file has 6 character columns and 7 numeric columns</li>
 <li>we can see the names of the columns for each type</li>
 </ul></li>
-</ul><p>When working with the output of a new function, it’s often a good idea to check the <code><a href="https://rdrr.io/r/base/class.html" class="external-link">class()</a></code>:</p>
+</ul><p>When working with the output of a new function, it’s often a good idea to check the <code>class()</code>:</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -349,7 +349,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
 <div class="callout-content">
 <p><strong><code>tidyverse</code> vs. base R</strong></p>
 <p>As we begin to delve more deeply into the <code>tidyverse</code>, we should briefly pause to mention some of the reasons for focusing on the <code>tidyverse</code> set of tools. In R, there are often many ways to get a job done, and there are other approaches that can accomplish tasks similar to the <code>tidyverse</code>.</p>
-<p>The phrase <strong>base R</strong> is used to refer to approaches that utilize functions contained in R’s default packages. We have already used some base R functions, such as <code><a href="https://rdrr.io/r/utils/str.html" class="external-link">str()</a></code>, <code><a href="https://rdrr.io/r/utils/head.html" class="external-link">head()</a></code>, and <code><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean()</a></code>, and we will be using more scattered throughout this lesson. However, there are some key base R approaches we will not be teaching. These include square bracket subsetting and base plotting. You may come across code written by other people that looks like <code>surveys[1:10, 2]</code> or <code>plot(surveys$weight, surveys$hindfoot_length)</code>, which are base R commands. If you’re interested in learning more about these approaches, you can check out other Carpentries lessons like the <a href="https://swcarpentry.github.io/r-novice-inflammation/" class="external-link">Software Carpentry Programming with R</a> lesson.</p>
+<p>The phrase <strong>base R</strong> is used to refer to approaches that utilize functions contained in R’s default packages. We have already used some base R functions, such as <code>str()</code>, <code>head()</code>, and <code>mean()</code>, and we will be using more scattered throughout this lesson. However, there are some key base R approaches we will not be teaching. These include square bracket subsetting and base plotting. You may come across code written by other people that looks like <code>surveys[1:10, 2]</code> or <code>plot(surveys$weight, surveys$hindfoot_length)</code>, which are base R commands. If you’re interested in learning more about these approaches, you can check out other Carpentries lessons like the <a href="https://swcarpentry.github.io/r-novice-inflammation/" class="external-link">Software Carpentry Programming with R</a> lesson.</p>
 <p>We choose to teach the <code>tidyverse</code> set of packages because they share a similar syntax and philosophy, making them consistent and producing highly readable code. They are also very flexible and powerful, with a growing number of packages designed according to similar principles and to work well with the rest of the packages. The <code>tidyverse</code> packages tend to have very clear documentation and wide array of learning materials that tend to be written with novice users in mind. Finally, the <code>tidyverse</code> has only continued to grow, and has strong support from RStudio, which implies that these approaches will be relevant into the future.</p>
 </div>
 </div>
@@ -357,7 +357,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
 </div>
 </section><section id="manipulating-data"><h2 class="section-heading">Manipulating data</h2>
 <hr class="half-width"><p>One of the most important skills for working with data in R is the ability to manipulate, modify, and reshape data. The <code>dplyr</code> and <code>tidyr</code> packages in the <code>tidyverse</code> provide a series of powerful functions for many common data manipulation tasks.</p>
-<p>We’ll start off with two of the most commonly used <code>dplyr</code> functions: <code><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select()</a></code>, which selects certain columns of a data.frame, and <code><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter()</a></code>, which filters out rows according to certain criteria.</p>
+<p>We’ll start off with two of the most commonly used <code>dplyr</code> functions: <code>select()</code>, which selects certain columns of a data.frame, and <code>filter()</code>, which filters out rows according to certain criteria.</p>
 <div id="callout3" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -365,13 +365,13 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
 <div class="callout-inner">
 <h3 class="callout-title">Callout</h3>
 <div class="callout-content">
-<p>Between <code><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter()</a></code>, it can be hard to remember which operates on columns and which operates on rows. <code>sele</code><strong><code>c</code></strong><code><a href="https://rdrr.io/r/base/t.html" class="external-link">t()</a></code> has a <strong>c</strong> for <strong>c</strong>olumns and <code>filte</code><strong><code>r</code></strong><code>()</code> has an <strong>r</strong> for <strong>r</strong>ows.</p>
+<p>Between <code>select()</code> and <code>filter()</code>, it can be hard to remember which operates on columns and which operates on rows. <code>sele</code><strong><code>c</code></strong><code>t()</code> has a <strong>c</strong> for <strong>c</strong>olumns and <code>filte</code><strong><code>r</code></strong><code>()</code> has an <strong>r</strong> for <strong>r</strong>ows.</p>
 </div>
 </div>
 </div>
 <div class="section level4">
 <h4 id="select"><code>select()</code><a class="anchor" aria-label="anchor" href="#select"></a></h4>
-<p>To use the <code><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select()</a></code> function, the first argument is the name of the data.frame, and the rest of the arguments are <em>unquoted</em> names of the columns you want:</p>
+<p>To use the <code>select()</code> function, the first argument is the name of the data.frame, and the rest of the arguments are <em>unquoted</em> names of the columns you want:</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -396,7 +396,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
 10       6 PF                      20
 # … with 16,868 more rows</code></pre>
 </div>
-<p>The columns are arranged in the order we specified inside <code><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select()</a></code>.</p>
+<p>The columns are arranged in the order we specified inside <code>select()</code>.</p>
 <p>To select all columns except specific columns, put a <code>-</code> in front of the column you want to exclude:</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -422,7 +422,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
 10     7    16       6 PF         F                  20     NA Perognat… flavus 
 # … with 16,868 more rows, and 2 more variables: taxa &lt;chr&gt;, plot_type &lt;chr&gt;</code></pre>
 </div>
-<p><code><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select()</a></code> also works with numeric vectors for the order of the columns. To select the 3rd, 4th, 5th, and 10th columns, we could run the following code:</p>
+<p><code>select()</code> also works with numeric vectors for the order of the columns. To select the 3rd, 4th, 5th, and 10th columns, we could run the following code:</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -473,7 +473,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
 10        10     7    16  1977       6              20     NA
 # … with 16,868 more rows</code></pre>
 </div>
-<p>Instead of giving names or positions of columns, we instead pass the <code>where()</code> function with the name of another function inside it, in this case <code><a href="https://rdrr.io/r/base/numeric.html" class="external-link">is.numeric()</a></code>, and we get all the columns for which that function returns <code>TRUE</code>.</p>
+<p>Instead of giving names or positions of columns, we instead pass the <code>where()</code> function with the name of another function inside it, in this case <code>is.numeric()</code>, and we get all the columns for which that function returns <code>TRUE</code>.</p>
 <p>We can use this to select any columns that have any <code>NA</code> values in them:</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -502,7 +502,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
 </div>
 <div class="section level4">
 <h4 id="filter"><code>filter()</code><a class="anchor" aria-label="anchor" href="#filter"></a></h4>
-<p>The <code><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter()</a></code> function is used to select rows that meet certain criteria. To get all the rows where the value of <code>year</code> is equal to 1985, we would run the following:</p>
+<p>The <code>filter()</code> function is used to select rows that meet certain criteria. To get all the rows where the value of <code>year</code> is equal to 1985, we would run the following:</p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -554,7 +554,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
 # … with 2,825 more rows, and 4 more variables: genus &lt;chr&gt;, species &lt;chr&gt;,
 #   taxa &lt;chr&gt;, plot_type &lt;chr&gt;</code></pre>
 </div>
-<p>We can also use multiple conditions in one <code><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter()</a></code> statement. Here we will get rows with a year less than or equal to 1988 and whose hindfoot length values are not <code>NA</code>. The <code>!</code> before the <code><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na()</a></code> function means “not”.</p>
+<p>We can also use multiple conditions in one <code>filter()</code> statement. Here we will get rows with a year less than or equal to 1988 and whose hindfoot length values are not <code>NA</code>. The <code>!</code> before the <code>is.na()</code> function means “not”.</p>
 <div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -644,7 +644,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
 </div>
 </section><section id="the-pipe"><h2 class="section-heading">The pipe: <code>%&gt;%</code>
 </h2>
-<hr class="half-width"><p>What happens if we want to both <code><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter()</a></code> our data? We have a couple options. First, we could use <strong>nested</strong> functions:</p>
+<hr class="half-width"><p>What happens if we want to both <code>select()</code> and <code>filter()</code> our data? We have a couple options. First, we could use <strong>nested</strong> functions:</p>
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -670,7 +670,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
 # … with 8,234 more rows, and 3 more variables: species &lt;chr&gt;, taxa &lt;chr&gt;,
 #   plot_type &lt;chr&gt;</code></pre>
 </div>
-<p>R will evaluate statements from the inside out. First, <code><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select()</a></code> will operate on the <code>surveys</code> data.frame, removing the column <code>day</code>. The resulting data.frame is then used as the first argument for <code><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter()</a></code>, which selects rows with a month greater than or equal to 7.</p>
+<p>R will evaluate statements from the inside out. First, <code>select()</code> will operate on the <code>surveys</code> data.frame, removing the column <code>day</code>. The resulting data.frame is then used as the first argument for <code>filter()</code>, which selects rows with a month greater than or equal to 7.</p>
 <p>Nested functions can be very difficult to read with only a few functions, and nearly impossible when many functions are done at once. An alternative approach is to create <strong>intermediate</strong> objects:</p>
 <div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -727,7 +727,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
 # … with 8,234 more rows, and 3 more variables: species &lt;chr&gt;, taxa &lt;chr&gt;,
 #   plot_type &lt;chr&gt;</code></pre>
 </div>
-<p>What it does is take the thing on the lefthand side and insert it as the first argument of the function on the righthand side. By putting each of our functions onto a new line, we can build a nice, readable <strong>pipeline</strong>. It can be useful to think of this as a little assembly line for our data. It starts at the top and gets piped into a <code><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select()</a></code> function, and it comes out modified somewhat. It then gets sent into the <code><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter()</a></code> function, where it is further modified, and then the final product gets printed out to our console. It can also be helpful to think of <code>%&gt;%</code> as meaning “and then”. Since many <code>tidyverse</code> functions have verbs for names, a pipeline can be read like a sentence.</p>
+<p>What it does is take the thing on the lefthand side and insert it as the first argument of the function on the righthand side. By putting each of our functions onto a new line, we can build a nice, readable <strong>pipeline</strong>. It can be useful to think of this as a little assembly line for our data. It starts at the top and gets piped into a <code>select()</code> function, and it comes out modified somewhat. It then gets sent into the <code>filter()</code> function, where it is further modified, and then the final product gets printed out to our console. It can also be helpful to think of <code>%&gt;%</code> as meaning “and then”. Since many <code>tidyverse</code> functions have verbs for names, a pipeline can be read like a sentence.</p>
 
 <p>If we want to store this final product as an object, we use an assignment arrow at the start:</p>
 <div class="codewrapper sourceCode" id="cb30">
@@ -767,7 +767,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
   <span class="fu">filter</span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="fl">1988</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">select</span><span class="op">(</span><span class="va">record_id</span>, <span class="va">month</span>, <span class="va">species_id</span><span class="op">)</span></code></pre>
 </div>
-<p>Make sure to <code><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter()</a></code> before you <code><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select()</a></code>. You need to use the <code>year</code> column for filtering rows, but it is discarded in the <code><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select()</a></code> step. You also need to make sure to use <code>==</code> instead of <code>=</code> when you are filtering rows where <code>year</code> is equal to 1988.</p>
+<p>Make sure to <code>filter()</code> before you <code>select()</code>. You need to use the <code>year</code> column for filtering rows, but it is discarded in the <code>select()</code> step. You also need to make sure to use <code>==</code> instead of <code>=</code> when you are filtering rows where <code>year</code> is equal to 1988.</p>
 </div>
 </div>
 </div>
@@ -801,7 +801,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
 # … with 16,868 more rows, and 5 more variables: genus &lt;chr&gt;, species &lt;chr&gt;,
 #   taxa &lt;chr&gt;, plot_type &lt;chr&gt;, weight_kg &lt;dbl&gt;</code></pre>
 </div>
-<p>You can create multiple columns in one <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate()</a></code> call, and they will get created in the order you write them. This means you can even reference the first new column in the second new column:</p>
+<p>You can create multiple columns in one <code>mutate()</code> call, and they will get created in the order you write them. This means you can even reference the first new column in the second new column:</p>
 <div class="codewrapper sourceCode" id="cb34">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -831,7 +831,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
 </div>
 <!-- This next part could definitely be moved to the next lesson if need be -->
 <p>We can also use multiple columns to create a single column. For example, it’s often good practice to keep the components of a date in separate columns until necessary, as we’ve done here. This is because programs like Excel can do automatic things with dates in a way that is not reproducible and sometimes hard to notice. However, now that we are working in R, we can safely put together a date column.</p>
-<p>To put together the columns into something that looks like a date, we can use the <code><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste()</a></code> function, which takes arguments of the items to paste together, as well as the argument <code>sep</code>, which is the character used to separate the items.</p>
+<p>To put together the columns into something that looks like a date, we can use the <code>paste()</code> function, which takes arguments of the items to paste together, as well as the argument <code>sep</code>, which is the character used to separate the items.</p>
 <div class="codewrapper sourceCode" id="cb36">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -858,7 +858,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
 # … with 16,868 more rows, and 5 more variables: genus &lt;chr&gt;, species &lt;chr&gt;,
 #   taxa &lt;chr&gt;, plot_type &lt;chr&gt;, date &lt;chr&gt;</code></pre>
 </div>
-<p>Since our new column gets moved all the way to the end, it doesn’t end up printing out. We can use the <code><a href="https://dplyr.tidyverse.org/reference/relocate.html" class="external-link">relocate()</a></code> function to put it after our <code>year</code> column:</p>
+<p>Since our new column gets moved all the way to the end, it doesn’t end up printing out. We can use the <code>relocate()</code> function to put it after our <code>year</code> column:</p>
 <div class="codewrapper sourceCode" id="cb38">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -886,7 +886,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
 # … with 16,868 more rows, and 5 more variables: weight &lt;dbl&gt;, genus &lt;chr&gt;,
 #   species &lt;chr&gt;, taxa &lt;chr&gt;, plot_type &lt;chr&gt;</code></pre>
 </div>
-<p>Now we can see that we have a character column that contains our date string. However, it’s not truly a date column. Dates are a type of numeric variable with a defined, ordered scale. To turn this column into a proper date, we will use a function from the <code>tidyverse</code>’s <code>lubridate</code> package, which has lots of useful functions for working with dates. The function <code><a href="https://lubridate.tidyverse.org/reference/ymd.html" class="external-link">ymd()</a></code> will parse a date string that has the order year-month-day. Let’s load the package and use <code><a href="https://lubridate.tidyverse.org/reference/ymd.html" class="external-link">ymd()</a></code>.</p>
+<p>Now we can see that we have a character column that contains our date string. However, it’s not truly a date column. Dates are a type of numeric variable with a defined, ordered scale. To turn this column into a proper date, we will use a function from the <code>tidyverse</code>’s <code>lubridate</code> package, which has lots of useful functions for working with dates. The function <code>ymd()</code> will parse a date string that has the order year-month-day. Let’s load the package and use <code>ymd()</code>.</p>
 <div class="codewrapper sourceCode" id="cb40">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -935,7 +935,7 @@ Attaching package: 'lubridate'</code></pre>
 #   weight &lt;dbl&gt;, genus &lt;chr&gt;, species &lt;chr&gt;, taxa &lt;chr&gt;, plot_type &lt;chr&gt;</code></pre>
 </div>
 <!-- This isn't strictly necessary to show, but I think it's good to reenforce what a pipe is really doing, and it's actually a useful approach with more complex mutates -->
-<p>Now we can see that our <code>date</code> column has the type <code>date</code> as well. In this example, we created our column with two separate lines in <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate()</a></code>, but we can combine them into one:</p>
+<p>Now we can see that our <code>date</code> column has the type <code>date</code> as well. In this example, we created our column with two separate lines in <code>mutate()</code>, but we can combine them into one:</p>
 <div class="codewrapper sourceCode" id="cb45">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1000,7 +1000,7 @@ Attaching package: 'lubridate'</code></pre>
 <div id="challenge-3-plotting-date" class="callout-inner">
 <h3 class="callout-title">Challenge 3: Plotting date</h3>
 <div class="callout-content">
-<p>Because the <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot()</a></code> function takes the data as its first argument, you can actually pipe data straight into <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot()</a></code>. Try building a pipeline that creates the date column and plots weight across date.</p>
+<p>Because the <code>ggplot()</code> function takes the data as its first argument, you can actually pipe data straight into <code>ggplot()</code>. Try building a pipeline that creates the date column and plots weight across date.</p>
 </div>
 </div>
 </div>
@@ -1033,8 +1033,8 @@ Attaching package: 'lubridate'</code></pre>
 </div>
 </div>
 </section><section id="the-split-apply-combine-approach"><h2 class="section-heading">The split-apply-combine approach</h2>
-<hr class="half-width"><p>Many data analysis tasks can be achieved using the split-apply-combine approach: you split the data into groups, apply some analysis to each group, and combine the results in some way. <code>dplyr</code> has a few convenient functions to enable this approach, the main two being <code><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize()</a></code>.</p>
-<p><code><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by()</a></code> takes a data.frame and the name of one or more columns with categorical values that define the groups. <code><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize()</a></code> then collapses each group into a one-row summary of the group, giving you back a data.frame with one row per group. The syntax for <code><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize()</a></code> is similar to <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate()</a></code>, where you define new columns based on values of other columns. Let’s try calculating the mean weight of all our animals by sex.</p>
+<hr class="half-width"><p>Many data analysis tasks can be achieved using the split-apply-combine approach: you split the data into groups, apply some analysis to each group, and combine the results in some way. <code>dplyr</code> has a few convenient functions to enable this approach, the main two being <code>group_by()</code> and <code>summarize()</code>.</p>
+<p><code>group_by()</code> takes a data.frame and the name of one or more columns with categorical values that define the groups. <code>summarize()</code> then collapses each group into a one-row summary of the group, giving you back a data.frame with one row per group. The syntax for <code>summarize()</code> is similar to <code>mutate()</code>, where you define new columns based on values of other columns. Let’s try calculating the mean weight of all our animals by sex.</p>
 <div class="codewrapper sourceCode" id="cb51">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1053,7 +1053,7 @@ Attaching package: 'lubridate'</code></pre>
 2 M            53.2
 3 &lt;NA&gt;         74.0</code></pre>
 </div>
-<p>You can see that the mean weight for males is slightly higher than for females, but that animals whose sex is unknown have much higher weights. This is probably due to small sample size, but we should check to be sure. Like <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate()</a></code>, we can define multiple columns in one <code><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize()</a></code> call. The function <code><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n()</a></code> will count the number of rows in each group.</p>
+<p>You can see that the mean weight for males is slightly higher than for females, but that animals whose sex is unknown have much higher weights. This is probably due to small sample size, but we should check to be sure. Like <code>mutate()</code>, we can define multiple columns in one <code>summarize()</code> call. The function <code>n()</code> will count the number of rows in each group.</p>
 <div class="codewrapper sourceCode" id="cb53">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1073,7 +1073,7 @@ Attaching package: 'lubridate'</code></pre>
 2 M            53.2  8260
 3 &lt;NA&gt;         74.0  1300</code></pre>
 </div>
-<p>You will often want to create groups based on multiple columns. For example, we might be interested in the mean weight of every species + sex combination. All we have to do is add another column to our <code><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by()</a></code> call.</p>
+<p>You will often want to create groups based on multiple columns. For example, we might be interested in the mean weight of every species + sex combination. All we have to do is add another column to our <code>group_by()</code> call.</p>
 <div class="codewrapper sourceCode" id="cb55">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1102,7 +1102,7 @@ Attaching package: 'lubridate'</code></pre>
 10 DM         M            44.0  3108
 # … with 57 more rows</code></pre>
 </div>
-<p>Our resulting data.frame is much larger, since we have a greater number of groups. We also see a strange value showing up in our <code>mean_weight</code> column: <code>NaN</code>. This stands for “Not a Number”, and it often results from trying to do an operation a vector with zero entries. How can a vector have zero entries? Well, if a particular group (like the AB species ID + <code>NA</code> sex group) has <strong>only</strong> <code>NA</code> values for weight, then the <code>na.rm = T</code> argument in <code><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean()</a></code> will remove <strong>all</strong> the values prior to calculating the mean. The result will be a value of <code>NaN</code>. Since we are not particularly interested in these values, let’s add a step to our pipeline to remove rows where weight is <code>NA</code> <strong>before</strong> doing any other steps. This means that any groups with only <code>NA</code> values will disappear from our data.frame before we formally create the groups with <code><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by()</a></code>.</p>
+<p>Our resulting data.frame is much larger, since we have a greater number of groups. We also see a strange value showing up in our <code>mean_weight</code> column: <code>NaN</code>. This stands for “Not a Number”, and it often results from trying to do an operation a vector with zero entries. How can a vector have zero entries? Well, if a particular group (like the AB species ID + <code>NA</code> sex group) has <strong>only</strong> <code>NA</code> values for weight, then the <code>na.rm = T</code> argument in <code>mean()</code> will remove <strong>all</strong> the values prior to calculating the mean. The result will be a value of <code>NaN</code>. Since we are not particularly interested in these values, let’s add a step to our pipeline to remove rows where weight is <code>NA</code> <strong>before</strong> doing any other steps. This means that any groups with only <code>NA</code> values will disappear from our data.frame before we formally create the groups with <code>group_by()</code>.</p>
 <div class="codewrapper sourceCode" id="cb57">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1132,7 +1132,7 @@ Attaching package: 'lubridate'</code></pre>
 10 DS         &lt;NA&gt;        121.     16
 # … with 36 more rows</code></pre>
 </div>
-<p>That looks better! It’s often useful to take a look at the results in some order, like the lowest mean weight to highest. We can use the <code><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange()</a></code> function for that:</p>
+<p>That looks better! It’s often useful to take a look at the results in some order, like the lowest mean weight to highest. We can use the <code>arrange()</code> function for that:</p>
 <div class="codewrapper sourceCode" id="cb59">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1163,7 +1163,7 @@ Attaching package: 'lubridate'</code></pre>
 10 PP         &lt;NA&gt;        15        2
 # … with 36 more rows</code></pre>
 </div>
-<p>If we want to reverse the order, we can wrap the column name in <code><a href="https://dplyr.tidyverse.org/reference/desc.html" class="external-link">desc()</a></code>:</p>
+<p>If we want to reverse the order, we can wrap the column name in <code>desc()</code>:</p>
 <div class="codewrapper sourceCode" id="cb61">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1197,7 +1197,7 @@ Attaching package: 'lubridate'</code></pre>
 <p>You may have seen several messages saying <code>summarise() has grouped output by 'species_id'. You can override using the .groups argument.</code> These are warning you that your resulting data.frame has retained some group structure, which means any subsequent operations on that data.frame will happen at the group level. If you look at the resulting data.frame printed out in your console, you will see these lines:</p>
 <pre><code><span class="co"># A tibble: 46 × 4</span>
 <span class="co"># Groups:   species_id [18]</span></code></pre>
-<p>They tell us we have a data.frame with 46 rows, 4 columns, and a group variable <code>species_id</code>, for which there are 18 groups. We will see something similar if we use <code><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by()</a></code> alone:</p>
+<p>They tell us we have a data.frame with 46 rows, 4 columns, and a group variable <code>species_id</code>, for which there are 18 groups. We will see something similar if we use <code>group_by()</code> alone:</p>
 <div class="codewrapper sourceCode" id="cb64">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1225,7 +1225,7 @@ Attaching package: 'lubridate'</code></pre>
 # … with 16,868 more rows, and 4 more variables: genus &lt;chr&gt;, species &lt;chr&gt;,
 #   taxa &lt;chr&gt;, plot_type &lt;chr&gt;</code></pre>
 </div>
-<p>What we get back is the entire <code>surveys</code> data.frame, but with the grouping variables added: 67 groups of <code>species_id</code> + <code>sex</code> combinations. Groups are often maintained throughout a pipeline, and if you assign the resulting data.frame to a new object, it will also have those groups. This can lead to confusing results if you forget about the grouping and want to carry out operations on the whole data.frame, not by group. Therefore, it is a good habit to remove the groups at the end of a pipeline containing <code><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by()</a></code>:</p>
+<p>What we get back is the entire <code>surveys</code> data.frame, but with the grouping variables added: 67 groups of <code>species_id</code> + <code>sex</code> combinations. Groups are often maintained throughout a pipeline, and if you assign the resulting data.frame to a new object, it will also have those groups. This can lead to confusing results if you forget about the grouping and want to carry out operations on the whole data.frame, not by group. Therefore, it is a good habit to remove the groups at the end of a pipeline containing <code>group_by()</code>:</p>
 <div class="codewrapper sourceCode" id="cb66">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1257,7 +1257,7 @@ Attaching package: 'lubridate'</code></pre>
 # … with 36 more rows</code></pre>
 </div>
 <p>Now our data.frame just says <code># A tibble: 46 × 4</code> at the top, with no groups.</p>
-<p>While it is common that you will want to get the one-row-per-group summary that <code><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise()</a></code> provides, there are times where you want to calculate a per-group value but keep all the rows in your data.frame. For example, we might want to know the mean weight for each species ID + sex combination, and then we might want to know how far from that mean value each observation in the group is. For this, we can use <code><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate()</a></code> together:</p>
+<p>While it is common that you will want to get the one-row-per-group summary that <code>summarise()</code> provides, there are times where you want to calculate a per-group value but keep all the rows in your data.frame. For example, we might want to know the mean weight for each species ID + sex combination, and then we might want to know how far from that mean value each observation in the group is. For this, we can use <code>group_by()</code> and <code>mutate()</code> together:</p>
 <div class="codewrapper sourceCode" id="cb68">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1288,7 +1288,7 @@ Attaching package: 'lubridate'</code></pre>
 # … with 15,176 more rows, and 6 more variables: genus &lt;chr&gt;, species &lt;chr&gt;,
 #   taxa &lt;chr&gt;, plot_type &lt;chr&gt;, mean_weight &lt;dbl&gt;, weight_diff &lt;dbl&gt;</code></pre>
 </div>
-<p>Since we get all our columns back, the new columns are at the very end and don’t print out in the console. Let’s use <code><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select()</a></code> to just look at the columns of interest. Inside <code><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select()</a></code> we can use the <code><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">contains()</a></code> function to get any column containing the word “weight” in the name:</p>
+<p>Since we get all our columns back, the new columns are at the very end and don’t print out in the console. Let’s use <code>select()</code> to just look at the columns of interest. Inside <code>select()</code> we can use the <code>contains()</code> function to get any column containing the word “weight” in the name:</p>
 <div class="codewrapper sourceCode" id="cb70">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1319,7 +1319,7 @@ Attaching package: 'lubridate'</code></pre>
 10 PF         M          7        7.10     -0.0980
 # … with 15,176 more rows</code></pre>
 </div>
-<p>What happens with the <code><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by()</a></code> + <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate()</a></code> combination is similar to using <code><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize()</a></code>: for each group, the mean weight is calculated. However, instead of reporting only one row per group, the mean weight for each group is added to each row in that group. For each row in a group (like DM species ID + M sex), you will see the same value in <code>mean_weight</code>.</p>
+<p>What happens with the <code>group_by()</code> + <code>mutate()</code> combination is similar to using <code>summarize()</code>: for each group, the mean weight is calculated. However, instead of reporting only one row per group, the mean weight for each group is added to each row in that group. For each row in a group (like DM species ID + M sex), you will see the same value in <code>mean_weight</code>.</p>
 <div id="challenge5" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -1393,7 +1393,7 @@ Attaching package: 'lubridate'</code></pre>
 </div>
 </section><section id="reshaping-data-with-tidyr"><h2 class="section-heading">Reshaping data with <code>tidyr</code>
 </h2>
-<hr class="half-width"><p>Let’s say we are interested in comparing the mean weights of each species across our different plots. We can begin this process using the <code><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by()</a></code> + <code><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize()</a></code> approach:</p>
+<hr class="half-width"><p>Let’s say we are interested in comparing the mean weights of each species across our different plots. We can begin this process using the <code>group_by()</code> + <code>summarize()</code> approach:</p>
 <div class="codewrapper sourceCode" id="cb74">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1425,15 +1425,15 @@ Attaching package: 'lubridate'</code></pre>
 10 DM               8        43.4
 # … with 290 more rows</code></pre>
 </div>
-<p>That looks great, but it is a bit difficult to compare values across plots. It would be nice if we could reshape this data.frame to make those comparisons easier. Well, the <code>tidyr</code> package from the <code>tidyverse</code> has a pair of functions that allow you to reshape data by pivoting it: <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider()</a></code> and <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer()</a></code>. <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider()</a></code> will make the data wider, which means increasing the number of columns and reducing the number of rows. <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer()</a></code> will do the opposite, reducing the number of columns and increasing the number of rows.</p>
-<p>In this case, it might be nice to create a data.frame where each species has its own row, and each plot has its own column containing the mean weight for a given species. We will use <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider()</a></code> to reshape our data in this way. It takes 3 arguments:</p>
+<p>That looks great, but it is a bit difficult to compare values across plots. It would be nice if we could reshape this data.frame to make those comparisons easier. Well, the <code>tidyr</code> package from the <code>tidyverse</code> has a pair of functions that allow you to reshape data by pivoting it: <code>pivot_wider()</code> and <code>pivot_longer()</code>. <code>pivot_wider()</code> will make the data wider, which means increasing the number of columns and reducing the number of rows. <code>pivot_longer()</code> will do the opposite, reducing the number of columns and increasing the number of rows.</p>
+<p>In this case, it might be nice to create a data.frame where each species has its own row, and each plot has its own column containing the mean weight for a given species. We will use <code>pivot_wider()</code> to reshape our data in this way. It takes 3 arguments:</p>
 <ol style="list-style-type: decimal"><li>the name of the data.frame</li>
 <li>
 <code>names_from</code>: which column should be used to generate the names of the new columns?</li>
 <li>
 <code>values_from</code>: which column should be used to fill in the values of the new columns?</li>
 </ol><p>Any columns not used for <code>names_from</code> or <code>values_from</code> will not be pivoted.</p>
-<figure><img src="fig/pivot_wider.png" alt="" class="figure mx-auto d-block"><figcaption>Diagram displaying the behavior of <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider()</a></code>.</figcaption></figure><p>In our case, we want the new columns to be named from our <code>plot_id</code> column, with the values coming from the <code>mean_weight</code> column. We can pipe our data.frame right into <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider()</a></code> and add those two arguments:</p>
+<figure><img src="fig/pivot_wider.png" alt="" class="figure mx-auto d-block"><figcaption>Diagram displaying the behavior of <code>pivot_wider()</code>.</figcaption></figure><p>In our case, we want the new columns to be named from our <code>plot_id</code> column, with the values coming from the <code>mean_weight</code> column. We can pipe our data.frame right into <code>pivot_wider()</code> and add those two arguments:</p>
 <div class="codewrapper sourceCode" id="cb76">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1473,7 +1473,7 @@ Attaching package: 'lubridate'</code></pre>
 #   `13` &lt;dbl&gt;, `14` &lt;dbl&gt;, `15` &lt;dbl&gt;, `16` &lt;dbl&gt;, `17` &lt;dbl&gt;, `18` &lt;dbl&gt;,
 #   `19` &lt;dbl&gt;, `20` &lt;dbl&gt;, `22` &lt;dbl&gt;, `23` &lt;dbl&gt;, `24` &lt;dbl&gt;</code></pre>
 </div>
-<p>Now we’ve got our reshaped data.frame. There are a few things to notice. First, we have a new column for each <code>plot_id</code> value. There is one old column left in the data.frame: <code>species_id</code>. It wasn’t used in <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider()</a></code>, so it stays, and now contains a single entry for each unique <code>species_id</code> value.</p>
+<p>Now we’ve got our reshaped data.frame. There are a few things to notice. First, we have a new column for each <code>plot_id</code> value. There is one old column left in the data.frame: <code>species_id</code>. It wasn’t used in <code>pivot_wider()</code>, so it stays, and now contains a single entry for each unique <code>species_id</code> value.</p>
 <p>Finally, a lot of <code>NA</code>s have appeared. Some species aren’t found in every plot, but because a data.frame has to have a value in every row and every column, an <code>NA</code> is inserted. We can double-check this to verify what is going on.</p>
 <p>Looking in our new pivoted data.frame, we can see that there is an <code>NA</code> value for the species <code>BA</code> in plot <code>1</code>. Let’s take our <code>sp_by_plot</code> data.frame and look for the <code>mean_weight</code> of that species + plot combination.</p>
 <div class="codewrapper sourceCode" id="cb78">
@@ -1491,8 +1491,8 @@ Attaching package: 'lubridate'</code></pre>
 <span class="co"># … with 3 variables: species_id &lt;chr&gt;, plot_id &lt;dbl&gt;, mean_weight &lt;dbl&gt;</span></code></pre>
 </div>
 <p>We get back 0 rows. There is no <code>mean_weight</code> for the species <code>BA</code> in plot <code>1</code>. This either happened because no <code>BA</code> were ever caught in plot <code>1</code>, or because every <code>BA</code> caught in plot <code>1</code> had an <code>NA</code> weight value and all the rows got removed when we used <code>filter(!is.na(weight))</code> in the process of making <code>sp_by_plot</code>. Because there are no rows with that species + plot combination, in our pivoted data.frame, the value gets filled with <code>NA</code>.</p>
-<p>There is another <code>pivot_</code> function that does the opposite, moving data from a wide to long format, called <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer()</a></code>. It takes 3 arguments: <code>cols</code> for the columns you want to pivot, <code>names_to</code> for the name of the new column which will contain the old column names, and <code>values_to</code> for the name of the new column which will contain the old values.</p>
-<figure><img src="fig/pivot_longer.png" alt="" class="figure mx-auto d-block"><figcaption>Diagram displaying the behavior of <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer()</a></code>.</figcaption></figure><p>We can pivot our new wide data.frame to a long format using <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer()</a></code>. We want to pivot all the columns except <code>species_id</code>, and we will use <code>PLOT</code> for the new column of plot IDs, and <code>MEAN_WT</code> for the new column of mean weight values.</p>
+<p>There is another <code>pivot_</code> function that does the opposite, moving data from a wide to long format, called <code>pivot_longer()</code>. It takes 3 arguments: <code>cols</code> for the columns you want to pivot, <code>names_to</code> for the name of the new column which will contain the old column names, and <code>values_to</code> for the name of the new column which will contain the old values.</p>
+<figure><img src="fig/pivot_longer.png" alt="" class="figure mx-auto d-block"><figcaption>Diagram displaying the behavior of <code>pivot_longer()</code>.</figcaption></figure><p>We can pivot our new wide data.frame to a long format using <code>pivot_longer()</code>. We want to pivot all the columns except <code>species_id</code>, and we will use <code>PLOT</code> for the new column of plot IDs, and <code>MEAN_WT</code> for the new column of mean weight values.</p>
 <div class="codewrapper sourceCode" id="cb80">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1547,10 +1547,10 @@ Attaching package: 'lubridate'</code></pre>
 10 DM         7        43.2
 # … with 290 more rows</code></pre>
 </div>
-<p>Data are often recorded in spreadsheets in a wider format, but lots of <code>tidyverse</code> tools, especially <code>ggplot2</code>, like data in a longer format, so <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer()</a></code> is often very useful.</p>
+<p>Data are often recorded in spreadsheets in a wider format, but lots of <code>tidyverse</code> tools, especially <code>ggplot2</code>, like data in a longer format, so <code>pivot_longer()</code> is often very useful.</p>
 </section><section id="exporting-data"><h2 class="section-heading">Exporting data</h2>
 <hr class="half-width"><p>Let’s say we want to send the wide version of our <code>sb_by_plot</code> data.frame to a colleague who doesn’t use R. In this case, we might want to save it as a CSV file.</p>
-<p>First, we might want to modify the names of the columns, since right now they are bare numbers, which aren’t very informative. Luckily, <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider()</a></code> has an argument <code>names_prefix</code> which will allow us to add “plot_” to the start of each column.</p>
+<p>First, we might want to modify the names of the columns, since right now they are bare numbers, which aren’t very informative. Luckily, <code>pivot_wider()</code> has an argument <code>names_prefix</code> which will allow us to add “plot_” to the start of each column.</p>
 <div class="codewrapper sourceCode" id="cb84">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1630,7 +1630,7 @@ Attaching package: 'lubridate'</code></pre>
 #   plot_17 &lt;dbl&gt;, plot_18 &lt;dbl&gt;, plot_19 &lt;dbl&gt;, plot_20 &lt;dbl&gt;, plot_22 &lt;dbl&gt;,
 #   plot_23 &lt;dbl&gt;, plot_24 &lt;dbl&gt;</code></pre>
 </div>
-<p>Now we can save this data.frame to a CSV using the <code><a href="https://readr.tidyverse.org/reference/write_delim.html" class="external-link">write_csv()</a></code> function from the <code>readr</code> package. The first argument is the name of the data.frame, and the second is the path to the new file we want to create, including the file extension <code>.csv</code>.</p>
+<p>Now we can save this data.frame to a CSV using the <code>write_csv()</code> function from the <code>readr</code> package. The first argument is the name of the data.frame, and the second is the path to the new file we want to create, including the file extension <code>.csv</code>.</p>
 <div class="codewrapper sourceCode" id="cb88">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1650,13 +1650,13 @@ Attaching package: 'lubridate'</code></pre>
 <div class="callout-inner">
 <h3 class="callout-title">Keypoints</h3>
 <div class="callout-content">
-<ul><li>use <code><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter()</a></code> to subset rows and <code><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select()</a></code> to subset columns</li>
+<ul><li>use <code>filter()</code> to subset rows and <code>select()</code> to subset columns</li>
 <li>build up pipelines one step at a time before assigning the result</li>
-<li>it is often best to keep components of dates separate until needed, then use <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate()</a></code> to make a date column</li>
+<li>it is often best to keep components of dates separate until needed, then use <code>mutate()</code> to make a date column</li>
 <li>
-<code><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by()</a></code> can be used with <code><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize()</a></code> to collapse rows or <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate()</a></code> to keep the same number of rows</li>
+<code>group_by()</code> can be used with <code>summarize()</code> to collapse rows or <code>mutate()</code> to keep the same number of rows</li>
 <li>
-<code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider()</a></code> and <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html" class="external-link">pivot_longer()</a></code> are powerful for reshaping data, but you should plan out how to use them thoughtfully</li>
+<code>pivot_wider()</code> and <code>pivot_longer()</code> are powerful for reshaping data, but you should plan out how to use them thoughtfully</li>
 </ul></div>
 </div>
 </div>
@@ -1684,9 +1684,9 @@ Attaching package: 'lubridate'</code></pre>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper" class="external-link">sandpaper (0.5.1)</a>,
-        <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.2.5)</a>,
-      and <a href="https://github.com/carpentries/varnish/tree/0.1.11" class="external-link">varnish (0.1.11)</a>.</p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.5.2" class="external-link">sandpaper (0.5.2)</a>,
+        <a href="https://github.com/carpentries/pegboard/tree/0.2.6" class="external-link">pegboard (0.2.6)</a>,
+      and <a href="https://github.com/carpentries/varnish/tree/0.1.12" class="external-link">varnish (0.1.12)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1707,8 +1707,8 @@ Attaching package: 'lubridate'</code></pre>
   "url": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson/03-working-with-data.html",
   "identifier": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson/03-working-with-data.html",
   "dateCreated": "2022-04-29",
-  "dateModified": "2022-05-10",
-  "datePublished": "2022-05-10"
+  "dateModified": "2022-05-17",
+  "datePublished": "2022-05-17"
 }
 
   </script><script>

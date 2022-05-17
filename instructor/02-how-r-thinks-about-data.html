@@ -242,7 +242,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Exploring and understanding data</h1>
-        <p> Last updated on 2022-05-10 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/02-how-r-thinks-about-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <p> Last updated on 2022-05-17 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/02-how-r-thinks-about-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 48 minutes </p>
         
         <div class="text-end">
@@ -286,7 +286,7 @@
 </div>
 </section><section id="the-data.frame"><h2 class="section-heading">The data.frame</h2>
 <hr class="half-width"><p>We just spent quite a bit of time learning how to create visualizations from the <code>complete_old</code> data, but we did not talk much about <strong>what</strong> this <code>complete_old</code> thing is. It’s important to understand how R thinks about, represents, and stores data in order for us to have a productive working relationship with R.</p>
-<p>The <code>complete_old</code> data is stored in R as a <strong>data.frame</strong>, which is the most common way that R represents tabular data (data that can be stored in a table format, like a spreadsheet). We can check what <code>complete_old</code> is by using the <code><a href="https://rdrr.io/r/base/class.html" class="external-link">class()</a></code> function:</p>
+<p>The <code>complete_old</code> data is stored in R as a <strong>data.frame</strong>, which is the most common way that R represents tabular data (data that can be stored in a table format, like a spreadsheet). We can check what <code>complete_old</code> is by using the <code>class()</code> function:</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -298,7 +298,7 @@
 </h3>
 <pre class="output" tabindex="0"><code>[1] "data.frame"</code></pre>
 </div>
-<p>We can view the first few rows with the <code><a href="https://rdrr.io/r/utils/head.html" class="external-link">head()</a></code> function, and the last few rows with the <code><a href="https://rdrr.io/r/utils/head.html" class="external-link">tail()</a></code> function:</p>
+<p>We can view the first few rows with the <code>head()</code> function, and the last few rows with the <code>tail()</code> function:</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -369,7 +369,7 @@
 </div>
 </div>
 </div>
-<p>Some arguments are optional. For example, the <code>n</code> argument in <code><a href="https://rdrr.io/r/utils/head.html" class="external-link">head()</a></code> specifies the number of rows to print. It defaults to 6, but we can override that by specifying a different number:</p>
+<p>Some arguments are optional. For example, the <code>n</code> argument in <code>head()</code> specifies the number of rows to print. It defaults to 6, but we can override that by specifying a different number:</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -454,7 +454,7 @@
  [ reached 'max' / getOption("max.print") -- omitted 3 rows ]</code></pre>
 </div>
 <p>Generally, it’s good practice to start with the required arguments, like the data.frame whose rows you want to see, and then to name the optional arguments. If you are ever unsure, it never hurts to explicitly name an argument.</p>
-<p>Let’s get back to investigating our <code>complete_old</code> data.frame. We can get some useful summaries of each variable using the <code><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary()</a></code> function:</p>
+<p>Let’s get back to investigating our <code>complete_old</code> data.frame. We can get some useful summaries of each variable using the <code>summary()</code> function:</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -489,7 +489,7 @@
                                                                             
                                                                             </code></pre>
 </div>
-<p>And, as we have already done, we can use <code><a href="https://rdrr.io/r/utils/str.html" class="external-link">str()</a></code> to look at the structure of an object:</p>
+<p>And, as we have already done, we can use <code>str()</code> to look at the structure of an object:</p>
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -545,7 +545,7 @@
 <li><p><code>"numeric"</code>, aka <code>"double"</code>, vectors can contain numbers including decimals.</p></li>
 <li><p><code>"logical"</code> for <code>TRUE</code> and <code>FALSE</code>, which can also be represented as <code>T</code> and <code>F</code>.</p></li>
 </ol><p>Vectors can only be of a <strong>single type</strong>. Since each column in a data.frame is a vector, this means an accidental character following a number, like <code>29,</code> can change the type of the whole vector. Mixing up vector types is one of the most common mistakes in R, and it can be tricky to figure out. It’s often very useful to check the types of vectors.</p>
-<p>To create a vector from scratch, we can use the <code><a href="https://rdrr.io/r/base/c.html" class="external-link">c()</a></code> function, putting values inside, separated by commas.</p>
+<p>To create a vector from scratch, we can use the <code>c()</code> function, putting values inside, separated by commas.</p>
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -564,7 +564,7 @@
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">num</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">5</span>, <span class="fl">12</span>, <span class="fl">4</span><span class="op">)</span></code></pre>
 </div>
-<p>You can check what kind of object <code>num</code> is with the <code><a href="https://rdrr.io/r/base/class.html" class="external-link">class()</a></code> function.</p>
+<p>You can check what kind of object <code>num</code> is with the <code>class()</code> function.</p>
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -612,7 +612,7 @@
 <h3 class="callout-title">Challenge 1: Coercion</h3>
 <div class="callout-content">
 <p>Since vectors can only hold one type of data, something has to be done when we try to combine different types of data into one vector.</p>
-<ol style="list-style-type: decimal"><li>What type will each of these vectors be? Try to guess without running any code at first, then run the code and use <code><a href="https://rdrr.io/r/base/class.html" class="external-link">class()</a></code> to verify your answers.</li>
+<ol style="list-style-type: decimal"><li>What type will each of these vectors be? Try to guess without running any code at first, then run the code and use <code>class()</code> to verify your answers.</li>
 </ol><div class="codewrapper sourceCode" id="cb30">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -755,7 +755,7 @@
 </div>
 </div>
 </div>
-<p>Coercion is not something you will often do intentionally; rather, when combining vectors or reading data into R, a stray character that you missed may change an entire numeric vector into a character vector. It is a good idea to check the <code><a href="https://rdrr.io/r/base/class.html" class="external-link">class()</a></code> of your results frequently, particularly if you are running into confusing error messages.</p>
+<p>Coercion is not something you will often do intentionally; rather, when combining vectors or reading data into R, a stray character that you missed may change an entire numeric vector into a character vector. It is a good idea to check the <code>class()</code> of your results frequently, particularly if you are running into confusing error messages.</p>
 </section><section id="missing-data"><h2 class="section-heading">Missing data</h2>
 <hr class="half-width"><p>One of the great things about R is how it handles missing data, which can be tricky in other programming languages. R represents missing data as <code>NA</code>, without quotes, in vectors of any type. Let’s make a numeric vector with an <code>NA</code> value:</p>
 <div class="codewrapper sourceCode" id="cb42">
@@ -764,7 +764,7 @@
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">weights</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">25</span>, <span class="fl">34</span>, <span class="fl">12</span>, <span class="cn">NA</span>, <span class="fl">42</span><span class="op">)</span></code></pre>
 </div>
-<p>R doesn’t make assumptions about how you want to handle missing data, so if we pass this vector to a numeric function like <code><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min()</a></code>, it won’t know what to do, so it returns <code>NA</code>:</p>
+<p>R doesn’t make assumptions about how you want to handle missing data, so if we pass this vector to a numeric function like <code>min()</code>, it won’t know what to do, so it returns <code>NA</code>:</p>
 <div class="codewrapper sourceCode" id="cb43">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -789,7 +789,7 @@
 <pre class="output" tabindex="0"><code>[1] 12</code></pre>
 </div>
 </section><section id="vectors-as-arguments"><h2 class="section-heading">Vectors as arguments</h2>
-<hr class="half-width"><p>A common reason to create a vector from scratch is to use in a function argument. The <code><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile()</a></code> function will calculate a quantile for a given vector of numeric values. We set the quantile using the <code>probs</code> argument. We also need to set <code>na.rm = TRUE</code>, since there are <code>NA</code> values in the <code>weight</code> column.</p>
+<hr class="half-width"><p>A common reason to create a vector from scratch is to use in a function argument. The <code>quantile()</code> function will calculate a quantile for a given vector of numeric values. We set the quantile using the <code>probs</code> argument. We also need to set <code>na.rm = TRUE</code>, since there are <code>NA</code> values in the <code>weight</code> column.</p>
 <div class="codewrapper sourceCode" id="cb47">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -815,8 +815,8 @@
 <pre class="output" tabindex="0"><code>25% 50% 75% 
  24  42  53 </code></pre>
 </div>
-<p>While the <code><a href="https://rdrr.io/r/base/c.html" class="external-link">c()</a></code> function is very flexible, it doesn’t necessarily scale well. If you want to generate a long vector from scratch, you probably don’t want to type everything out manually. There are a few functions that can help generate vectors.</p>
-<p>First, putting <code>:</code> between two numbers will generate a vector of integers starting with the first number and ending with the last. The <code><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq()</a></code> function allows you to generate similar sequences, but changing by any amount.</p>
+<p>While the <code>c()</code> function is very flexible, it doesn’t necessarily scale well. If you want to generate a long vector from scratch, you probably don’t want to type everything out manually. There are a few functions that can help generate vectors.</p>
+<p>First, putting <code>:</code> between two numbers will generate a vector of integers starting with the first number and ending with the last. The <code>seq()</code> function allows you to generate similar sequences, but changing by any amount.</p>
 <div class="codewrapper sourceCode" id="cb51">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -876,7 +876,7 @@
 <pre class="output" tabindex="0"><code> [1] 0.00 0.01 0.02 0.03 0.04 0.05 0.06 0.07 0.08 0.09 0.10 0.11 0.12 0.13 0.14
 [16] 0.15 0.16 0.17 0.18 0.19</code></pre>
 </div>
-<p>Finally, the <code><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep()</a></code> function allows you to repeat a value, or even a whole vector, as many times as you want, and works with any type of vector.</p>
+<p>Finally, the <code>rep()</code> function allows you to repeat a value, or even a whole vector, as many times as you want, and works with any type of vector.</p>
 <div class="codewrapper sourceCode" id="cb59">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1043,7 +1043,7 @@
 </ul></li>
 </ul><div class="section level3">
 <h3 id="factors">Factors<a class="anchor" aria-label="anchor" href="#factors"></a></h3>
-<p>We will spend a bit more time talking about factors, since they are often a challenging type of data to work with. We can create a factor from scratch by putting a character vector made using <code><a href="https://rdrr.io/r/base/c.html" class="external-link">c()</a></code> into the <code><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor()</a></code> function:</p>
+<p>We will spend a bit more time talking about factors, since they are often a challenging type of data to work with. We can create a factor from scratch by putting a character vector made using <code>c()</code> into the <code>factor()</code> function:</p>
 <div class="codewrapper sourceCode" id="cb74">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1058,7 +1058,7 @@
 <pre class="output" tabindex="0"><code>[1] male   female female male   female &lt;NA&gt;  
 Levels: female male</code></pre>
 </div>
-<p>We can inspect the levels of the factor using the <code><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels()</a></code> function:</p>
+<p>We can inspect the levels of the factor using the <code>levels()</code> function:</p>
 <div class="codewrapper sourceCode" id="cb76">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1281,9 +1281,9 @@ Levels: female male (Missing)</code></pre>
 <div class="callout-inner">
 <h3 class="callout-title">Keypoints</h3>
 <div class="callout-content">
-<ul><li>functions like <code><a href="https://rdrr.io/r/utils/head.html" class="external-link">head()</a></code>, <code><a href="https://rdrr.io/r/utils/str.html" class="external-link">str()</a></code>, and <code><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary()</a></code> are useful for exploring data.frames</li>
+<ul><li>functions like <code>head()</code>, <code>str()</code>, and <code>summary()</code> are useful for exploring data.frames</li>
 <li>most things in R are vectors, vectors stitched together, or functions</li>
-<li>make sure to use <code><a href="https://rdrr.io/r/base/class.html" class="external-link">class()</a></code> to check vector types, especially when using new functions</li>
+<li>make sure to use <code>class()</code> to check vector types, especially when using new functions</li>
 <li>factors can be useful, but behave differently from character vectors</li>
 </ul></div>
 </div>
@@ -1312,9 +1312,9 @@ Levels: female male (Missing)</code></pre>
         <p>Materials licensed under <a href="../LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper" class="external-link">sandpaper (0.5.1)</a>,
-        <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.2.5)</a>,
-      and <a href="https://github.com/carpentries/varnish/tree/0.1.11" class="external-link">varnish (0.1.11)</a>.</p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.5.2" class="external-link">sandpaper (0.5.2)</a>,
+        <a href="https://github.com/carpentries/pegboard/tree/0.2.6" class="external-link">pegboard (0.2.6)</a>,
+      and <a href="https://github.com/carpentries/varnish/tree/0.1.12" class="external-link">varnish (0.1.12)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1335,8 +1335,8 @@ Levels: female male (Missing)</code></pre>
   "url": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson/instructor/02-how-r-thinks-about-data.html",
   "identifier": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson/instructor/02-how-r-thinks-about-data.html",
   "dateCreated": "2022-04-29",
-  "dateModified": "2022-05-10",
-  "datePublished": "2022-05-10"
+  "dateModified": "2022-05-17",
+  "datePublished": "2022-05-17"
 }
 
   </script><script>
