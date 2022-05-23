@@ -164,7 +164,7 @@ R-Ecology-Workshop
 
 Within our project folder (`R-Ecology-Workshop`), we first have a `scripts` folder to hold any scripts we write. We also have a `data` folder containing `cleaned` and `raw` subfolders. In general, you want to keep your `raw` data completely untouched, so once you put data into that folder, you do not modify it. Instead, you read it into R, and if you make any modifications, you write that modified file into the `cleaned` folder. We also have an `images` folder for plots we make, and a `documents` folder for any other documents you might produce.
 
-Let's start making our new folders. Go to the **Files** pane, and check the current directory, highlighted in yellow below. You should be in the directory for the project you just made, in our case `R-Ecology-Workshop`. You shouldn't see any folders in here yet.
+Let's start making our new folders. Go to the **Files** pane (bottom right), and check the current directory, highlighted in yellow below. You should be in the directory for the project you just made, in our case `R-Ecology-Workshop`. You shouldn't see any folders in here yet.
 
 ![*Files pane with highlighted directory*](fig/files_pane.png)
 
