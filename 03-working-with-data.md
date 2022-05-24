@@ -802,6 +802,11 @@ surveys %>%
 ```
 
 ```{.output}
+`summarise()` has grouped output by 'species_id'. You can override using the
+`.groups` argument.
+```
+
+```{.output}
 # A tibble: 67 × 4
 # Groups:   species_id [36]
    species_id sex   mean_weight     n
@@ -828,6 +833,11 @@ surveys %>%
   group_by(species_id, sex) %>% 
   summarize(mean_weight = mean(weight),
             n = n())
+```
+
+```{.output}
+`summarise()` has grouped output by 'species_id'. You can override using the
+`.groups` argument.
 ```
 
 ```{.output}
@@ -861,6 +871,11 @@ surveys %>%
 ```
 
 ```{.output}
+`summarise()` has grouped output by 'species_id'. You can override using the
+`.groups` argument.
+```
+
+```{.output}
 # A tibble: 46 × 4
 # Groups:   species_id [18]
    species_id sex   mean_weight     n
@@ -888,6 +903,11 @@ surveys %>%
   summarize(mean_weight = mean(weight),
             n = n()) %>% 
   arrange(desc(mean_weight))
+```
+
+```{.output}
+`summarise()` has grouped output by 'species_id'. You can override using the
+`.groups` argument.
 ```
 
 ```{.output}
@@ -953,6 +973,11 @@ surveys %>%
             n = n()) %>% 
   arrange(desc(mean_weight)) %>% 
   ungroup()
+```
+
+```{.output}
+`summarise()` has grouped output by 'species_id'. You can override using the
+`.groups` argument.
 ```
 
 ```{.output}
@@ -1050,7 +1075,14 @@ surveys_daily_counts <- surveys %>%
   mutate(date = ymd(paste(year, month, day, sep = "-"))) %>% 
   group_by(date, sex) %>% 
   summarize(n = n())
+```
 
+```{.output}
+`summarise()` has grouped output by 'date'. You can override using the
+`.groups` argument.
+```
+
+```r
 # shorter approach using count()
 surveys_daily_counts <- surveys %>% 
   mutate(date = ymd(paste(year, month, day, sep = "-"))) %>% 
@@ -1087,7 +1119,14 @@ sp_by_plot <- surveys %>%
   group_by(species_id, plot_id) %>% 
   summarise(mean_weight = mean(weight)) %>% 
   arrange(species_id, plot_id)
+```
 
+```{.output}
+`summarise()` has grouped output by 'species_id'. You can override using the
+`.groups` argument.
+```
+
+```r
 sp_by_plot
 ```
 
