@@ -21,6 +21,7 @@
     </div>
     <div class="selector-container ">
       
+      
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle bordered-button" type="button" id="dropdownMenu1" data-bs-toggle="dropdown" aria-expanded="false">
           <i aria-hidden="true" class="icon" data-feather="eye"></i> Learner View <i data-feather="chevron-down"></i>
@@ -240,7 +241,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Working with data</h1>
-        <p> Last updated on 2022-05-17 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/03-working-with-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <p> Last updated on 2022-05-24 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/03-working-with-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -1086,6 +1087,12 @@ Attaching package: 'lubridate'</code></pre>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
+<pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'species_id'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
 <pre class="output" tabindex="0"><code># A tibble: 67 × 4
 # Groups:   species_id [36]
    species_id sex   mean_weight     n
@@ -1103,7 +1110,7 @@ Attaching package: 'lubridate'</code></pre>
 # … with 57 more rows</code></pre>
 </div>
 <p>Our resulting data.frame is much larger, since we have a greater number of groups. We also see a strange value showing up in our <code>mean_weight</code> column: <code>NaN</code>. This stands for “Not a Number”, and it often results from trying to do an operation a vector with zero entries. How can a vector have zero entries? Well, if a particular group (like the AB species ID + <code>NA</code> sex group) has <strong>only</strong> <code>NA</code> values for weight, then the <code>na.rm = T</code> argument in <code>mean()</code> will remove <strong>all</strong> the values prior to calculating the mean. The result will be a value of <code>NaN</code>. Since we are not particularly interested in these values, let’s add a step to our pipeline to remove rows where weight is <code>NA</code> <strong>before</strong> doing any other steps. This means that any groups with only <code>NA</code> values will disappear from our data.frame before we formally create the groups with <code>group_by()</code>.</p>
-<div class="codewrapper sourceCode" id="cb57">
+<div class="codewrapper sourceCode" id="cb58">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1112,6 +1119,12 @@ Attaching package: 'lubridate'</code></pre>
   <span class="fu">group_by</span><span class="op">(</span><span class="va">species_id</span>, <span class="va">sex</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">summarize</span><span class="op">(</span>mean_weight <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">weight</span><span class="op">)</span>,
             n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'species_id'. You can override using the
+`.groups` argument.</code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1133,7 +1146,7 @@ Attaching package: 'lubridate'</code></pre>
 # … with 36 more rows</code></pre>
 </div>
 <p>That looks better! It’s often useful to take a look at the results in some order, like the lowest mean weight to highest. We can use the <code>arrange()</code> function for that:</p>
-<div class="codewrapper sourceCode" id="cb59">
+<div class="codewrapper sourceCode" id="cb61">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1143,6 +1156,12 @@ Attaching package: 'lubridate'</code></pre>
   <span class="fu">summarize</span><span class="op">(</span>mean_weight <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">weight</span><span class="op">)</span>,
             n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">arrange</span><span class="op">(</span><span class="va">mean_weight</span><span class="op">)</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'species_id'. You can override using the
+`.groups` argument.</code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1164,7 +1183,7 @@ Attaching package: 'lubridate'</code></pre>
 # … with 36 more rows</code></pre>
 </div>
 <p>If we want to reverse the order, we can wrap the column name in <code>desc()</code>:</p>
-<div class="codewrapper sourceCode" id="cb61">
+<div class="codewrapper sourceCode" id="cb64">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1174,6 +1193,12 @@ Attaching package: 'lubridate'</code></pre>
   <span class="fu">summarize</span><span class="op">(</span>mean_weight <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">weight</span><span class="op">)</span>,
             n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">arrange</span><span class="op">(</span><span class="fu">desc</span><span class="op">(</span><span class="va">mean_weight</span><span class="op">)</span><span class="op">)</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'species_id'. You can override using the
+`.groups` argument.</code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1198,7 +1223,7 @@ Attaching package: 'lubridate'</code></pre>
 <pre><code><span class="co"># A tibble: 46 × 4</span>
 <span class="co"># Groups:   species_id [18]</span></code></pre>
 <p>They tell us we have a data.frame with 46 rows, 4 columns, and a group variable <code>species_id</code>, for which there are 18 groups. We will see something similar if we use <code>group_by()</code> alone:</p>
-<div class="codewrapper sourceCode" id="cb64">
+<div class="codewrapper sourceCode" id="cb68">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1226,7 +1251,7 @@ Attaching package: 'lubridate'</code></pre>
 #   taxa &lt;chr&gt;, plot_type &lt;chr&gt;</code></pre>
 </div>
 <p>What we get back is the entire <code>surveys</code> data.frame, but with the grouping variables added: 67 groups of <code>species_id</code> + <code>sex</code> combinations. Groups are often maintained throughout a pipeline, and if you assign the resulting data.frame to a new object, it will also have those groups. This can lead to confusing results if you forget about the grouping and want to carry out operations on the whole data.frame, not by group. Therefore, it is a good habit to remove the groups at the end of a pipeline containing <code>group_by()</code>:</p>
-<div class="codewrapper sourceCode" id="cb66">
+<div class="codewrapper sourceCode" id="cb70">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1237,6 +1262,12 @@ Attaching package: 'lubridate'</code></pre>
             n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">arrange</span><span class="op">(</span><span class="fu">desc</span><span class="op">(</span><span class="va">mean_weight</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'species_id'. You can override using the
+`.groups` argument.</code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1258,7 +1289,7 @@ Attaching package: 'lubridate'</code></pre>
 </div>
 <p>Now our data.frame just says <code># A tibble: 46 × 4</code> at the top, with no groups.</p>
 <p>While it is common that you will want to get the one-row-per-group summary that <code>summarise()</code> provides, there are times where you want to calculate a per-group value but keep all the rows in your data.frame. For example, we might want to know the mean weight for each species ID + sex combination, and then we might want to know how far from that mean value each observation in the group is. For this, we can use <code>group_by()</code> and <code>mutate()</code> together:</p>
-<div class="codewrapper sourceCode" id="cb68">
+<div class="codewrapper sourceCode" id="cb73">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1289,7 +1320,7 @@ Attaching package: 'lubridate'</code></pre>
 #   taxa &lt;chr&gt;, plot_type &lt;chr&gt;, mean_weight &lt;dbl&gt;, weight_diff &lt;dbl&gt;</code></pre>
 </div>
 <p>Since we get all our columns back, the new columns are at the very end and don’t print out in the console. Let’s use <code>select()</code> to just look at the columns of interest. Inside <code>select()</code> we can use the <code>contains()</code> function to get any column containing the word “weight” in the name:</p>
-<div class="codewrapper sourceCode" id="cb70">
+<div class="codewrapper sourceCode" id="cb75">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1340,16 +1371,26 @@ Attaching package: 'lubridate'</code></pre>
 </button>
 <div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb72">
+<div class="codewrapper sourceCode" id="cb77">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">surveys_daily_counts</span> <span class="op">&lt;-</span> <span class="va">surveys</span> <span class="op">%&gt;%</span> 
   <span class="fu">mutate</span><span class="op">(</span>date <span class="op">=</span> <span class="fu">ymd</span><span class="op">(</span><span class="fu">paste</span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span>, sep <span class="op">=</span> <span class="st">"-"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">group_by</span><span class="op">(</span><span class="va">date</span>, <span class="va">sex</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">summarize</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-
-<span class="co"># shorter approach using count()</span>
+  <span class="fu">summarize</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'date'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb79">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># shorter approach using count()</span>
 <span class="va">surveys_daily_counts</span> <span class="op">&lt;-</span> <span class="va">surveys</span> <span class="op">%&gt;%</span> 
   <span class="fu">mutate</span><span class="op">(</span>date <span class="op">=</span> <span class="fu">ymd</span><span class="op">(</span><span class="fu">paste</span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span>, sep <span class="op">=</span> <span class="st">"-"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">count</span><span class="op">(</span><span class="va">date</span>, <span class="va">sex</span><span class="op">)</span></code></pre>
@@ -1379,7 +1420,7 @@ Attaching package: 'lubridate'</code></pre>
 </button>
 <div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb73">
+<div class="codewrapper sourceCode" id="cb80">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1394,7 +1435,7 @@ Attaching package: 'lubridate'</code></pre>
 </section><section id="reshaping-data-with-tidyr"><h2 class="section-heading">Reshaping data with <code>tidyr</code>
 </h2>
 <hr class="half-width"><p>Let’s say we are interested in comparing the mean weights of each species across our different plots. We can begin this process using the <code>group_by()</code> + <code>summarize()</code> approach:</p>
-<div class="codewrapper sourceCode" id="cb74">
+<div class="codewrapper sourceCode" id="cb81">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1402,9 +1443,19 @@ Attaching package: 'lubridate'</code></pre>
   <span class="fu">filter</span><span class="op">(</span><span class="op">!</span><span class="fu">is.na</span><span class="op">(</span><span class="va">weight</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">group_by</span><span class="op">(</span><span class="va">species_id</span>, <span class="va">plot_id</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">summarise</span><span class="op">(</span>mean_weight <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">weight</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">arrange</span><span class="op">(</span><span class="va">species_id</span>, <span class="va">plot_id</span><span class="op">)</span>
-
-<span class="va">sp_by_plot</span></code></pre>
+  <span class="fu">arrange</span><span class="op">(</span><span class="va">species_id</span>, <span class="va">plot_id</span><span class="op">)</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'species_id'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb83">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sp_by_plot</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1434,7 +1485,7 @@ Attaching package: 'lubridate'</code></pre>
 <code>values_from</code>: which column should be used to fill in the values of the new columns?</li>
 </ol><p>Any columns not used for <code>names_from</code> or <code>values_from</code> will not be pivoted.</p>
 <figure><img src="fig/pivot_wider.png" alt="" class="figure mx-auto d-block"><figcaption>Diagram displaying the behavior of <code>pivot_wider()</code>.</figcaption></figure><p>In our case, we want the new columns to be named from our <code>plot_id</code> column, with the values coming from the <code>mean_weight</code> column. We can pipe our data.frame right into <code>pivot_wider()</code> and add those two arguments:</p>
-<div class="codewrapper sourceCode" id="cb76">
+<div class="codewrapper sourceCode" id="cb85">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1476,7 +1527,7 @@ Attaching package: 'lubridate'</code></pre>
 <p>Now we’ve got our reshaped data.frame. There are a few things to notice. First, we have a new column for each <code>plot_id</code> value. There is one old column left in the data.frame: <code>species_id</code>. It wasn’t used in <code>pivot_wider()</code>, so it stays, and now contains a single entry for each unique <code>species_id</code> value.</p>
 <p>Finally, a lot of <code>NA</code>s have appeared. Some species aren’t found in every plot, but because a data.frame has to have a value in every row and every column, an <code>NA</code> is inserted. We can double-check this to verify what is going on.</p>
 <p>Looking in our new pivoted data.frame, we can see that there is an <code>NA</code> value for the species <code>BA</code> in plot <code>1</code>. Let’s take our <code>sp_by_plot</code> data.frame and look for the <code>mean_weight</code> of that species + plot combination.</p>
-<div class="codewrapper sourceCode" id="cb78">
+<div class="codewrapper sourceCode" id="cb87">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1493,7 +1544,7 @@ Attaching package: 'lubridate'</code></pre>
 <p>We get back 0 rows. There is no <code>mean_weight</code> for the species <code>BA</code> in plot <code>1</code>. This either happened because no <code>BA</code> were ever caught in plot <code>1</code>, or because every <code>BA</code> caught in plot <code>1</code> had an <code>NA</code> weight value and all the rows got removed when we used <code>filter(!is.na(weight))</code> in the process of making <code>sp_by_plot</code>. Because there are no rows with that species + plot combination, in our pivoted data.frame, the value gets filled with <code>NA</code>.</p>
 <p>There is another <code>pivot_</code> function that does the opposite, moving data from a wide to long format, called <code>pivot_longer()</code>. It takes 3 arguments: <code>cols</code> for the columns you want to pivot, <code>names_to</code> for the name of the new column which will contain the old column names, and <code>values_to</code> for the name of the new column which will contain the old values.</p>
 <figure><img src="fig/pivot_longer.png" alt="" class="figure mx-auto d-block"><figcaption>Diagram displaying the behavior of <code>pivot_longer()</code>.</figcaption></figure><p>We can pivot our new wide data.frame to a long format using <code>pivot_longer()</code>. We want to pivot all the columns except <code>species_id</code>, and we will use <code>PLOT</code> for the new column of plot IDs, and <code>MEAN_WT</code> for the new column of mean weight values.</p>
-<div class="codewrapper sourceCode" id="cb80">
+<div class="codewrapper sourceCode" id="cb89">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1520,7 +1571,7 @@ Attaching package: 'lubridate'</code></pre>
 # … with 422 more rows</code></pre>
 </div>
 <p>One thing you will notice is that all those <code>NA</code> values that got generated when we pivoted wider. However, we can filter those out, which gets us back to the same data as <code>sp_by_plot</code>, before we pivoted it wider.</p>
-<div class="codewrapper sourceCode" id="cb82">
+<div class="codewrapper sourceCode" id="cb91">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1551,7 +1602,7 @@ Attaching package: 'lubridate'</code></pre>
 </section><section id="exporting-data"><h2 class="section-heading">Exporting data</h2>
 <hr class="half-width"><p>Let’s say we want to send the wide version of our <code>sb_by_plot</code> data.frame to a colleague who doesn’t use R. In this case, we might want to save it as a CSV file.</p>
 <p>First, we might want to modify the names of the columns, since right now they are bare numbers, which aren’t very informative. Luckily, <code>pivot_wider()</code> has an argument <code>names_prefix</code> which will allow us to add “plot_” to the start of each column.</p>
-<div class="codewrapper sourceCode" id="cb84">
+<div class="codewrapper sourceCode" id="cb93">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1590,7 +1641,7 @@ Attaching package: 'lubridate'</code></pre>
 #   plot_23 &lt;dbl&gt;, plot_24 &lt;dbl&gt;</code></pre>
 </div>
 <p>That looks better! Let’s save this data.frame as a new object.</p>
-<div class="codewrapper sourceCode" id="cb86">
+<div class="codewrapper sourceCode" id="cb95">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1631,7 +1682,7 @@ Attaching package: 'lubridate'</code></pre>
 #   plot_23 &lt;dbl&gt;, plot_24 &lt;dbl&gt;</code></pre>
 </div>
 <p>Now we can save this data.frame to a CSV using the <code>write_csv()</code> function from the <code>readr</code> package. The first argument is the name of the data.frame, and the second is the path to the new file we want to create, including the file extension <code>.csv</code>.</p>
-<div class="codewrapper sourceCode" id="cb88">
+<div class="codewrapper sourceCode" id="cb97">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1684,9 +1735,9 @@ Attaching package: 'lubridate'</code></pre>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.5.2" class="external-link">sandpaper (0.5.2)</a>,
-        <a href="https://github.com/carpentries/pegboard/tree/0.2.6" class="external-link">pegboard (0.2.6)</a>,
-      and <a href="https://github.com/carpentries/varnish/tree/0.1.12" class="external-link">varnish (0.1.12)</a>.</p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.5.5" class="external-link">sandpaper (0.5.5)</a>,
+        <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.2.7)</a>,
+      and <a href="https://github.com/carpentries/varnish/tree/0.1.13" class="external-link">varnish (0.1.13)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1707,8 +1758,8 @@ Attaching package: 'lubridate'</code></pre>
   "url": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson/03-working-with-data.html",
   "identifier": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson/03-working-with-data.html",
   "dateCreated": "2022-04-29",
-  "dateModified": "2022-05-17",
-  "datePublished": "2022-05-17"
+  "dateModified": "2022-05-24",
+  "datePublished": "2022-05-24"
 }
 
   </script><script>
