@@ -101,7 +101,7 @@ Anyone can inspect the source code to see how R works. Because of this transpare
 
 We will use the RStudio integrated development environment (IDE) to write code into scripts, run code in R, navigate files on our computer, inspect objects we create in R, and look at the plots we make. RStudio has many other features that can help with things like version control, developing R packages, and writing Shiny apps, but we won't cover those in the workshop.
 
-![*RStudio screenshot*](fig/rstudio_screenshot.png)
+![](fig/rstudio_screenshot.png){{alt='Screenshot of RStudio showing the 4 "panes".'}}
 
 In the above screenshot, we can see 4 "panes" in the default layout:
 
@@ -138,7 +138,7 @@ One of the benefits to using RStudio Projects is that they automatically set the
 
 There are a few settings we will need to adjust to improve the reproducibility of our work. Go to your menu bar, then click Tools → Global Options to open up the Options window.
 
-![*RStudio Global Options*](fig/rstudio_settings.png)
+![](fig/rstudio_settings.png){alt='Screenshot of the RStudio Global Options, with "Restore .RData into workspace at startup" unchecked, and "Save workspace to .RData on exit" set to "Never".'}
 
 Make sure your settings match those highlighted in yellow. We don't want RStudio to store the current status of our R session and reload it the next time we start R. This might sound convenient, but for the sake of reproducibility, we want to start with a clean, empty R session every time we work. That means that we have to record everything we do into scripts, save any data we need into files, and store outputs like images as files. We want to get used to everything we generate in a single R session being *disposable*. We want our scripts to be able to regenerate things we need, other than "raw materials" like data.
 
@@ -166,7 +166,7 @@ Within our project folder (`R-Ecology-Workshop`), we first have a `scripts` fold
 
 Let's start making our new folders. Go to the **Files** pane (bottom right), and check the current directory, highlighted in yellow below. You should be in the directory for the project you just made, in our case `R-Ecology-Workshop`. You shouldn't see any folders in here yet.
 
-![*Files pane with highlighted directory*](fig/files_pane.png)
+![](fig/files_pane.png){alt='RStudio Files pane with current directory path highlighted.'}
 
 Next, click the **New Folder** button, and type in `scripts` to generate your `scripts` folder. It should appear in the Files list now. Repeat the process to make your `data`, `images`, and `documents` folders. Then, click on the `data` folder in the Files pane. This will take you into the `data` folder, which will be empty. Use the **New Folder** button to create `raw` and `cleaned` folders. To return to the `R-Ecology-Workshop` folder, click on it in the file path, which is highlighted in yellow in the previous image. It's worth noting that the **Files** pane helps you create, find, and open files, but moving through your files won't change where the **working directory** of your project is.
 
