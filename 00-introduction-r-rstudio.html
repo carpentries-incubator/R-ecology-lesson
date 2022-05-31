@@ -240,7 +240,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Introduction to R and RStudio</h1>
-        <p> Last updated on 2022-05-25 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/00-introduction-r-rstudio.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <p> Last updated on 2022-05-31 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/00-introduction-r-rstudio.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -335,7 +335,7 @@
 </div>
 </section><section id="navigating-rstudio"><h2 class="section-heading">Navigating RStudio</h2>
 <hr class="half-width"><p>We will use the RStudio integrated development environment (IDE) to write code into scripts, run code in R, navigate files on our computer, inspect objects we create in R, and look at the plots we make. RStudio has many other features that can help with things like version control, developing R packages, and writing Shiny apps, but we won’t cover those in the workshop.</p>
-<figure><img src="fig/rstudio_screenshot.png" alt="" class="figure mx-auto d-block"><figcaption><em>RStudio screenshot</em></figcaption></figure><p>In the above screenshot, we can see 4 “panes” in the default layout:</p>
+<figure><img src="fig/rstudio_screenshot.png" class="figure mx-auto d-block">{{alt=‘Screenshot of RStudio showing the 4 “panes”.’}}</figure><p>In the above screenshot, we can see 4 “panes” in the default layout:</p>
 <ul><li>Top-Left: the <strong>Source</strong> pane that displays scripts and other files.
 <ul><li>If you only have 3 panes, and the Console pane is in the top left, press <kbd>Shift+Cmd+N</kbd> (Mac) or <kbd>Shift+Ctrl+N</kbd> (Windows) to open a blank R script, which should make the Source pane appear.</li>
 </ul></li>
@@ -362,7 +362,7 @@
 </ol><p>Next time you open RStudio, you can click that 3D cube icon, and you will see options to open existing projects, like the one you just made.</p>
 <p>One of the benefits to using RStudio Projects is that they automatically set the <strong>working directory</strong> to the top-level folder for the project. The working directory is the folder where R is working, so it views the location of all files (including data and scripts) as being relative to the working directory. You may come across scripts that include something like <code>setwd("/Users/YourUserName/MyCoolProject")</code>, which directly sets a working directory. This is usually much less portable, since that specific directory might not be found on someone else’s computer (they probably don’t have the same username as you). Using RStudio Projects means we don’t have to deal with manually setting the working directory.</p>
 <p>There are a few settings we will need to adjust to improve the reproducibility of our work. Go to your menu bar, then click Tools → Global Options to open up the Options window.</p>
-<figure><img src="fig/rstudio_settings.png" alt="" class="figure mx-auto d-block"><figcaption><em>RStudio Global Options</em></figcaption></figure><p>Make sure your settings match those highlighted in yellow. We don’t want RStudio to store the current status of our R session and reload it the next time we start R. This might sound convenient, but for the sake of reproducibility, we want to start with a clean, empty R session every time we work. That means that we have to record everything we do into scripts, save any data we need into files, and store outputs like images as files. We want to get used to everything we generate in a single R session being <em>disposable</em>. We want our scripts to be able to regenerate things we need, other than “raw materials” like data.</p>
+<figure><img src="fig/rstudio_settings.png" alt='Screenshot of the RStudio Global Options, with "Restore .RData into workspace at startup" unchecked, and "Save workspace to .RData on exit" set to "Never".' class="figure mx-auto d-block"></figure><p>Make sure your settings match those highlighted in yellow. We don’t want RStudio to store the current status of our R session and reload it the next time we start R. This might sound convenient, but for the sake of reproducibility, we want to start with a clean, empty R session every time we work. That means that we have to record everything we do into scripts, save any data we need into files, and store outputs like images as files. We want to get used to everything we generate in a single R session being <em>disposable</em>. We want our scripts to be able to regenerate things we need, other than “raw materials” like data.</p>
 </section><section id="organizing-your-project-directory"><h2 class="section-heading">Organizing your project directory</h2>
 <hr class="half-width"><p>Using a consistent folder structure across all your new projects will help keep a growing project organized, and make it easy to find files in the future. This is especially beneficial if you are working on multiple projects, since you will know where to look for particular kinds of files.</p>
 <p>We will use a basic structure for this workshop, which is often a good place to start, and can be extended to meet your specific needs. Here is a diagram describing the structure:</p>
@@ -379,7 +379,7 @@
 └─── documents</code></pre>
 <p>Within our project folder (<code>R-Ecology-Workshop</code>), we first have a <code>scripts</code> folder to hold any scripts we write. We also have a <code>data</code> folder containing <code>cleaned</code> and <code>raw</code> subfolders. In general, you want to keep your <code>raw</code> data completely untouched, so once you put data into that folder, you do not modify it. Instead, you read it into R, and if you make any modifications, you write that modified file into the <code>cleaned</code> folder. We also have an <code>images</code> folder for plots we make, and a <code>documents</code> folder for any other documents you might produce.</p>
 <p>Let’s start making our new folders. Go to the <strong>Files</strong> pane (bottom right), and check the current directory, highlighted in yellow below. You should be in the directory for the project you just made, in our case <code>R-Ecology-Workshop</code>. You shouldn’t see any folders in here yet.</p>
-<figure><img src="fig/files_pane.png" alt="" class="figure mx-auto d-block"><figcaption><em>Files pane with highlighted directory</em></figcaption></figure><p>Next, click the <strong>New Folder</strong> button, and type in <code>scripts</code> to generate your <code>scripts</code> folder. It should appear in the Files list now. Repeat the process to make your <code>data</code>, <code>images</code>, and <code>documents</code> folders. Then, click on the <code>data</code> folder in the Files pane. This will take you into the <code>data</code> folder, which will be empty. Use the <strong>New Folder</strong> button to create <code>raw</code> and <code>cleaned</code> folders. To return to the <code>R-Ecology-Workshop</code> folder, click on it in the file path, which is highlighted in yellow in the previous image. It’s worth noting that the <strong>Files</strong> pane helps you create, find, and open files, but moving through your files won’t change where the <strong>working directory</strong> of your project is.</p>
+<figure><img src="fig/files_pane.png" alt="RStudio Files pane with current directory path highlighted." class="figure mx-auto d-block"></figure><p>Next, click the <strong>New Folder</strong> button, and type in <code>scripts</code> to generate your <code>scripts</code> folder. It should appear in the Files list now. Repeat the process to make your <code>data</code>, <code>images</code>, and <code>documents</code> folders. Then, click on the <code>data</code> folder in the Files pane. This will take you into the <code>data</code> folder, which will be empty. Use the <strong>New Folder</strong> button to create <code>raw</code> and <code>cleaned</code> folders. To return to the <code>R-Ecology-Workshop</code> folder, click on it in the file path, which is highlighted in yellow in the previous image. It’s worth noting that the <strong>Files</strong> pane helps you create, find, and open files, but moving through your files won’t change where the <strong>working directory</strong> of your project is.</p>
 </section><section id="working-in-r-and-rstudio"><h2 class="section-heading">Working in R and RStudio</h2>
 <hr class="half-width"><p>The basis of programming is that we write down instructions for the computer to follow, and then we tell the computer to follow those instructions. We write these instructions in the form of <em>code</em>, which is a common language that is understood by the computer and humans (after some practice). We call these instructions <em>commands</em>, and we tell the computer to follow the instructions by <em>running</em> (also called <em>executing</em>) the commands.</p>
 <div class="section level3">
@@ -443,8 +443,8 @@
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.5.6" class="external-link">sandpaper (0.5.6)</a>,
-        <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.2.7)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.5.7" class="external-link">sandpaper (0.5.7)</a>,
+        <a href="https://github.com/carpentries/pegboard/tree/0.3.0" class="external-link">pegboard (0.3.0)</a>,
       and <a href="https://github.com/carpentries/varnish/tree/0.1.13" class="external-link">varnish (0.1.13)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
@@ -466,8 +466,8 @@
   "url": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson/00-introduction-r-rstudio.html",
   "identifier": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson/00-introduction-r-rstudio.html",
   "dateCreated": "2022-05-25",
-  "dateModified": "2022-05-25",
-  "datePublished": "2022-05-25"
+  "dateModified": "2022-05-31",
+  "datePublished": "2022-05-31"
 }
 
   </script><script>
