@@ -90,18 +90,12 @@ During the course we will need a number of R packages. Packages contain useful R
 To try to install these packages, open RStudio and copy and paste the following command into the console window (look for a blinking cursor on the bottom left), then press the <kbd>Enter</kbd> (Windows and Linux) or <kbd>Return</kbd> (MacOS) to execute the command.
 
 ```{r}
-install.packages(c("tidyverse", "lubridate", "patchwork", "remotes"))
+install.packages(c("tidyverse", "lubridate", "patchwork", "ratdat"))
 ```
 
 Alternatively, you can install the packages using RStudio's graphical user interface by going to `Tools > Install Packages` and typing the names of the packages separated by a comma.
 
 R tries to download and install the packages on your machine. 
-
-For now, we will have to use the `remotes` package to install a final package. Copy and paste the following command and run it like the last one:
-
-```{r}
-remotes::install_github("weecology/ratdat")
-```
 
 When the installation has finished, you can try to load the packages by pasting the following code into the console:
 
