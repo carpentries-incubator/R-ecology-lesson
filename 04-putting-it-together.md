@@ -509,6 +509,8 @@ species_new
 
 There we go, now `species_new` is formatted like the similar columns in the older `surveys` data.
 
+<br>
+
 ::::::::::::::::::::::::::::: solution
 
 ## Convert column types when separating
