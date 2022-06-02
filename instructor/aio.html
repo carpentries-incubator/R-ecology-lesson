@@ -32,7 +32,16 @@
     <header id="top" class="navbar navbar-expand-md navbar-light bg-white top-nav data"><a class="visually-hidden-focusable skip-link" href="#main-content">Skip to main content</a>
   <div class="container-fluid top-nav-container">
     <div class="col-md-6">
-      <div class="large-logo"><img alt="Data Carpentry" src="../assets/images/data-logo.svg"></div>
+      <div class="large-logo">
+        <img alt="Data Carpentry" src="../assets/images/data-logo.svg"><abbr class="icon" title="This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught." style="text-decoration: unset">
+           
+          <a href="https://cdh.carpentries.org/the-lesson-life-cycle.html#early-development-pre-alpha-through-alpha" class="external-link alert-link" style="color: #383838">Pre-Alpha
+            <i aria-hidden="true" class="icon" data-feather="alert-octagon" style="color: #FF4955"></i>
+          </a>
+          <span class="visually-hidden">This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught.</span>
+        </abbr>
+        
+      </div>
     </div>
     <div class="selector-container ">
       
@@ -279,7 +288,7 @@
         
 <section id="aio-00-introduction-r-rstudio"><p>Content from <a href="00-introduction-r-rstudio.html">Introduction to R and RStudio</a></p>
 <hr>
-<p> Last updated on 2022-05-31 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/00-introduction-r-rstudio.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<p> Last updated on 2022-06-02 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/00-introduction-r-rstudio.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 30 minutes </p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -329,7 +338,7 @@
   Instructor Note
   </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>You can walk through this analogy if you want, or skip over it if you don’t find it useful.</p>
 </div>
@@ -343,7 +352,7 @@
   Your new pedantic collaborator…
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>You’re working on a project when your advisor suggests that you begin working with one of their long-time collaborators. According to your advisor, this collaborator is very talented, but only speaks a language that you don’t know. Your advisor assures you that this is ok, the collaborator won’t judge you for starting to learn the language, and will happily answer your questions. However, the collaborator is also quite pedantic. While they don’t mind that you don’t speak their language fluently yet, they are always going to answer you quite literally.</p>
 <p>You decide to reach out to the collaborator. You find that they email you back very quickly, almost immediately most of the time. Since you’re just learning their language, you often make mistakes. Sometimes, they tell you that you’ve made a grammatical error or warn you that what you asked for doesn’t make a lot of sense. Sometimes these warnings are difficult to understand, because you don’t really have a grasp of the underlying grammar. Sometimes you get an answer back, with no warnings, but you realize that it doesn’t make sense, because what you asked for isn’t quite what you <em>wanted</em>. Since this collaborator responds almost immediately, without tiring, you can quickly reformulate your question and send it again.</p>
@@ -510,7 +519,7 @@
 </div>
 </section></section><section id="aio-01-visualizing-ggplot"><p>Content from <a href="01-visualizing-ggplot.html">Data visualization with ggplot2</a></p>
 <hr>
-<p> Last updated on 2022-05-31 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/01-visualizing-ggplot.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<p> Last updated on 2022-06-02 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/01-visualizing-ggplot.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 49 minutes </p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -577,7 +586,7 @@
   Instructor Note
   </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>Probably worth mentioning that people often just say <strong>ggplot</strong> when referring to the package <code>ggplot2</code>.</p>
 </div>
@@ -769,7 +778,7 @@
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -805,7 +814,7 @@
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -973,7 +982,7 @@
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1010,7 +1019,7 @@
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb34">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1157,7 +1166,7 @@
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb42">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1363,7 +1372,7 @@
 </div>
 </section></section><section id="aio-02-how-r-thinks-about-data"><p>Content from <a href="02-how-r-thinks-about-data.html">Exploring and understanding data</a></p>
 <hr>
-<p> Last updated on 2022-05-31 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/02-how-r-thinks-about-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<p> Last updated on 2022-06-02 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/02-how-r-thinks-about-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 48 minutes </p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -1762,7 +1771,7 @@
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1840,7 +1849,7 @@
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb40">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1879,7 +1888,7 @@
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>logical → integer → numeric → character</p>
 <p>Logical vectors can only take on two values: <code>TRUE</code> or <code>FALSE</code>. Integer vectors can only contain integers, so <code>TRUE</code> and <code>FALSE</code> can be coerced to <code>1</code> and <code>0</code>. Numeric vectors can contain numbers with decimals, so integers can be coerced from, say, <code>6</code> to <code>6.0</code> (though R will still display a numeric <code>6</code> as <code>6</code>.). Finally, any string of characters can be represented as a character vector, so any of the other types can be coerced to a character vector.</p>
@@ -2073,7 +2082,7 @@
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb66">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2137,7 +2146,7 @@
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb72">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2337,7 +2346,7 @@ Levels: female male (Missing)</code></pre>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb91">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2430,7 +2439,7 @@ Levels: female male (Missing)</code></pre>
 <li>two common formats are <code>snake_case</code> and <code>camelCase</code>
 </li>
 <li>be consistent, at least within a script, ideally within a whole project</li>
-<li>you can use a style guide like <a href="https://google.github.io/styleguide/Rguide.xml" class="external-link">Google’s</a> or <a href="http://style.tidyverse.org/" class="external-link">tidyverse’s</a>
+<li>you can use a style guide like <a href="https://google.github.io/styleguide/Rguide.xml" class="external-link">Google’s</a> or <a href="https://style.tidyverse.org/" class="external-link">tidyverse’s</a>
 </li>
 </ul>
 <div id="keypoints1" class="callout keypoints">
@@ -2451,7 +2460,7 @@ Levels: female male (Missing)</code></pre>
 </div>
 </section></section><section id="aio-03-working-with-data"><p>Content from <a href="03-working-with-data.html">Working with data</a></p>
 <hr>
-<p> Last updated on 2022-05-31 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/03-working-with-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<p> Last updated on 2022-06-02 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/03-working-with-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 94 minutes </p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -2824,7 +2833,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2857,7 +2866,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2965,7 +2974,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
   Instructor Note
   </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>It’s worth showing the learners that you can run a <strong>pipeline</strong> without highlighting the whole thing. If your cursor is on any line of a pipeline, running that line will run the whole thing.</p>
 <p>You can also show that by highlighting a section of a pipeline, you can run only the first X steps of it.</p>
@@ -3001,7 +3010,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3256,7 +3265,7 @@ Attaching package: 'lubridate'</code></pre>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb49">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3616,7 +3625,7 @@ Attaching package: 'lubridate'</code></pre>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb77">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3667,7 +3676,7 @@ Attaching package: 'lubridate'</code></pre>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb80">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3737,7 +3746,7 @@ Attaching package: 'lubridate'</code></pre>
 <code>values_from</code>: which column should be used to fill in the values of the new columns?</li>
 </ol>
 <p>Any columns not used for <code>names_from</code> or <code>values_from</code> will not be pivoted.</p>
-<figure><img src="../fig/pivot_wider.png" alt="" class="figure mx-auto d-block"><figcaption>Diagram displaying the behavior of <code>pivot_wider()</code>.</figcaption></figure><p>In our case, we want the new columns to be named from our <code>plot_id</code> column, with the values coming from the <code>mean_weight</code> column. We can pipe our data.frame right into <code>pivot_wider()</code> and add those two arguments:</p>
+<figure><img src="../fig/pivot_wider.png" alt="Diagram depicting the behavior of `pivot_wider()` on a small tabular dataset." class="figure mx-auto d-block"></figure><p>In our case, we want the new columns to be named from our <code>plot_id</code> column, with the values coming from the <code>mean_weight</code> column. We can pipe our data.frame right into <code>pivot_wider()</code> and add those two arguments:</p>
 <div class="codewrapper sourceCode" id="cb85">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -3796,7 +3805,7 @@ Attaching package: 'lubridate'</code></pre>
 </div>
 <p>We get back 0 rows. There is no <code>mean_weight</code> for the species <code>BA</code> in plot <code>1</code>. This either happened because no <code>BA</code> were ever caught in plot <code>1</code>, or because every <code>BA</code> caught in plot <code>1</code> had an <code>NA</code> weight value and all the rows got removed when we used <code>filter(!is.na(weight))</code> in the process of making <code>sp_by_plot</code>. Because there are no rows with that species + plot combination, in our pivoted data.frame, the value gets filled with <code>NA</code>.</p>
 <p>There is another <code>pivot_</code> function that does the opposite, moving data from a wide to long format, called <code>pivot_longer()</code>. It takes 3 arguments: <code>cols</code> for the columns you want to pivot, <code>names_to</code> for the name of the new column which will contain the old column names, and <code>values_to</code> for the name of the new column which will contain the old values.</p>
-<figure><img src="../fig/pivot_longer.png" alt="" class="figure mx-auto d-block"><figcaption>Diagram displaying the behavior of <code>pivot_longer()</code>.</figcaption></figure><p>We can pivot our new wide data.frame to a long format using <code>pivot_longer()</code>. We want to pivot all the columns except <code>species_id</code>, and we will use <code>PLOT</code> for the new column of plot IDs, and <code>MEAN_WT</code> for the new column of mean weight values.</p>
+<figure><img src="../fig/pivot_longer.png" alt="Diagram depicting the behavior of `pivot_longer()` on a small tabular dataset." class="figure mx-auto d-block"></figure><p>We can pivot our new wide data.frame to a long format using <code>pivot_longer()</code>. We want to pivot all the columns except <code>species_id</code>, and we will use <code>PLOT</code> for the new column of plot IDs, and <code>MEAN_WT</code> for the new column of mean weight values.</p>
 <div class="codewrapper sourceCode" id="cb89">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -3969,7 +3978,7 @@ Attaching package: 'lubridate'</code></pre>
 </div>
 </section></section><section id="aio-04-putting-it-together"><p>Content from <a href="04-putting-it-together.html">Putting it together</a></p>
 <hr>
-<p> Last updated on 2022-05-31 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/04-putting-it-together.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<p> Last updated on 2022-06-02 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/04-putting-it-together.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 48 minutes </p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -4000,6 +4009,21 @@ Attaching package: 'lubridate'</code></pre>
 <li>Understand the process of formatting new data similarly to existing data.</li>
 </ul>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div id="accordionInstructor1" class="accordion instructor-note accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
+  <h3 class="accordion-header" id="headingInstructor1">
+  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div>
+  Instructor Note
+  </h3>
+</button>
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div class="accordion-body">
+<p>This entire episode could be cut depending on time and/or how your learners are progressing. The previous episodes cover what could be considered the most fundamental skills, while this episode focuses more on putting them together and how they interact when encountering real, messy data. The new skills covered will be combining multiple datasets with <code>join_</code> functions and <code>bind_rows()</code>, and doing some exploratory data analysis and detection in order to clean a messy dataset.</p>
 </div>
 </div>
 </div>
@@ -4237,7 +4261,7 @@ dbl (4): record_id, plot_id, hindfoot_length, weight
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>The <code>dplyr</code> function <code>na_if()</code> will replace specific values in a vector to <code>NA</code>. To find this function, you can Google “tidyverse replace value with NA”. One of the first results is the <a href="https://dplyr.tidyverse.org/reference/na_if.html" class="external-link"><code>dplyr</code> documentation page</a> for the <code>na_if()</code> function.</p>
 <p>If you scroll down to the bottom section of the documentation, you will find several examples, including how to use the function inside <code>mutate()</code>.</p>
@@ -4331,7 +4355,7 @@ Attaching package: 'lubridate'</code></pre>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>There are two basic approaches you could take. First, you could look directly at the old CSV and find the rows with bad dates based on their <code>record_id</code>.</p>
 <p>You could also read the data back into R and use <code>filter()</code> to pick out those specific rows via <code>record_id</code>:</p>
@@ -4487,10 +4511,58 @@ chr (3): species_id, species_name, taxa
 # … with 44 more rows</code></pre>
 </div>
 <p>There we go, now <code>species_new</code> is formatted like the similar columns in the older <code>surveys</code> data.</p>
+<div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
+  <h4 class="accordion-header" id="headingSolution3">
+  Convert column types when separating
+  </h4>
+</button>
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div class="accordion-body">
+<p>The <code>separate()</code> function also has an argument called <code>convert</code>, which will automatically convert the types of your new columns. For example, if you had a column called <code>range</code> that had character strings like <code>"1990-1995"</code>, and you wanted to separate it into <code>start</code> and <code>end</code> columns, you would end up with character columns if you used <code>separate()</code> like we did above. However, if you use <code>convert = T</code>, the new columns will be converted to integers. Check out this short example below:</p>
+<div class="codewrapper sourceCode" id="cb37">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span>years <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"1990-1995"</span>, <span class="st">"2000-2002"</span><span class="op">)</span><span class="op">)</span> 
+
+<span class="va">d</span> <span class="op">%&gt;%</span> 
+  <span class="fu">separate</span><span class="op">(</span><span class="va">years</span>, into <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"start"</span>, <span class="st">"end"</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">"-"</span><span class="op">)</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code># A tibble: 2 × 2
+  start end  
+  &lt;chr&gt; &lt;chr&gt;
+1 1990  1995 
+2 2000  2002 </code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb39">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">d</span> <span class="op">%&gt;%</span> 
+  <span class="fu">separate</span><span class="op">(</span><span class="va">years</span>, into <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"start"</span>, <span class="st">"end"</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">"-"</span>, convert <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code># A tibble: 2 × 2
+  start   end
+  &lt;int&gt; &lt;int&gt;
+1  1990  1995
+2  2000  2002</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section><section id="reading-the-new-plots-data"><h2 class="section-heading">Reading the new plots data</h2>
 <hr class="half-width">
 <p>Finally, we can move on to the new <code>plots</code> data, in the <code>plots_new.csv</code> file. We can go back to <code>read_csv()</code> to get it into R.</p>
-<div class="codewrapper sourceCode" id="cb37">
+<div class="codewrapper sourceCode" id="cb41">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4507,7 +4579,7 @@ chr (24): Plot 1, Plot 2, Plot 3, Plot 4, Plot 5, Plot 6, Plot 7, Plot 8, Pl...
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb39">
+<div class="codewrapper sourceCode" id="cb43">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4527,15 +4599,15 @@ chr (24): Plot 1, Plot 2, Plot 3, Plot 4, Plot 5, Plot 6, Plot 7, Plot 8, Pl...
 #   `Plot 24` &lt;chr&gt;</code></pre>
 </div>
 <p>It looks like our data are in a bit of a strange format. We have a column for each plot, and then a single row of data containing the plot type. If you look at our old <code>surveys</code> data, we had a single row for <code>plot_id</code> and a single row for <code>plot_type</code>. <code>surveys</code> contained this data in a <strong>long</strong> format, whereas <code>plots_new</code> has a <strong>wide</strong> format.</p>
-<div id="accordionInstructor1" class="accordion instructor-note accordion-flush">
+<div id="accordionInstructor2" class="accordion instructor-note accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
-  <h3 class="accordion-header" id="headingInstructor1">
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
+  <h3 class="accordion-header" id="headingInstructor2">
   <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div>
   Instructor Note
   </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor2" class="accordion-collapse collapse" aria-labelledby="headingInstructor2" data-bs-parent="#accordionInstructor2">
 <div class="accordion-body">
 <p>The next Challenge is mandatory for later steps in the lesson- if you choose to not use it as a Challenge, you should still go through the code to get the data into long format.</p>
 </div>
@@ -4555,16 +4627,16 @@ chr (24): Plot 1, Plot 2, Plot 3, Plot 4, Plot 5, Plot 6, Plot 7, Plot 8, Pl...
 </div>
 </div>
 </div>
-<div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSolution4" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
-  <h4 class="accordion-header" id="headingSolution3">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
+  <h4 class="accordion-header" id="headingSolution4">
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb41">
+<div class="codewrapper sourceCode" id="cb45">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4597,7 +4669,7 @@ chr (24): Plot 1, Plot 2, Plot 3, Plot 4, Plot 5, Plot 6, Plot 7, Plot 8, Pl...
 </div>
 <p>Our old <code>surveys</code> data had <code>plot_id</code> as a numeric variable, but ours is a character string with <code>"Plot "</code> in front of the number. This is a pretty common issue, but we can use a function from the <code>stringr</code> package to fix it.</p>
 <p>We will use <code>mutate()</code> to modify the <code>plot_id</code> column, and we will replace it with the results of the <code>str_replace()</code> function. The first argument to <code>str_replace()</code> is the character vector we want to modify, which is the current <code>plot_id</code> column. Next is the string of characters that we want to replace, which is <code>"Plot "</code>, including the space at the end. Finally, we have the replacement string. Since we want to remove <code>"Plot "</code>, we replace it with a blank string <code>""</code>.</p>
-<div class="codewrapper sourceCode" id="cb43">
+<div class="codewrapper sourceCode" id="cb47">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4625,7 +4697,7 @@ chr (24): Plot 1, Plot 2, Plot 3, Plot 4, Plot 5, Plot 6, Plot 7, Plot 8, Pl...
 # … with 14 more rows</code></pre>
 </div>
 <p>We successfully removed <code>"Plot "</code> from our <code>plot_id</code> column entries, so we are left with just the numbers. However, it is still a <code>character</code> column. The last step is to convert it to a numeric column.</p>
-<div class="codewrapper sourceCode" id="cb45">
+<div class="codewrapper sourceCode" id="cb49">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4656,8 +4728,8 @@ chr (24): Plot 1, Plot 2, Plot 3, Plot 4, Plot 5, Plot 6, Plot 7, Plot 8, Pl...
 <hr class="half-width">
 <p>Now that we have each individual data.frame formatted nicely, we would like to be able to combine them. Our <code>surveys</code> data has all of the data combined into one data.frame. However, our data.frames are different sizes. <code>surveys_new</code> has 18676 rows, and it contains the individual data for each animal. This is the same basic size of the old <code>surveys</code> data. However, our <code>plots_new</code> and <code>species_new</code> data are much smaller. They only contain data on specific plots and species.</p>
 <p>If we look at the column names for <code>surveys_new</code> and <code>plots_new</code>, we see that they share a <code>plot_id</code> column. What we want to do now is take the data of our actual observations, <code>surveys_new</code>, and add the data for each associated plot. If a row in <code>surveys_new</code> has a <code>plot_id</code> of 2, we want to associate the <code>plot_type</code> of that plot with that row. We can accomplish this using a <strong>join</strong>.</p>
-<figure><img src="../fig/left_join.png" alt="" class="figure mx-auto d-block"><figcaption>Diagram displaying how a <code>left_join()</code> works.</figcaption></figure><p>There are several types of joins in the <code>dplyr</code> package, which you can <a href="https://stat545.com/join-cheatsheet.html" class="external-link">read more about here</a>. We will use a function called <code>left_join()</code>, which takes two dataframes and adds the columns from the second dataframe to the first dataframe, matching rows based on the column name supplied to the <code>by</code> argument.</p>
-<div class="codewrapper sourceCode" id="cb47">
+<figure><img src="../fig/left_join.png" alt="Diagram depicting the behavior of a `left_join()` on two small tabular datasets." class="figure mx-auto d-block"></figure><p>There are several types of joins in the <code>dplyr</code> package, which you can <a href="https://stat545.com/join-cheatsheet.html" class="external-link">read more about here</a>. We will use a function called <code>left_join()</code>, which takes two dataframes and adds the columns from the second dataframe to the first dataframe, matching rows based on the column name supplied to the <code>by</code> argument.</p>
+<div class="codewrapper sourceCode" id="cb51">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4682,14 +4754,14 @@ chr (24): Plot 1, Plot 2, Plot 3, Plot 4, Plot 5, Plot 6, Plot 7, Plot 8, Pl...
 # … with 18,666 more rows, and 1 more variable: plot_type &lt;chr&gt;</code></pre>
 </div>
 <p>Now we have our <code>surveys_new</code> dataframe, still with 18676 rows, but now each row has a value for <code>plot_type</code>, corresponding to its entry in <code>plot_id</code>. We can assign this back to <code>surveys_new</code>, so that it now contains the information from both dataframes.</p>
-<div class="codewrapper sourceCode" id="cb49">
+<div class="codewrapper sourceCode" id="cb53">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">surveys_new</span> <span class="op">&lt;-</span> <span class="fu">left_join</span><span class="op">(</span><span class="va">surveys_new</span>, <span class="va">plots_new</span>, by <span class="op">=</span> <span class="st">"plot_id"</span><span class="op">)</span></code></pre>
 </div>
 <p>We can repeat this process to get the information from <code>species_new</code>. <code>surveys_new</code> and <code>species_new</code> both have a <code>species_id</code> column, but we would like to add the <code>genus</code>, <code>species</code>, and <code>taxa</code> information to <code>surveys_new</code>.</p>
-<div class="codewrapper sourceCode" id="cb50">
+<div class="codewrapper sourceCode" id="cb54">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4720,7 +4792,7 @@ chr (24): Plot 1, Plot 2, Plot 3, Plot 4, Plot 5, Plot 6, Plot 7, Plot 8, Pl...
 </section><section id="adding-to-the-old-data"><h2 class="section-heading">Adding to the old data</h2>
 <hr class="half-width">
 <p>Now that our old <code>surveys</code> data and <code>surveys_new</code> data are formatted in the same way, we can bind them together so we have data from all years in one data.frame. First let’s read our `surveys’ data back in.</p>
-<div class="codewrapper sourceCode" id="cb52">
+<div class="codewrapper sourceCode" id="cb56">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4739,7 +4811,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
 <p>Now we can use the <code>bind_rows()</code> function to bind the rows of our two data.frames together. The fact that our columns are not in the same order doesn’t matter, <code>bind_rows()</code> will detect thatt the column names are the same, and will rearrange them to match the first data.frame.</p>
-<div class="codewrapper sourceCode" id="cb54">
+<div class="codewrapper sourceCode" id="cb58">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4767,7 +4839,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
 #   taxa &lt;chr&gt;, plot_type &lt;chr&gt;</code></pre>
 </div>
 <p>We might be interested in indicating which rows of our data came from which source: the old data or the new. We can name the data.frames inside <code>bind_rows()</code>, and then give a new argument <code>.id</code>. This will give us a new column called <code>source</code> that contains a value of <code>"old"</code> for rows that came from <code>surveys</code>, and a value of <code>"new"</code> for rows that came from <code>surveys_new</code>.</p>
-<div class="codewrapper sourceCode" id="cb56">
+<div class="codewrapper sourceCode" id="cb60">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4798,7 +4870,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
 </section><section id="final-outputs"><h2 class="section-heading">Final outputs</h2>
 <hr class="half-width">
 <p>Let’s go ahead and write our data to a CSV file so we can share it with others.</p>
-<div class="codewrapper sourceCode" id="cb58">
+<div class="codewrapper sourceCode" id="cb62">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4806,7 +4878,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
   <span class="fu">write_csv</span><span class="op">(</span><span class="st">"data/cleaned/surveys_complete.csv"</span><span class="op">)</span></code></pre>
 </div>
 <p>Now we might be interested in looking at all of our data together. Try making some plots of your own to look at the whole dataset!</p>
-<div class="codewrapper sourceCode" id="cb59">
+<div class="codewrapper sourceCode" id="cb63">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4839,7 +4911,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
 </div>
 </section></section><section id="aio-05-extra-challenges"><p>Content from <a href="05-extra-challenges.html">Extra Challenges</a></p>
 <hr>
-<p> Last updated on 2022-05-31 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/05-extra-challenges.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<p> Last updated on 2022-06-02 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/05-extra-challenges.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 48 minutes </p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -4877,7 +4949,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Our points don’t actually turn out blue, because we defined the color inside of <code>aes()</code>. <code>aes()</code> is used for translating variables from the data into plot elements, like color. There is no variable in the data called “blue”.</p>
 </div>
@@ -4910,7 +4982,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>Variable names inside <code>aes()</code> should not be wrapped in quotes.</p>
 </div>
@@ -4943,7 +5015,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>When adding things like <code>geom_</code> or <code>scale_</code> functions to a <code>ggplot()</code>, you have to end a line with <code>+</code>, not begin a line with it.</p>
 </div>
@@ -4975,7 +5047,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>When translating variables from the data, like <code>weight</code> and <code>hindfoot_length</code>, to elements of the plot, like <code>x</code> and <code>y</code>, you must put them inside <code>aes()</code>.</p>
 </div>
@@ -5009,7 +5081,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p><code>species_id</code> is a categorical variable, but <code>scale_color_continuous()</code> supplies a continuous color scale. <code>scale_color_discrete()</code> would give a discrete/categorical scale.</p>
 </div>
@@ -5036,7 +5108,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
         <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.5.7" class="external-link">sandpaper (0.5.7)</a>,
         <a href="https://github.com/carpentries/pegboard/tree/0.3.0" class="external-link">pegboard (0.3.0)</a>,
-      and <a href="https://github.com/carpentries/varnish/tree/0.1.13" class="external-link">varnish (0.1.13)</a>.</p>
+      and <a href="https://github.com/carpentries/varnish/tree/0.1.14" class="external-link">varnish (0.1.14)</a>.</p>
 			</div>
 		</footer>
 </div> <!-- / div.container -->
@@ -5057,9 +5129,9 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
   "creativeWorkStatus": "active",
   "url": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson/instructor/aio.html",
   "identifier": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson/instructor/aio.html",
-  "dateCreated": "2022-05-25",
-  "dateModified": "2022-05-31",
-  "datePublished": "2022-05-31"
+  "dateCreated": "2022-06-02",
+  "dateModified": "2022-06-02",
+  "datePublished": "2022-06-02"
 }
 
   </script><script>
