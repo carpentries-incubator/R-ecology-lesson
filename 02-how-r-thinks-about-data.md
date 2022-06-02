@@ -865,7 +865,7 @@ You will be naming a of objects in R, and there are a few common naming rules an
 - two common formats are `snake_case` and `camelCase`
 - be consistent, at least within a script, ideally within a whole project
 - you can use a style guide like [Google's](https://google.github.io/styleguide/Rguide.xml) or
-[tidyverse's](http://style.tidyverse.org/)
+[tidyverse's](https://style.tidyverse.org/)
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 

@@ -1158,7 +1158,7 @@ In this case, it might be nice to create a data.frame where each species has its
 
 Any columns not used for `names_from` or `values_from` will not be pivoted.
 
-![Diagram displaying the behavior of `pivot_wider()`.](fig/pivot_wider.png)
+![](fig/pivot_wider.png){alt='Diagram depicting the behavior of `pivot_wider()` on a small tabular dataset.'}
 
 In our case, we want the new columns to be named from our `plot_id` column, with the values coming from the `mean_weight` column. We can pipe our data.frame right into `pivot_wider()` and add those two arguments:
 
@@ -1221,7 +1221,7 @@ We get back 0 rows. There is no `mean_weight` for the species `BA` in plot `1`. 
 
 There is another `pivot_` function that does the opposite, moving data from a wide to long format, called `pivot_longer()`. It takes 3 arguments: `cols` for the columns you want to pivot, `names_to` for the name of the new column which will contain the old column names, and `values_to` for the name of the new column which will contain the old values.
 
-![Diagram displaying the behavior of `pivot_longer()`.](fig/pivot_longer.png)
+![](fig/pivot_longer.png){alt='Diagram depicting the behavior of `pivot_longer()` on a small tabular dataset.'}
 
 We can pivot our new wide data.frame to a long format using `pivot_longer()`. We want to pivot all the columns except `species_id`, and we will use `PLOT` for the new column of plot IDs, and `MEAN_WT` for the new column of mean weight values.
 

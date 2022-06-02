@@ -39,6 +39,12 @@ exercises: 3
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
+:::::::::::::::::::::::::::::::::::::::::::: instructor
+
+This entire episode could be cut depending on time and/or how your learners are progressing. The previous episodes cover what could be considered the most fundamental skills, while this episode focuses more on putting them together and how they interact when encountering real, messy data. The new skills covered will be combining multiple datasets with `join_` functions and `bind_rows()`, and doing some exploratory data analysis and detection in order to clean a messy dataset.
+
+::::::::::::::::::::::::::::::::::::::::::::
+
 
 
 
@@ -503,6 +509,44 @@ species_new
 
 There we go, now `species_new` is formatted like the similar columns in the older `surveys` data.
 
+::::::::::::::::::::::::::::: solution
+
+## Convert column types when separating
+
+The `separate()` function also has an argument called `convert`, which will automatically convert the types of your new columns. For example, if you had a column called `range` that had character strings like `"1990-1995"`, and you wanted to separate it into `start` and `end` columns, you would end up with character columns if you used `separate()` like we did above. However, if you use `convert = T`, the new columns will be converted to integers. Check out this short example below:
+
+
+```r
+d <- tibble(years = c("1990-1995", "2000-2002")) 
+
+d %>% 
+  separate(years, into = c("start", "end"), sep = "-")
+```
+
+```{.output}
+# A tibble: 2 × 2
+  start end  
+  <chr> <chr>
+1 1990  1995 
+2 2000  2002 
+```
+
+```r
+d %>% 
+  separate(years, into = c("start", "end"), sep = "-", convert = T)
+```
+
+```{.output}
+# A tibble: 2 × 2
+  start   end
+  <int> <int>
+1  1990  1995
+2  2000  2002
+```
+
+
+:::::::::::::::::::::::::::::
+
 ## Reading the new plots data
 
 Finally, we can move on to the new `plots` data, in the `plots_new.csv` file. We can go back to `read_csv()` to get it into R.
@@ -648,7 +692,7 @@ Now that we have each individual data.frame formatted nicely, we would like to b
 
 If we look at the column names for `surveys_new` and `plots_new`, we see that they share a `plot_id` column. What we want to do now is take the data of our actual observations, `surveys_new`, and add the data for each associated plot. If a row in `surveys_new` has a `plot_id` of 2, we want to associate the `plot_type` of that plot with that row. We can accomplish this using a **join**.
 
-![Diagram displaying how a `left_join()` works.](fig/left_join.png)
+![](fig/left_join.png){alt='Diagram depicting the behavior of a `left_join()` on two small tabular datasets.'}
 
 There are several types of joins in the `dplyr` package, which you can [read more about here](https://stat545.com/join-cheatsheet.html). We will use a function called `left_join()`, which takes two dataframes and adds the columns from the second dataframe to the first dataframe, matching rows based on the column name supplied to the `by` argument.
 
