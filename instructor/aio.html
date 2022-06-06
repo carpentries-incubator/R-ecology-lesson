@@ -586,7 +586,7 @@
   Instructor Note
   </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>Probably worth mentioning that people often just say <strong>ggplot</strong> when referring to the package <code>ggplot2</code>.</p>
 </div>
@@ -778,7 +778,7 @@
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -814,7 +814,7 @@
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -982,7 +982,7 @@
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1019,7 +1019,7 @@
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb34">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1166,7 +1166,7 @@
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb42">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4036,7 +4036,7 @@ Attaching package: 'lubridate'</code></pre>
 </div>
 <p>So far we have been working with surveys data from 1977 to 1989, and our data have been pretty neat and tidy. There are some <code>NA</code> values, but for the most part, the data have been formatted nicely. However, as many of us know, we do not always receive data in such nice shape. It’s pretty common to get data with all sorts of formatting issues, maybe some strange file formats, and possibly spread across several different sources.</p>
 <p>Well, it turns out we have just that situation! We have received a newer batch of surveys data, from 1990 to 2002, and we want to add it to our older dataset so we can work with them together. Unfortunately, the data are not formatted quite as nicely as our old data. Our collaborators have told us to “look them over” for any errors, but have not given us very much specific information. We will have to explore the new data to make sure we understand it and verify that there aren’t any errors.</p>
-<p>You can download a <code>.zip</code> file containing three new data files here: <a href="https://www.michaelc-m.com/Rewrite-R-ecology-lesson/data/new_data.zip" class="external-link uri">https://www.michaelc-m.com/Rewrite-R-ecology-lesson/data/new_data.zip</a>. When prompted, save the file to your <code>data/raw/</code> folder. A <code>.zip</code> file is a type of compressed file that contains one or more files or directories. We will use the <code>unzip()</code> command to extract the data files from the <code>.zip</code> file. The first argument is the path to the <code>.zip</code> file, the next argument is the directory we want to put the extracted files into, and the last argument tells <code>unzip()</code> to not create an additional directory for the new files.</p>
+<p>You can download a <code>.zip</code> file containing three new data files here: <a href="https://www.michaelc-m.com/Rewrite-R-ecology-lesson/data/new_data.zip" class="external-link uri">https://www.michaelc-m.com/Rewrite-R-ecology-lesson/data/new_data.zip</a>. When prompted, save the file to your <code>data/raw/</code> folder. A <code>.zip</code> file is a type of compressed file that contains one or more files or directories. We will use the <code>unzip()</code> command to extract the data files from the <code>.zip</code> file. The first argument is the path to the <code>.zip</code> file, the next argument is the directory we want to put the extracted files into, and the last argument tells <code>unzip()</code> to not create an additional directory for the new files. Since this is an action we only want to perform once, we will run it directly in the <strong>Console</strong> instead of putting it into a script.</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -4963,7 +4963,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Our points don’t actually turn out blue, because we defined the color inside of <code>aes()</code>. <code>aes()</code> is used for translating variables from the data into plot elements, like color. There is no variable in the data called “blue”.</p>
 </div>
@@ -4996,7 +4996,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>Variable names inside <code>aes()</code> should not be wrapped in quotes.</p>
 </div>
@@ -5029,7 +5029,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>When adding things like <code>geom_</code> or <code>scale_</code> functions to a <code>ggplot()</code>, you have to end a line with <code>+</code>, not begin a line with it.</p>
 </div>
@@ -5061,7 +5061,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>When translating variables from the data, like <code>weight</code> and <code>hindfoot_length</code>, to elements of the plot, like <code>x</code> and <code>y</code>, you must put them inside <code>aes()</code>.</p>
 </div>
@@ -5095,7 +5095,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p><code>species_id</code> is a categorical variable, but <code>scale_color_continuous()</code> supplies a continuous color scale. <code>scale_color_discrete()</code> would give a discrete/categorical scale.</p>
 </div>
