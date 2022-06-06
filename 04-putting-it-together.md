@@ -56,7 +56,19 @@ So far we have been working with surveys data from 1977 to 1989, and our data ha
 
 Well, it turns out we have just that situation! We have received a newer batch of surveys data, from 1990 to 2002, and we want to add it to our older dataset so we can work with them together. Unfortunately, the data are not formatted quite as nicely as our old data. Our collaborators have told us to "look them over" for any errors, but have not given us very much specific information. We will have to explore the new data to make sure we understand it and verify that there aren't any errors. 
 
-You can download a `.zip` file containing three new data files here: <https://downgit.github.io/#/home?url=https://github.com/MCMaurer/Rewrite-R-ecology-lesson/blob/main/episodes/data/raw_data.zip>. When prompted, save the file to your `data/` folder. Then navigate to the `data/` folder in RStudio's **Files** pane, and click on the `.zip` file. This will "unzip" the file, and you should now have a `raw/` folder in your `data/` folder. If you look inside it, you will see the three files: `plots_new.csv`, `species_new.txt`, and `surveys_new.csv`.
+You can download a `.zip` file containing three new data files here: <https://www.michaelc-m.com/Rewrite-R-ecology-lesson/data/new_data.zip>. When prompted, save the file to your `data/raw/` folder. A `.zip` file is a type of compressed file that contains one or more files or directories. We will use the `unzip()` command to extract the data files from the `.zip` file. The first argument is the path to the `.zip` file, the next argument is the directory we want to put the extracted files into, and the last argument tells `unzip()` to not create an additional directory for the new files.
+
+
+```r
+unzip("data/raw/new_data.zip", exdir = "data/raw/", junkpaths = TRUE)
+```
+
+```{.warning}
+Warning in unzip("data/raw/new_data.zip", exdir = "data/raw/", junkpaths =
+TRUE): error 1 in extracting from zip file
+```
+
+Use the **Files** pane in the lower right to navigate to the `data/raw/` folder and you should find 3 new files: `plots_new.csv`, `species_new.txt`, and `surveys_new.csv`.
 
 ## Reading the new surveys data
 
