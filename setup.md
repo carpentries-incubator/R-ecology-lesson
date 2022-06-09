@@ -120,4 +120,4 @@ Sometimes, package updates introduce changes that break your old code, which can
 
 We will download the data directly from R during the lessons. However, if you are expecting problems with the network, it may be better to download the data beforehand and store it on your machine.
 
-The data files for the lesson can be downloaded manually here: <https://downgit.github.io/#/home?url=https://github.com/MCMaurer/Rewrite-R-ecology-lesson/blob/main/episodes/data/cleaned/surveys_complete_77_89.csv> and <https://downgit.github.io/#/home?url=https://github.com/MCMaurer/Rewrite-R-ecology-lesson/blob/main/episodes/data/raw_data.zip>
+The data files for the lesson can be downloaded manually here: <https://www.michaelc-m.com/Rewrite-R-ecology-lesson/data/cleaned/surveys_complete_77_89.csv> and <https://www.michaelc-m.com/Rewrite-R-ecology-lesson/data/new_data.zip>.
