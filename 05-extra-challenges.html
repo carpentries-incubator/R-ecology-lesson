@@ -212,12 +212,21 @@
                 </h2>
                 <div id="flush-collapseTwelve" class="accordion-collapse collapse" aria-labelledby="flush-headingTwelve" data-bs-parent="#accordionFlush12">
                   <div class="accordion-body">
-                    <ul></ul></div>
+                    <ul><li>
+                        <a href="key-points.html">Key Points</a>
+                      </li>
+                      <li>
+                        <a href="reference.html#glossary">Glossary</a>
+                      </li>
+                      <li>
+                        <a href="profiles.html">Learner Profiles</a>
+                      </li>
+                      
+                    </ul></div>
                 </div>
               </div>
             </div>
-
-            <a href="aio.html">See all in one page</a>
+            <hr class="half-width resources"><a href="aio.html">See all in one page</a>
 
             <hr class="d-none d-sm-block d-md-none"><div class="d-grid gap-1">
             
@@ -241,7 +250,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Extra Challenges</h1>
-        <p> Last updated on 2022-06-21 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/05-extra-challenges.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <p> Last updated on 2022-06-28 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/05-extra-challenges.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -252,8 +261,8 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">library</span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span>
-<span class="va">surveys</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"data/cleaned/surveys_complete_77_89.csv"</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span></span>
+<span><span class="va">surveys</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"data/cleaned/surveys_complete_77_89.csv"</span><span class="op">)</span></span></code></pre>
 </div>
 <div id="challenge1" class="callout challenge">
 <div class="callout-square">
@@ -267,9 +276,9 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">surveys</span>, 
-       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">weight</span>, y <span class="op">=</span> <span class="va">hindfoot_length</span>, color <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">surveys</span>, </span>
+<span>       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">weight</span>, y <span class="op">=</span> <span class="va">hindfoot_length</span>, color <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -300,9 +309,9 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">surveys</span>, 
-       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"weight"</span>, y <span class="op">=</span> <span class="st">"hindfoot_length"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">surveys</span>, </span>
+<span>       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"weight"</span>, y <span class="op">=</span> <span class="st">"hindfoot_length"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -333,9 +342,9 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">surveys</span>, 
-       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">weight</span>, y <span class="op">=</span> <span class="va">hindfoot_length</span><span class="op">)</span><span class="op">)</span> 
-  <span class="op">+</span> <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">surveys</span>, </span>
+<span>       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">weight</span>, y <span class="op">=</span> <span class="va">hindfoot_length</span><span class="op">)</span><span class="op">)</span> </span>
+<span>  <span class="op">+</span> <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -366,8 +375,8 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">surveys</span>, x <span class="op">=</span> <span class="va">weight</span>, y <span class="op">=</span> <span class="va">hindfoot_length</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">surveys</span>, x <span class="op">=</span> <span class="va">weight</span>, y <span class="op">=</span> <span class="va">hindfoot_length</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -398,10 +407,10 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">surveys</span>, 
-       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">weight</span>, y <span class="op">=</span> <span class="va">hindfoot_length</span>, color <span class="op">=</span> <span class="va">species_id</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">scale_color_continuous</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"viridis"</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">surveys</span>, </span>
+<span>       mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">weight</span>, y <span class="op">=</span> <span class="va">hindfoot_length</span>, color <span class="op">=</span> <span class="va">species_id</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_color_continuous</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"viridis"</span><span class="op">)</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -447,9 +456,9 @@
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.6.0" class="external-link">sandpaper (0.6.0)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.6.2" class="external-link">sandpaper (0.6.2)</a>,
         <a href="https://github.com/carpentries/pegboard/tree/0.3.0" class="external-link">pegboard (0.3.0)</a>,
-      and <a href="https://github.com/carpentries/varnish/tree/0.2.0" class="external-link">varnish (0.2.0)</a>.</p>
+      and <a href="https://github.com/carpentries/varnish/tree/0.2.1" class="external-link">varnish (0.2.1)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -470,8 +479,8 @@
   "url": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson/05-extra-challenges.html",
   "identifier": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson/05-extra-challenges.html",
   "dateCreated": "2022-06-09",
-  "dateModified": "2022-06-21",
-  "datePublished": "2022-06-21"
+  "dateModified": "2022-06-28",
+  "datePublished": "2022-06-28"
 }
 
   </script><script>

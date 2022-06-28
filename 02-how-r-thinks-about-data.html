@@ -225,12 +225,21 @@
                 </h2>
                 <div id="flush-collapseTwelve" class="accordion-collapse collapse" aria-labelledby="flush-headingTwelve" data-bs-parent="#accordionFlush12">
                   <div class="accordion-body">
-                    <ul></ul></div>
+                    <ul><li>
+                        <a href="key-points.html">Key Points</a>
+                      </li>
+                      <li>
+                        <a href="reference.html#glossary">Glossary</a>
+                      </li>
+                      <li>
+                        <a href="profiles.html">Learner Profiles</a>
+                      </li>
+                      
+                    </ul></div>
                 </div>
               </div>
             </div>
-
-            <a href="aio.html">See all in one page</a>
+            <hr class="half-width resources"><a href="aio.html">See all in one page</a>
 
             <hr class="d-none d-sm-block d-md-none"><div class="d-grid gap-1">
             
@@ -254,7 +263,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Exploring and understanding data</h1>
-        <p> Last updated on 2022-06-21 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/02-how-r-thinks-about-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <p> Last updated on 2022-06-28 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/02-how-r-thinks-about-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -291,8 +300,8 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">library</span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span>
-<span class="kw">library</span><span class="op">(</span><span class="va">ratdat</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span></span>
+<span><span class="kw">library</span><span class="op">(</span><span class="va">ratdat</span><span class="op">)</span></span></code></pre>
 </div>
 </section><section id="the-data.frame"><h2 class="section-heading">The data.frame</h2>
 <hr class="half-width"><p>We just spent quite a bit of time learning how to create visualizations from the <code>complete_old</code> data, but we did not talk much about <strong>what</strong> this <code>complete_old</code> thing is. It’s important to understand how R thinks about, represents, and stores data in order for us to have a productive working relationship with R.</p>
@@ -301,7 +310,7 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">class</span><span class="op">(</span><span class="va">complete_old</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="fu">class</span><span class="op">(</span><span class="va">complete_old</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -313,7 +322,7 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">head</span><span class="op">(</span><span class="va">complete_old</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="fu">head</span><span class="op">(</span><span class="va">complete_old</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -337,7 +346,7 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">tail</span><span class="op">(</span><span class="va">complete_old</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="fu">tail</span><span class="op">(</span><span class="va">complete_old</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -363,7 +372,7 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="op">?</span><span class="va">head</span></code></pre>
+<code class="sourceCode R"><span><span class="op">?</span><span class="va">head</span></span></code></pre>
 </div>
 <div id="callout1" class="callout callout">
 <div class="callout-square">
@@ -384,7 +393,7 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">head</span><span class="op">(</span><span class="va">complete_old</span>, n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="fu">head</span><span class="op">(</span><span class="va">complete_old</span>, n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -412,7 +421,7 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">head</span><span class="op">(</span><span class="va">complete_old</span>, <span class="fl">10</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="fu">head</span><span class="op">(</span><span class="va">complete_old</span>, <span class="fl">10</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -440,7 +449,7 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">head</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span>, x <span class="op">=</span> <span class="va">complete_old</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="fu">head</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span>, x <span class="op">=</span> <span class="va">complete_old</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -469,7 +478,7 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">summary</span><span class="op">(</span><span class="va">complete_old</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="fu">summary</span><span class="op">(</span><span class="va">complete_old</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -504,7 +513,7 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">str</span><span class="op">(</span><span class="va">complete_old</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="fu">str</span><span class="op">(</span><span class="va">complete_old</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -531,7 +540,7 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">complete_old</span><span class="op">$</span><span class="va">year</span></code></pre>
+<code class="sourceCode R"><span><span class="va">complete_old</span><span class="op">$</span><span class="va">year</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -560,7 +569,7 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">c</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">5</span>, <span class="fl">12</span>, <span class="fl">4</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="fu">c</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">5</span>, <span class="fl">12</span>, <span class="fl">4</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -572,14 +581,14 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">num</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">5</span>, <span class="fl">12</span>, <span class="fl">4</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="va">num</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">5</span>, <span class="fl">12</span>, <span class="fl">4</span><span class="op">)</span></span></code></pre>
 </div>
 <p>You can check what kind of object <code>num</code> is with the <code>class()</code> function.</p>
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">class</span><span class="op">(</span><span class="va">num</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="fu">class</span><span class="op">(</span><span class="va">num</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -592,8 +601,8 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">char</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="st">"apple"</span>, <span class="st">"pear"</span>, <span class="st">"grape"</span><span class="op">)</span>
-<span class="fu">class</span><span class="op">(</span><span class="va">char</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="va">char</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="st">"apple"</span>, <span class="st">"pear"</span>, <span class="st">"grape"</span><span class="op">)</span></span>
+<span><span class="fu">class</span><span class="op">(</span><span class="va">char</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -606,8 +615,8 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">logi</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu">class</span><span class="op">(</span><span class="va">logi</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="va">logi</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu">class</span><span class="op">(</span><span class="va">logi</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -627,12 +636,12 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">num_logi</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span>, <span class="fl">6</span>, <span class="cn">TRUE</span><span class="op">)</span>
-<span class="va">num_char</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="st">"10"</span>, <span class="fl">6</span><span class="op">)</span>
-<span class="va">char_logi</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="cn">TRUE</span><span class="op">)</span>
-
-
-<span class="va">tricky</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"1"</span>, <span class="cn">FALSE</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="va">num_logi</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span>, <span class="fl">6</span>, <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">num_char</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="st">"10"</span>, <span class="fl">6</span><span class="op">)</span></span>
+<span><span class="va">char_logi</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="va">tricky</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"1"</span>, <span class="cn">FALSE</span><span class="op">)</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -644,13 +653,13 @@
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">class</span><span class="op">(</span><span class="va">num_logi</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="fu">class</span><span class="op">(</span><span class="va">num_logi</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -661,7 +670,7 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">class</span><span class="op">(</span><span class="va">num_char</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="fu">class</span><span class="op">(</span><span class="va">num_char</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -672,7 +681,7 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">class</span><span class="op">(</span><span class="va">char_logi</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="fu">class</span><span class="op">(</span><span class="va">char_logi</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -683,7 +692,7 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">class</span><span class="op">(</span><span class="va">tricky</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="fu">class</span><span class="op">(</span><span class="va">tricky</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -708,7 +717,7 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">combined_logical</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="va">num_logi</span>, <span class="va">char_logi</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="va">combined_logical</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="va">num_logi</span>, <span class="va">char_logi</span><span class="op">)</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -720,13 +729,13 @@
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb40">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">class</span><span class="op">(</span><span class="va">combined_logical</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="fu">class</span><span class="op">(</span><span class="va">combined_logical</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -757,7 +766,7 @@
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>logical → integer → numeric → character</p>
 <p>Logical vectors can only take on two values: <code>TRUE</code> or <code>FALSE</code>. Integer vectors can only contain integers, so <code>TRUE</code> and <code>FALSE</code> can be coerced to <code>1</code> and <code>0</code>. Numeric vectors can contain numbers with decimals, so integers can be coerced from, say, <code>6</code> to <code>6.0</code> (though R will still display a numeric <code>6</code> as <code>6</code>.). Finally, any string of characters can be represented as a character vector, so any of the other types can be coerced to a character vector.</p>
@@ -772,14 +781,14 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">weights</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">25</span>, <span class="fl">34</span>, <span class="fl">12</span>, <span class="cn">NA</span>, <span class="fl">42</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="va">weights</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">25</span>, <span class="fl">34</span>, <span class="fl">12</span>, <span class="cn">NA</span>, <span class="fl">42</span><span class="op">)</span></span></code></pre>
 </div>
 <p>R doesn’t make assumptions about how you want to handle missing data, so if we pass this vector to a numeric function like <code>min()</code>, it won’t know what to do, so it returns <code>NA</code>:</p>
 <div class="codewrapper sourceCode" id="cb43">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">min</span><span class="op">(</span><span class="va">weights</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="fu">min</span><span class="op">(</span><span class="va">weights</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -791,7 +800,7 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">min</span><span class="op">(</span><span class="va">weights</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="fu">min</span><span class="op">(</span><span class="va">weights</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -804,7 +813,7 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">quantile</span><span class="op">(</span><span class="va">complete_old</span><span class="op">$</span><span class="va">weight</span>, probs <span class="op">=</span> <span class="fl">0.25</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="fu">quantile</span><span class="op">(</span><span class="va">complete_old</span><span class="op">$</span><span class="va">weight</span>, probs <span class="op">=</span> <span class="fl">0.25</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -817,7 +826,7 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">quantile</span><span class="op">(</span><span class="va">complete_old</span><span class="op">$</span><span class="va">weight</span>, probs <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="fu">quantile</span><span class="op">(</span><span class="va">complete_old</span><span class="op">$</span><span class="va">weight</span>, probs <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -831,8 +840,8 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># generates a sequence of integers</span>
-<span class="fl">1</span><span class="op">:</span><span class="fl">10</span></code></pre>
+<code class="sourceCode R"><span><span class="co"># generates a sequence of integers</span></span>
+<span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -843,12 +852,12 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># with seq() you can generate sequences with a combination of:</span>
-<span class="co"># from: starting value</span>
-<span class="co"># to: ending value</span>
-<span class="co"># by: how much should each entry increase</span>
-<span class="co"># length.out: how long should the resulting vector be</span>
-<span class="fu">seq</span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">1</span>, by <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="co"># with seq() you can generate sequences with a combination of:</span></span>
+<span><span class="co"># from: starting value</span></span>
+<span><span class="co"># to: ending value</span></span>
+<span><span class="co"># by: how much should each entry increase</span></span>
+<span><span class="co"># length.out: how long should the resulting vector be</span></span>
+<span><span class="fu">seq</span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">1</span>, by <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -859,7 +868,7 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">seq</span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">1</span>, length.out <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="fu">seq</span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">1</span>, length.out <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -878,7 +887,7 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">seq</span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, by <span class="op">=</span> <span class="fl">0.01</span>, length.out <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="fu">seq</span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, by <span class="op">=</span> <span class="fl">0.01</span>, length.out <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -891,8 +900,8 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># repeats "a" 12 times</span>
-<span class="fu">rep</span><span class="op">(</span><span class="st">"a"</span>, times <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="co"># repeats "a" 12 times</span></span>
+<span><span class="fu">rep</span><span class="op">(</span><span class="st">"a"</span>, times <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -903,8 +912,8 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># repeats this whole sequence 4 times</span>
-<span class="fu">rep</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span><span class="op">)</span>, times <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="co"># repeats this whole sequence 4 times</span></span>
+<span><span class="fu">rep</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span><span class="op">)</span>, times <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -915,8 +924,8 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># repeats each value 4 times</span>
-<span class="fu">rep</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, each <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="co"># repeats each value 4 times</span></span>
+<span><span class="fu">rep</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, each <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -947,13 +956,13 @@
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb66">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">rep</span><span class="op">(</span><span class="op">-</span><span class="fl">3</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">3</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="fu">rep</span><span class="op">(</span><span class="op">-</span><span class="fl">3</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">3</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -964,8 +973,8 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># this also works</span>
-<span class="fu">rep</span><span class="op">(</span><span class="fu">seq</span><span class="op">(</span>from <span class="op">=</span> <span class="op">-</span><span class="fl">3</span>, to <span class="op">=</span> <span class="fl">3</span>, by <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="co"># this also works</span></span>
+<span><span class="fu">rep</span><span class="op">(</span><span class="fu">seq</span><span class="op">(</span>from <span class="op">=</span> <span class="op">-</span><span class="fl">3</span>, to <span class="op">=</span> <span class="fl">3</span>, by <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -976,10 +985,10 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># you might also store the sequence as an intermediate vector</span>
-
-<span class="va">my_seq</span> <span class="op">&lt;-</span> <span class="fu">seq</span><span class="op">(</span>from <span class="op">=</span> <span class="op">-</span><span class="fl">3</span>, to <span class="op">=</span> <span class="fl">3</span>, by <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
-<span class="fu">rep</span><span class="op">(</span><span class="va">my_seq</span>, <span class="fl">3</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="co"># you might also store the sequence as an intermediate vector</span></span>
+<span></span>
+<span><span class="va">my_seq</span> <span class="op">&lt;-</span> <span class="fu">seq</span><span class="op">(</span>from <span class="op">=</span> <span class="op">-</span><span class="fl">3</span>, to <span class="op">=</span> <span class="fl">3</span>, by <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="fu">rep</span><span class="op">(</span><span class="va">my_seq</span>, <span class="fl">3</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1009,15 +1018,15 @@
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb72">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">quantile</span><span class="op">(</span><span class="va">complete_old</span><span class="op">$</span><span class="va">hindfoot_length</span>, 
-         probs <span class="op">=</span> <span class="fu">seq</span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">1</span>, by <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span>,
-         na.rm <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="fu">quantile</span><span class="op">(</span><span class="va">complete_old</span><span class="op">$</span><span class="va">hindfoot_length</span>, </span>
+<span>         probs <span class="op">=</span> <span class="fu">seq</span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">1</span>, by <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span>,</span>
+<span>         na.rm <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1058,9 +1067,9 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sex</span> <span class="op">&lt;-</span> <span class="fu">factor</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="st">"male"</span>, <span class="st">"female"</span>, <span class="st">"female"</span>, <span class="st">"male"</span>, <span class="st">"female"</span>, <span class="cn">NA</span><span class="op">)</span><span class="op">)</span>
-
-<span class="va">sex</span></code></pre>
+<code class="sourceCode R"><span><span class="va">sex</span> <span class="op">&lt;-</span> <span class="fu">factor</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="st">"male"</span>, <span class="st">"female"</span>, <span class="st">"female"</span>, <span class="st">"male"</span>, <span class="st">"female"</span>, <span class="cn">NA</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">sex</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1073,7 +1082,7 @@ Levels: female male</code></pre>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">levels</span><span class="op">(</span><span class="va">sex</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="fu">levels</span><span class="op">(</span><span class="va">sex</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1085,10 +1094,10 @@ Levels: female male</code></pre>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">library</span><span class="op">(</span><span class="va">forcats</span><span class="op">)</span>
-
-<span class="co"># change the order of the levels</span>
-<span class="fu">fct_relevel</span><span class="op">(</span><span class="va">sex</span>, <span class="fu">c</span><span class="op">(</span><span class="st">"male"</span>, <span class="st">"female"</span><span class="op">)</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">forcats</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># change the order of the levels</span></span>
+<span><span class="fu">fct_relevel</span><span class="op">(</span><span class="va">sex</span>, <span class="fu">c</span><span class="op">(</span><span class="st">"male"</span>, <span class="st">"female"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1100,8 +1109,8 @@ Levels: male female</code></pre>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># change the names of the levels</span>
-<span class="fu">fct_recode</span><span class="op">(</span><span class="va">sex</span>, <span class="st">"M"</span> <span class="op">=</span> <span class="st">"male"</span>, <span class="st">"F"</span> <span class="op">=</span> <span class="st">"female"</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="co"># change the names of the levels</span></span>
+<span><span class="fu">fct_recode</span><span class="op">(</span><span class="va">sex</span>, <span class="st">"M"</span> <span class="op">=</span> <span class="st">"male"</span>, <span class="st">"F"</span> <span class="op">=</span> <span class="st">"female"</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1113,8 +1122,8 @@ Levels: F M</code></pre>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># turn NAs into an actual factor level (useful for including NAs in plots)</span>
-<span class="fu">fct_explicit_na</span><span class="op">(</span><span class="va">sex</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="co"># turn NAs into an actual factor level (useful for including NAs in plots)</span></span>
+<span><span class="fu">fct_explicit_na</span><span class="op">(</span><span class="va">sex</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1131,7 +1140,7 @@ Levels: female male (Missing)</code></pre>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">as.character</span><span class="op">(</span><span class="va">sex</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="fu">as.character</span><span class="op">(</span><span class="va">sex</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1143,10 +1152,10 @@ Levels: female male (Missing)</code></pre>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">f_num</span> <span class="op">&lt;-</span> <span class="fu">factor</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="fl">1990</span>, <span class="fl">1983</span>, <span class="fl">1977</span>, <span class="fl">1998</span>, <span class="fl">1990</span><span class="op">)</span><span class="op">)</span>
-
-<span class="co"># this will pull out the underlying integers, not the levels</span>
-<span class="fu">as.numeric</span><span class="op">(</span><span class="va">f_num</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="va">f_num</span> <span class="op">&lt;-</span> <span class="fu">factor</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="fl">1990</span>, <span class="fl">1983</span>, <span class="fl">1977</span>, <span class="fl">1998</span>, <span class="fl">1990</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># this will pull out the underlying integers, not the levels</span></span>
+<span><span class="fu">as.numeric</span><span class="op">(</span><span class="va">f_num</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1157,8 +1166,8 @@ Levels: female male (Missing)</code></pre>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># if we first convert to characters, we can then convert to numbers</span>
-<span class="fu">as.numeric</span><span class="op">(</span><span class="fu">as.character</span><span class="op">(</span><span class="va">f_num</span><span class="op">)</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="co"># if we first convert to characters, we can then convert to numbers</span></span>
+<span><span class="fu">as.numeric</span><span class="op">(</span><span class="fu">as.character</span><span class="op">(</span><span class="va">f_num</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1180,9 +1189,9 @@ Levels: female male (Missing)</code></pre>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">5</span>
-<span class="va">y</span> <span class="op">&lt;-</span> <span class="va">x</span>
-<span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">10</span></code></pre>
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">5</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">x</span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">10</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -1194,16 +1203,16 @@ Levels: female male (Missing)</code></pre>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb91">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">5</span>
-<span class="va">y</span> <span class="op">&lt;-</span> <span class="va">x</span>
-<span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">10</span>
-<span class="va">y</span></code></pre>
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">5</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">x</span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span><span class="va">y</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1220,12 +1229,12 @@ Levels: female male (Missing)</code></pre>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">5</span>
-
-<span class="co"># first, x gets evaluated to 5</span>
-<span class="co"># then 5/2 gets evaluated to 2.5</span>
-<span class="co"># then sqrt(2.5) is evaluated</span>
-<span class="fu">sqrt</span><span class="op">(</span><span class="va">x</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">5</span></span>
+<span></span>
+<span><span class="co"># first, x gets evaluated to 5</span></span>
+<span><span class="co"># then 5/2 gets evaluated to 2.5</span></span>
+<span><span class="co"># then sqrt(2.5) is evaluated</span></span>
+<span><span class="fu">sqrt</span><span class="op">(</span><span class="va">x</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1236,11 +1245,11 @@ Levels: female male (Missing)</code></pre>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># we can also store the evaluated value of x/2 </span>
-<span class="co"># in an object y before passing it to sqrt()</span>
-<span class="va">y</span> <span class="op">&lt;-</span> <span class="va">x</span><span class="op">/</span><span class="fl">2</span>
-
-<span class="fu">sqrt</span><span class="op">(</span><span class="va">y</span><span class="op">)</span></code></pre>
+<code class="sourceCode R"><span><span class="co"># we can also store the evaluated value of x/2 </span></span>
+<span><span class="co"># in an object y before passing it to sqrt()</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">x</span><span class="op">/</span><span class="fl">2</span></span>
+<span></span>
+<span><span class="fu">sqrt</span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1251,13 +1260,13 @@ Levels: female male (Missing)</code></pre>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># first, the x on the righthand side gets evaluated to 5</span>
-<span class="co"># then 5 gets squared</span>
-<span class="co"># then the resulting value is assigned to the object x</span>
-
-<span class="va">x</span> <span class="op">&lt;-</span> <span class="va">x</span><span class="op">^</span><span class="fl">2</span>
-
-<span class="va">x</span></code></pre>
+<code class="sourceCode R"><span><span class="co"># first, the x on the righthand side gets evaluated to 5</span></span>
+<span><span class="co"># then 5 gets squared</span></span>
+<span><span class="co"># then the resulting value is assigned to the object x</span></span>
+<span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">x</span><span class="op">^</span><span class="fl">2</span></span>
+<span></span>
+<span><span class="va">x</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1322,9 +1331,9 @@ Levels: female male (Missing)</code></pre>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.6.0" class="external-link">sandpaper (0.6.0)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.6.2" class="external-link">sandpaper (0.6.2)</a>,
         <a href="https://github.com/carpentries/pegboard/tree/0.3.0" class="external-link">pegboard (0.3.0)</a>,
-      and <a href="https://github.com/carpentries/varnish/tree/0.2.0" class="external-link">varnish (0.2.0)</a>.</p>
+      and <a href="https://github.com/carpentries/varnish/tree/0.2.1" class="external-link">varnish (0.2.1)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1345,8 +1354,8 @@ Levels: female male (Missing)</code></pre>
   "url": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson/02-how-r-thinks-about-data.html",
   "identifier": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson/02-how-r-thinks-about-data.html",
   "dateCreated": "2022-06-09",
-  "dateModified": "2022-06-21",
-  "datePublished": "2022-06-21"
+  "dateModified": "2022-06-28",
+  "datePublished": "2022-06-28"
 }
 
   </script><script>
