@@ -263,7 +263,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Working with data</h1>
-        <p> Last updated on 2022-08-09 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/03-working-with-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <p> Last updated on 2022-08-16 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/03-working-with-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -304,7 +304,8 @@
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span></span></code></pre>
 </div>
-<section id="importing-data"><h2 class="section-heading">Importing data</h2>
+<section id="importing-data"><h2 class="section-heading">Importing data<a class="anchor" aria-label="anchor" href="#importing-data"></a>
+</h2>
 <hr class="half-width"><p>Up until this point, we have been working with the <code>complete_old</code> dataframe contained in the <code>ratdat</code> package. However, you typically won’t access data from an R package; it is much more common to access data files stored somewhere on your computer. We are going to download a CSV file containing the surveys data to our computer, which we will then read into R.</p>
 <p>Click this link to download the file: <a href="https://www.michaelc-m.com/Rewrite-R-ecology-lesson/data/cleaned/surveys_complete_77_89.csv" class="external-link uri">https://www.michaelc-m.com/Rewrite-R-ecology-lesson/data/cleaned/surveys_complete_77_89.csv</a>.</p>
 <p>You will be prompted to save the file on your computer somewhere. Save it inside the <code>cleaned</code> data folder, which is in the <code>data</code> folder in your <code>R-Ecology-Workshop</code> folder. Once it’s inside our project, we will be able to point R towards it.</p>
@@ -336,7 +337,8 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Callout</h3>
+<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#NA"></a>
+</h3>
 <div class="callout-content">
 <p>Typing out paths can be error prone, so we can utilize a keyboard shortcut. Inside the parentheses of <code>read_csv()</code>, type out a pair of quotes and put your cursor between them. Then hit <kbd>Tab</kbd>. A small menu showing your folders and files should show up. You can use the <kbd>↑</kbd> and <kbd>↓</kbd> keys to move through the options, or start typing to narrow them down. You can hit <kbd>Enter</kbd> to select a file or folder, and hit <kbd>Tab</kbd> again to continue building the file path. This might take a bit of getting used to, but once you get the hang of it, it will speed up writing file paths and reduce the number of mistakes you make.</p>
 </div>
@@ -368,7 +370,8 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Callout</h3>
+<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#NA"></a>
+</h3>
 <div class="callout-content">
 <p><strong><code>tidyverse</code> vs. base R</strong></p>
 <p>As we begin to delve more deeply into the <code>tidyverse</code>, we should briefly pause to mention some of the reasons for focusing on the <code>tidyverse</code> set of tools. In R, there are often many ways to get a job done, and there are other approaches that can accomplish tasks similar to the <code>tidyverse</code>.</p>
@@ -378,7 +381,8 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
 </div>
 </div>
 </div>
-</section><section id="manipulating-data"><h2 class="section-heading">Manipulating data</h2>
+</section><section id="manipulating-data"><h2 class="section-heading">Manipulating data<a class="anchor" aria-label="anchor" href="#manipulating-data"></a>
+</h2>
 <hr class="half-width"><p>One of the most important skills for working with data in R is the ability to manipulate, modify, and reshape data. The <code>dplyr</code> and <code>tidyr</code> packages in the <code>tidyverse</code> provide a series of powerful functions for many common data manipulation tasks.</p>
 <p>We’ll start off with two of the most commonly used <code>dplyr</code> functions: <code>select()</code>, which selects certain columns of a data.frame, and <code>filter()</code>, which filters out rows according to certain criteria.</p>
 <div id="callout3" class="callout callout">
@@ -386,7 +390,8 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Callout</h3>
+<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#NA"></a>
+</h3>
 <div class="callout-content">
 <p>Between <code>select()</code> and <code>filter()</code>, it can be hard to remember which operates on columns and which operates on rows. <code>sele</code><strong><code>c</code></strong><code>t()</code> has a <strong>c</strong> for <strong>c</strong>olumns and <code>filte</code><strong><code>r</code></strong><code>()</code> has an <strong>r</strong> for <strong>r</strong>ows.</p>
 </div>
@@ -608,7 +613,8 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1-filtering-and-selecting" class="callout-inner">
-<h3 class="callout-title">Challenge 1: Filtering and selecting</h3>
+<h3 class="callout-title">Challenge 1: Filtering and selecting<a class="anchor" aria-label="anchor" href="#challenge-1-filtering-and-selecting"></a>
+</h3>
 <div class="callout-content">
 <ol style="list-style-type: decimal"><li>Use the surveys data to make a data.frame that has only data with years from 1980 to 1985.</li>
 </ol></div>
@@ -621,7 +627,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -638,7 +644,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1-filtering-and-selecting" class="callout-inner">
-<h3 class="callout-title">Challenge 1: Filtering and selecting<em> (continued)</em>
+<h3 class="callout-title">Challenge 1: Filtering and selecting<em> (continued)</em><a class="anchor" aria-label="anchor" href="#challenge-1-filtering-and-selecting"></a>
 </h3>
 <div class="callout-content">
 <ol start="2" style="list-style-type: decimal"><li>Use the surveys data to make a data.frame that has only the following columns, in order: <code>year</code>, <code>month</code>, <code>species_id</code>, <code>plot_id</code>.</li>
@@ -652,7 +658,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -665,7 +671,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
 </div>
 </div>
 </div>
-</section><section id="the-pipe"><h2 class="section-heading">The pipe: <code>%&gt;%</code>
+</section><section id="the-pipe"><h2 class="section-heading">The pipe: <code>%&gt;%</code><a class="anchor" aria-label="anchor" href="#the-pipe"></a>
 </h2>
 <hr class="half-width"><p>What happens if we want to both <code>select()</code> and <code>filter()</code> our data? We have a couple options. First, we could use <strong>nested</strong> functions:</p>
 <div class="codewrapper sourceCode" id="cb24">
@@ -767,7 +773,8 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-2-using-pipes" class="callout-inner">
-<h3 class="callout-title">Challenge 2: Using pipes</h3>
+<h3 class="callout-title">Challenge 2: Using pipes<a class="anchor" aria-label="anchor" href="#challenge-2-using-pipes"></a>
+</h3>
 <div class="callout-content">
 <p>Use the surveys data to make a data.frame that has the columns <code>record_id</code>, <code>month</code>, and <code>species_id</code>, with data from the year 1988. Use a pipe between the function calls.</p>
 </div>
@@ -780,7 +787,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -795,7 +802,7 @@ dbl (7): record_id, month, day, year, plot_id, hindfoot_length, weight
 </div>
 </div>
 </div>
-</section><section id="making-new-columns-with-mutate"><h2 class="section-heading">Making new columns with <code>mutate()</code>
+</section><section id="making-new-columns-with-mutate"><h2 class="section-heading">Making new columns with <code>mutate()</code><a class="anchor" aria-label="anchor" href="#making-new-columns-with-mutate"></a>
 </h2>
 <hr class="half-width"><p>Another common task is creating a new column based on values in existing columns. For example, we could add a new column that has the weight in kilograms instead of grams:</p>
 <div class="codewrapper sourceCode" id="cb32">
@@ -1021,7 +1028,8 @@ Attaching package: 'lubridate'</code></pre>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-3-plotting-date" class="callout-inner">
-<h3 class="callout-title">Challenge 3: Plotting date</h3>
+<h3 class="callout-title">Challenge 3: Plotting date<a class="anchor" aria-label="anchor" href="#challenge-3-plotting-date"></a>
+</h3>
 <div class="callout-content">
 <p>Because the <code>ggplot()</code> function takes the data as its first argument, you can actually pipe data straight into <code>ggplot()</code>. Try building a pipeline that creates the date column and plots weight across date.</p>
 </div>
@@ -1034,7 +1042,7 @@ Attaching package: 'lubridate'</code></pre>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb49">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1055,7 +1063,8 @@ Attaching package: 'lubridate'</code></pre>
 </div>
 </div>
 </div>
-</section><section id="the-split-apply-combine-approach"><h2 class="section-heading">The split-apply-combine approach</h2>
+</section><section id="the-split-apply-combine-approach"><h2 class="section-heading">The split-apply-combine approach<a class="anchor" aria-label="anchor" href="#the-split-apply-combine-approach"></a>
+</h2>
 <hr class="half-width"><p>Many data analysis tasks can be achieved using the split-apply-combine approach: you split the data into groups, apply some analysis to each group, and combine the results in some way. <code>dplyr</code> has a few convenient functions to enable this approach, the main two being <code>group_by()</code> and <code>summarize()</code>.</p>
 <p><code>group_by()</code> takes a data.frame and the name of one or more columns with categorical values that define the groups. <code>summarize()</code> then collapses each group into a one-row summary of the group, giving you back a data.frame with one row per group. The syntax for <code>summarize()</code> is similar to <code>mutate()</code>, where you define new columns based on values of other columns. Let’s try calculating the mean weight of all our animals by sex.</p>
 <div class="codewrapper sourceCode" id="cb51">
@@ -1378,7 +1387,8 @@ Attaching package: 'lubridate'</code></pre>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-4-making-a-time-series" class="callout-inner">
-<h3 class="callout-title">Challenge 4: Making a time series</h3>
+<h3 class="callout-title">Challenge 4: Making a time series<a class="anchor" aria-label="anchor" href="#challenge-4-making-a-time-series"></a>
+</h3>
 <div class="callout-content">
 <ol style="list-style-type: decimal"><li>Use the split-apply-combine approach to make a <code>data.frame</code> that counts the total number of animals of each sex caught on each day in the <code>surveys</code> data.</li>
 </ol></div>
@@ -1391,7 +1401,7 @@ Attaching package: 'lubridate'</code></pre>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb77">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1426,7 +1436,7 @@ Attaching package: 'lubridate'</code></pre>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-4-making-a-time-series" class="callout-inner">
-<h3 class="callout-title">Challenge 4: Making a time series<em> (continued)</em>
+<h3 class="callout-title">Challenge 4: Making a time series<em> (continued)</em><a class="anchor" aria-label="anchor" href="#challenge-4-making-a-time-series"></a>
 </h3>
 <div class="callout-content">
 <ol start="2" style="list-style-type: decimal"><li>Now use the data.frame you just made to plot the daily number of animals of each sex caught over time. It’s up to you what <code>geom</code> to use, but a <code>line</code> plot might be a good choice. You should also think about how to differentiate which data corresponds to which sex.</li>
@@ -1440,7 +1450,7 @@ Attaching package: 'lubridate'</code></pre>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb80">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1454,7 +1464,7 @@ Attaching package: 'lubridate'</code></pre>
 </div>
 </div>
 </div>
-</section><section id="reshaping-data-with-tidyr"><h2 class="section-heading">Reshaping data with <code>tidyr</code>
+</section><section id="reshaping-data-with-tidyr"><h2 class="section-heading">Reshaping data with <code>tidyr</code><a class="anchor" aria-label="anchor" href="#reshaping-data-with-tidyr"></a>
 </h2>
 <hr class="half-width"><p>Let’s say we are interested in comparing the mean weights of each species across our different plots. We can begin this process using the <code>group_by()</code> + <code>summarize()</code> approach:</p>
 <div class="codewrapper sourceCode" id="cb81">
@@ -1621,7 +1631,8 @@ Attaching package: 'lubridate'</code></pre>
 # … with 290 more rows</code></pre>
 </div>
 <p>Data are often recorded in spreadsheets in a wider format, but lots of <code>tidyverse</code> tools, especially <code>ggplot2</code>, like data in a longer format, so <code>pivot_longer()</code> is often very useful.</p>
-</section><section id="exporting-data"><h2 class="section-heading">Exporting data</h2>
+</section><section id="exporting-data"><h2 class="section-heading">Exporting data<a class="anchor" aria-label="anchor" href="#exporting-data"></a>
+</h2>
 <hr class="half-width"><p>Let’s say we want to send the wide version of our <code>sb_by_plot</code> data.frame to a colleague who doesn’t use R. In this case, we might want to save it as a CSV file.</p>
 <p>First, we might want to modify the names of the columns, since right now they are bare numbers, which aren’t very informative. Luckily, <code>pivot_wider()</code> has an argument <code>names_prefix</code> which will allow us to add “plot_” to the start of each column.</p>
 <div class="codewrapper sourceCode" id="cb93">
@@ -1721,7 +1732,8 @@ Attaching package: 'lubridate'</code></pre>
 <i class="callout-icon" data-feather="key"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Keypoints</h3>
+<h3 class="callout-title">Keypoints<a class="anchor" aria-label="anchor" href="#NA"></a>
+</h3>
 <div class="callout-content">
 <ul><li>use <code>filter()</code> to subset rows and <code>select()</code> to subset columns</li>
 <li>build up pipelines one step at a time before assigning the result</li>
@@ -1757,9 +1769,9 @@ Attaching package: 'lubridate'</code></pre>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper" class="external-link">sandpaper (0.9.0)</a>,
-        <a href="https://github.com/carpentries/pegboard/tree/0.3.0" class="external-link">pegboard (0.3.0)</a>,
-      and <a href="https://github.com/carpentries/varnish" class="external-link">varnish (0.2.3)</a>.</p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.9.3" class="external-link">sandpaper (0.9.3)</a>,
+        <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.3.1)</a>,
+      and <a href="https://github.com/carpentries/varnish/tree/0.2.4" class="external-link">varnish (0.2.4)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1780,8 +1792,8 @@ Attaching package: 'lubridate'</code></pre>
   "url": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson/03-working-with-data.html",
   "identifier": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson/03-working-with-data.html",
   "dateCreated": "2022-06-09",
-  "dateModified": "2022-08-09",
-  "datePublished": "2022-08-09"
+  "dateModified": "2022-08-16",
+  "datePublished": "2022-08-16"
 }
 
   </script><script>

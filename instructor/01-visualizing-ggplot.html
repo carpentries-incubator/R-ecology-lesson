@@ -268,7 +268,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Data visualization with ggplot2</h1>
-        <p> Last updated on 2022-08-09 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/01-visualizing-ggplot.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <p> Last updated on 2022-08-16 | <a href="https://github.com/MCMaurer/Rewrite-R-ecology-lesson/edit/main/episodes/01-visualizing-ggplot.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 49 minutes </p>
         
         <div class="text-end">
@@ -305,7 +305,8 @@
 </div>
 </div>
 </div>
-<section id="setup"><h2 class="section-heading">Setup</h2>
+<section id="setup"><h2 class="section-heading">Setup<a class="anchor" aria-label="anchor" href="#setup"></a>
+</h2>
 <hr class="half-width"><p>We are going to be using <strong>functions</strong> from the <strong><code>ggplot2</code></strong> package to create visualizations of data. Functions are predefined bits of code that automate more complicated actions. R itself has many built-in functions, but we can access many more by loading other <strong>packages</strong> of functions and data into R.</p>
 <p>If you don’t have a blank, untitled script open yet, go ahead and open one with <kbd>Shift+Cmd+N</kbd> (Mac) or <kbd>Shift+Ctrl+N</kbd> (Windows). Then save the file to your <code>scripts/</code> folder, and title it <code>workshop_code.R</code>.</p>
 <p>Earlier, you had to <strong>install</strong> the <code>ggplot2</code> package by running <code>install.packages("ggplot2")</code>. That installed the package onto your computer so that R can access it. In order to use it in our current session, we have to <strong>load</strong> the package using the <code>library()</code> function.</p>
@@ -323,7 +324,7 @@
 <code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">ratdat</span><span class="op">)</span></span></code></pre>
 </div>
 <p>The <code>ratdat</code> package contains data from the <a href="https://github.com/weecology/PortalData" class="external-link">Portal Project</a>, which is a long-term dataset from Portal, Arizona, in the Chihuahuan desert.</p>
-</section><section id="plotting-with-ggplot2"><h2 class="section-heading">Plotting with <strong><code>ggplot2</code></strong>
+</section><section id="plotting-with-ggplot2"><h2 class="section-heading">Plotting with <strong><code>ggplot2</code></strong><a class="anchor" aria-label="anchor" href="#plotting-with-ggplot2"></a>
 </h2>
 <hr class="half-width"><div id="accordionInstructor1" class="accordion instructor-note accordion-flush">
 <div class="accordion-item">
@@ -348,7 +349,8 @@
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Callout</h3>
+<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#NA"></a>
+</h3>
 <div class="callout-content">
 <p>R does not care about whitespace or indentation, so any spacing or indentation you see is only to improve readability of the code.</p>
 </div>
@@ -394,7 +396,8 @@
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Callout</h3>
+<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#NA"></a>
+</h3>
 <div class="callout-content">
 <p><strong>Warning</strong> messages are one of a few ways R will communicate with you. Warnings can be thought of as a “heads up”. Nothing necessarily went <em>wrong</em>, but the author of that function wanted to draw your attention to something. In the above case, it’s worth knowing that some of the rows of your data were not plotted because they had missing data.</p>
 <p>A more serious type of message is an <strong>error</strong>. Here’s an example:</p>
@@ -414,7 +417,8 @@
 </div>
 </div>
 </div>
-</section><section id="changing-aesthetics"><h2 class="section-heading">Changing aesthetics</h2>
+</section><section id="changing-aesthetics"><h2 class="section-heading">Changing aesthetics<a class="anchor" aria-label="anchor" href="#changing-aesthetics"></a>
+</h2>
 <hr class="half-width"><p>Building <strong><code>ggplot</code></strong> plots is often an iterative process, so we’ll continue developing the scatter plot we just made. You may have noticed that parts of our scatter plot have many overlapping points, making it difficult to see all the data. We can adjust the transparency of the points using the <code>alpha</code> argument, which takes a value between 0 and 1:</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -436,7 +440,8 @@
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Callout</h3>
+<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#NA"></a>
+</h3>
 <div class="callout-content">
 <p>Two common issues you might run into when working in R are forgetting a closing bracket or a closing quote. Let’s take a look at what each one does.</p>
 <p>Try running the following code:</p>
@@ -507,7 +512,8 @@
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1-modifying-plots" class="callout-inner">
-<h3 class="callout-title">Challenge 1: Modifying plots</h3>
+<h3 class="callout-title">Challenge 1: Modifying plots<a class="anchor" aria-label="anchor" href="#challenge-1-modifying-plots"></a>
+</h3>
 <div class="callout-content">
 <ol style="list-style-type: decimal"><li>Try modifying the plot so that the <code>shape</code> of the point varies by <code>sex</code>. You will set the <code>shape</code> the same way you set the <code>color</code>.</li>
 </ol><p>Do you think this is a good way to represent <code>sex</code> with these data?</p>
@@ -540,7 +546,7 @@
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1-modifying-plots" class="callout-inner">
-<h3 class="callout-title">Challenge 1: Modifying plots<em> (continued)</em>
+<h3 class="callout-title">Challenge 1: Modifying plots<em> (continued)</em><a class="anchor" aria-label="anchor" href="#challenge-1-modifying-plots"></a>
 </h3>
 <div class="callout-content">
 <ol start="2" style="list-style-type: decimal"><li>Now try changing the plot so that the <code>color</code> of the points vary by <code>year</code>. Do you notice a difference in the color scale compared to changing color by plot type? Why do you think this happened?</li>
@@ -570,7 +576,8 @@
 </div>
 </div>
 </div>
-</section><section id="changing-scales"><h2 class="section-heading">Changing scales</h2>
+</section><section id="changing-scales"><h2 class="section-heading">Changing scales<a class="anchor" aria-label="anchor" href="#changing-scales"></a>
+</h2>
 <hr class="half-width"><p>The default discrete color scale isn’t always ideal: it isn’t friendly to viewers with colorblindness and it doesn’t translate well to grayscale. However, <strong><code>ggplot2</code></strong> comes with quite a few other color scales, including the fantastic <code>viridis</code> scales, which are designed to be colorblind and grayscale friendly. We can change scales by adding <code>scale_</code> functions to our plots:</p>
 <div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -590,7 +597,8 @@
 <span>  <span class="fu">scale_x_log10</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="../fig/01-visualizing-ggplot-rendered-scale-log-1.png" width="600" height="600" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>One nice thing about <code>ggplot</code> and the <code>tidyverse</code> in general is that groups of functions that do similar things are given similar names. Any function that modifies a <code>ggplot</code> scale starts with <code>scale_</code>, making it easier to search for the right function.</p>
-</section><section id="changing-position"><h2 class="section-heading">Changing position</h2>
+</section><section id="changing-position"><h2 class="section-heading">Changing position<a class="anchor" aria-label="anchor" href="#changing-position"></a>
+</h2>
 <hr class="half-width"><p>Since many of our points plot on top of each other, we modified the <code>alpha</code> to increase visibility. Another way we can address this issue is by changing the position of the points themselves. We can add a small amount of random noise to the x/y positions of each point, also called “jittering”. This is particularly useful when your data tend to fall on discretely spaced intervals, which you can see happening with the <code>hindfoot_length</code> values.</p>
 <p>To do this, we can specify the <code>position</code> argument inside <code>geom_point()</code>. We will use the <code>position_jitter()</code> function to specify that we want our points to be jittered.</p>
 <div class="codewrapper sourceCode" id="cb22">
@@ -606,13 +614,15 @@
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Callout</h3>
+<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#NA"></a>
+</h3>
 <div class="callout-content">
 <p>Another common use for <code>position_</code> functions is when specifying whether you want a stacked or side-by-side bar chart. We won’t cover bar charts in this lesson, but you can check out <code>geom_bar()</code> and <code>geom_col()</code> to learn more.</p>
 </div>
 </div>
 </div>
-</section><section id="boxplot"><h2 class="section-heading">Boxplot</h2>
+</section><section id="boxplot"><h2 class="section-heading">Boxplot<a class="anchor" aria-label="anchor" href="#boxplot"></a>
+</h2>
 <hr class="half-width"><p>Let’s try making a different type of plot altogether. We’ll start off with our same basic building blocks using <code>ggplot()</code> and <code>aes()</code>.</p>
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -649,7 +659,8 @@
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">complete_old</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">plot_type</span>, y <span class="op">=</span> <span class="va">hindfoot_length</span>, fill <span class="op">=</span> <span class="va">plot_type</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_boxplot</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/01-visualizing-ggplot-rendered-boxplot-fill-1.png" width="600" height="600" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></section><section id="adding-geoms"><h2 class="section-heading">Adding geoms</h2>
+<figure><img src="../fig/01-visualizing-ggplot-rendered-boxplot-fill-1.png" width="600" height="600" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></section><section id="adding-geoms"><h2 class="section-heading">Adding geoms<a class="anchor" aria-label="anchor" href="#adding-geoms"></a>
+</h2>
 <hr class="half-width"><p>One of the most powerful aspects of <strong><code>ggplot</code></strong> is the way we can add components to a plot in successive layers. While boxplots can be very useful for summarizing data, it is often helpful to show the raw data as well. With <strong><code>ggplot</code></strong>, we can easily add another <code>geom_</code> to our plot to show the raw data. Let’s add <code>geom_point()</code> like we did in our scatterplot:</p>
 <div class="codewrapper sourceCode" id="cb28">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -702,7 +713,8 @@
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-2-change-geoms" class="callout-inner">
-<h3 class="callout-title">Challenge 2: Change <code>geom</code>s</h3>
+<h3 class="callout-title">Challenge 2: Change <code>geom</code>s<a class="anchor" aria-label="anchor" href="#challenge-2-change-geoms"></a>
+</h3>
 <div class="callout-content">
 <p>Violin plots are similar to boxplots- try making one using <code>plot_type</code> and <code>hindfoot_length</code> as the x and y variables. Remember that all geom functions start with <code>geom_</code>, followed by the type of geom.</p>
 <p>This might also be a place to test your search engine skills. It is often useful to search for <code>R package_name stuff you want to search</code>. So for this example we might search for <code>R ggplot2 violin plot</code>.</p>
@@ -738,7 +750,7 @@
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-2-change-geoms" class="callout-inner">
-<h3 class="callout-title">Challenge 2: Change <code>geom</code>s<em> (continued)</em>
+<h3 class="callout-title">Challenge 2: Change <code>geom</code>s<em> (continued)</em><a class="anchor" aria-label="anchor" href="#challenge-2-change-geoms"></a>
 </h3>
 <div class="callout-content">
 <p>For an <em>extra challenge</em>, , make the color of the points and outlines of the violins vary by <code>plot_type</code>, and set the fill of the violins to white. Try playing with the order of the layers to see what looks best.</p>
@@ -769,7 +781,8 @@
 </div>
 </div>
 </div>
-</section><section id="changing-themes"><h2 class="section-heading">Changing themes</h2>
+</section><section id="changing-themes"><h2 class="section-heading">Changing themes<a class="anchor" aria-label="anchor" href="#changing-themes"></a>
+</h2>
 <hr class="half-width"><p>So far we’ve been changing the appearance of parts of our plot related to our data and the <code>geom_</code> functions, but we can also change many of the non-data components of our plot. We can change the overall appearance using <code>theme_</code> functions. Let’s try a black-and-white theme by adding <code>theme_bw()</code> to our plot:</p>
 <div class="codewrapper sourceCode" id="cb35">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -833,7 +846,8 @@
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Callout</h3>
+<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#NA"></a>
+</h3>
 <div class="callout-content">
 <p>Because there are so many possible arguments to the <code>theme()</code> function, it can sometimes be hard to find the right one. Here are some tips for figuring out how to modify a plot element:</p>
 <ul><li>type out <code>theme()</code>, put your cursor between the parentheses, and hit <kbd>Tab</kbd> to bring up a list of arguments
@@ -853,7 +867,8 @@
 </ul></div>
 </div>
 </div>
-</section><section id="changing-labels"><h2 class="section-heading">Changing labels</h2>
+</section><section id="changing-labels"><h2 class="section-heading">Changing labels<a class="anchor" aria-label="anchor" href="#changing-labels"></a>
+</h2>
 <hr class="half-width"><p>Our plot is really shaping up now. However, we probably want to make our axis labels nicer, and perhaps add a title to the plot. We can do this using the <code>labs()</code> function:</p>
 <div class="codewrapper sourceCode" id="cb41">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -874,7 +889,8 @@
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-3-customizing-a-plot" class="callout-inner">
-<h3 class="callout-title">Challenge 3: Customizing a plot</h3>
+<h3 class="callout-title">Challenge 3: Customizing a plot<a class="anchor" aria-label="anchor" href="#challenge-3-customizing-a-plot"></a>
+</h3>
 <div class="callout-content">
 <p>Modify the previous plot by adding a descriptive subtitle. Increase the font size of the plot title and make it bold.</p>
 <p><strong>Hint</strong>: “bold” is referred to as a font “face”</p>
@@ -909,7 +925,8 @@
 </div>
 </div>
 </div>
-</section><section id="faceting"><h2 class="section-heading">Faceting</h2>
+</section><section id="faceting"><h2 class="section-heading">Faceting<a class="anchor" aria-label="anchor" href="#faceting"></a>
+</h2>
 <hr class="half-width"><p>One of the most powerful features of <strong><code>ggplot</code></strong> is the ability to quickly split a plot into multiple smaller plots based on a categorical variable, which is called <strong>faceting</strong>.</p>
 <p>So far we’ve mapped variables to the x axis, the y axis, and color, but trying to add a 4th variable becomes difficult. Changing the shape of a point might work, but only for very few categories, and even then, it can be hard to tell the differences between the shapes of small points.</p>
 <p>Instead of cramming one more variable into a single plot, we will use the <code>facet_wrap()</code> function to generate a series of smaller plots, split out by <code>sex</code>:</p>
@@ -951,7 +968,8 @@
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Callout</h3>
+<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#NA"></a>
+</h3>
 <div class="callout-content">
 <p>Faceting comes in handy in many scenarios. It can be useful when:</p>
 <ul><li>a categorical variable has too many levels to differentiate by color (such as a dataset with 50 countries)</li>
@@ -961,7 +979,8 @@
 </ul></div>
 </div>
 </div>
-</section><section id="arranging-plots"><h2 class="section-heading">Arranging plots</h2>
+</section><section id="arranging-plots"><h2 class="section-heading">Arranging plots<a class="anchor" aria-label="anchor" href="#arranging-plots"></a>
+</h2>
 <hr class="half-width"><p>While facetting allows us to combine many versions of the same plot, we might also want to combine completely different types of plots together. In many publications, it is common to have multi-part plots split into panels A, B, C, etc.</p>
 <p>Let’s create a series of plots that we can later stitch together.</p>
 <p>First, we will make a scatter plot, which we will then assign to the <strong>object</strong> <code>scatter_plot</code>, using the <strong>assignment arrow</strong> <code>&lt;-</code>. Our plot is now stored as the object <code>scatter_plot</code>. This process of assigning something to an <strong>object</strong> is not specific to <code>ggplot2</code>, but rather a general feature of R. We will be using it a lot in this lesson.</p>
@@ -1001,7 +1020,8 @@
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Callout</h3>
+<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#NA"></a>
+</h3>
 <div class="callout-content">
 <p>It is a good practice not to put <code>install.packages()</code> into a script. This is because every time you run that whole script, the package will be reinstalled, which is typically unnecessary. You want to install the package to your computer once, and then load it with <code>library()</code> in each script where you need to use it.</p>
 </div>
@@ -1034,7 +1054,8 @@
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">scatter_plot</span> <span class="op">/</span> <span class="va">box_plot</span> <span class="op">&amp;</span> <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/01-visualizing-ggplot-rendered-divide-plots-theme-1.png" width="600" height="600" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></section><section id="exporting-plots"><h2 class="section-heading">Exporting plots</h2>
+<figure><img src="../fig/01-visualizing-ggplot-rendered-divide-plots-theme-1.png" width="600" height="600" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></section><section id="exporting-plots"><h2 class="section-heading">Exporting plots<a class="anchor" aria-label="anchor" href="#exporting-plots"></a>
+</h2>
 <hr class="half-width"><p>Finally, once we are happy with our plot, we probably want to save it in a format that we can share with others or put into a document. To do this, we will use the <code>ggsave()</code> function. First we will combine our plots using <code>patchwork</code>, and use the <code>plot_annotation()</code> function to add a title to our multi-plot, as well as label the individual plots as <strong>A</strong> and <strong>B</strong>.</p>
 <div class="codewrapper sourceCode" id="cb53">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1055,7 +1076,8 @@
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
 <div id="challenge-4-make-your-own-plot" class="callout-inner">
-<h3 class="callout-title">Challenge 4: Make your own plot</h3>
+<h3 class="callout-title">Challenge 4: Make your own plot<a class="anchor" aria-label="anchor" href="#challenge-4-make-your-own-plot"></a>
+</h3>
 <div class="callout-content">
 <p>Try making your own plot! You can run <code>str(complete_old)</code> to explore variables you might use in your new plot. Feel free to use variables we have already seen, or some we haven’t explored yet.</p>
 <p>Here are a couple ideas to get you started:</p>
@@ -1072,7 +1094,8 @@
 <i class="callout-icon" data-feather="key"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Keypoints</h3>
+<h3 class="callout-title">Keypoints<a class="anchor" aria-label="anchor" href="#NA"></a>
+</h3>
 <div class="callout-content">
 <ul><li>the <code>ggplot()</code> function initiates a plot, and <code>geom_</code> functions add representations of your data</li>
 <li>use <code>aes()</code> when mapping a variable from the data to a part of the plot</li>
@@ -1106,9 +1129,9 @@
         <p>Materials licensed under <a href="../LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper" class="external-link">sandpaper (0.9.0)</a>,
-        <a href="https://github.com/carpentries/pegboard/tree/0.3.0" class="external-link">pegboard (0.3.0)</a>,
-      and <a href="https://github.com/carpentries/varnish" class="external-link">varnish (0.2.3)</a>.</p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.9.3" class="external-link">sandpaper (0.9.3)</a>,
+        <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.3.1)</a>,
+      and <a href="https://github.com/carpentries/varnish/tree/0.2.4" class="external-link">varnish (0.2.4)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1129,8 +1152,8 @@
   "url": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson/instructor/01-visualizing-ggplot.html",
   "identifier": "https://MCMaurer.github.io/Rewrite-R-ecology-lesson/instructor/01-visualizing-ggplot.html",
   "dateCreated": "2022-06-09",
-  "dateModified": "2022-08-09",
-  "datePublished": "2022-08-09"
+  "dateModified": "2022-08-16",
+  "datePublished": "2022-08-16"
 }
 
   </script><script>
