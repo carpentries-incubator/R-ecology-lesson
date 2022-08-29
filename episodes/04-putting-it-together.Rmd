@@ -59,7 +59,7 @@ Well, it turns out we have just that situation! We have received a newer batch o
 
 You can download a `.zip` file containing three new data files here: <https://www.michaelc-m.com/Rewrite-R-ecology-lesson/data/new_data.zip>. When prompted, save the file to your `data/raw/` folder. A `.zip` file is a type of compressed file that contains one or more files or directories. We will use the `unzip()` command to extract the data files from the `.zip` file. The first argument is the path to the `.zip` file, the next argument is the directory we want to put the extracted files into, and the last argument tells `unzip()` to not create an additional directory for the new files. Since this is an action we only want to perform once, we will run it directly in the **Console** instead of putting it into a script.
 
-```{r unzip}
+```{r unzip, eval=F}
 unzip("data/raw/new_data.zip", exdir = "data/raw/", junkpaths = TRUE)
 ```
 
@@ -403,6 +403,61 @@ surveys_complete
 ```
 
 We have now successfully cleaned our new data and reshaped it to match our old data so they could be arranged into one data.frame covering all the years.
+
+## Back to `ggplot2`
+
+
+- `position_dodge()`
+- `coord_`?
+- `patchwork`
+- `label_wrap_gen()`?
+- `theme_set()`
+
+
+```{r}
+surveys_complete %>% 
+  count(year) %>% 
+  ggplot(aes(x = year, y = n)) +
+  geom_line()
+```
+
+```{r}
+surveys_complete %>% 
+  count(plot_type, sex) %>% 
+  ggplot(aes(x = plot_type, y = n, fill = sex)) +
+  geom_col(position = position_dodge()) +
+  scale_x_discrete(labels = label_wrap_gen(10))
+```
+
+```{r}
+surveys_complete %>% 
+  filter(!is.na(weight), !is.na(sex)) %>% 
+  group_by(genus, year, sex) %>% 
+  summarise(mean_weight = mean(weight)) %>% 
+  ggplot(aes(x = year, y = mean_weight, color = genus)) +
+  geom_line() +
+  facet_wrap(vars(sex))
+```
+
+Setting limits with `scale_` or `xlim()`/`ylim()` will **remove** data, so the slope of the line changes:
+```{r}
+surveys_complete %>% 
+  ggplot(aes(x = weight, y = hindfoot_length)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  scale_x_continuous(limits = c(0,100))
+```
+
+If you want to zoom in on the plot without removing data outside the limits, set the limits inside `coord_cartestian()`:
+```{r}
+surveys_complete %>% 
+  ggplot(aes(x = weight, y = hindfoot_length)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  coord_cartesian(xlim = c(0,100))
+```
+
+There are other `coord_` functions if you need to plot using polar coordinates, map coordinates, or fix the aspect ratio of a plot.
 
 ## Final outputs
 

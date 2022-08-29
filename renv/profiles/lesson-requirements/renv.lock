@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.1.3",
+    "Version": "4.2.1",
     "Repositories": [
       {
         "Name": "carpentries",
@@ -709,24 +709,13 @@
       "Package": "openssl",
       "Version": "2.0.0",
       "Source": "Repository",
-      "Repository": "https://carpentries.r-universe.dev",
+      "RemoteType": "repository",
       "RemoteUrl": "https://github.com/jeroen/openssl",
       "RemoteRef": "v2.0.0",
       "RemoteSha": "c77bb3225d708ecf6425ba5a1f8a8effe8bb5986",
-      "Hash": "cf4329aac12c2c44089974559c18e446",
+      "Hash": "9eabf2cc033f831c093c9dee50e885b5",
       "Requirements": [
         "askpass"
-      ]
-    },
-    "patchwork": {
-      "Package": "patchwork",
-      "Version": "1.1.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "c446b30cb33ec125ff02588b60660ccb",
-      "Requirements": [
-        "ggplot2",
-        "gtable"
       ]
     },
     "pillar": {
