@@ -9,7 +9,6 @@
 "episodes/01-visualizing-ggplot.Rmd" "93d28ae2a77e0dd424cac595063051db" "site/built/01-visualizing-ggplot.md" "2022-08-29"
 "episodes/02-how-r-thinks-about-data.Rmd" "ccfcb3ce681291fb6a4d733ac1b5f444" "site/built/02-how-r-thinks-about-data.md" "2022-08-29"
 "episodes/03-working-with-data.Rmd" "2d4d666e97b6ab203e9691d1c0c496e5" "site/built/03-working-with-data.md" "2022-08-29"
-"episodes/04-putting-it-together.Rmd" "07fab0dc7a0c30b29718808a83ef85a3" "site/built/04-putting-it-together.md" "2022-08-29"
 "episodes/05-extra-challenges.Rmd" "2acf7393bdaf87e370692462f0caedf9" "site/built/05-extra-challenges.md" "2022-08-29"
 "instructors/instructor-notes.md" "60b93493cf1da06dfd63255d73854461" "site/built/instructor-notes.md" "2022-08-29"
 "learners/setup.md" "25019173da06b9b8a6680544c205c2af" "site/built/setup.md" "2022-08-29"
