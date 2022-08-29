@@ -10,17 +10,17 @@
 carpentry: dc
 
 # Overall title for pages.
-title: 'Rewrite-R-ecology-lesson'
+title: 'R-ecology-lesson'
 
 # Life cycle stage of the lesson
 # possible values: pre-alpha, alpha, beta, stable
-life_cycle: pre-alpha
+life_cycle: beta
 
 # License of the lesson
 license: CC-BY 4.0
 
 # Link to the source repository for this lesson
-source: https://github.com/MCMaurer/Rewrite-R-ecology-lesson
+source: https://github.com/carpentries-incubator/R-ecology-lesson
 
 # Default branch of your lesson
 branch: main

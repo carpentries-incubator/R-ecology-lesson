@@ -1,3 +1,3 @@
-# Rewrite-R-ecology-lesson
+# R-ecology-lesson
 
-This is the lesson repository for Rewrite-R-ecology-lesson
+This is the lesson repository for R-ecology-lesson
