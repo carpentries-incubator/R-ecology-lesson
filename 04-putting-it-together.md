@@ -63,11 +63,6 @@ You can download a `.zip` file containing three new data files here: <https://ww
 unzip("data/raw/new_data.zip", exdir = "data/raw/", junkpaths = TRUE)
 ```
 
-```{.warning}
-Warning in unzip("data/raw/new_data.zip", exdir = "data/raw/", junkpaths =
-TRUE): error 1 in extracting from zip file
-```
-
 Use the **Files** pane in the lower right to navigate to the `data/raw/` folder and you should find 3 new files: `plots_new.csv`, `species_new.txt`, and `surveys_new.csv`.
 
 ## Reading the new surveys data
@@ -144,7 +139,7 @@ problems(surveys_new)
 # A tibble: 1 × 5
     row   col expected actual file                                              
   <int> <int> <chr>    <chr>  <chr>                                             
-1    19     6 a double 19'    /home/runner/work/Rewrite-R-ecology-lesson/Rewrit…
+1    19     6 a double 19'    /home/runner/work/R-ecology-lesson/R-ecology-less…
 ```
 
 The output shows that in the 19th row and 8th column of the CSV, `read_csv()` expected a double, or numeric, value. Instead, what it got was `19'`. That stray quotation mark was unexpected, so `read_csv()` notified us. Let's go see what value is actually there for `surveys_new`. It was in the 19th row of the CSV, which includes the header row containing column names, so we should look at the 18th row of our data.frame. The 8th column is `hindfoot_length`. We can use the `head()` function to look at the first 20 rows.
@@ -843,6 +838,109 @@ surveys_complete
 ```
 
 We have now successfully cleaned our new data and reshaped it to match our old data so they could be arranged into one data.frame covering all the years.
+
+## Back to `ggplot2`
+
+
+- `position_dodge()`
+- `coord_`?
+- `patchwork`
+- `label_wrap_gen()`?
+- `theme_set()`
+
+
+
+```r
+surveys_complete %>% 
+  count(year) %>% 
+  ggplot(aes(x = year, y = n)) +
+  geom_line()
+```
+
+```{.warning}
+Warning: Removed 1 row(s) containing missing values (geom_path).
+```
+
+<img src="fig/04-putting-it-together-rendered-unnamed-chunk-3-1.png" width="600" height="600" style="display: block; margin: auto;" />
+
+
+```r
+surveys_complete %>% 
+  count(plot_type, sex) %>% 
+  ggplot(aes(x = plot_type, y = n, fill = sex)) +
+  geom_col(position = position_dodge()) +
+  scale_x_discrete(labels = label_wrap_gen(10))
+```
+
+<img src="fig/04-putting-it-together-rendered-unnamed-chunk-4-1.png" width="600" height="600" style="display: block; margin: auto;" />
+
+
+```r
+surveys_complete %>% 
+  filter(!is.na(weight), !is.na(sex)) %>% 
+  group_by(genus, year, sex) %>% 
+  summarise(mean_weight = mean(weight)) %>% 
+  ggplot(aes(x = year, y = mean_weight, color = genus)) +
+  geom_line() +
+  facet_wrap(vars(sex))
+```
+
+```{.output}
+`summarise()` has grouped output by 'genus', 'year'. You can override using the
+`.groups` argument.
+```
+
+<img src="fig/04-putting-it-together-rendered-unnamed-chunk-5-1.png" width="600" height="600" style="display: block; margin: auto;" />
+
+Setting limits with `scale_` or `xlim()`/`ylim()` will **remove** data, so the slope of the line changes:
+
+```r
+surveys_complete %>% 
+  ggplot(aes(x = weight, y = hindfoot_length)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  scale_x_continuous(limits = c(0,100))
+```
+
+```{.output}
+`geom_smooth()` using formula 'y ~ x'
+```
+
+```{.warning}
+Warning: Removed 7433 rows containing non-finite values (stat_smooth).
+```
+
+```{.warning}
+Warning: Removed 7433 rows containing missing values (geom_point).
+```
+
+<img src="fig/04-putting-it-together-rendered-unnamed-chunk-6-1.png" width="600" height="600" style="display: block; margin: auto;" />
+
+If you want to zoom in on the plot without removing data outside the limits, set the limits inside `coord_cartestian()`:
+
+```r
+surveys_complete %>% 
+  ggplot(aes(x = weight, y = hindfoot_length)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  coord_cartesian(xlim = c(0,100))
+```
+
+```{.output}
+`geom_smooth()` using formula 'y ~ x'
+```
+
+```{.warning}
+Warning: Removed 4812 rows containing non-finite values (stat_smooth).
+```
+
+```{.warning}
+Warning: Removed 4812 rows containing missing values (geom_point).
+```
+
+<img src="fig/04-putting-it-together-rendered-unnamed-chunk-7-1.png" width="600" height="600" style="display: block; margin: auto;" />
+
+There are other `coord_` functions if you need to plot using polar coordinates, map coordinates, or fix the aspect ratio of a plot.
 
 ## Final outputs
 
