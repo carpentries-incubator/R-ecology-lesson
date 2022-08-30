@@ -1364,11 +1364,7 @@ Now we can save this data.frame to a CSV using the `write_csv()` function from t
 
 
 ```r
-write_csv(surveys_ps, "data/cleaned/surveys_meanweight_species_plot.csv")
-```
-
-```{.error}
-Error in is.data.frame(x): object 'surveys_ps' not found
+write_csv(surveys_sp, "data/cleaned/surveys_meanweight_species_plot.csv")
 ```
 
 If we go look into our `data/cleaned_data` folder, we will see this new CSV file.
