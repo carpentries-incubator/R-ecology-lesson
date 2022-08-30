@@ -617,7 +617,7 @@ surveys_sp
 Now we can save this data.frame to a CSV using the `write_csv()` function from the `readr` package. The first argument is the name of the data.frame, and the second is the path to the new file we want to create, including the file extension `.csv`.
 
 ```{r write-csv}
-write_csv(surveys_ps, "data/cleaned/surveys_meanweight_species_plot.csv")
+write_csv(surveys_sp, "data/cleaned/surveys_meanweight_species_plot.csv")
 ```
 
 If we go look into our `data/cleaned_data` folder, we will see this new CSV file.
