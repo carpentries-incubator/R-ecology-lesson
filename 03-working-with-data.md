@@ -189,19 +189,20 @@ select(surveys, -record_id, -year)
 
 ```{.output}
 # A tibble: 16,878 × 11
-   month   day plot_id species_id sex   hindfoot_length weight genus     species
-   <dbl> <dbl>   <dbl> <chr>      <chr>           <dbl>  <dbl> <chr>     <chr>  
- 1     7    16       2 NL         M                  32     NA Neotoma   albigu…
- 2     7    16       3 NL         M                  33     NA Neotoma   albigu…
- 3     7    16       2 DM         F                  37     NA Dipodomys merria…
- 4     7    16       7 DM         M                  36     NA Dipodomys merria…
- 5     7    16       3 DM         M                  35     NA Dipodomys merria…
- 6     7    16       1 PF         M                  14     NA Perognat… flavus 
- 7     7    16       2 PE         F                  NA     NA Peromysc… eremic…
- 8     7    16       1 DM         M                  37     NA Dipodomys merria…
- 9     7    16       1 DM         F                  34     NA Dipodomys merria…
-10     7    16       6 PF         F                  20     NA Perognat… flavus 
-# … with 16,868 more rows, and 2 more variables: taxa <chr>, plot_type <chr>
+   month   day plot_id specie…¹ sex   hindf…² weight genus species taxa  plot_…³
+   <dbl> <dbl>   <dbl> <chr>    <chr>   <dbl>  <dbl> <chr> <chr>   <chr> <chr>  
+ 1     7    16       2 NL       M          32     NA Neot… albigu… Rode… Control
+ 2     7    16       3 NL       M          33     NA Neot… albigu… Rode… Long-t…
+ 3     7    16       2 DM       F          37     NA Dipo… merria… Rode… Control
+ 4     7    16       7 DM       M          36     NA Dipo… merria… Rode… Rodent…
+ 5     7    16       3 DM       M          35     NA Dipo… merria… Rode… Long-t…
+ 6     7    16       1 PF       M          14     NA Pero… flavus  Rode… Specta…
+ 7     7    16       2 PE       F          NA     NA Pero… eremic… Rode… Control
+ 8     7    16       1 DM       M          37     NA Dipo… merria… Rode… Specta…
+ 9     7    16       1 DM       F          34     NA Dipo… merria… Rode… Specta…
+10     7    16       6 PF       F          20     NA Pero… flavus  Rode… Short-…
+# … with 16,868 more rows, and abbreviated variable names ¹​species_id,
+#   ²​hindfoot_length, ³​plot_type
 ```
 
 `select()` also works with numeric vectors for the order of the columns. To select the 3rd, 4th, 5th, and 10th columns, we could run the following code:
@@ -291,20 +292,20 @@ filter(surveys, year == 1985)
 
 ```{.output}
 # A tibble: 1,438 × 13
-   record_id month   day  year plot_id species_id sex   hindfoot_length weight
-       <dbl> <dbl> <dbl> <dbl>   <dbl> <chr>      <chr>           <dbl>  <dbl>
- 1      9790     1    19  1985      16 RM         F                  16      4
- 2      9791     1    19  1985      17 OT         F                  20     16
- 3      9792     1    19  1985       6 DO         M                  35     48
- 4      9793     1    19  1985      12 DO         F                  35     40
- 5      9794     1    19  1985      24 RM         M                  16      4
- 6      9795     1    19  1985      12 DO         M                  34     48
- 7      9796     1    19  1985       6 DM         F                  37     35
- 8      9797     1    19  1985      14 DM         M                  36     45
- 9      9798     1    19  1985       6 DM         F                  36     38
-10      9799     1    19  1985      19 RM         M                  16      4
-# … with 1,428 more rows, and 4 more variables: genus <chr>, species <chr>,
-#   taxa <chr>, plot_type <chr>
+   record…¹ month   day  year plot_id speci…² sex   hindf…³ weight genus species
+      <dbl> <dbl> <dbl> <dbl>   <dbl> <chr>   <chr>   <dbl>  <dbl> <chr> <chr>  
+ 1     9790     1    19  1985      16 RM      F          16      4 Reit… megalo…
+ 2     9791     1    19  1985      17 OT      F          20     16 Onyc… torrid…
+ 3     9792     1    19  1985       6 DO      M          35     48 Dipo… ordii  
+ 4     9793     1    19  1985      12 DO      F          35     40 Dipo… ordii  
+ 5     9794     1    19  1985      24 RM      M          16      4 Reit… megalo…
+ 6     9795     1    19  1985      12 DO      M          34     48 Dipo… ordii  
+ 7     9796     1    19  1985       6 DM      F          37     35 Dipo… merria…
+ 8     9797     1    19  1985      14 DM      M          36     45 Dipo… merria…
+ 9     9798     1    19  1985       6 DM      F          36     38 Dipo… merria…
+10     9799     1    19  1985      19 RM      M          16      4 Reit… megalo…
+# … with 1,428 more rows, 2 more variables: taxa <chr>, plot_type <chr>, and
+#   abbreviated variable names ¹​record_id, ²​species_id, ³​hindfoot_length
 ```
 
 The `==` sign means "is equal to". There are several other operators we can use: >, >=, <, <=, and != (not equal to). Another useful operator is `%in%`, which asks if the value on the lefthand side is found anywhere in the vector on the righthand side. For example, to get rows with specific `species_id` values, we could run:
@@ -316,20 +317,20 @@ filter(surveys, species_id %in% c("RM", "DO"))
 
 ```{.output}
 # A tibble: 2,835 × 13
-   record_id month   day  year plot_id species_id sex   hindfoot_length weight
-       <dbl> <dbl> <dbl> <dbl>   <dbl> <chr>      <chr>           <dbl>  <dbl>
- 1        68     8    19  1977       8 DO         F                  32     52
- 2       292    10    17  1977       3 DO         F                  36     33
- 3       294    10    17  1977       3 DO         F                  37     50
- 4       311    10    17  1977      19 RM         M                  18     13
- 5       317    10    17  1977      17 DO         F                  32     48
- 6       323    10    17  1977      17 DO         F                  33     31
- 7       337    10    18  1977       8 DO         F                  35     41
- 8       356    11    12  1977       1 DO         F                  32     44
- 9       378    11    12  1977       1 DO         M                  33     48
-10       397    11    13  1977      17 RM         F                  16      7
-# … with 2,825 more rows, and 4 more variables: genus <chr>, species <chr>,
-#   taxa <chr>, plot_type <chr>
+   record…¹ month   day  year plot_id speci…² sex   hindf…³ weight genus species
+      <dbl> <dbl> <dbl> <dbl>   <dbl> <chr>   <chr>   <dbl>  <dbl> <chr> <chr>  
+ 1       68     8    19  1977       8 DO      F          32     52 Dipo… ordii  
+ 2      292    10    17  1977       3 DO      F          36     33 Dipo… ordii  
+ 3      294    10    17  1977       3 DO      F          37     50 Dipo… ordii  
+ 4      311    10    17  1977      19 RM      M          18     13 Reit… megalo…
+ 5      317    10    17  1977      17 DO      F          32     48 Dipo… ordii  
+ 6      323    10    17  1977      17 DO      F          33     31 Dipo… ordii  
+ 7      337    10    18  1977       8 DO      F          35     41 Dipo… ordii  
+ 8      356    11    12  1977       1 DO      F          32     44 Dipo… ordii  
+ 9      378    11    12  1977       1 DO      M          33     48 Dipo… ordii  
+10      397    11    13  1977      17 RM      F          16      7 Reit… megalo…
+# … with 2,825 more rows, 2 more variables: taxa <chr>, plot_type <chr>, and
+#   abbreviated variable names ¹​record_id, ²​species_id, ³​hindfoot_length
 ```
 
 We can also use multiple conditions in one `filter()` statement. Here we will get rows with a year less than or equal to 1988 and whose hindfoot length values are not `NA`. The `!` before the `is.na()` function means "not".
@@ -341,20 +342,20 @@ filter(surveys, year <= 1988 & !is.na(hindfoot_length))
 
 ```{.output}
 # A tibble: 12,779 × 13
-   record_id month   day  year plot_id species_id sex   hindfoot_length weight
-       <dbl> <dbl> <dbl> <dbl>   <dbl> <chr>      <chr>           <dbl>  <dbl>
- 1         1     7    16  1977       2 NL         M                  32     NA
- 2         2     7    16  1977       3 NL         M                  33     NA
- 3         3     7    16  1977       2 DM         F                  37     NA
- 4         4     7    16  1977       7 DM         M                  36     NA
- 5         5     7    16  1977       3 DM         M                  35     NA
- 6         6     7    16  1977       1 PF         M                  14     NA
- 7         8     7    16  1977       1 DM         M                  37     NA
- 8         9     7    16  1977       1 DM         F                  34     NA
- 9        10     7    16  1977       6 PF         F                  20     NA
-10        11     7    16  1977       5 DS         F                  53     NA
-# … with 12,769 more rows, and 4 more variables: genus <chr>, species <chr>,
-#   taxa <chr>, plot_type <chr>
+   record…¹ month   day  year plot_id speci…² sex   hindf…³ weight genus species
+      <dbl> <dbl> <dbl> <dbl>   <dbl> <chr>   <chr>   <dbl>  <dbl> <chr> <chr>  
+ 1        1     7    16  1977       2 NL      M          32     NA Neot… albigu…
+ 2        2     7    16  1977       3 NL      M          33     NA Neot… albigu…
+ 3        3     7    16  1977       2 DM      F          37     NA Dipo… merria…
+ 4        4     7    16  1977       7 DM      M          36     NA Dipo… merria…
+ 5        5     7    16  1977       3 DM      M          35     NA Dipo… merria…
+ 6        6     7    16  1977       1 PF      M          14     NA Pero… flavus 
+ 7        8     7    16  1977       1 DM      M          37     NA Dipo… merria…
+ 8        9     7    16  1977       1 DM      F          34     NA Dipo… merria…
+ 9       10     7    16  1977       6 PF      F          20     NA Pero… flavus 
+10       11     7    16  1977       5 DS      F          53     NA Dipo… specta…
+# … with 12,769 more rows, 2 more variables: taxa <chr>, plot_type <chr>, and
+#   abbreviated variable names ¹​record_id, ²​species_id, ³​hindfoot_length
 ```
 
 
@@ -397,20 +398,20 @@ filter(select(surveys, -day), month >= 7)
 
 ```{.output}
 # A tibble: 8,244 × 12
-   record_id month  year plot_id species_id sex   hindfoot_length weight genus  
-       <dbl> <dbl> <dbl>   <dbl> <chr>      <chr>           <dbl>  <dbl> <chr>  
- 1         1     7  1977       2 NL         M                  32     NA Neotoma
- 2         2     7  1977       3 NL         M                  33     NA Neotoma
- 3         3     7  1977       2 DM         F                  37     NA Dipodo…
- 4         4     7  1977       7 DM         M                  36     NA Dipodo…
- 5         5     7  1977       3 DM         M                  35     NA Dipodo…
- 6         6     7  1977       1 PF         M                  14     NA Perogn…
- 7         7     7  1977       2 PE         F                  NA     NA Peromy…
- 8         8     7  1977       1 DM         M                  37     NA Dipodo…
- 9         9     7  1977       1 DM         F                  34     NA Dipodo…
-10        10     7  1977       6 PF         F                  20     NA Perogn…
-# … with 8,234 more rows, and 3 more variables: species <chr>, taxa <chr>,
-#   plot_type <chr>
+   record…¹ month  year plot_id speci…² sex   hindf…³ weight genus species taxa 
+      <dbl> <dbl> <dbl>   <dbl> <chr>   <chr>   <dbl>  <dbl> <chr> <chr>   <chr>
+ 1        1     7  1977       2 NL      M          32     NA Neot… albigu… Rode…
+ 2        2     7  1977       3 NL      M          33     NA Neot… albigu… Rode…
+ 3        3     7  1977       2 DM      F          37     NA Dipo… merria… Rode…
+ 4        4     7  1977       7 DM      M          36     NA Dipo… merria… Rode…
+ 5        5     7  1977       3 DM      M          35     NA Dipo… merria… Rode…
+ 6        6     7  1977       1 PF      M          14     NA Pero… flavus  Rode…
+ 7        7     7  1977       2 PE      F          NA     NA Pero… eremic… Rode…
+ 8        8     7  1977       1 DM      M          37     NA Dipo… merria… Rode…
+ 9        9     7  1977       1 DM      F          34     NA Dipo… merria… Rode…
+10       10     7  1977       6 PF      F          20     NA Pero… flavus  Rode…
+# … with 8,234 more rows, 1 more variable: plot_type <chr>, and abbreviated
+#   variable names ¹​record_id, ²​species_id, ³​hindfoot_length
 ```
 
 R will evaluate statements from the inside out. First, `select()` will operate on the `surveys` data.frame, removing the column `day`. The resulting data.frame is then used as the first argument for `filter()`, which selects rows with a month greater than or equal to 7.
@@ -425,20 +426,20 @@ filter(surveys_noday, month >= 7)
 
 ```{.output}
 # A tibble: 8,244 × 12
-   record_id month  year plot_id species_id sex   hindfoot_length weight genus  
-       <dbl> <dbl> <dbl>   <dbl> <chr>      <chr>           <dbl>  <dbl> <chr>  
- 1         1     7  1977       2 NL         M                  32     NA Neotoma
- 2         2     7  1977       3 NL         M                  33     NA Neotoma
- 3         3     7  1977       2 DM         F                  37     NA Dipodo…
- 4         4     7  1977       7 DM         M                  36     NA Dipodo…
- 5         5     7  1977       3 DM         M                  35     NA Dipodo…
- 6         6     7  1977       1 PF         M                  14     NA Perogn…
- 7         7     7  1977       2 PE         F                  NA     NA Peromy…
- 8         8     7  1977       1 DM         M                  37     NA Dipodo…
- 9         9     7  1977       1 DM         F                  34     NA Dipodo…
-10        10     7  1977       6 PF         F                  20     NA Perogn…
-# … with 8,234 more rows, and 3 more variables: species <chr>, taxa <chr>,
-#   plot_type <chr>
+   record…¹ month  year plot_id speci…² sex   hindf…³ weight genus species taxa 
+      <dbl> <dbl> <dbl>   <dbl> <chr>   <chr>   <dbl>  <dbl> <chr> <chr>   <chr>
+ 1        1     7  1977       2 NL      M          32     NA Neot… albigu… Rode…
+ 2        2     7  1977       3 NL      M          33     NA Neot… albigu… Rode…
+ 3        3     7  1977       2 DM      F          37     NA Dipo… merria… Rode…
+ 4        4     7  1977       7 DM      M          36     NA Dipo… merria… Rode…
+ 5        5     7  1977       3 DM      M          35     NA Dipo… merria… Rode…
+ 6        6     7  1977       1 PF      M          14     NA Pero… flavus  Rode…
+ 7        7     7  1977       2 PE      F          NA     NA Pero… eremic… Rode…
+ 8        8     7  1977       1 DM      M          37     NA Dipo… merria… Rode…
+ 9        9     7  1977       1 DM      F          34     NA Dipo… merria… Rode…
+10       10     7  1977       6 PF      F          20     NA Pero… flavus  Rode…
+# … with 8,234 more rows, 1 more variable: plot_type <chr>, and abbreviated
+#   variable names ¹​record_id, ²​species_id, ³​hindfoot_length
 ```
 
 This approach is easier to read, since we can see the steps in order, but after enough steps, we are left with a cluttered mess of intermediate objects, often with confusing names.
@@ -454,20 +455,20 @@ surveys %>%
 
 ```{.output}
 # A tibble: 8,244 × 12
-   record_id month  year plot_id species_id sex   hindfoot_length weight genus  
-       <dbl> <dbl> <dbl>   <dbl> <chr>      <chr>           <dbl>  <dbl> <chr>  
- 1         1     7  1977       2 NL         M                  32     NA Neotoma
- 2         2     7  1977       3 NL         M                  33     NA Neotoma
- 3         3     7  1977       2 DM         F                  37     NA Dipodo…
- 4         4     7  1977       7 DM         M                  36     NA Dipodo…
- 5         5     7  1977       3 DM         M                  35     NA Dipodo…
- 6         6     7  1977       1 PF         M                  14     NA Perogn…
- 7         7     7  1977       2 PE         F                  NA     NA Peromy…
- 8         8     7  1977       1 DM         M                  37     NA Dipodo…
- 9         9     7  1977       1 DM         F                  34     NA Dipodo…
-10        10     7  1977       6 PF         F                  20     NA Perogn…
-# … with 8,234 more rows, and 3 more variables: species <chr>, taxa <chr>,
-#   plot_type <chr>
+   record…¹ month  year plot_id speci…² sex   hindf…³ weight genus species taxa 
+      <dbl> <dbl> <dbl>   <dbl> <chr>   <chr>   <dbl>  <dbl> <chr> <chr>   <chr>
+ 1        1     7  1977       2 NL      M          32     NA Neot… albigu… Rode…
+ 2        2     7  1977       3 NL      M          33     NA Neot… albigu… Rode…
+ 3        3     7  1977       2 DM      F          37     NA Dipo… merria… Rode…
+ 4        4     7  1977       7 DM      M          36     NA Dipo… merria… Rode…
+ 5        5     7  1977       3 DM      M          35     NA Dipo… merria… Rode…
+ 6        6     7  1977       1 PF      M          14     NA Pero… flavus  Rode…
+ 7        7     7  1977       2 PE      F          NA     NA Pero… eremic… Rode…
+ 8        8     7  1977       1 DM      M          37     NA Dipo… merria… Rode…
+ 9        9     7  1977       1 DM      F          34     NA Dipo… merria… Rode…
+10       10     7  1977       6 PF      F          20     NA Pero… flavus  Rode…
+# … with 8,234 more rows, 1 more variable: plot_type <chr>, and abbreviated
+#   variable names ¹​record_id, ²​species_id, ³​hindfoot_length
 ```
 
 What it does is take the thing on the lefthand side and insert it as the first argument of the function on the righthand side. By putting each of our functions onto a new line, we can build a nice, readable **pipeline**. It can be useful to think of this as a little assembly line for our data. It starts at the top and gets piped into a `select()` function, and it comes out modified somewhat. It then gets sent into the `filter()` function, where it is further modified, and then the final product gets printed out to our console. It can also be helpful to think of `%>%` as meaning "and then". Since many `tidyverse` functions have verbs for names, a pipeline can be read like a sentence.
@@ -523,20 +524,21 @@ surveys %>%
 
 ```{.output}
 # A tibble: 16,878 × 14
-   record_id month   day  year plot_id species_id sex   hindfoot_length weight
-       <dbl> <dbl> <dbl> <dbl>   <dbl> <chr>      <chr>           <dbl>  <dbl>
- 1         1     7    16  1977       2 NL         M                  32     NA
- 2         2     7    16  1977       3 NL         M                  33     NA
- 3         3     7    16  1977       2 DM         F                  37     NA
- 4         4     7    16  1977       7 DM         M                  36     NA
- 5         5     7    16  1977       3 DM         M                  35     NA
- 6         6     7    16  1977       1 PF         M                  14     NA
- 7         7     7    16  1977       2 PE         F                  NA     NA
- 8         8     7    16  1977       1 DM         M                  37     NA
- 9         9     7    16  1977       1 DM         F                  34     NA
-10        10     7    16  1977       6 PF         F                  20     NA
-# … with 16,868 more rows, and 5 more variables: genus <chr>, species <chr>,
-#   taxa <chr>, plot_type <chr>, weight_kg <dbl>
+   record…¹ month   day  year plot_id speci…² sex   hindf…³ weight genus species
+      <dbl> <dbl> <dbl> <dbl>   <dbl> <chr>   <chr>   <dbl>  <dbl> <chr> <chr>  
+ 1        1     7    16  1977       2 NL      M          32     NA Neot… albigu…
+ 2        2     7    16  1977       3 NL      M          33     NA Neot… albigu…
+ 3        3     7    16  1977       2 DM      F          37     NA Dipo… merria…
+ 4        4     7    16  1977       7 DM      M          36     NA Dipo… merria…
+ 5        5     7    16  1977       3 DM      M          35     NA Dipo… merria…
+ 6        6     7    16  1977       1 PF      M          14     NA Pero… flavus 
+ 7        7     7    16  1977       2 PE      F          NA     NA Pero… eremic…
+ 8        8     7    16  1977       1 DM      M          37     NA Dipo… merria…
+ 9        9     7    16  1977       1 DM      F          34     NA Dipo… merria…
+10       10     7    16  1977       6 PF      F          20     NA Pero… flavus 
+# … with 16,868 more rows, 3 more variables: taxa <chr>, plot_type <chr>,
+#   weight_kg <dbl>, and abbreviated variable names ¹​record_id, ²​species_id,
+#   ³​hindfoot_length
 ```
 
 You can create multiple columns in one `mutate()` call, and they will get created in the order you write them. This means you can even reference the first new column in the second new column:
@@ -550,20 +552,21 @@ surveys %>%
 
 ```{.output}
 # A tibble: 16,878 × 15
-   record_id month   day  year plot_id species_id sex   hindfoot_length weight
-       <dbl> <dbl> <dbl> <dbl>   <dbl> <chr>      <chr>           <dbl>  <dbl>
- 1         1     7    16  1977       2 NL         M                  32     NA
- 2         2     7    16  1977       3 NL         M                  33     NA
- 3         3     7    16  1977       2 DM         F                  37     NA
- 4         4     7    16  1977       7 DM         M                  36     NA
- 5         5     7    16  1977       3 DM         M                  35     NA
- 6         6     7    16  1977       1 PF         M                  14     NA
- 7         7     7    16  1977       2 PE         F                  NA     NA
- 8         8     7    16  1977       1 DM         M                  37     NA
- 9         9     7    16  1977       1 DM         F                  34     NA
-10        10     7    16  1977       6 PF         F                  20     NA
-# … with 16,868 more rows, and 6 more variables: genus <chr>, species <chr>,
-#   taxa <chr>, plot_type <chr>, weight_kg <dbl>, weight_lbs <dbl>
+   record…¹ month   day  year plot_id speci…² sex   hindf…³ weight genus species
+      <dbl> <dbl> <dbl> <dbl>   <dbl> <chr>   <chr>   <dbl>  <dbl> <chr> <chr>  
+ 1        1     7    16  1977       2 NL      M          32     NA Neot… albigu…
+ 2        2     7    16  1977       3 NL      M          33     NA Neot… albigu…
+ 3        3     7    16  1977       2 DM      F          37     NA Dipo… merria…
+ 4        4     7    16  1977       7 DM      M          36     NA Dipo… merria…
+ 5        5     7    16  1977       3 DM      M          35     NA Dipo… merria…
+ 6        6     7    16  1977       1 PF      M          14     NA Pero… flavus 
+ 7        7     7    16  1977       2 PE      F          NA     NA Pero… eremic…
+ 8        8     7    16  1977       1 DM      M          37     NA Dipo… merria…
+ 9        9     7    16  1977       1 DM      F          34     NA Dipo… merria…
+10       10     7    16  1977       6 PF      F          20     NA Pero… flavus 
+# … with 16,868 more rows, 4 more variables: taxa <chr>, plot_type <chr>,
+#   weight_kg <dbl>, weight_lbs <dbl>, and abbreviated variable names
+#   ¹​record_id, ²​species_id, ³​hindfoot_length
 ```
 
 <!-- This next part could definitely be moved to the next lesson if need be -->
@@ -580,20 +583,21 @@ surveys %>%
 
 ```{.output}
 # A tibble: 16,878 × 14
-   record_id month   day  year plot_id species_id sex   hindfoot_length weight
-       <dbl> <dbl> <dbl> <dbl>   <dbl> <chr>      <chr>           <dbl>  <dbl>
- 1         1     7    16  1977       2 NL         M                  32     NA
- 2         2     7    16  1977       3 NL         M                  33     NA
- 3         3     7    16  1977       2 DM         F                  37     NA
- 4         4     7    16  1977       7 DM         M                  36     NA
- 5         5     7    16  1977       3 DM         M                  35     NA
- 6         6     7    16  1977       1 PF         M                  14     NA
- 7         7     7    16  1977       2 PE         F                  NA     NA
- 8         8     7    16  1977       1 DM         M                  37     NA
- 9         9     7    16  1977       1 DM         F                  34     NA
-10        10     7    16  1977       6 PF         F                  20     NA
-# … with 16,868 more rows, and 5 more variables: genus <chr>, species <chr>,
-#   taxa <chr>, plot_type <chr>, date <chr>
+   record…¹ month   day  year plot_id speci…² sex   hindf…³ weight genus species
+      <dbl> <dbl> <dbl> <dbl>   <dbl> <chr>   <chr>   <dbl>  <dbl> <chr> <chr>  
+ 1        1     7    16  1977       2 NL      M          32     NA Neot… albigu…
+ 2        2     7    16  1977       3 NL      M          33     NA Neot… albigu…
+ 3        3     7    16  1977       2 DM      F          37     NA Dipo… merria…
+ 4        4     7    16  1977       7 DM      M          36     NA Dipo… merria…
+ 5        5     7    16  1977       3 DM      M          35     NA Dipo… merria…
+ 6        6     7    16  1977       1 PF      M          14     NA Pero… flavus 
+ 7        7     7    16  1977       2 PE      F          NA     NA Pero… eremic…
+ 8        8     7    16  1977       1 DM      M          37     NA Dipo… merria…
+ 9        9     7    16  1977       1 DM      F          34     NA Dipo… merria…
+10       10     7    16  1977       6 PF      F          20     NA Pero… flavus 
+# … with 16,868 more rows, 3 more variables: taxa <chr>, plot_type <chr>,
+#   date <chr>, and abbreviated variable names ¹​record_id, ²​species_id,
+#   ³​hindfoot_length
 ```
 
 Since our new column gets moved all the way to the end, it doesn't end up printing out. We can use the `relocate()` function to put it after our `year` column:
@@ -607,20 +611,21 @@ surveys %>%
 
 ```{.output}
 # A tibble: 16,878 × 14
-   record_id month   day  year date     plot_id species_id sex   hindfoot_length
-       <dbl> <dbl> <dbl> <dbl> <chr>      <dbl> <chr>      <chr>           <dbl>
- 1         1     7    16  1977 1977-7-…       2 NL         M                  32
- 2         2     7    16  1977 1977-7-…       3 NL         M                  33
- 3         3     7    16  1977 1977-7-…       2 DM         F                  37
- 4         4     7    16  1977 1977-7-…       7 DM         M                  36
- 5         5     7    16  1977 1977-7-…       3 DM         M                  35
- 6         6     7    16  1977 1977-7-…       1 PF         M                  14
- 7         7     7    16  1977 1977-7-…       2 PE         F                  NA
- 8         8     7    16  1977 1977-7-…       1 DM         M                  37
- 9         9     7    16  1977 1977-7-…       1 DM         F                  34
-10        10     7    16  1977 1977-7-…       6 PF         F                  20
-# … with 16,868 more rows, and 5 more variables: weight <dbl>, genus <chr>,
-#   species <chr>, taxa <chr>, plot_type <chr>
+   record_id month   day  year date   plot_id speci…¹ sex   hindf…² weight genus
+       <dbl> <dbl> <dbl> <dbl> <chr>    <dbl> <chr>   <chr>   <dbl>  <dbl> <chr>
+ 1         1     7    16  1977 1977-…       2 NL      M          32     NA Neot…
+ 2         2     7    16  1977 1977-…       3 NL      M          33     NA Neot…
+ 3         3     7    16  1977 1977-…       2 DM      F          37     NA Dipo…
+ 4         4     7    16  1977 1977-…       7 DM      M          36     NA Dipo…
+ 5         5     7    16  1977 1977-…       3 DM      M          35     NA Dipo…
+ 6         6     7    16  1977 1977-…       1 PF      M          14     NA Pero…
+ 7         7     7    16  1977 1977-…       2 PE      F          NA     NA Pero…
+ 8         8     7    16  1977 1977-…       1 DM      M          37     NA Dipo…
+ 9         9     7    16  1977 1977-…       1 DM      F          34     NA Dipo…
+10        10     7    16  1977 1977-…       6 PF      F          20     NA Pero…
+# … with 16,868 more rows, 3 more variables: species <chr>, taxa <chr>,
+#   plot_type <chr>, and abbreviated variable names ¹​species_id,
+#   ²​hindfoot_length
 ```
 
 Now we can see that we have a character column that contains our date string. However, it's not truly a date column. Dates are a type of numeric variable with a defined, ordered scale. To turn this column into a proper date, we will use a function from the `tidyverse`'s `lubridate` package, which has lots of useful functions for working with dates. The function `ymd()` will parse a date string that has the order year-month-day. Let's load the package and use `ymd()`.
@@ -650,20 +655,21 @@ surveys %>%
 
 ```{.output}
 # A tibble: 16,878 × 14
-   record_id month   day  year date       plot_id species_id sex  
-       <dbl> <dbl> <dbl> <dbl> <date>       <dbl> <chr>      <chr>
- 1         1     7    16  1977 1977-07-16       2 NL         M    
- 2         2     7    16  1977 1977-07-16       3 NL         M    
- 3         3     7    16  1977 1977-07-16       2 DM         F    
- 4         4     7    16  1977 1977-07-16       7 DM         M    
- 5         5     7    16  1977 1977-07-16       3 DM         M    
- 6         6     7    16  1977 1977-07-16       1 PF         M    
- 7         7     7    16  1977 1977-07-16       2 PE         F    
- 8         8     7    16  1977 1977-07-16       1 DM         M    
- 9         9     7    16  1977 1977-07-16       1 DM         F    
-10        10     7    16  1977 1977-07-16       6 PF         F    
-# … with 16,868 more rows, and 6 more variables: hindfoot_length <dbl>,
-#   weight <dbl>, genus <chr>, species <chr>, taxa <chr>, plot_type <chr>
+   record_id month   day  year date       plot_id species…¹ sex   hindf…² weight
+       <dbl> <dbl> <dbl> <dbl> <date>       <dbl> <chr>     <chr>   <dbl>  <dbl>
+ 1         1     7    16  1977 1977-07-16       2 NL        M          32     NA
+ 2         2     7    16  1977 1977-07-16       3 NL        M          33     NA
+ 3         3     7    16  1977 1977-07-16       2 DM        F          37     NA
+ 4         4     7    16  1977 1977-07-16       7 DM        M          36     NA
+ 5         5     7    16  1977 1977-07-16       3 DM        M          35     NA
+ 6         6     7    16  1977 1977-07-16       1 PF        M          14     NA
+ 7         7     7    16  1977 1977-07-16       2 PE        F          NA     NA
+ 8         8     7    16  1977 1977-07-16       1 DM        M          37     NA
+ 9         9     7    16  1977 1977-07-16       1 DM        F          34     NA
+10        10     7    16  1977 1977-07-16       6 PF        F          20     NA
+# … with 16,868 more rows, 4 more variables: genus <chr>, species <chr>,
+#   taxa <chr>, plot_type <chr>, and abbreviated variable names ¹​species_id,
+#   ²​hindfoot_length
 ```
 
 <!-- This isn't strictly necessary to show, but I think it's good to reenforce what a pipe is really doing, and it's actually a useful approach with more complex mutates -->
@@ -680,20 +686,21 @@ surveys %>%
 
 ```{.output}
 # A tibble: 16,878 × 14
-   record_id month   day  year date       plot_id species_id sex  
-       <dbl> <dbl> <dbl> <dbl> <date>       <dbl> <chr>      <chr>
- 1         1     7    16  1977 1977-07-16       2 NL         M    
- 2         2     7    16  1977 1977-07-16       3 NL         M    
- 3         3     7    16  1977 1977-07-16       2 DM         F    
- 4         4     7    16  1977 1977-07-16       7 DM         M    
- 5         5     7    16  1977 1977-07-16       3 DM         M    
- 6         6     7    16  1977 1977-07-16       1 PF         M    
- 7         7     7    16  1977 1977-07-16       2 PE         F    
- 8         8     7    16  1977 1977-07-16       1 DM         M    
- 9         9     7    16  1977 1977-07-16       1 DM         F    
-10        10     7    16  1977 1977-07-16       6 PF         F    
-# … with 16,868 more rows, and 6 more variables: hindfoot_length <dbl>,
-#   weight <dbl>, genus <chr>, species <chr>, taxa <chr>, plot_type <chr>
+   record_id month   day  year date       plot_id species…¹ sex   hindf…² weight
+       <dbl> <dbl> <dbl> <dbl> <date>       <dbl> <chr>     <chr>   <dbl>  <dbl>
+ 1         1     7    16  1977 1977-07-16       2 NL        M          32     NA
+ 2         2     7    16  1977 1977-07-16       3 NL        M          33     NA
+ 3         3     7    16  1977 1977-07-16       2 DM        F          37     NA
+ 4         4     7    16  1977 1977-07-16       7 DM        M          36     NA
+ 5         5     7    16  1977 1977-07-16       3 DM        M          35     NA
+ 6         6     7    16  1977 1977-07-16       1 PF        M          14     NA
+ 7         7     7    16  1977 1977-07-16       2 PE        F          NA     NA
+ 8         8     7    16  1977 1977-07-16       1 DM        M          37     NA
+ 9         9     7    16  1977 1977-07-16       1 DM        F          34     NA
+10        10     7    16  1977 1977-07-16       6 PF        F          20     NA
+# … with 16,868 more rows, 4 more variables: genus <chr>, species <chr>,
+#   taxa <chr>, plot_type <chr>, and abbreviated variable names ¹​species_id,
+#   ²​hindfoot_length
 ```
 
 ```r
@@ -706,20 +713,21 @@ surveys %>%
 
 ```{.output}
 # A tibble: 16,878 × 14
-   record_id month   day  year date       plot_id species_id sex  
-       <dbl> <dbl> <dbl> <dbl> <date>       <dbl> <chr>      <chr>
- 1         1     7    16  1977 1977-07-16       2 NL         M    
- 2         2     7    16  1977 1977-07-16       3 NL         M    
- 3         3     7    16  1977 1977-07-16       2 DM         F    
- 4         4     7    16  1977 1977-07-16       7 DM         M    
- 5         5     7    16  1977 1977-07-16       3 DM         M    
- 6         6     7    16  1977 1977-07-16       1 PF         M    
- 7         7     7    16  1977 1977-07-16       2 PE         F    
- 8         8     7    16  1977 1977-07-16       1 DM         M    
- 9         9     7    16  1977 1977-07-16       1 DM         F    
-10        10     7    16  1977 1977-07-16       6 PF         F    
-# … with 16,868 more rows, and 6 more variables: hindfoot_length <dbl>,
-#   weight <dbl>, genus <chr>, species <chr>, taxa <chr>, plot_type <chr>
+   record_id month   day  year date       plot_id species…¹ sex   hindf…² weight
+       <dbl> <dbl> <dbl> <dbl> <date>       <dbl> <chr>     <chr>   <dbl>  <dbl>
+ 1         1     7    16  1977 1977-07-16       2 NL        M          32     NA
+ 2         2     7    16  1977 1977-07-16       3 NL        M          33     NA
+ 3         3     7    16  1977 1977-07-16       2 DM        F          37     NA
+ 4         4     7    16  1977 1977-07-16       7 DM        M          36     NA
+ 5         5     7    16  1977 1977-07-16       3 DM        M          35     NA
+ 6         6     7    16  1977 1977-07-16       1 PF        M          14     NA
+ 7         7     7    16  1977 1977-07-16       2 PE        F          NA     NA
+ 8         8     7    16  1977 1977-07-16       1 DM        M          37     NA
+ 9         9     7    16  1977 1977-07-16       1 DM        F          34     NA
+10        10     7    16  1977 1977-07-16       6 PF        F          20     NA
+# … with 16,868 more rows, 4 more variables: genus <chr>, species <chr>,
+#   taxa <chr>, plot_type <chr>, and abbreviated variable names ¹​species_id,
+#   ²​hindfoot_length
 ```
 
 ::::::::::::::::::::::::::::::::::::: challenge 
@@ -946,20 +954,20 @@ surveys %>%
 ```{.output}
 # A tibble: 16,878 × 13
 # Groups:   species_id, sex [67]
-   record_id month   day  year plot_id species_id sex   hindfoot_length weight
-       <dbl> <dbl> <dbl> <dbl>   <dbl> <chr>      <chr>           <dbl>  <dbl>
- 1         1     7    16  1977       2 NL         M                  32     NA
- 2         2     7    16  1977       3 NL         M                  33     NA
- 3         3     7    16  1977       2 DM         F                  37     NA
- 4         4     7    16  1977       7 DM         M                  36     NA
- 5         5     7    16  1977       3 DM         M                  35     NA
- 6         6     7    16  1977       1 PF         M                  14     NA
- 7         7     7    16  1977       2 PE         F                  NA     NA
- 8         8     7    16  1977       1 DM         M                  37     NA
- 9         9     7    16  1977       1 DM         F                  34     NA
-10        10     7    16  1977       6 PF         F                  20     NA
-# … with 16,868 more rows, and 4 more variables: genus <chr>, species <chr>,
-#   taxa <chr>, plot_type <chr>
+   record…¹ month   day  year plot_id speci…² sex   hindf…³ weight genus species
+      <dbl> <dbl> <dbl> <dbl>   <dbl> <chr>   <chr>   <dbl>  <dbl> <chr> <chr>  
+ 1        1     7    16  1977       2 NL      M          32     NA Neot… albigu…
+ 2        2     7    16  1977       3 NL      M          33     NA Neot… albigu…
+ 3        3     7    16  1977       2 DM      F          37     NA Dipo… merria…
+ 4        4     7    16  1977       7 DM      M          36     NA Dipo… merria…
+ 5        5     7    16  1977       3 DM      M          35     NA Dipo… merria…
+ 6        6     7    16  1977       1 PF      M          14     NA Pero… flavus 
+ 7        7     7    16  1977       2 PE      F          NA     NA Pero… eremic…
+ 8        8     7    16  1977       1 DM      M          37     NA Dipo… merria…
+ 9        9     7    16  1977       1 DM      F          34     NA Dipo… merria…
+10       10     7    16  1977       6 PF      F          20     NA Pero… flavus 
+# … with 16,868 more rows, 2 more variables: taxa <chr>, plot_type <chr>, and
+#   abbreviated variable names ¹​record_id, ²​species_id, ³​hindfoot_length
 ```
 
 What we get back is the entire `surveys` data.frame, but with the grouping variables added: 67 groups of `species_id` + `sex` combinations. Groups are often maintained throughout a pipeline, and if you assign the resulting data.frame to a new object, it will also have those groups. This can lead to confusing results if you forget about the grouping and want to carry out operations on the whole data.frame, not by group. Therefore, it is a good habit to remove the groups at the end of a pipeline containing `group_by()`:
@@ -1013,20 +1021,21 @@ surveys %>%
 ```{.output}
 # A tibble: 15,186 × 15
 # Groups:   species_id, sex [46]
-   record_id month   day  year plot_id species_id sex   hindfoot_length weight
-       <dbl> <dbl> <dbl> <dbl>   <dbl> <chr>      <chr>           <dbl>  <dbl>
- 1        63     8    19  1977       3 DM         M                  35     40
- 2        64     8    19  1977       7 DM         M                  37     48
- 3        65     8    19  1977       4 DM         F                  34     29
- 4        66     8    19  1977       4 DM         F                  35     46
- 5        67     8    19  1977       7 DM         M                  35     36
- 6        68     8    19  1977       8 DO         F                  32     52
- 7        69     8    19  1977       2 PF         M                  15      8
- 8        70     8    19  1977       3 OX         F                  21     22
- 9        71     8    19  1977       7 DM         F                  36     35
-10        74     8    19  1977       8 PF         M                  12      7
-# … with 15,176 more rows, and 6 more variables: genus <chr>, species <chr>,
-#   taxa <chr>, plot_type <chr>, mean_weight <dbl>, weight_diff <dbl>
+   record…¹ month   day  year plot_id speci…² sex   hindf…³ weight genus species
+      <dbl> <dbl> <dbl> <dbl>   <dbl> <chr>   <chr>   <dbl>  <dbl> <chr> <chr>  
+ 1       63     8    19  1977       3 DM      M          35     40 Dipo… merria…
+ 2       64     8    19  1977       7 DM      M          37     48 Dipo… merria…
+ 3       65     8    19  1977       4 DM      F          34     29 Dipo… merria…
+ 4       66     8    19  1977       4 DM      F          35     46 Dipo… merria…
+ 5       67     8    19  1977       7 DM      M          35     36 Dipo… merria…
+ 6       68     8    19  1977       8 DO      F          32     52 Dipo… ordii  
+ 7       69     8    19  1977       2 PF      M          15      8 Pero… flavus 
+ 8       70     8    19  1977       3 OX      F          21     22 Onyc… sp.    
+ 9       71     8    19  1977       7 DM      F          36     35 Dipo… merria…
+10       74     8    19  1977       8 PF      M          12      7 Pero… flavus 
+# … with 15,176 more rows, 4 more variables: taxa <chr>, plot_type <chr>,
+#   mean_weight <dbl>, weight_diff <dbl>, and abbreviated variable names
+#   ¹​record_id, ²​species_id, ³​hindfoot_length
 ```
 
 Since we get all our columns back, the new columns are at the very end and don't print out in the console. Let's use `select()` to just look at the columns of interest. Inside `select()` we can use the `contains()` function to get any column containing the word "weight" in the name:
@@ -1174,29 +1183,30 @@ sp_by_plot_wide
 ```{.output}
 # A tibble: 18 × 25
 # Groups:   species_id [18]
-   species_id    `3`   `21`    `1`    `2`    `4`   `5`    `6`   `7`    `8`
-   <chr>       <dbl>  <dbl>  <dbl>  <dbl>  <dbl> <dbl>  <dbl> <dbl>  <dbl>
- 1 BA           8      6.5   NA     NA     NA     NA    NA     NA    NA   
- 2 DM          41.2   41.5   42.7   42.6   41.9   42.6  42.1   43.2  43.4 
- 3 DO          42.7   NA     50.1   50.3   46.8   50.4  49.0   52    49.2 
- 4 DS         128.    NA    129.   125.   118.   111.  114.   126.  128.  
- 5 NL         171.   136.   154.   171.   164.   192.  176.   170.  134.  
- 6 OL          32.1   28.6   35.5   34     33.0   32.6  31.8   NA    30.3 
- 7 OT          24.1   24.1   23.7   24.9   26.5   23.6  23.5   22    24.1 
- 8 OX          22     NA     NA     22     NA     20    NA     NA    NA   
- 9 PE          22.7   19.6   21.6   22.0   NA     21    21.6   22.8  19.4 
-10 PF           7.12   7.23   6.57   6.89   6.75   7.5   7.54   7     6.78
-11 PH          28     31     NA     NA     NA     29    NA     NA    NA   
-12 PM          20.1   23.6   23.7   23.9   NA     23.7  22.3   23.4  23   
-13 PP          17.1   13.6   14.3   16.4   14.8   19.8  16.8   NA    13.9 
-14 RF          14.8   17     NA     16     NA     14    12.1   13    NA   
-15 RM          10.3    9.89  10.9   10.6   10.4   10.8  10.6   10.7   9   
-16 SF          NA     49     NA     NA     NA     NA    NA     NA    NA   
-17 SH          76.0   79.9   NA     88     NA     82.7  NA     NA    NA   
-18 SS          NA     NA     NA     NA     NA     NA    NA     NA    NA   
-# … with 15 more variables: `9` <dbl>, `10` <dbl>, `11` <dbl>, `12` <dbl>,
-#   `13` <dbl>, `14` <dbl>, `15` <dbl>, `16` <dbl>, `17` <dbl>, `18` <dbl>,
-#   `19` <dbl>, `20` <dbl>, `22` <dbl>, `23` <dbl>, `24` <dbl>
+   species…¹    `3`   `21`    `1`    `2`    `4`   `5`    `6`   `7`    `8`    `9`
+   <chr>      <dbl>  <dbl>  <dbl>  <dbl>  <dbl> <dbl>  <dbl> <dbl>  <dbl>  <dbl>
+ 1 BA          8      6.5   NA     NA     NA     NA    NA     NA    NA     NA   
+ 2 DM         41.2   41.5   42.7   42.6   41.9   42.6  42.1   43.2  43.4   43.1 
+ 3 DO         42.7   NA     50.1   50.3   46.8   50.4  49.0   52    49.2   49.0 
+ 4 DS        128.    NA    129.   125.   118.   111.  114.   126.  128.   115.  
+ 5 NL        171.   136.   154.   171.   164.   192.  176.   170.  134.   165   
+ 6 OL         32.1   28.6   35.5   34     33.0   32.6  31.8   NA    30.3   32.0 
+ 7 OT         24.1   24.1   23.7   24.9   26.5   23.6  23.5   22    24.1   23.1 
+ 8 OX         22     NA     NA     22     NA     20    NA     NA    NA     NA   
+ 9 PE         22.7   19.6   21.6   22.0   NA     21    21.6   22.8  19.4   22.1 
+10 PF          7.12   7.23   6.57   6.89   6.75   7.5   7.54   7     6.78   7.29
+11 PH         28     31     NA     NA     NA     29    NA     NA    NA     NA   
+12 PM         20.1   23.6   23.7   23.9   NA     23.7  22.3   23.4  23     21   
+13 PP         17.1   13.6   14.3   16.4   14.8   19.8  16.8   NA    13.9   14.8 
+14 RF         14.8   17     NA     16     NA     14    12.1   13    NA     NA   
+15 RM         10.3    9.89  10.9   10.6   10.4   10.8  10.6   10.7   9      9.6 
+16 SF         NA     49     NA     NA     NA     NA    NA     NA    NA     NA   
+17 SH         76.0   79.9   NA     88     NA     82.7  NA     NA    NA     NA   
+18 SS         NA     NA     NA     NA     NA     NA    NA     NA    NA     NA   
+# … with 14 more variables: `10` <dbl>, `11` <dbl>, `12` <dbl>, `13` <dbl>,
+#   `14` <dbl>, `15` <dbl>, `16` <dbl>, `17` <dbl>, `18` <dbl>, `19` <dbl>,
+#   `20` <dbl>, `22` <dbl>, `23` <dbl>, `24` <dbl>, and abbreviated variable
+#   name ¹​species_id
 ```
 
 Now we've got our reshaped data.frame. There are a few things to notice. First, we have a new column for each `plot_id` value. There is one old column left in the data.frame: `species_id`. It wasn't used in `pivot_wider()`, so it stays, and now contains a single entry for each unique `species_id` value. 
