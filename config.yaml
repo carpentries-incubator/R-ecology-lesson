@@ -11,7 +11,7 @@
 carpentry: 'dc'
 
 # Overall title for pages.
-title: 'R-ecology-lesson'
+title: 'Data Analysis and Visualization in R for Ecologists'
 
 # Date the lesson was created (YYYY-MM-DD, this is empty by default)
 created: ~
