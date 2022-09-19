@@ -23,7 +23,7 @@ exercises: 3
 
 ## Setup
 
-```{r setup, include=F}
+```{r setup, include=FALSE}
 knitr::opts_chunk$set(dpi = 200, out.height = 600, out.width = 600, R.options = list(max.print = 100))
 ```
 
@@ -299,7 +299,7 @@ rep(1:10, each = 4)
 
 1. Write some code to generate the following vector:
 
-```{r seq-chalenge, echo=F}
+```{r seq-chalenge, echo=FALSE}
 rep(-3:3, 3)
 ```
 
@@ -419,7 +419,7 @@ We've already created quite a few objects in R using the `<-` assignment arrow, 
 
 What is the value of `y` after running the following code?
 
-```{r assignment-challenge, eval=F}
+```{r assignment-challenge, eval=FALSE}
 x <- 5
 y <- x
 x <- 10
