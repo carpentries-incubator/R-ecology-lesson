@@ -750,7 +750,7 @@ surveys %>%
 Warning: Removed 1692 rows containing missing values (geom_point).
 ```
 
-<img src="fig/03-working-with-data-rendered-date-plot-challenge-answer-1.png" width="600" height="600" style="display: block; margin: auto;" />
+<img src="fig/working-with-data-rendered-date-plot-challenge-answer-1.png" width="600" height="600" style="display: block; margin: auto;" />
 
 This isn't necessarily the most useful plot, but we will learn some techniques that will help produce nice time series plots
 
@@ -1111,7 +1111,7 @@ surveys_daily_counts %>%
   geom_line()
 ```
 
-<img src="fig/03-working-with-data-rendered-time-series-challenge-answer-1.png" width="600" height="600" style="display: block; margin: auto;" />
+<img src="fig/working-with-data-rendered-time-series-challenge-answer-1.png" width="600" height="600" style="display: block; margin: auto;" />
 
 ::::::::::::::::::::::::
 
