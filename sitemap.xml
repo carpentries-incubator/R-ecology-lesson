@@ -31,6 +31,12 @@
     <loc>https://carpentries-incubator.github.io/R-ecology-lesson/aio.html</loc>
   </url>
   <url>
+    <loc>https://carpentries-incubator.github.io/R-ecology-lesson/extra-challenges.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/R-ecology-lesson/how-r-thinks-about-data.html</loc>
+  </url>
+  <url>
     <loc>https://carpentries-incubator.github.io/R-ecology-lesson/images.html</loc>
   </url>
   <url>
@@ -64,6 +70,12 @@
     <loc>https://carpentries-incubator.github.io/R-ecology-lesson/instructor/aio.html</loc>
   </url>
   <url>
+    <loc>https://carpentries-incubator.github.io/R-ecology-lesson/instructor/extra-challenges.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/R-ecology-lesson/instructor/how-r-thinks-about-data.html</loc>
+  </url>
+  <url>
     <loc>https://carpentries-incubator.github.io/R-ecology-lesson/instructor/images.html</loc>
   </url>
   <url>
@@ -71,6 +83,9 @@
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/R-ecology-lesson/instructor/instructor-notes.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/R-ecology-lesson/instructor/introduction-r-rstudio.html</loc>
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/R-ecology-lesson/instructor/key-points.html</loc>
@@ -85,7 +100,16 @@
     <loc>https://carpentries-incubator.github.io/R-ecology-lesson/instructor/update_plan.html</loc>
   </url>
   <url>
+    <loc>https://carpentries-incubator.github.io/R-ecology-lesson/instructor/visualizing-ggplot.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/R-ecology-lesson/instructor/working-with-data.html</loc>
+  </url>
+  <url>
     <loc>https://carpentries-incubator.github.io/R-ecology-lesson/instructor-notes.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/R-ecology-lesson/introduction-r-rstudio.html</loc>
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/R-ecology-lesson/key-points.html</loc>
@@ -104,5 +128,11 @@
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/R-ecology-lesson/update_plan.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/R-ecology-lesson/visualizing-ggplot.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/R-ecology-lesson/working-with-data.html</loc>
   </url>
 </urlset>
