@@ -43,13 +43,13 @@ It is a good practice not to put `install.packages()` into a script. This is bec
 
 :::::::::::::::::::::::::::::::::::::
 
-```{r load-tidyverse-package, message=FALSEALSE}
+```{r load-tidyverse-package, message=FALSE}
 library(ggplot2)
 ```
 
 Later we will learn how to read data from external files into R, but for now we are going to use a clean and ready-to-use dataset that is provided by the **`ratdat`** data package. To make our dataset available, we need to load this package too.
 
-```{r load-ratdat-package,message=FALSEALSE}
+```{r load-ratdat-package,message=FALSE}
 library(ratdat)
 ```
 
