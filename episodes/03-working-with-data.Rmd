@@ -332,6 +332,11 @@ surveys %>%
   mutate(date = paste(year, month, day, sep = "-"),
          date = ymd(date)) %>% 
   relocate(date, .after = year)
+
+surveys %>% 
+  mutate(date = paste(year, month, day, sep = "-"),
+         date = as.Date(date)) %>% 
+  relocate(date, .after = year)
 ```
 
 <!-- This isn't strictly necessary to show, but I think it's good to reenforce what a pipe is really doing, and it's actually a useful approach with more complex mutates -->

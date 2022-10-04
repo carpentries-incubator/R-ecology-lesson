@@ -55,13 +55,21 @@ library(ratdat)
 
 The `ratdat` package contains data from the [Portal Project](https://github.com/weecology/PortalData), which is a long-term dataset from Portal, Arizona, in the Chihuahuan desert. 
 
-Let's take a look at the data briefly. We can use a `?` in front of the name of the dataset we'll be using, which will bring up the help page for the data.
+We will be using a dataset called `complete_old`, which contains older years of survey data. Let's try to learn a little bit about the data. We can use a `?` in front of the name of the dataset, which will bring up the help page for the data.
 
 ```{r data-help}
 ?complete_old
 ```
 
 Here we can read descriptions of each variable in our data.
+
+To actually take a look at the data, we can use the `View()` function to open an interactive viewer, which behaves like a simplified version of a spreadsheet program. It's a handy function, but somewhat limited when trying to view large datasets.
+
+```{r view-data, eval=FALSE}
+View(complete_old)
+```
+
+If you hover over the tab for the interactive `View()`, you can click the "x" that appears, which will close the tab.
 
 We can find out more about the dataset by using the `str()` function to examine the **str**ucture of the data.
 
@@ -186,7 +194,7 @@ This time we have an extra closing `)`, which R doesn't know what to do with. It
 
 ### Adding another variable
 
-Let's try coloring our points according to the plot type. Since we're now mapping a variable (`plot_type`) to a component of the plot (`color`), we need to put the argument inside `aes()`:
+Let's try coloring our points according to the sampling plot type (plot here refers to the physical area where rodents were sampled and has nothing to do with making graphs). Since we're now mapping a variable (`plot_type`) to a component of the ggplot2 plot (`color`), we need to put the argument inside `aes()`:
 
 ```{r color-plot-type, warning=F}
 ggplot(data = complete_old, mapping = aes(x = weight, y = hindfoot_length, color = plot_type)) +
