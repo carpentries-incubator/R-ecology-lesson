@@ -289,7 +289,7 @@
         
 <section id="aio-introduction-r-rstudio"><p>Content from <a href="introduction-r-rstudio.html">Introduction to R and RStudio</a></p>
 <hr>
-<p> Last updated on 2022-09-19 | <a href="https://github.com/carpentries-incubator/R-ecology-lesson/edit/main/episodes/introduction-r-rstudio.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<p> Last updated on 2022-10-04 | <a href="https://github.com/carpentries-incubator/R-ecology-lesson/edit/main/episodes/introduction-r-rstudio.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -398,7 +398,7 @@
 </h2>
 <hr class="half-width">
 <p>We will use the RStudio integrated development environment (IDE) to write code into scripts, run code in R, navigate files on our computer, inspect objects we create in R, and look at the plots we make. RStudio has many other features that can help with things like version control, developing R packages, and writing Shiny apps, but we won’t cover those in the workshop.</p>
-<figure><img src="fig/rstudio_screenshot.png" class="figure mx-auto d-block">{{alt=‘Screenshot of RStudio showing the 4 “panes”.’}}</figure><p>In the above screenshot, we can see 4 “panes” in the default layout:</p>
+<figure><img src="fig/rstudio_screenshot.png" alt='Screenshot of RStudio showing the 4 "panes".' class="figure mx-auto d-block"></figure><p>In the above screenshot, we can see 4 “panes” in the default layout:</p>
 <ul>
 <li>Top-Left: the <strong>Source</strong> pane that displays scripts and other files.
 <ul>
@@ -466,6 +466,7 @@
 </h3>
 <p>You can run commands directly in the R console, or you can write them into an R script. It may help to think of working in the console vs. working in a script as something like cooking. The console is like making up a new recipe, but not writing anything down. You can carry out a series of steps and produce a nice, tasty dish at the end. However, because you didn’t write anything down, it’s harder to figure out exactly what you did, and in what order.</p>
 <p>Writing a script is like taking nice notes while cooking- you can tweak and edit the recipe all you want, you can come back in 6 months and try it again, and you don’t have to try to remember what went well and what didn’t. It’s actually even easier than cooking, since you can hit one button and the computer “cooks” the whole recipe for you!</p>
+<p>An additional benefit of scripts is that you can leave <strong>comments</strong> for yourself or others to read. Lines that start with <code>#</code> are considered comments and will not be interpreted as R code.</p>
 <div class="section level4">
 <h4 id="console">Console<a class="anchor" aria-label="anchor" href="#console"></a>
 </h4>
@@ -488,9 +489,17 @@
 <kbd>Cmd+Enter</kbd> (Mac) or <kbd>Ctrl+Enter</kbd> (Windows) will run the line of code that your cursor is on</li>
 <li>If you highlight multiple lines of code, you can run all of them by pressing <kbd>Cmd+Enter</kbd> (Mac) or <kbd>Ctrl+Enter</kbd> (Windows)</li>
 <li>By preserving commands in a script, you can edit and rerun them quickly, save them for later, and share them with others</li>
+<li>You can leave comments for yourself by starting a line with a <code>#</code>
+</li>
 </ul>
 </li>
 </ul>
+</div>
+<div class="section level4">
+<h4 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+</h4>
+<p>Let’s try running some code in the console and in a script. First, click down in the Console pane, and type out <code>1+1</code>. Hit <kbd>Enter</kbd> to run the code. You should see your code echoed, and then the value of <code>2</code> returned.</p>
+<p>Now click into your blank script, and type out <code>1+1</code>. With your cursor on that line, hit <kbd>Cmd+Enter</kbd> (Mac) or <kbd>Ctrl+Enter</kbd> (Windows) to run the code. You will see that your code was sent from the script to the console, where it returned a value of <code>2</code>, just like when you ran your code directly in the console.</p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -512,7 +521,7 @@
 </div>
 </section></section><section id="aio-visualizing-ggplot"><p>Content from <a href="visualizing-ggplot.html">Data visualization with ggplot2</a></p>
 <hr>
-<p> Last updated on 2022-09-19 | <a href="https://github.com/carpentries-incubator/R-ecology-lesson/edit/main/episodes/visualizing-ggplot.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<p> Last updated on 2022-10-04 | <a href="https://github.com/carpentries-incubator/R-ecology-lesson/edit/main/episodes/visualizing-ggplot.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -581,7 +590,7 @@
 <code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">ratdat</span><span class="op">)</span></span></code></pre>
 </div>
 <p>The <code>ratdat</code> package contains data from the <a href="https://github.com/weecology/PortalData" class="external-link">Portal Project</a>, which is a long-term dataset from Portal, Arizona, in the Chihuahuan desert.</p>
-<p>Let’s take a look at the data briefly. We can use a <code>?</code> in front of the name of the dataset we’ll be using, which will bring up the help page for the data.</p>
+<p>We will be using a dataset called <code>complete_old</code>, which contains older years of survey data. Let’s try to learn a little bit about the data. We can use a <code>?</code> in front of the name of the dataset, which will bring up the help page for the data.</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -589,8 +598,16 @@
 <code class="sourceCode R"><span><span class="op">?</span><span class="va">complete_old</span></span></code></pre>
 </div>
 <p>Here we can read descriptions of each variable in our data.</p>
-<p>We can find out more about the dataset by using the <code>str()</code> function to examine the <strong>str</strong>ucture of the data.</p>
+<p>To actually take a look at the data, we can use the <code>View()</code> function to open an interactive viewer, which behaves like a simplified version of a spreadsheet program. It’s a handy function, but somewhat limited when trying to view large datasets.</p>
 <div class="codewrapper sourceCode" id="cb4">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">View</span><span class="op">(</span><span class="va">complete_old</span><span class="op">)</span></span></code></pre>
+</div>
+<p>If you hover over the tab for the interactive <code>View()</code>, you can click the “x” that appears, which will close the tab.</p>
+<p>We can find out more about the dataset by using the <code>str()</code> function to examine the <strong>str</strong>ucture of the data.</p>
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -634,20 +651,20 @@
 </div>
 </div>
 <p>To build a plot, we will use a basic template that can be used for different types of plots:</p>
-<div class="codewrapper sourceCode" id="cb6">
+<div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="sc">&lt;</span>DATA<span class="sc">&gt;</span>, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="sc">&lt;</span>MAPPINGS<span class="sc">&gt;</span>)) <span class="sc">+</span> <span class="er">&lt;</span>GEOM_FUNCTION<span class="sc">&gt;</span>()</span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="sc">&lt;</span>DATA<span class="sc">&gt;</span>, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="sc">&lt;</span>MAPPINGS<span class="sc">&gt;</span>)) <span class="sc">+</span> <span class="er">&lt;</span>GEOM_FUNCTION<span class="sc">&gt;</span>()</span></code></pre>
 </div>
 <p>We use the <code>ggplot()</code> function to create a plot. In order to tell it what data to use, we need to specify the <code>data</code> <strong>argument</strong>. An argument is an input that a function takes, and you set arguments using the <code>=</code> sign.</p>
-<div class="codewrapper sourceCode" id="cb7">
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">complete_old</span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="fig/visualizing-ggplot-rendered-bare-plot-1.png" width="600" height="600" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>We get a blank plot because we haven’t told <code>ggplot()</code> which variables we want to correspond to parts of the plot. We can specify the “mapping” of variables to plot elements, such as x/y coordinates, size, or shape, by using the <code>aes()</code> function. We’ll also add a comment, which is any line starting with a <code>#</code>. It’s a good idea to use comments to organize your code or clarify what you are doing.</p>
-<div class="codewrapper sourceCode" id="cb8">
+<div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -655,7 +672,7 @@
 <span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">complete_old</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">weight</span>, y <span class="op">=</span> <span class="va">hindfoot_length</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="fig/visualizing-ggplot-rendered-plot-with-axes-1.png" width="600" height="600" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Now we’ve got a plot with x and y axes corresponding to variables from <code>complete_old</code>. However, we haven’t specified how we want the data to be displayed. We do this using <code>geom_</code> functions, which specify the type of <code>geom</code>etry we want, such as points, lines, or bars. We can add a <code>geom_point()</code> layer to our plot by using the <code>+</code> sign. We indent onto a new line to make it easier to read, and we have to <strong>end</strong> the first line with the <code>+</code> sign.</p>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -678,7 +695,7 @@
 <div class="callout-content">
 <p><strong>Warning</strong> messages are one of a few ways R will communicate with you. Warnings can be thought of as a “heads up”. Nothing necessarily went <em>wrong</em>, but the author of that function wanted to draw your attention to something. In the above case, it’s worth knowing that some of the rows of your data were not plotted because they had missing data.</p>
 <p>A more serious type of message is an <strong>error</strong>. Here’s an example:</p>
-<div class="codewrapper sourceCode" id="cb11">
+<div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -698,7 +715,7 @@
 </h2>
 <hr class="half-width">
 <p>Building <strong><code>ggplot</code></strong> plots is often an iterative process, so we’ll continue developing the scatter plot we just made. You may have noticed that parts of our scatter plot have many overlapping points, making it difficult to see all the data. We can adjust the transparency of the points using the <code>alpha</code> argument, which takes a value between 0 and 1:</p>
-<div class="codewrapper sourceCode" id="cb13">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -706,7 +723,7 @@
 <span>  <span class="fu">geom_point</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="fig/visualizing-ggplot-rendered-change-alpha-1.png" width="600" height="600" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>We can also change the color of the points:</p>
-<div class="codewrapper sourceCode" id="cb14">
+<div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -723,27 +740,27 @@
 <div class="callout-content">
 <p>Two common issues you might run into when working in R are forgetting a closing bracket or a closing quote. Let’s take a look at what each one does.</p>
 <p>Try running the following code:</p>
-<div class="codewrapper sourceCode" id="cb15">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> complete_old, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> weight, <span class="at">y =</span> hindfoot_length)) <span class="sc">+</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">alpha =</span> <span class="fl">0.2</span></span></code></pre>
-</div>
-<p>You will see a <code>+</code> appear in your console. This is R telling you that it expects more input in order to finish running the code. It is missing a closing bracket to end the <code>geom_point</code> function call. You can hit <kbd>Esc</kbd> in the console to reset it.</p>
-<p>Something similar will happen if you run the following code:</p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> complete_old, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> weight, <span class="at">y =</span> hindfoot_length)) <span class="sc">+</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue, alpha = 0.2)</span></span></code></pre>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">alpha =</span> <span class="fl">0.2</span></span></code></pre>
 </div>
-<p>A missing quote at the end of <code>blue</code> means that the rest of the code is treated as part of the quote, which is a bit easier to see since RStudio displays character strings in a different color.</p>
-<p>You will get a different error message if you run the following code:</p>
+<p>You will see a <code>+</code> appear in your console. This is R telling you that it expects more input in order to finish running the code. It is missing a closing bracket to end the <code>geom_point</code> function call. You can hit <kbd>Esc</kbd> in the console to reset it.</p>
+<p>Something similar will happen if you run the following code:</p>
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> complete_old, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> weight, <span class="at">y =</span> hindfoot_length)) <span class="sc">+</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>)<span class="er">)</span></span></code></pre>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue, alpha = 0.2)</span></span></code></pre>
+</div>
+<p>A missing quote at the end of <code>blue</code> means that the rest of the code is treated as part of the quote, which is a bit easier to see since RStudio displays character strings in a different color.</p>
+<p>You will get a different error message if you run the following code:</p>
+<div class="codewrapper sourceCode" id="cb18">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> complete_old, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> weight, <span class="at">y =</span> hindfoot_length)) <span class="sc">+</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>)<span class="er">)</span></span></code></pre>
 </div>
 <p>This time we have an extra closing <code>)</code>, which R doesn’t know what to do with. It tells you there is an unexpected <code>)</code>, but it doesn’t pinpoint exactly where. With enough time working in R, you will get better at spotting mismatched brackets.</p>
 </div>
@@ -752,8 +769,8 @@
 <div class="section level3">
 <h3 id="adding-another-variable">Adding another variable<a class="anchor" aria-label="anchor" href="#adding-another-variable"></a>
 </h3>
-<p>Let’s try coloring our points according to the plot type. Since we’re now mapping a variable (<code>plot_type</code>) to a component of the plot (<code>color</code>), we need to put the argument inside <code>aes()</code>:</p>
-<div class="codewrapper sourceCode" id="cb18">
+<p>Let’s try coloring our points according to the sampling plot type (plot here refers to the physical area where rodents were sampled and has nothing to do with making graphs). Since we’re now mapping a variable (<code>plot_type</code>) to a component of the ggplot2 plot (<code>color</code>), we need to put the argument inside <code>aes()</code>:</p>
+<div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -784,7 +801,7 @@
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb19">
+<div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -820,7 +837,7 @@
 </button>
 <div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb20">
+<div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -840,7 +857,7 @@
 </h2>
 <hr class="half-width">
 <p>The default discrete color scale isn’t always ideal: it isn’t friendly to viewers with colorblindness and it doesn’t translate well to grayscale. However, <strong><code>ggplot2</code></strong> comes with quite a few other color scales, including the fantastic <code>viridis</code> scales, which are designed to be colorblind and grayscale friendly. We can change scales by adding <code>scale_</code> functions to our plots:</p>
-<div class="codewrapper sourceCode" id="cb21">
+<div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -849,7 +866,7 @@
 <span>  <span class="fu">scale_color_viridis_d</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="fig/visualizing-ggplot-rendered-scale-viridis-1.png" width="600" height="600" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Scales don’t just apply to colors- any plot component that you put inside <code>aes()</code> can be modified with <code>scale_</code> functions. Just as we modified the scale used to map <code>plot_type</code> to <code>color</code>, we can modify the way that <code>weight</code> is mapped to the <code>x</code> axis by using the <code>scale_x_log10()</code> function:</p>
-<div class="codewrapper sourceCode" id="cb22">
+<div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -862,14 +879,14 @@
 </h2>
 <hr class="half-width">
 <p>Let’s try making a different type of plot altogether. We’ll start off with our same basic building blocks using <code>ggplot()</code> and <code>aes()</code>.</p>
-<div class="codewrapper sourceCode" id="cb23">
+<div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">complete_old</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">plot_type</span>, y <span class="op">=</span> <span class="va">hindfoot_length</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="fig/visualizing-ggplot-rendered-blank-boxplot-1.png" width="600" height="600" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>This time, let’s try making a boxplot, which will have <code>plot_type</code> on the x axis and <code>hindfoot_length</code> on the y axis. We can do this by adding <code>geom_boxplot()</code> to our <code>ggplot()</code>:</p>
-<div class="codewrapper sourceCode" id="cb24">
+<div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -882,7 +899,7 @@
 <pre class="warning" tabindex="0"><code>Warning: Removed 2733 rows containing non-finite values (stat_boxplot).</code></pre>
 </div>
 <figure><img src="fig/visualizing-ggplot-rendered-boxplot-1.png" width="600" height="600" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Just as we colored the points before, we can color our boxplot by <code>plot_type</code> as well:</p>
-<div class="codewrapper sourceCode" id="cb26">
+<div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -890,7 +907,7 @@
 <span>  <span class="fu">geom_boxplot</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="fig/visualizing-ggplot-rendered-boxplot-color-1.png" width="600" height="600" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>It looks like <code>color</code> has only affected the outlines of the boxplot, not the rectangular portions. This is because the <code>color</code> only impacts 1-dimensional parts of a <code>ggplot</code>: points and lines. To change the color of 2-dimensional parts of a plot, we use <code>fill</code>:</p>
-<div class="codewrapper sourceCode" id="cb27">
+<div class="codewrapper sourceCode" id="cb28">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -907,7 +924,7 @@
 <div class="callout-content">
 <p>One thing you may notice is that the axis labels are overlapping each other, depending on how wide your plot viewer is. One way to help make them more legible is to <strong>wrap</strong> the text. We can do that by modifying the <strong>labels</strong> for the <code>x</code> axis <code>scale</code>.</p>
 <p>We use the <code>scale_x_discrete()</code> function because we have a discrete axis, and we modify the <code>labels</code> argument. The function <code>label_wrap_gen()</code> will wrap the text of the labels to make them more legible.</p>
-<div class="codewrapper sourceCode" id="cb28">
+<div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -924,7 +941,7 @@
 <hr class="half-width">
 <p>One of the most powerful aspects of <strong><code>ggplot</code></strong> is the way we can add components to a plot in successive layers. While boxplots can be very useful for summarizing data, it is often helpful to show the raw data as well. With <strong><code>ggplot</code></strong>, we can easily add another <code>geom_</code> to our plot to show the raw data.</p>
 <p>Let’s add <code>geom_point()</code> to visualize the raw data. We will modify the <code>alpha</code> argument to help with overplotting.</p>
-<div class="codewrapper sourceCode" id="cb29">
+<div class="codewrapper sourceCode" id="cb30">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -933,7 +950,7 @@
 <span>  <span class="fu">geom_point</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="fig/visualizing-ggplot-rendered-boxplot-points-1.png" width="600" height="600" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Uh oh… all our points for a given <code>x</code> axis category fall exactly on a line, which isn’t very useful. We can shift to using <code>geom_jitter()</code>, which will add points with a bit of random noise added to the positions to prevent this from happening.</p>
-<div class="codewrapper sourceCode" id="cb30">
+<div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -942,7 +959,7 @@
 <span>  <span class="fu">geom_jitter</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="fig/visualizing-ggplot-rendered-boxplot-jitter-1.png" width="600" height="600" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>You may have noticed that some of our data points are now appearing on our plot twice: the outliers are plotted as black points from <code>geom_boxplot()</code>, but they are also plotted with <code>geom_jitter()</code>. Since we don’t want to represent these data multiple times in the same form (points), we can stop <code>geom_boxplot()</code> from plotting them. We do this by setting the <code>outlier.shape</code> argument to <code>NA</code>, which means the outliers don’t have a shape to be plotted.</p>
-<div class="codewrapper sourceCode" id="cb31">
+<div class="codewrapper sourceCode" id="cb32">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -951,7 +968,7 @@
 <span>  <span class="fu">geom_jitter</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="fig/visualizing-ggplot-rendered-boxplot-outliers-1.png" width="600" height="600" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Just as before, we can map <code>plot_type</code> to <code>color</code> by putting it inside <code>aes()</code>.</p>
-<div class="codewrapper sourceCode" id="cb32">
+<div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -961,7 +978,7 @@
 </div>
 <figure><img src="fig/visualizing-ggplot-rendered-global-color-1.png" width="600" height="600" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Notice that both the color of the points and the color of the boxplot lines changed. Any time we specify an <code>aes()</code> mapping inside our initial <code>ggplot()</code> function, that mapping will apply to all our <code>geom</code>s.</p>
 <p>If we want to limit the mapping to a single <code>geom</code>, we can put the mapping into the specific <code>geom_</code> function, like this:</p>
-<div class="codewrapper sourceCode" id="cb33">
+<div class="codewrapper sourceCode" id="cb34">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -970,7 +987,7 @@
 <span>  <span class="fu">geom_jitter</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>color <span class="op">=</span> <span class="va">plot_type</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="fig/visualizing-ggplot-rendered-geom-color-1.png" width="600" height="600" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Now our points are colored according to <code>plot_type</code>, but the boxplots are all the same color. One thing you might notice is that even with <code>alpha = 0.2</code>, the points obscure parts of the boxplot. This is because the <code>geom_point()</code> layer comes after the <code>geom_boxplot()</code> layer, which means the points are plotted on top of the boxes. To put the boxplots on top, we switch the order of the layers:</p>
-<div class="codewrapper sourceCode" id="cb34">
+<div class="codewrapper sourceCode" id="cb35">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -979,7 +996,7 @@
 <span>  <span class="fu">geom_boxplot</span><span class="op">(</span>outlier.shape <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="fig/visualizing-ggplot-rendered-reverse-layers-1.png" width="600" height="600" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Now we have the opposite problem! The white <code>fill</code> of the boxplots completely obscures some of the points. To address this problem, we can remove the <code>fill</code> from the boxplots altogether, leaving only the black lines. To do this, we set <code>fill</code> to <code>NA</code>:</p>
-<div class="codewrapper sourceCode" id="cb35">
+<div class="codewrapper sourceCode" id="cb36">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1010,7 +1027,7 @@
 </button>
 <div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb36">
+<div class="codewrapper sourceCode" id="cb37">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1047,7 +1064,7 @@
 </button>
 <div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb37">
+<div class="codewrapper sourceCode" id="cb38">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1068,7 +1085,7 @@
 <hr class="half-width">
 <p>So far we’ve been changing the appearance of parts of our plot related to our data and the <code>geom_</code> functions, but we can also change many of the non-data components of our plot.</p>
 <p>At this point, we are pretty happy with the basic layout of our plot, so we can <strong>assign</strong> it to a plot to a named <strong>object</strong>. We do this using the <strong>assignment arrow</strong> <code>&lt;-</code>. We will create an object called <code>myplot</code>. If you run the name of the <code>ggplot2</code> object, it will show the plot, just like if you ran the code itself.</p>
-<div class="codewrapper sourceCode" id="cb38">
+<div class="codewrapper sourceCode" id="cb39">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1090,14 +1107,14 @@
 </div>
 <figure><img src="fig/visualizing-ggplot-rendered-unnamed-chunk-1-1.png" width="600" height="600" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>This process of assigning something to an <strong>object</strong> is not specific to <code>ggplot2</code>, but rather a general feature of R. We will be using it a lot in the rest of this lesson. We can now work with the <code>myplot</code> object as if it was a block of <code>ggplot2</code> code, which means we can use <code>+</code> to add new components to it.</p>
 <p>We can change the overall appearance using <code>theme_</code> functions. Let’s try a black-and-white theme by adding <code>theme_bw()</code> to our plot:</p>
-<div class="codewrapper sourceCode" id="cb41">
+<div class="codewrapper sourceCode" id="cb42">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">myplot</span> <span class="op">+</span> <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="fig/visualizing-ggplot-rendered-theme-bw-1.png" width="600" height="600" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>As you can see, a number of parts of the plot have changed. <code>theme_</code> functions usually control many aspects of a plot’s appearance all at once, for the sake of convenience. To individually change parts of a plot, we can use the <code>theme()</code> function, which can take many different arguments to change things about the text, grid lines, background color, and more. Let’s try changing the size of the text on our axis titles. We can do this by specifying that the <code>axis.title</code> should be an <code>element_text()</code> with <code>size</code> set to 14.</p>
-<div class="codewrapper sourceCode" id="cb42">
+<div class="codewrapper sourceCode" id="cb43">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1106,7 +1123,7 @@
 <span>  <span class="fu">theme</span><span class="op">(</span>axis.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">14</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="fig/visualizing-ggplot-rendered-text-size-1.png" width="600" height="600" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Another change we might want to make is to remove the vertical grid lines. Since our x axis is categorical, those grid lines aren’t useful. To do this, inside <code>theme()</code>, we will change the <code>panel.grid.major.x</code> to an <code>element_blank()</code>.</p>
-<div class="codewrapper sourceCode" id="cb43">
+<div class="codewrapper sourceCode" id="cb44">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1116,7 +1133,7 @@
 <span>        panel.grid.major.x <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="fig/visualizing-ggplot-rendered-element-blank-1.png" width="600" height="600" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Another useful change might be to remove the color legend, since that information is already on our x axis. For this one, we will set <code>legend.position</code> to “none”.</p>
-<div class="codewrapper sourceCode" id="cb44">
+<div class="codewrapper sourceCode" id="cb45">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1164,7 +1181,7 @@
 </h2>
 <hr class="half-width">
 <p>Our plot is really shaping up now. However, we probably want to make our axis titles nicer, and perhaps add a main title to the plot. We can do this using the <code>labs()</code> function:</p>
-<div class="codewrapper sourceCode" id="cb45">
+<div class="codewrapper sourceCode" id="cb46">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1199,7 +1216,7 @@
 </button>
 <div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb46">
+<div class="codewrapper sourceCode" id="cb47">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1223,7 +1240,7 @@
 <p>One of the most powerful features of <strong><code>ggplot</code></strong> is the ability to quickly split a plot into multiple smaller plots based on a categorical variable, which is called <strong>faceting</strong>.</p>
 <p>So far we’ve mapped variables to the x axis, the y axis, and color, but trying to add a 4th variable becomes difficult. Changing the shape of a point might work, but only for very few categories, and even then, it can be hard to tell the differences between the shapes of small points.</p>
 <p>Instead of cramming one more variable into a single plot, we will use the <code>facet_wrap()</code> function to generate a series of smaller plots, split out by <code>sex</code>. We also use <code>ncol</code> to specify that we want them arranged in a single column:</p>
-<div class="codewrapper sourceCode" id="cb47">
+<div class="codewrapper sourceCode" id="cb48">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1260,7 +1277,7 @@
 </h2>
 <hr class="half-width">
 <p>Once we are happy with our final plot, we can assign the whole thing to a new object, which we can call <code>finalplot</code>.</p>
-<div class="codewrapper sourceCode" id="cb48">
+<div class="codewrapper sourceCode" id="cb49">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1276,7 +1293,7 @@
 <span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="fu">vars</span><span class="op">(</span><span class="va">sex</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre>
 </div>
 <p>After this, we can run <code>ggsave()</code> to save our plot. The first argument we give is the path to the file we want to save, including the correct file extension. This code will make an image called <code>rodent_size_plots.jpg</code> in the <code>images/</code> folder of our current project. We are making a <code>.jpg</code>, but you can save <code>.pdf</code>, <code>.tiff</code>, and other file formats. Next, we tell it the name of the plot object we want to save. We can also specify things like the width and height of the plot in inches.</p>
-<div class="codewrapper sourceCode" id="cb49">
+<div class="codewrapper sourceCode" id="cb50">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1323,7 +1340,7 @@
 </div>
 </section></section><section id="aio-how-r-thinks-about-data"><p>Content from <a href="how-r-thinks-about-data.html">Exploring and understanding data</a></p>
 <hr>
-<p> Last updated on 2022-09-19 | <a href="https://github.com/carpentries-incubator/R-ecology-lesson/edit/main/episodes/how-r-thinks-about-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<p> Last updated on 2022-10-04 | <a href="https://github.com/carpentries-incubator/R-ecology-lesson/edit/main/episodes/how-r-thinks-about-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -1810,6 +1827,17 @@
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">combined_logical</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>[1] "1"    "4"    "6"    "1"    "a"    "b"    "TRUE"</code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb42">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">class</span><span class="op">(</span><span class="va">combined_logical</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -1856,14 +1884,14 @@
 </h2>
 <hr class="half-width">
 <p>One of the great things about R is how it handles missing data, which can be tricky in other programming languages. R represents missing data as <code>NA</code>, without quotes, in vectors of any type. Let’s make a numeric vector with an <code>NA</code> value:</p>
-<div class="codewrapper sourceCode" id="cb42">
+<div class="codewrapper sourceCode" id="cb44">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">weights</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">25</span>, <span class="fl">34</span>, <span class="fl">12</span>, <span class="cn">NA</span>, <span class="fl">42</span><span class="op">)</span></span></code></pre>
 </div>
 <p>R doesn’t make assumptions about how you want to handle missing data, so if we pass this vector to a numeric function like <code>min()</code>, it won’t know what to do, so it returns <code>NA</code>:</p>
-<div class="codewrapper sourceCode" id="cb43">
+<div class="codewrapper sourceCode" id="cb45">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1875,7 +1903,7 @@
 <pre class="output" tabindex="0"><code>[1] NA</code></pre>
 </div>
 <p>This is a very good thing, since we won’t accidentally forget to consider our missing data. If we decide to exclude our missing values, many basic math functions have an argument to <strong>r</strong>e<strong>m</strong>ove them:</p>
-<div class="codewrapper sourceCode" id="cb45">
+<div class="codewrapper sourceCode" id="cb47">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1890,7 +1918,7 @@
 </h2>
 <hr class="half-width">
 <p>A common reason to create a vector from scratch is to use in a function argument. The <code>quantile()</code> function will calculate a quantile for a given vector of numeric values. We set the quantile using the <code>probs</code> argument. We also need to set <code>na.rm = TRUE</code>, since there are <code>NA</code> values in the <code>weight</code> column.</p>
-<div class="codewrapper sourceCode" id="cb47">
+<div class="codewrapper sourceCode" id="cb49">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1903,7 +1931,7 @@
  24 </code></pre>
 </div>
 <p>Now we get back the 25% quantile value for weights. However, we often want to know more than one quantile. Luckily, the <code>probs</code> argument is <strong>vectorized</strong>, meaning it can take a whole vector of values. Let’s try getting the 25%, 50% (median), and 75% quantiles all at once.</p>
-<div class="codewrapper sourceCode" id="cb49">
+<div class="codewrapper sourceCode" id="cb51">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1917,7 +1945,7 @@
 </div>
 <p>While the <code>c()</code> function is very flexible, it doesn’t necessarily scale well. If you want to generate a long vector from scratch, you probably don’t want to type everything out manually. There are a few functions that can help generate vectors.</p>
 <p>First, putting <code>:</code> between two numbers will generate a vector of integers starting with the first number and ending with the last. The <code>seq()</code> function allows you to generate similar sequences, but changing by any amount.</p>
-<div class="codewrapper sourceCode" id="cb51">
+<div class="codewrapper sourceCode" id="cb53">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1929,7 +1957,7 @@
 </h3>
 <pre class="output" tabindex="0"><code> [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb53">
+<div class="codewrapper sourceCode" id="cb55">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1945,7 +1973,7 @@
 </h3>
 <pre class="output" tabindex="0"><code> [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb55">
+<div class="codewrapper sourceCode" id="cb57">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1964,7 +1992,7 @@
 [43] 0.85714286 0.87755102 0.89795918 0.91836735 0.93877551 0.95918367
 [49] 0.97959184 1.00000000</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb57">
+<div class="codewrapper sourceCode" id="cb59">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1977,7 +2005,7 @@
 [16] 0.15 0.16 0.17 0.18 0.19</code></pre>
 </div>
 <p>Finally, the <code>rep()</code> function allows you to repeat a value, or even a whole vector, as many times as you want, and works with any type of vector.</p>
-<div class="codewrapper sourceCode" id="cb59">
+<div class="codewrapper sourceCode" id="cb61">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1989,7 +2017,7 @@
 </h3>
 <pre class="output" tabindex="0"><code> [1] "a" "a" "a" "a" "a" "a" "a" "a" "a" "a" "a" "a"</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb61">
+<div class="codewrapper sourceCode" id="cb63">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2001,7 +2029,7 @@
 </h3>
 <pre class="output" tabindex="0"><code> [1] "a" "b" "c" "a" "b" "c" "a" "b" "c" "a" "b" "c"</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb63">
+<div class="codewrapper sourceCode" id="cb65">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2042,7 +2070,7 @@
 </button>
 <div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb66">
+<div class="codewrapper sourceCode" id="cb68">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2053,7 +2081,7 @@
 </h3>
 <pre class="output" tabindex="0"><code> [1] -3 -2 -1  0  1  2  3 -3 -2 -1  0  1  2  3 -3 -2 -1  0  1  2  3</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb68">
+<div class="codewrapper sourceCode" id="cb70">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2065,7 +2093,7 @@
 </h3>
 <pre class="output" tabindex="0"><code> [1] -3 -2 -1  0  1  2  3 -3 -2 -1  0  1  2  3 -3 -2 -1  0  1  2  3</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb70">
+<div class="codewrapper sourceCode" id="cb72">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2106,7 +2134,7 @@
 </button>
 <div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb72">
+<div class="codewrapper sourceCode" id="cb74">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2162,7 +2190,7 @@
 <h3 id="factors">Factors<a class="anchor" aria-label="anchor" href="#factors"></a>
 </h3>
 <p>We will spend a bit more time talking about factors, since they are often a challenging type of data to work with. We can create a factor from scratch by putting a character vector made using <code>c()</code> into the <code>factor()</code> function:</p>
-<div class="codewrapper sourceCode" id="cb74">
+<div class="codewrapper sourceCode" id="cb76">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2177,7 +2205,7 @@
 Levels: female male</code></pre>
 </div>
 <p>We can inspect the levels of the factor using the <code>levels()</code> function:</p>
-<div class="codewrapper sourceCode" id="cb76">
+<div class="codewrapper sourceCode" id="cb78">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2189,7 +2217,7 @@ Levels: female male</code></pre>
 <pre class="output" tabindex="0"><code>[1] "female" "male"  </code></pre>
 </div>
 <p>The <strong><code>forcats</code></strong> package from the <code>tidyverse</code> has a lot of convenient functions for working with factors. We will show you a few common operations, but the <code>forcats</code> package has many more useful functions.</p>
-<div class="codewrapper sourceCode" id="cb78">
+<div class="codewrapper sourceCode" id="cb80">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2204,7 +2232,7 @@ Levels: female male</code></pre>
 <pre class="output" tabindex="0"><code>[1] male   female female male   female &lt;NA&gt;  
 Levels: male female</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb80">
+<div class="codewrapper sourceCode" id="cb82">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2217,7 +2245,7 @@ Levels: male female</code></pre>
 <pre class="output" tabindex="0"><code>[1] M    F    F    M    F    &lt;NA&gt;
 Levels: F M</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb82">
+<div class="codewrapper sourceCode" id="cb84">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2237,7 +2265,7 @@ Levels: female male (Missing)</code></pre>
 </ol>
 <p>Since factors can behave differently from character vectors, it is always a good idea to check what type of data you’re working with. You might use a new function for the first time and be confused by the results, only to realize later that it produced a factor as an output, when you thought it was a character vector.</p>
 <p>It is fairly straightforward to convert a factor to a character vector:</p>
-<div class="codewrapper sourceCode" id="cb84">
+<div class="codewrapper sourceCode" id="cb86">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2249,7 +2277,7 @@ Levels: female male (Missing)</code></pre>
 <pre class="output" tabindex="0"><code>[1] "male"   "female" "female" "male"   "female" NA      </code></pre>
 </div>
 <p>However, you need to be careful if you’re somehow working with a factor that has numbers as its levels:</p>
-<div class="codewrapper sourceCode" id="cb86">
+<div class="codewrapper sourceCode" id="cb88">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2263,7 +2291,7 @@ Levels: female male (Missing)</code></pre>
 </h3>
 <pre class="output" tabindex="0"><code>[1] 3 2 1 4 3</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb88">
+<div class="codewrapper sourceCode" id="cb90">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2289,7 +2317,7 @@ Levels: female male (Missing)</code></pre>
 </h3>
 <div class="callout-content">
 <p>What is the value of <code>y</code> after running the following code?</p>
-<div class="codewrapper sourceCode" id="cb90">
+<div class="codewrapper sourceCode" id="cb92">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2309,7 +2337,7 @@ Levels: female male (Missing)</code></pre>
 </button>
 <div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb91">
+<div class="codewrapper sourceCode" id="cb93">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2329,7 +2357,7 @@ Levels: female male (Missing)</code></pre>
 </div>
 <p>Understanding what’s going on here will help you avoid a lot of confusion when working in R. When we assign something to an object, the first thing that happens is the righthand side gets <em>evaluated</em>. The same thing happens when you run something in the console: if you type <code>x</code> into the console and hit <kbd>Enter</kbd>, R returns the value of <code>x</code>. So when we first ran the line <code>y &lt;- x</code>, <code>x</code> first gets evaluated to the value of <code>5</code>, and this gets assigned to <code>y</code>. The objects <code>x</code> and <code>y</code> are not actually linked to each other in any way, so when we change the value of <code>x</code> to <code>10</code>, <code>y</code> is unaffected.</p>
 <p>This also means you can run multiple nested operations, store intermediate values as separate objects, or overwrite values:</p>
-<div class="codewrapper sourceCode" id="cb93">
+<div class="codewrapper sourceCode" id="cb95">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2345,7 +2373,7 @@ Levels: female male (Missing)</code></pre>
 </h3>
 <pre class="output" tabindex="0"><code>[1] 1.581139</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb95">
+<div class="codewrapper sourceCode" id="cb97">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2360,7 +2388,7 @@ Levels: female male (Missing)</code></pre>
 </h3>
 <pre class="output" tabindex="0"><code>[1] 1.581139</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb97">
+<div class="codewrapper sourceCode" id="cb99">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2422,7 +2450,7 @@ Levels: female male (Missing)</code></pre>
 </div>
 </section></section><section id="aio-working-with-data"><p>Content from <a href="working-with-data.html">Working with data</a></p>
 <hr>
-<p> Last updated on 2022-09-19 | <a href="https://github.com/carpentries-incubator/R-ecology-lesson/edit/main/episodes/working-with-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<p> Last updated on 2022-10-04 | <a href="https://github.com/carpentries-incubator/R-ecology-lesson/edit/main/episodes/working-with-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -3147,9 +3175,38 @@ Attaching package: 'lubridate'</code></pre>
 #   taxa &lt;chr&gt;, plot_type &lt;chr&gt;, and abbreviated variable names ¹​species_id,
 #   ²​hindfoot_length</code></pre>
 </div>
+<div class="codewrapper sourceCode" id="cb45">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">surveys</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>date <span class="op">=</span> <span class="fu">paste</span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span>, sep <span class="op">=</span> <span class="st">"-"</span><span class="op">)</span>,</span>
+<span>         date <span class="op">=</span> <span class="fu">as.Date</span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">relocate</span><span class="op">(</span><span class="va">date</span>, .after <span class="op">=</span> <span class="va">year</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code># A tibble: 16,878 × 14
+   record_id month   day  year date       plot_id species…¹ sex   hindf…² weight
+       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;date&gt;       &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt;
+ 1         1     7    16  1977 1977-07-16       2 NL        M          32     NA
+ 2         2     7    16  1977 1977-07-16       3 NL        M          33     NA
+ 3         3     7    16  1977 1977-07-16       2 DM        F          37     NA
+ 4         4     7    16  1977 1977-07-16       7 DM        M          36     NA
+ 5         5     7    16  1977 1977-07-16       3 DM        M          35     NA
+ 6         6     7    16  1977 1977-07-16       1 PF        M          14     NA
+ 7         7     7    16  1977 1977-07-16       2 PE        F          NA     NA
+ 8         8     7    16  1977 1977-07-16       1 DM        M          37     NA
+ 9         9     7    16  1977 1977-07-16       1 DM        F          34     NA
+10        10     7    16  1977 1977-07-16       6 PF        F          20     NA
+# … with 16,868 more rows, 4 more variables: genus &lt;chr&gt;, species &lt;chr&gt;,
+#   taxa &lt;chr&gt;, plot_type &lt;chr&gt;, and abbreviated variable names ¹​species_id,
+#   ²​hindfoot_length</code></pre>
+</div>
 <!-- This isn't strictly necessary to show, but I think it's good to reenforce what a pipe is really doing, and it's actually a useful approach with more complex mutates -->
 <p>Now we can see that our <code>date</code> column has the type <code>date</code> as well. In this example, we created our column with two separate lines in <code>mutate()</code>, but we can combine them into one:</p>
-<div class="codewrapper sourceCode" id="cb45">
+<div class="codewrapper sourceCode" id="cb47">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3178,7 +3235,7 @@ Attaching package: 'lubridate'</code></pre>
 #   taxa &lt;chr&gt;, plot_type &lt;chr&gt;, and abbreviated variable names ¹​species_id,
 #   ²​hindfoot_length</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb47">
+<div class="codewrapper sourceCode" id="cb49">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3229,7 +3286,7 @@ Attaching package: 'lubridate'</code></pre>
 </button>
 <div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb49">
+<div class="codewrapper sourceCode" id="cb51">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3253,7 +3310,7 @@ Attaching package: 'lubridate'</code></pre>
 <hr class="half-width">
 <p>Many data analysis tasks can be achieved using the split-apply-combine approach: you split the data into groups, apply some analysis to each group, and combine the results in some way. <code>dplyr</code> has a few convenient functions to enable this approach, the main two being <code>group_by()</code> and <code>summarize()</code>.</p>
 <p><code>group_by()</code> takes a data.frame and the name of one or more columns with categorical values that define the groups. <code>summarize()</code> then collapses each group into a one-row summary of the group, giving you back a data.frame with one row per group. The syntax for <code>summarize()</code> is similar to <code>mutate()</code>, where you define new columns based on values of other columns. Let’s try calculating the mean weight of all our animals by sex.</p>
-<div class="codewrapper sourceCode" id="cb51">
+<div class="codewrapper sourceCode" id="cb53">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3272,7 +3329,7 @@ Attaching package: 'lubridate'</code></pre>
 3 &lt;NA&gt;         74.0</code></pre>
 </div>
 <p>You can see that the mean weight for males is slightly higher than for females, but that animals whose sex is unknown have much higher weights. This is probably due to small sample size, but we should check to be sure. Like <code>mutate()</code>, we can define multiple columns in one <code>summarize()</code> call. The function <code>n()</code> will count the number of rows in each group.</p>
-<div class="codewrapper sourceCode" id="cb53">
+<div class="codewrapper sourceCode" id="cb55">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3292,7 +3349,7 @@ Attaching package: 'lubridate'</code></pre>
 3 &lt;NA&gt;         74.0  1300</code></pre>
 </div>
 <p>You will often want to create groups based on multiple columns. For example, we might be interested in the mean weight of every species + sex combination. All we have to do is add another column to our <code>group_by()</code> call.</p>
-<div class="codewrapper sourceCode" id="cb55">
+<div class="codewrapper sourceCode" id="cb57">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3327,7 +3384,7 @@ Attaching package: 'lubridate'</code></pre>
 # … with 57 more rows</code></pre>
 </div>
 <p>Our resulting data.frame is much larger, since we have a greater number of groups. We also see a strange value showing up in our <code>mean_weight</code> column: <code>NaN</code>. This stands for “Not a Number”, and it often results from trying to do an operation a vector with zero entries. How can a vector have zero entries? Well, if a particular group (like the AB species ID + <code>NA</code> sex group) has <strong>only</strong> <code>NA</code> values for weight, then the <code>na.rm = T</code> argument in <code>mean()</code> will remove <strong>all</strong> the values prior to calculating the mean. The result will be a value of <code>NaN</code>. Since we are not particularly interested in these values, let’s add a step to our pipeline to remove rows where weight is <code>NA</code> <strong>before</strong> doing any other steps. This means that any groups with only <code>NA</code> values will disappear from our data.frame before we formally create the groups with <code>group_by()</code>.</p>
-<div class="codewrapper sourceCode" id="cb58">
+<div class="codewrapper sourceCode" id="cb60">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3363,7 +3420,7 @@ Attaching package: 'lubridate'</code></pre>
 # … with 36 more rows</code></pre>
 </div>
 <p>That looks better! It’s often useful to take a look at the results in some order, like the lowest mean weight to highest. We can use the <code>arrange()</code> function for that:</p>
-<div class="codewrapper sourceCode" id="cb61">
+<div class="codewrapper sourceCode" id="cb63">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3400,7 +3457,7 @@ Attaching package: 'lubridate'</code></pre>
 # … with 36 more rows</code></pre>
 </div>
 <p>If we want to reverse the order, we can wrap the column name in <code>desc()</code>:</p>
-<div class="codewrapper sourceCode" id="cb64">
+<div class="codewrapper sourceCode" id="cb66">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3440,7 +3497,7 @@ Attaching package: 'lubridate'</code></pre>
 <pre><code><span><span class="co"># A tibble: 46 × 4</span></span>
 <span><span class="co"># Groups:   species_id [18]</span></span></code></pre>
 <p>They tell us we have a data.frame with 46 rows, 4 columns, and a group variable <code>species_id</code>, for which there are 18 groups. We will see something similar if we use <code>group_by()</code> alone:</p>
-<div class="codewrapper sourceCode" id="cb68">
+<div class="codewrapper sourceCode" id="cb70">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3468,7 +3525,7 @@ Attaching package: 'lubridate'</code></pre>
 #   abbreviated variable names ¹​record_id, ²​species_id, ³​hindfoot_length</code></pre>
 </div>
 <p>What we get back is the entire <code>surveys</code> data.frame, but with the grouping variables added: 67 groups of <code>species_id</code> + <code>sex</code> combinations. Groups are often maintained throughout a pipeline, and if you assign the resulting data.frame to a new object, it will also have those groups. This can lead to confusing results if you forget about the grouping and want to carry out operations on the whole data.frame, not by group. Therefore, it is a good habit to remove the groups at the end of a pipeline containing <code>group_by()</code>:</p>
-<div class="codewrapper sourceCode" id="cb70">
+<div class="codewrapper sourceCode" id="cb72">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3506,7 +3563,7 @@ Attaching package: 'lubridate'</code></pre>
 </div>
 <p>Now our data.frame just says <code># A tibble: 46 × 4</code> at the top, with no groups.</p>
 <p>While it is common that you will want to get the one-row-per-group summary that <code>summarise()</code> provides, there are times where you want to calculate a per-group value but keep all the rows in your data.frame. For example, we might want to know the mean weight for each species ID + sex combination, and then we might want to know how far from that mean value each observation in the group is. For this, we can use <code>group_by()</code> and <code>mutate()</code> together:</p>
-<div class="codewrapper sourceCode" id="cb73">
+<div class="codewrapper sourceCode" id="cb75">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3538,7 +3595,7 @@ Attaching package: 'lubridate'</code></pre>
 #   ¹​record_id, ²​species_id, ³​hindfoot_length</code></pre>
 </div>
 <p>Since we get all our columns back, the new columns are at the very end and don’t print out in the console. Let’s use <code>select()</code> to just look at the columns of interest. Inside <code>select()</code> we can use the <code>contains()</code> function to get any column containing the word “weight” in the name:</p>
-<div class="codewrapper sourceCode" id="cb75">
+<div class="codewrapper sourceCode" id="cb77">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3592,7 +3649,7 @@ Attaching package: 'lubridate'</code></pre>
 </button>
 <div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb77">
+<div class="codewrapper sourceCode" id="cb79">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3607,7 +3664,7 @@ Attaching package: 'lubridate'</code></pre>
 <pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'date'. You can override using the
 `.groups` argument.</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb79">
+<div class="codewrapper sourceCode" id="cb81">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3643,7 +3700,7 @@ Attaching package: 'lubridate'</code></pre>
 </button>
 <div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb80">
+<div class="codewrapper sourceCode" id="cb82">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3660,7 +3717,7 @@ Attaching package: 'lubridate'</code></pre>
 </h2>
 <hr class="half-width">
 <p>Let’s say we are interested in comparing the mean weights of each species across our different plots. We can begin this process using the <code>group_by()</code> + <code>summarize()</code> approach:</p>
-<div class="codewrapper sourceCode" id="cb81">
+<div class="codewrapper sourceCode" id="cb83">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3676,7 +3733,7 @@ Attaching package: 'lubridate'</code></pre>
 <pre class="output" tabindex="0"><code>`summarise()` has grouped output by 'species_id'. You can override using the
 `.groups` argument.</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb83">
+<div class="codewrapper sourceCode" id="cb85">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3712,7 +3769,7 @@ Attaching package: 'lubridate'</code></pre>
 </ol>
 <p>Any columns not used for <code>names_from</code> or <code>values_from</code> will not be pivoted.</p>
 <figure><img src="fig/pivot_wider.png" alt="Diagram depicting the behavior of `pivot_wider()` on a small tabular dataset." class="figure mx-auto d-block"></figure><p>In our case, we want the new columns to be named from our <code>plot_id</code> column, with the values coming from the <code>mean_weight</code> column. We can pipe our data.frame right into <code>pivot_wider()</code> and add those two arguments:</p>
-<div class="codewrapper sourceCode" id="cb85">
+<div class="codewrapper sourceCode" id="cb87">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3755,7 +3812,7 @@ Attaching package: 'lubridate'</code></pre>
 <p>Now we’ve got our reshaped data.frame. There are a few things to notice. First, we have a new column for each <code>plot_id</code> value. There is one old column left in the data.frame: <code>species_id</code>. It wasn’t used in <code>pivot_wider()</code>, so it stays, and now contains a single entry for each unique <code>species_id</code> value.</p>
 <p>Finally, a lot of <code>NA</code>s have appeared. Some species aren’t found in every plot, but because a data.frame has to have a value in every row and every column, an <code>NA</code> is inserted. We can double-check this to verify what is going on.</p>
 <p>Looking in our new pivoted data.frame, we can see that there is an <code>NA</code> value for the species <code>BA</code> in plot <code>1</code>. Let’s take our <code>sp_by_plot</code> data.frame and look for the <code>mean_weight</code> of that species + plot combination.</p>
-<div class="codewrapper sourceCode" id="cb87">
+<div class="codewrapper sourceCode" id="cb89">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3772,7 +3829,7 @@ Attaching package: 'lubridate'</code></pre>
 <p>We get back 0 rows. There is no <code>mean_weight</code> for the species <code>BA</code> in plot <code>1</code>. This either happened because no <code>BA</code> were ever caught in plot <code>1</code>, or because every <code>BA</code> caught in plot <code>1</code> had an <code>NA</code> weight value and all the rows got removed when we used <code>filter(!is.na(weight))</code> in the process of making <code>sp_by_plot</code>. Because there are no rows with that species + plot combination, in our pivoted data.frame, the value gets filled with <code>NA</code>.</p>
 <p>There is another <code>pivot_</code> function that does the opposite, moving data from a wide to long format, called <code>pivot_longer()</code>. It takes 3 arguments: <code>cols</code> for the columns you want to pivot, <code>names_to</code> for the name of the new column which will contain the old column names, and <code>values_to</code> for the name of the new column which will contain the old values.</p>
 <figure><img src="fig/pivot_longer.png" alt="Diagram depicting the behavior of `pivot_longer()` on a small tabular dataset." class="figure mx-auto d-block"></figure><p>We can pivot our new wide data.frame to a long format using <code>pivot_longer()</code>. We want to pivot all the columns except <code>species_id</code>, and we will use <code>PLOT</code> for the new column of plot IDs, and <code>MEAN_WT</code> for the new column of mean weight values.</p>
-<div class="codewrapper sourceCode" id="cb89">
+<div class="codewrapper sourceCode" id="cb91">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3799,7 +3856,7 @@ Attaching package: 'lubridate'</code></pre>
 # … with 422 more rows</code></pre>
 </div>
 <p>One thing you will notice is that all those <code>NA</code> values that got generated when we pivoted wider. However, we can filter those out, which gets us back to the same data as <code>sp_by_plot</code>, before we pivoted it wider.</p>
-<div class="codewrapper sourceCode" id="cb91">
+<div class="codewrapper sourceCode" id="cb93">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3832,7 +3889,7 @@ Attaching package: 'lubridate'</code></pre>
 <hr class="half-width">
 <p>Let’s say we want to send the wide version of our <code>sb_by_plot</code> data.frame to a colleague who doesn’t use R. In this case, we might want to save it as a CSV file.</p>
 <p>First, we might want to modify the names of the columns, since right now they are bare numbers, which aren’t very informative. Luckily, <code>pivot_wider()</code> has an argument <code>names_prefix</code> which will allow us to add “plot_” to the start of each column.</p>
-<div class="codewrapper sourceCode" id="cb93">
+<div class="codewrapper sourceCode" id="cb95">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3871,7 +3928,7 @@ Attaching package: 'lubridate'</code></pre>
 #   plot_23 &lt;dbl&gt;, plot_24 &lt;dbl&gt;</code></pre>
 </div>
 <p>That looks better! Let’s save this data.frame as a new object.</p>
-<div class="codewrapper sourceCode" id="cb95">
+<div class="codewrapper sourceCode" id="cb97">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3912,7 +3969,7 @@ Attaching package: 'lubridate'</code></pre>
 #   plot_23 &lt;dbl&gt;, plot_24 &lt;dbl&gt;</code></pre>
 </div>
 <p>Now we can save this data.frame to a CSV using the <code>write_csv()</code> function from the <code>readr</code> package. The first argument is the name of the data.frame, and the second is the path to the new file we want to create, including the file extension <code>.csv</code>.</p>
-<div class="codewrapper sourceCode" id="cb97">
+<div class="codewrapper sourceCode" id="cb99">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4159,7 +4216,7 @@ Attaching package: 'lubridate'</code></pre>
   "creativeWorkStatus": "active",
   "url": "https://carpentries-incubator.github.io/R-ecology-lesson/aio.html",
   "identifier": "https://carpentries-incubator.github.io/R-ecology-lesson/aio.html",
-  "dateCreated": "2022-09-19",
+  "dateCreated": "2022-10-04",
   "dateModified": "2022-10-04",
   "datePublished": "2022-10-04"
 }

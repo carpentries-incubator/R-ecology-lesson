@@ -253,7 +253,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Introduction to R and RStudio</h1>
-        <p> Last updated on 2022-09-19 | <a href="https://github.com/carpentries-incubator/R-ecology-lesson/edit/main/episodes/introduction-r-rstudio.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <p> Last updated on 2022-10-04 | <a href="https://github.com/carpentries-incubator/R-ecology-lesson/edit/main/episodes/introduction-r-rstudio.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 30 minutes </p>
         
         <div class="text-end">
@@ -367,7 +367,7 @@
 </section><section id="navigating-rstudio"><h2 class="section-heading">Navigating RStudio<a class="anchor" aria-label="anchor" href="#navigating-rstudio"></a>
 </h2>
 <hr class="half-width"><p>We will use the RStudio integrated development environment (IDE) to write code into scripts, run code in R, navigate files on our computer, inspect objects we create in R, and look at the plots we make. RStudio has many other features that can help with things like version control, developing R packages, and writing Shiny apps, but we won’t cover those in the workshop.</p>
-<figure><img src="../fig/rstudio_screenshot.png" class="figure mx-auto d-block">{{alt=‘Screenshot of RStudio showing the 4 “panes”.’}}</figure><p>In the above screenshot, we can see 4 “panes” in the default layout:</p>
+<figure><img src="../fig/rstudio_screenshot.png" alt='Screenshot of RStudio showing the 4 "panes".' class="figure mx-auto d-block"></figure><p>In the above screenshot, we can see 4 “panes” in the default layout:</p>
 <ul><li>Top-Left: the <strong>Source</strong> pane that displays scripts and other files.
 <ul><li>If you only have 3 panes, and the Console pane is in the top left, press <kbd>Shift+Cmd+N</kbd> (Mac) or <kbd>Shift+Ctrl+N</kbd> (Windows) to open a blank R script, which should make the Source pane appear.</li>
 </ul></li>
@@ -398,7 +398,22 @@
 <figure><img src="../fig/rstudio_settings.png" alt='Screenshot of the RStudio Global Options, with "Restore .RData into workspace at startup" unchecked, and "Save workspace to .RData on exit" set to "Never".' class="figure mx-auto d-block"></figure><p>Make sure your settings match those highlighted in yellow. We don’t want RStudio to store the current status of our R session and reload it the next time we start R. This might sound convenient, but for the sake of reproducibility, we want to start with a clean, empty R session every time we work. That means that we have to record everything we do into scripts, save any data we need into files, and store outputs like images as files. We want to get used to everything we generate in a single R session being <em>disposable</em>. We want our scripts to be able to regenerate things we need, other than “raw materials” like data.</p>
 </section><section id="organizing-your-project-directory"><h2 class="section-heading">Organizing your project directory<a class="anchor" aria-label="anchor" href="#organizing-your-project-directory"></a>
 </h2>
-<hr class="half-width"><p>Using a consistent folder structure across all your new projects will help keep a growing project organized, and make it easy to find files in the future. This is especially beneficial if you are working on multiple projects, since you will know where to look for particular kinds of files.</p>
+<hr class="half-width"><div id="accordionInstructor2" class="accordion instructor-note accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
+  <h3 class="accordion-header" id="headingInstructor2">
+  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div>
+  Instructor Note
+  </h3>
+</button>
+<div id="collapseInstructor2" class="accordion-collapse collapse" aria-labelledby="headingInstructor2" data-bs-parent="#accordionInstructor2">
+<div class="accordion-body">
+<p>If you are teaching remotely and sharing only the RStudio window, the new windows that pop up while creating folders will not be shared via Zoom. You can switch to sharing your entire screen, which will allow learners to see the popup windows.</p>
+</div>
+</div>
+</div>
+</div>
+<p>Using a consistent folder structure across all your new projects will help keep a growing project organized, and make it easy to find files in the future. This is especially beneficial if you are working on multiple projects, since you will know where to look for particular kinds of files.</p>
 <p>We will use a basic structure for this workshop, which is often a good place to start, and can be extended to meet your specific needs. Here is a diagram describing the structure:</p>
 <pre><code>R-Ecology-Workshop
 │
@@ -421,6 +436,7 @@
 <h3 id="console-vs--script">Console vs. script<a class="anchor" aria-label="anchor" href="#console-vs--script"></a></h3>
 <p>You can run commands directly in the R console, or you can write them into an R script. It may help to think of working in the console vs. working in a script as something like cooking. The console is like making up a new recipe, but not writing anything down. You can carry out a series of steps and produce a nice, tasty dish at the end. However, because you didn’t write anything down, it’s harder to figure out exactly what you did, and in what order.</p>
 <p>Writing a script is like taking nice notes while cooking- you can tweak and edit the recipe all you want, you can come back in 6 months and try it again, and you don’t have to try to remember what went well and what didn’t. It’s actually even easier than cooking, since you can hit one button and the computer “cooks” the whole recipe for you!</p>
+<p>An additional benefit of scripts is that you can leave <strong>comments</strong> for yourself or others to read. Lines that start with <code>#</code> are considered comments and will not be interpreted as R code.</p>
 <div class="section level4">
 <h4 id="console">Console<a class="anchor" aria-label="anchor" href="#console"></a></h4>
 <ul><li>The R console is where code is run/executed</li>
@@ -437,8 +453,15 @@
 <kbd>Cmd+Enter</kbd> (Mac) or <kbd>Ctrl+Enter</kbd> (Windows) will run the line of code that your cursor is on</li>
 <li>If you highlight multiple lines of code, you can run all of them by pressing <kbd>Cmd+Enter</kbd> (Mac) or <kbd>Ctrl+Enter</kbd> (Windows)</li>
 <li>By preserving commands in a script, you can edit and rerun them quickly, save them for later, and share them with others</li>
+<li>You can leave comments for yourself by starting a line with a <code>#</code>
+</li>
 </ul></li>
-</ul><div id="keypoints1" class="callout keypoints">
+</ul></div>
+<div class="section level4">
+<h4 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a></h4>
+<p>Let’s try running some code in the console and in a script. First, click down in the Console pane, and type out <code>1+1</code>. Hit <kbd>Enter</kbd> to run the code. You should see your code echoed, and then the value of <code>2</code> returned.</p>
+<p>Now click into your blank script, and type out <code>1+1</code>. With your cursor on that line, hit <kbd>Cmd+Enter</kbd> (Mac) or <kbd>Ctrl+Enter</kbd> (Windows) to run the code. You will see that your code was sent from the script to the console, where it returned a value of <code>2</code>, just like when you ran your code directly in the console.</p>
+<div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
 </div>
@@ -501,8 +524,8 @@
   "creativeWorkStatus": "active",
   "url": "https://carpentries-incubator.github.io/R-ecology-lesson/instructor/introduction-r-rstudio.html",
   "identifier": "https://carpentries-incubator.github.io/R-ecology-lesson/instructor/introduction-r-rstudio.html",
-  "dateCreated": "2022-09-19",
-  "dateModified": "2022-09-19",
+  "dateCreated": "2022-10-04",
+  "dateModified": "2022-10-04",
   "datePublished": "2022-10-04"
 }
 
