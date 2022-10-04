@@ -420,6 +420,14 @@ combined_logical <- c(num_logi, char_logi)
 
 
 ```r
+combined_logical
+```
+
+```{.output}
+[1] "1"    "4"    "6"    "1"    "a"    "b"    "TRUE"
+```
+
+```r
 class(combined_logical)
 ```
 

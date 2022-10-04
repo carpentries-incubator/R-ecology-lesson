@@ -672,6 +672,32 @@ surveys %>%
 #   ²​hindfoot_length
 ```
 
+```r
+surveys %>% 
+  mutate(date = paste(year, month, day, sep = "-"),
+         date = as.Date(date)) %>% 
+  relocate(date, .after = year)
+```
+
+```{.output}
+# A tibble: 16,878 × 14
+   record_id month   day  year date       plot_id species…¹ sex   hindf…² weight
+       <dbl> <dbl> <dbl> <dbl> <date>       <dbl> <chr>     <chr>   <dbl>  <dbl>
+ 1         1     7    16  1977 1977-07-16       2 NL        M          32     NA
+ 2         2     7    16  1977 1977-07-16       3 NL        M          33     NA
+ 3         3     7    16  1977 1977-07-16       2 DM        F          37     NA
+ 4         4     7    16  1977 1977-07-16       7 DM        M          36     NA
+ 5         5     7    16  1977 1977-07-16       3 DM        M          35     NA
+ 6         6     7    16  1977 1977-07-16       1 PF        M          14     NA
+ 7         7     7    16  1977 1977-07-16       2 PE        F          NA     NA
+ 8         8     7    16  1977 1977-07-16       1 DM        M          37     NA
+ 9         9     7    16  1977 1977-07-16       1 DM        F          34     NA
+10        10     7    16  1977 1977-07-16       6 PF        F          20     NA
+# … with 16,868 more rows, 4 more variables: genus <chr>, species <chr>,
+#   taxa <chr>, plot_type <chr>, and abbreviated variable names ¹​species_id,
+#   ²​hindfoot_length
+```
+
 <!-- This isn't strictly necessary to show, but I think it's good to reenforce what a pipe is really doing, and it's actually a useful approach with more complex mutates -->
 
 Now we can see that our `date` column has the type `date` as well. In this example, we created our column with two separate lines in `mutate()`, but we can combine them into one:

@@ -101,7 +101,7 @@ Anyone can inspect the source code to see how R works. Because of this transpare
 
 We will use the RStudio integrated development environment (IDE) to write code into scripts, run code in R, navigate files on our computer, inspect objects we create in R, and look at the plots we make. RStudio has many other features that can help with things like version control, developing R packages, and writing Shiny apps, but we won't cover those in the workshop.
 
-![](fig/rstudio_screenshot.png){{alt='Screenshot of RStudio showing the 4 "panes".'}}
+![](fig/rstudio_screenshot.png){alt='Screenshot of RStudio showing the 4 "panes".'}
 
 In the above screenshot, we can see 4 "panes" in the default layout:
 
@@ -144,6 +144,10 @@ Make sure your settings match those highlighted in yellow. We don't want RStudio
 
 ## Organizing your project directory
 
+:::::::::::::::::::::::::::::::::::::::::::: instructor
+If you are teaching remotely and sharing only the RStudio window, the new windows that pop up while creating folders will not be shared via Zoom. You can switch to sharing your entire screen, which will allow learners to see the popup windows.
+::::::::::::::::::::::::::::::::::::::::::::
+
 Using a consistent folder structure across all your new projects will help keep a growing project organized, and make it easy to find files in the future. This is especially beneficial if you are working on multiple projects, since you will know where to look for particular kinds of files.
 
 We will use a basic structure for this workshop, which is often a good place to start, and can be extended to meet your specific needs. Here is a diagram describing the structure:
@@ -180,6 +184,8 @@ You can run commands directly in the R console, or you can write them into an R 
 
 Writing a script is like taking nice notes while cooking- you can tweak and edit the recipe all you want, you can come back in 6 months and try it again, and you don't have to try to remember what went well and what didn't. It's actually even easier than cooking, since you can hit one button and the computer "cooks" the whole recipe for you!
 
+An additional benefit of scripts is that you can leave **comments** for yourself or others to read. Lines that start with `#` are considered comments and will not be interpreted as R code.
+
 #### Console
 
 - The R console is where code is run/executed
@@ -195,7 +201,13 @@ Writing a script is like taking nice notes while cooking- you can tweak and edit
   - <kbd>Cmd+Enter</kbd> (Mac) or <kbd>Ctrl+Enter</kbd> (Windows) will run the line of code that your cursor is on
   - If you highlight multiple lines of code, you can run all of them by pressing <kbd>Cmd+Enter</kbd> (Mac) or <kbd>Ctrl+Enter</kbd> (Windows)
   - By preserving commands in a script, you can edit and rerun them quickly, save them for later, and share them with others
+  - You can leave comments for yourself by starting a line with a `#`
   
+#### Example
+
+Let's try running some code in the console and in a script. First, click down in the Console pane, and type out `1+1`. Hit <kbd>Enter</kbd> to run the code. You should see your code echoed, and then the value of `2` returned.
+
+Now click into your blank script, and type out `1+1`. With your cursor on that line, hit <kbd>Cmd+Enter</kbd> (Mac) or <kbd>Ctrl+Enter</kbd> (Windows) to run the code. You will see that your code was sent from the script to the console, where it returned a value of `2`, just like when you ran your code directly in the console.
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
