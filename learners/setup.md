@@ -99,7 +99,7 @@ R tries to download and install the packages on your machine.
 
 When the installation has finished, you can try to load the packages by pasting the following code into the console:
 
-```{r}
+```r
 library(tidyverse)
 library(lubridate)
 library(ratdat)
@@ -119,4 +119,7 @@ Sometimes, package updates introduce changes that break your old code, which can
 
 We will download the data directly from R during the lessons. However, if you are expecting problems with the network, it may be better to download the data beforehand and store it on your machine.
 
-The data files for the lesson can be downloaded manually here: <https://www.michaelc-m.com/Rewrite-R-ecology-lesson/data/cleaned/surveys_complete_77_89.csv> and <https://www.michaelc-m.com/Rewrite-R-ecology-lesson/data/new_data.zip>.
+The data files for the lesson can be downloaded manually:
+
+ - [cleaned data](../episodes/data/cleaned/surveys_complete_77_89.csv) and 
+ - [zip file of raw data](../episodes//data/new_data.zip).

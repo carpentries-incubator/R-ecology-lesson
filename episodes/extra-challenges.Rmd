@@ -5,7 +5,7 @@ exercises: 3
 ---
 
 
-```{r setup, include=F}
+```{r setup, include=FALSE}
 knitr::opts_chunk$set(dpi = 200, out.height = 600, out.width = 600, R.options = list(max.print = 100))
 ```
 
@@ -20,7 +20,7 @@ surveys <- read_csv("data/cleaned/surveys_complete_77_89.csv")
 
 There are some issues with these `ggplot2` examples. Can you figure out what is wrong with each one?
 
-```{r, eval=F}
+```{r, eval=FALSE}
 ggplot(data = surveys, 
        mapping = aes(x = weight, y = hindfoot_length, color = "blue")) +
   geom_point()
@@ -33,7 +33,7 @@ Our points don't actually turn out blue, because we defined the color inside of 
 
 ::::::::::::::::::::::::
 
-```{r, eval=F}
+```{r, eval=FALSE}
 ggplot(data = surveys, 
        mapping = aes(x = "weight", y = "hindfoot_length")) +
   geom_point()
@@ -45,7 +45,7 @@ Variable names inside `aes()` should not be wrapped in quotes.
 
 ::::::::::::::::::::::::
 
-```{r, eval=F}
+```{r, eval=FALSE}
 ggplot(data = surveys, 
        mapping = aes(x = weight, y = hindfoot_length)) 
   + geom_point()
@@ -57,7 +57,7 @@ When adding things like `geom_` or `scale_` functions to a `ggplot()`, you have 
 
 ::::::::::::::::::::::::
 
-```{r, eval=F}
+```{r, eval=FALSE}
 ggplot(data = surveys, x = weight, y = hindfoot_length) +
   geom_point()
 ```
@@ -68,7 +68,7 @@ When translating variables from the data, like `weight` and `hindfoot_length`, t
 
 ::::::::::::::::::::::::
 
-```{r, eval=F}
+```{r, eval=FALSE}
 ggplot(data = surveys, 
        mapping = aes(x = weight, y = hindfoot_length, color = species_id)) +
   geom_point() +
