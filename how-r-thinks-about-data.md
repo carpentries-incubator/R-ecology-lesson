@@ -1,6 +1,6 @@
 ---
 title: "Exploring and understanding data"
-teaching: 45
+teaching: 60
 exercises: 3
 ---
 
@@ -285,13 +285,13 @@ Data.frames are made up of vectors; each column in a data.frame is a vector. Vec
 
 There are 4 main types of vectors (also known as *atomic vectors*):
 
-1. `"character"` for strings of characters, like our `genus` or `sex` columns. Each entry in a character vector is wrapped in quotes.
+1. `"character"` for strings of characters, like our `genus` or `sex` columns. Each entry in a character vector is wrapped in quotes. In other programming languages, this type of data may be referred to as "strings".
 
 2. `"integer"` for integers. All the numeric values in `complete_old` are integers. You may sometimes see integers represented like `2L` or `20L`. The `L` indicates to R that it is an integer, instead of the next data type, `"numeric"`.
 
-3. `"numeric"`, aka `"double"`, vectors can contain numbers including decimals.
+3. `"numeric"`, aka `"double"`, vectors can contain numbers including decimals. Other languages may refer to these as "float" or "floating point" numbers.
 
-4. `"logical"` for `TRUE` and `FALSE`, which can also be represented as `T` and `F`.
+4. `"logical"` for `TRUE` and `FALSE`, which can also be represented as `T` and `F`. In other contexts, these may be referred to as "Boolean" data.
 
 Vectors can only be of a **single type**. Since each column in a data.frame is a vector, this means an accidental character following a number, like `29,` can change the type of the whole vector. Mixing up vector types is one of the most common mistakes in R, and it can be tricky to figure out. It's often very useful to check the types of vectors.
 

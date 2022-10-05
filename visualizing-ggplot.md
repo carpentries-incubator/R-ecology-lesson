@@ -1,6 +1,6 @@
 ---
 title: "Data visualization with ggplot2"
-teaching: 45
+teaching: 90
 exercises: 4
 ---
 
@@ -510,7 +510,9 @@ ggplot(data = complete_old,
 
 So far we've been changing the appearance of parts of our plot related to our data and the `geom_` functions, but we can also change many of the non-data components of our plot. 
 
-At this point, we are pretty happy with the basic layout of our plot, so we can **assign** it to a plot to a named **object**. We do this using the **assignment arrow** `<-`. We will create an object called `myplot`. If you run the name of the `ggplot2` object, it will show the plot, just like if you ran the code itself.
+At this point, we are pretty happy with the basic layout of our plot, so we can **assign** it to a plot to a named **object**. We do this using the **assignment arrow** `<-`. What we are doing here is taking the result of the code on the right side of the arrow, and assigning it to an object whose name is on the left side of the arrow.
+
+We will create an object called `myplot`. If you run the name of the `ggplot2` object, it will show the plot, just like if you ran the code itself.
 
 
 ```r
@@ -590,6 +592,22 @@ Because there are so many possible arguments to the `theme()` function, it can s
     - `text` controls all text in the whole plot
     - `axis.title` controls the text for the axis titles
     - `axis.title.x` controls the text for the x axis title
+
+:::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::: callout
+
+You may have noticed that we have used 3 different approaches to getting rid of something in `ggplot`: 
+
+- `outlier.shape = NA` to remove the outliers from our boxplot
+- `panel.grid.major.x = element_blank()` to remove the x grid lines
+- `legend.position = "none"` to remove our legend
+
+Why are there so many ways to do what seems like the same thing?? This is a common frustration when working with R, or with any programming language. There are a couple reasons for it:
+
+1. Different people contribute to different packages and functions, and they may choose to do things differently.
+2. Code may *appear* to be doing the same thing, when the details are actually quite different. The inner workings of `ggplot2` are actually quite complex, since it turns out making plots is a very complicated process! Because of this, things that seem the same (removing parts of a plot), may actually be operating on very different components or stages of the final plot.
+3. Developing packages is a highly iterative process, and sometimes things change. However, changing too much stuff can make old code break. Let's say removing the legend was introduced as a feature of `ggplot2`, and then a lot of time passed before someone added the feature letting you remove outliers from `geom_boxplot()`. Changing the way you remove the legend, so that it's the same as the boxplot approach, could break all of the code written in the meantime, so developers may opt to keep the old approach in place.
 
 :::::::::::::::::::::::::::::
 
