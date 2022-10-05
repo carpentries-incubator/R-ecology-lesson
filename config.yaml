@@ -17,7 +17,7 @@ title: 'Data Analysis and Visualization in R for Ecologists'
 created: ~
 
 # Comma-separated list of keywords for the lesson
-keywords: 
+keywords:
 
 # Life cycle stage of the lesson
 # possible values: pre-alpha, alpha, beta, stable
@@ -58,21 +58,20 @@ contact: 'team@carpentries.org'
 # - another-learner.md
 
 # Order of episodes in your lesson
-episodes: 
+episodes:
 - introduction-r-rstudio.Rmd
 - visualizing-ggplot.Rmd
 - how-r-thinks-about-data.Rmd
 - working-with-data.Rmd
-- extra-challenges.Rmd
 
 # Information for Learners
-learners: 
+learners:
 
 # Information for Instructors
-instructors: 
+instructors:
 
 # Learner Profiles
-profiles: 
+profiles:
 
 # Customisation ---------------------------------------------
 #
