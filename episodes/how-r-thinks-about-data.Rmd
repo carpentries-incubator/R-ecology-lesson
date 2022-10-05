@@ -206,6 +206,7 @@ combined_logical <- c(num_logi, char_logi)
 :::::::::::::::::::::::: solution 
 
 ```{r combined-logical-challenge-answer}
+combined_logical
 class(combined_logical)
 ```
  
