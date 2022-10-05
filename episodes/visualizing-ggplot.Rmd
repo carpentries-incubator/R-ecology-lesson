@@ -1,6 +1,6 @@
 ---
 title: "Data visualization with ggplot2"
-teaching: 45
+teaching: 90
 exercises: 4
 ---
 

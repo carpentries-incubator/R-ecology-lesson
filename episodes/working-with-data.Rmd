@@ -1,6 +1,6 @@
 ---
 title: "Working with data"
-teaching: 90
+teaching: 120
 exercises: 4
 ---
 

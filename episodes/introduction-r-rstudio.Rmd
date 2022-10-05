@@ -1,6 +1,6 @@
 ---
 title: "Introduction to R and RStudio"
-teaching: 30
+teaching: 45
 exercises: 0
 ---
 
