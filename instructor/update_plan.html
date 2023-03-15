@@ -243,9 +243,40 @@
         
 <div class="section level1">
 <h1 id="plans-for-tidyverse-update">Plans for tidyverse update<a class="anchor" aria-label="anchor" href="#plans-for-tidyverse-update"></a></h1>
-<p>This update to the <em>R for Ecology</em> lesson is a significant shift in both the structure and content of the lesson. First, it updates the lesson to focus primarily on <code>tidyverse</code> tools rather than base R approaches. As the <code>tidyverse</code> has matured and grown in recent years, we believe it is in line with the Carpentries principle of “teach the most useful things first” to focus on the most useful and intuitive set of tools available. We continue to teach certain base R approaches and point learners towards the Software Carpentry R lessons as resources for learning base R approaches.</p>
-<p>Second, the lesson now starts with visualization with <code>ggplot2</code>. We have chosen to start with <code>ggplot</code> for several reasons. First of all, it gets learners creating usable plots from actual data very quickly, demonstrating the immediate usefulness of learning R. Second, since <code>ggplot2</code> has a relatively self-contained syntax, there is relatively little sidetracking to introduce broader terms and jargon. We do introduce certain concepts, such as functions, objects, and assignment, but they are not covered in overwhelming detail at this point.</p>
-<p>Finally, the lesson is given a more narrative structure, following up ggplot with a discussion of what exactly this <code>surveys</code> dataframe is. It then uses dataframes as a motivation for learning about vectors and data types, rather than starting with basic vectors that are only connected to “real data” later on. Up until this point, we use a subset of the entire <code>portal</code> dataset, containing only years X through Y, in a complete and tidy format. This allows us to then introduce “new” data from years Y through Z, which are incomplete and not in a tidy format. Receiving new data to clean is a very real challenge, and the process of reshaping it to match the older, cleaner data provides several benefits: a) it teaches skills like cleaning data, handling missing data, and combining multiple datasets and b) provides scaffolding by using the older data as a target. We believe this narrative structure will increase learner engagement and decrease the “don’t worry, this will be useful later on” statements that instructors may find themselves giving.</p>
+<p>This update to the <em>R for Ecology</em> lesson is a significant
+shift in both the structure and content of the lesson. First, it updates
+the lesson to focus primarily on <code>tidyverse</code> tools rather
+than base R approaches. As the <code>tidyverse</code> has matured and
+grown in recent years, we believe it is in line with the Carpentries
+principle of “teach the most useful things first” to focus on the most
+useful and intuitive set of tools available. We continue to teach
+certain base R approaches and point learners towards the Software
+Carpentry R lessons as resources for learning base R approaches.</p>
+<p>Second, the lesson now starts with visualization with
+<code>ggplot2</code>. We have chosen to start with <code>ggplot</code>
+for several reasons. First of all, it gets learners creating usable
+plots from actual data very quickly, demonstrating the immediate
+usefulness of learning R. Second, since <code>ggplot2</code> has a
+relatively self-contained syntax, there is relatively little
+sidetracking to introduce broader terms and jargon. We do introduce
+certain concepts, such as functions, objects, and assignment, but they
+are not covered in overwhelming detail at this point.</p>
+<p>Finally, the lesson is given a more narrative structure, following up
+ggplot with a discussion of what exactly this <code>surveys</code>
+dataframe is. It then uses dataframes as a motivation for learning about
+vectors and data types, rather than starting with basic vectors that are
+only connected to “real data” later on. Up until this point, we use a
+subset of the entire <code>portal</code> dataset, containing only years
+X through Y, in a complete and tidy format. This allows us to then
+introduce “new” data from years Y through Z, which are incomplete and
+not in a tidy format. Receiving new data to clean is a very real
+challenge, and the process of reshaping it to match the older, cleaner
+data provides several benefits: a) it teaches skills like cleaning data,
+handling missing data, and combining multiple datasets and b) provides
+scaffolding by using the older data as a target. We believe this
+narrative structure will increase learner engagement and decrease the
+“don’t worry, this will be useful later on” statements that instructors
+may find themselves giving.</p>
 <div class="section level2">
 <h2 id="key-topics">Key topics<a class="anchor" aria-label="anchor" href="#key-topics"></a></h2>
 <p><strong>should crosslist these with SWC R lessons</strong></p>
@@ -276,15 +307,30 @@
 </ul></div>
 <div class="section level2">
 <h2 id="dataset">Dataset<a class="anchor" aria-label="anchor" href="#dataset"></a></h2>
-<p>Using the <code>ratdat</code> package. Currently, we are working with the <code>complete</code> dataframe, but I think I prefer moving towards a slightly different split:</p>
+<p>Using the <code>ratdat</code> package. Currently, we are working with
+the <code>complete</code> dataframe, but I think I prefer moving towards
+a slightly different split:</p>
 <div class="section level4">
 <h4 id="old-complete-data">Old, complete data<a class="anchor" aria-label="anchor" href="#old-complete-data"></a></h4>
-<p>We start learners off with about half of the <code>complete</code> dataframe, using only older data. This includes the <code>plots</code>, <code>species</code>, and <code>survey</code> data, and does include <code>NA</code>s. We could think about not introducing missing data yet, but I think it might get put off too much.</p>
+<p>We start learners off with about half of the <code>complete</code>
+dataframe, using only older data. This includes the <code>plots</code>,
+<code>species</code>, and <code>survey</code> data, and does include
+<code>NA</code>s. We could think about not introducing missing data yet,
+but I think it might get put off too much.</p>
 </div>
 <div class="section level4">
 <h4 id="new-messy-data">New, messy data<a class="anchor" aria-label="anchor" href="#new-messy-data"></a></h4>
-<p>After doing basics of working with data, we show them how to import data. We will import a CSV file with the surveys data and species data combined. This file will be messy, with a couple of issues. First, the data won’t be in a tidy form. Second, we will throw in a few duplicate rows, and maybe a typo or two.</p>
-<p>While working with the new data, we demonstrate the basics of <code>dplyr</code> and <code>tidyr</code>, the idea of data vaidation and exploration (maybe even some exploratory viz?). Then we say “hey, we’ve also got all this plot data” and introduce joins. Then when we are done with this part, we use <code>bind_rows()</code> to add the new data to the old, and do some data export.</p>
+<p>After doing basics of working with data, we show them how to import
+data. We will import a CSV file with the surveys data and species data
+combined. This file will be messy, with a couple of issues. First, the
+data won’t be in a tidy form. Second, we will throw in a few duplicate
+rows, and maybe a typo or two.</p>
+<p>While working with the new data, we demonstrate the basics of
+<code>dplyr</code> and <code>tidyr</code>, the idea of data vaidation
+and exploration (maybe even some exploratory viz?). Then we say “hey,
+we’ve also got all this plot data” and introduce joins. Then when we are
+done with this part, we use <code>bind_rows()</code> to add the new data
+to the old, and do some data export.</p>
 </div>
 </div>
 <div class="section level2">
@@ -295,15 +341,20 @@
 </ul></li>
 <li>exploring data in R
 <ul><li>ok so what was that surveys thing we just used?</li>
-<li>what about these functions we’re using? can we learn a bit more about them?</li>
-<li>what are these things we get when we use <code>$</code> subsetting?</li>
+<li>what about these functions we’re using? can we learn a bit more
+about them?</li>
+<li>what are these things we get when we use <code>$</code>
+subsetting?</li>
 <li>how do we work directly with vectors?</li>
 <li>how do we name and work with objects?
-<ul><li>should still do something like x &lt;- 10; y &lt;- x; x &lt;- 5; y</li>
+<ul><li>should still do something like x &lt;- 10; y &lt;- x; x &lt;- 5;
+y</li>
 </ul></li>
 </ul></li>
 <li>manipulating data in R
-<ul><li>we’ve been working with nice clean data from years past, but now we’ve been given more of the surveys data from recent years, and it’s messy</li>
+<ul><li>we’ve been working with nice clean data from years past, but now
+we’ve been given more of the surveys data from recent years, and it’s
+messy</li>
 <li>how do we import our data?</li>
 <li>how do we handle missing data?</li>
 <li>how do we deal with dates?</li>
@@ -312,35 +363,85 @@
 <li>how do we calculate summaries across groups?</li>
 <li>how do we pivot the data into the right format?
 <ul><li>I think we go from wide to long</li>
-<li>could also go long to wide to do something like differences between years. So like filter out first and last year, group by species and year, pivot wider so one column per year, then mutate to get differences</li>
+<li>could also go long to wide to do something like differences between
+years. So like filter out first and last year, group by species and
+year, pivot wider so one column per year, then mutate to get
+differences</li>
 </ul></li>
 </ul></li>
 <li>how do we combine multiple datasets?
-<ul><li>joins for adding <code>plot_type</code> stuff to newer data, <code>bind_rows()</code> for new and old data</li>
+<ul><li>joins for adding <code>plot_type</code> stuff to newer data,
+<code>bind_rows()</code> for new and old data</li>
 <li>what happens if some of the data are in a database?</li>
 </ul></li>
 </ul></div>
 <div class="section level2">
 <h2 id="pedantic-collaborator">Pedantic Collaborator<a class="anchor" aria-label="anchor" href="#pedantic-collaborator"></a></h2>
-<p>You’re working on a project when your advisor tells you that you should work with one of their long-time collaborators to help you get your work done. According to your advisor, this collaborator is very talented, but only speaks a language that you don’t know. Your advisor assures you that this is ok, the collaborator won’t judge you at all and will happily answer your questions. However, they also tell you to be aware that the collaborator is also quite pedantic. While they don’t mind that you don’t speak their language, they are always going to answer you quite literally.</p>
-<p>You decide to reach out to the collaborator. You find that they email you back very quickly, almost immediately most of the time. Since you’re just learning their language, you often make mistakes. Sometimes, they tell you that you’ve made a grammatical error or warn you that what you asked for doesn’t make a lot of sense. Sometimes these warnings are difficult to understand, because you don’t really have a grasp of the underlying grammar. Sometimes you get an answer back, with no warnings, but you realize that it doesn’t make sense, because what you asked for isn’t quite what you <em>wanted</em>. Since this collaborator responds almost immediately, without tiring, you can quickly reformulate your question and send it again.</p>
-<p>In this way, you begin to learn the language your collaborator speaks, as well as the particular way they think about your work. Eventually, two of you develop a good working relationship, where you understand how to ask them questions effectively, and how to work through any issues in communication that might arise.</p>
+<p>You’re working on a project when your advisor tells you that you
+should work with one of their long-time collaborators to help you get
+your work done. According to your advisor, this collaborator is very
+talented, but only speaks a language that you don’t know. Your advisor
+assures you that this is ok, the collaborator won’t judge you at all and
+will happily answer your questions. However, they also tell you to be
+aware that the collaborator is also quite pedantic. While they don’t
+mind that you don’t speak their language, they are always going to
+answer you quite literally.</p>
+<p>You decide to reach out to the collaborator. You find that they email
+you back very quickly, almost immediately most of the time. Since you’re
+just learning their language, you often make mistakes. Sometimes, they
+tell you that you’ve made a grammatical error or warn you that what you
+asked for doesn’t make a lot of sense. Sometimes these warnings are
+difficult to understand, because you don’t really have a grasp of the
+underlying grammar. Sometimes you get an answer back, with no warnings,
+but you realize that it doesn’t make sense, because what you asked for
+isn’t quite what you <em>wanted</em>. Since this collaborator responds
+almost immediately, without tiring, you can quickly reformulate your
+question and send it again.</p>
+<p>In this way, you begin to learn the language your collaborator
+speaks, as well as the particular way they think about your work.
+Eventually, two of you develop a good working relationship, where you
+understand how to ask them questions effectively, and how to work
+through any issues in communication that might arise.</p>
 <p>This collaborator’s name is <code>R</code>.</p>
-<p>When you send commands to <code>R</code>, you get a response back. Sometimes, when you make mistakes, you will get back a nice, informative error message or warning. However, sometimes the warnings seem to reference a much “deeper” level of R than you’re familiar with. Or, even worse, you may get the wrong answer with no warning because the command you sent is perfectly valid, but isn’t what you actually want. While you may first have some success working with R by memorizing certain commands or reusing other scripts, this is akin to using a collection of tourist phrases or pre-written statements when having a conversation. You might make a mistake (like getting directions to the library when you need a bathroom), and you are going to be limited in your flexibility (like furiously paging through a tourist guide looking for the term for “thrift store”).</p>
-<p>This is all to say that we are going to spend a bit of time digging into some of the more fundamental aspects of the R language, and these concepts may not feel as immediately useful as, say, learning to make plots with <code>ggplot2</code>. However, learning these more fundamental concepts will help you develop an understanding of how R thinks about data and code, how to interpret error messages, and how to flexibly expand your skills to new situations.</p>
+<p>When you send commands to <code>R</code>, you get a response back.
+Sometimes, when you make mistakes, you will get back a nice, informative
+error message or warning. However, sometimes the warnings seem to
+reference a much “deeper” level of R than you’re familiar with. Or, even
+worse, you may get the wrong answer with no warning because the command
+you sent is perfectly valid, but isn’t what you actually want. While you
+may first have some success working with R by memorizing certain
+commands or reusing other scripts, this is akin to using a collection of
+tourist phrases or pre-written statements when having a conversation.
+You might make a mistake (like getting directions to the library when
+you need a bathroom), and you are going to be limited in your
+flexibility (like furiously paging through a tourist guide looking for
+the term for “thrift store”).</p>
+<p>This is all to say that we are going to spend a bit of time digging
+into some of the more fundamental aspects of the R language, and these
+concepts may not feel as immediately useful as, say, learning to make
+plots with <code>ggplot2</code>. However, learning these more
+fundamental concepts will help you develop an understanding of how R
+thinks about data and code, how to interpret error messages, and how to
+flexibly expand your skills to new situations.</p>
 </div>
 <div class="section level2">
 <h2 id="lessons">Lessons<a class="anchor" aria-label="anchor" href="#lessons"></a></h2>
 <div class="section level3">
 <h3 id="visualization-with-ggplot2">Visualization With <code>ggplot2</code>
 <a class="anchor" aria-label="anchor" href="#visualization-with-ggplot2"></a></h3>
-<p>This lesson sticks almost entirely to <code>ggplot2</code>, but there are a few things that are relevant to later lessons:</p>
+<p>This lesson sticks almost entirely to <code>ggplot2</code>, but there
+are a few things that are relevant to later lessons:</p>
 <ul><li>
 <code>str()</code> is introduced</li>
 <li>
-<code>&lt;-</code> is briefly introduced, though it should be explained fully again, with a “as we saw before”</li>
-<li>we use a <code>data.frame</code> but don’t really introduce that</li>
-<li>we will still need to make more plots later, since some plots require data summary. This is good though, it will refresh some of the <code>ggplot</code> stuff and demonstrate how plotting is an important part of the workflow</li>
+<code>&lt;-</code> is briefly introduced, though it should be
+explained fully again, with a “as we saw before”</li>
+<li>we use a <code>data.frame</code> but don’t really introduce
+that</li>
+<li>we will still need to make more plots later, since some plots
+require data summary. This is good though, it will refresh some of the
+<code>ggplot</code> stuff and demonstrate how plotting is an important
+part of the workflow</li>
 </ul></div>
 <div class="section level3">
 <h3 id="how-r-thinks-about-data">How R Thinks About Data<a class="anchor" aria-label="anchor" href="#how-r-thinks-about-data"></a></h3>
@@ -350,10 +451,12 @@
 <ul><li>steps directly from using them in <code>ggplot</code>
 </li>
 <li>keeps their interest on actual data</li>
-<li>might make it less frustrating to then step back and talk about vectors</li>
+<li>might make it less frustrating to then step back and talk about
+vectors</li>
 </ul></li>
 <li>cons:
-<ul><li>might turn out that you do a lot of “oh we’ll get to this later when we talk about vectors”</li>
+<ul><li>might turn out that you do a lot of “oh we’ll get to this later when
+we talk about vectors”</li>
 </ul></li>
 </ul></li>
 </ul><div class="section level4">
@@ -380,7 +483,12 @@
 </div>
 <div class="section level3">
 <h3 id="manipulating-data">Manipulating Data<a class="anchor" aria-label="anchor" href="#manipulating-data"></a></h3>
-<p>Here’s where we should introduce the <code>base</code> vs. <code>tidyverse</code> split. Point towards other Carpentries lessons as ways to learn base R, emphasize that they WILL encounter base R stuff, and maybe briefly mention square bracket subsetting as an important feature they should learn at some point. Then jump to <code>dplyr</code> and <code>tidyr</code> stuff.</p>
+<p>Here’s where we should introduce the <code>base</code>
+vs. <code>tidyverse</code> split. Point towards other Carpentries
+lessons as ways to learn base R, emphasize that they WILL encounter base
+R stuff, and maybe briefly mention square bracket subsetting as an
+important feature they should learn at some point. Then jump to
+<code>dplyr</code> and <code>tidyr</code> stuff.</p>
 </div>
 </div>
 </div>
@@ -438,9 +546,9 @@
   "creativeWorkStatus": "active",
   "url": "https://carpentries-incubator.github.io/R-ecology-lesson/instructor/update_plan.html",
   "identifier": "https://carpentries-incubator.github.io/R-ecology-lesson/instructor/update_plan.html",
-  "dateCreated": "2022-10-14",
+  "dateCreated": "2023-03-15",
   "dateModified": "2023-03-14",
-  "datePublished": "2023-03-14"
+  "datePublished": "2023-03-15"
 }
 
   </script><script>

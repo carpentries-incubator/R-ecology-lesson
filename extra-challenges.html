@@ -256,7 +256,8 @@
 <h3 class="callout-title">Challenge: <code>ggplot2</code> syntax<a class="anchor" aria-label="anchor" href="#challenge1"></a>
 </h3>
 <div class="callout-content">
-<p>There are some issues with these <code>ggplot2</code> examples. Can you figure out what is wrong with each one?</p>
+<p>There are some issues with these <code>ggplot2</code> examples. Can
+you figure out what is wrong with each one?</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -277,7 +278,10 @@
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
-<p>Our points don’t actually turn out blue, because we defined the color inside of <code>aes()</code>. <code>aes()</code> is used for translating variables from the data into plot elements, like color. There is no variable in the data called “blue”.</p>
+<p>Our points don’t actually turn out blue, because we defined the color
+inside of <code>aes()</code>. <code>aes()</code> is used for translating
+variables from the data into plot elements, like color. There is no
+variable in the data called “blue”.</p>
 </div>
 </div>
 </div>
@@ -287,7 +291,8 @@
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-ggplot2-syntax" class="callout-inner">
-<h3 class="callout-title">Challenge: <code>ggplot2</code> syntax<em> (continued)</em><a class="anchor" aria-label="anchor" href="#challenge2"></a>
+<h3 class="callout-title">Challenge: <code>ggplot2</code> syntax<em>
+(continued)</em><a class="anchor" aria-label="anchor" href="#challenge2"></a>
 </h3>
 <div class="callout-content">
 <div class="codewrapper sourceCode" id="cb3">
@@ -310,7 +315,8 @@
 </button>
 <div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
-<p>Variable names inside <code>aes()</code> should not be wrapped in quotes.</p>
+<p>Variable names inside <code>aes()</code> should not be wrapped in
+quotes.</p>
 </div>
 </div>
 </div>
@@ -320,7 +326,8 @@
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-ggplot2-syntax" class="callout-inner">
-<h3 class="callout-title">Challenge: <code>ggplot2</code> syntax<em> (continued)</em><a class="anchor" aria-label="anchor" href="#challenge3"></a>
+<h3 class="callout-title">Challenge: <code>ggplot2</code> syntax<em>
+(continued)</em><a class="anchor" aria-label="anchor" href="#challenge3"></a>
 </h3>
 <div class="callout-content">
 <div class="codewrapper sourceCode" id="cb4">
@@ -343,7 +350,9 @@
 </button>
 <div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
-<p>When adding things like <code>geom_</code> or <code>scale_</code> functions to a <code>ggplot()</code>, you have to end a line with <code>+</code>, not begin a line with it.</p>
+<p>When adding things like <code>geom_</code> or <code>scale_</code>
+functions to a <code>ggplot()</code>, you have to end a line with
+<code>+</code>, not begin a line with it.</p>
 </div>
 </div>
 </div>
@@ -353,7 +362,8 @@
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-ggplot2-syntax" class="callout-inner">
-<h3 class="callout-title">Challenge: <code>ggplot2</code> syntax<em> (continued)</em><a class="anchor" aria-label="anchor" href="#challenge4"></a>
+<h3 class="callout-title">Challenge: <code>ggplot2</code> syntax<em>
+(continued)</em><a class="anchor" aria-label="anchor" href="#challenge4"></a>
 </h3>
 <div class="callout-content">
 <div class="codewrapper sourceCode" id="cb5">
@@ -375,7 +385,10 @@
 </button>
 <div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
-<p>When translating variables from the data, like <code>weight</code> and <code>hindfoot_length</code>, to elements of the plot, like <code>x</code> and <code>y</code>, you must put them inside <code>aes()</code>.</p>
+<p>When translating variables from the data, like <code>weight</code>
+and <code>hindfoot_length</code>, to elements of the plot, like
+<code>x</code> and <code>y</code>, you must put them inside
+<code>aes()</code>.</p>
 </div>
 </div>
 </div>
@@ -385,7 +398,8 @@
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-ggplot2-syntax" class="callout-inner">
-<h3 class="callout-title">Challenge: <code>ggplot2</code> syntax<em> (continued)</em><a class="anchor" aria-label="anchor" href="#challenge5"></a>
+<h3 class="callout-title">Challenge: <code>ggplot2</code> syntax<em>
+(continued)</em><a class="anchor" aria-label="anchor" href="#challenge5"></a>
 </h3>
 <div class="callout-content">
 <div class="codewrapper sourceCode" id="cb6">
@@ -409,7 +423,10 @@
 </button>
 <div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
-<p><code>species_id</code> is a categorical variable, but <code>scale_color_continuous()</code> supplies a continuous color scale. <code>scale_color_discrete()</code> would give a discrete/categorical scale.</p>
+<p><code>species_id</code> is a categorical variable, but
+<code>scale_color_continuous()</code> supplies a continuous color scale.
+<code>scale_color_discrete()</code> would give a discrete/categorical
+scale.</p>
 </div>
 </div>
 </div>
@@ -469,9 +486,9 @@
   "creativeWorkStatus": "active",
   "url": "https://carpentries-incubator.github.io/R-ecology-lesson/extra-challenges.html",
   "identifier": "https://carpentries-incubator.github.io/R-ecology-lesson/extra-challenges.html",
-  "dateCreated": "2022-10-14",
+  "dateCreated": "2023-03-15",
   "dateModified": "2023-03-14",
-  "datePublished": "2023-03-14"
+  "datePublished": "2023-03-15"
 }
 
   </script><script>

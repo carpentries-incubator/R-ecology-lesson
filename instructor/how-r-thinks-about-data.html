@@ -295,8 +295,17 @@
 </div>
 </section><section id="the-data.frame"><h2 class="section-heading">The data.frame<a class="anchor" aria-label="anchor" href="#the-data.frame"></a>
 </h2>
-<hr class="half-width"><p>We just spent quite a bit of time learning how to create visualizations from the <code>complete_old</code> data, but we did not talk much about <strong>what</strong> this <code>complete_old</code> thing is. It’s important to understand how R thinks about, represents, and stores data in order for us to have a productive working relationship with R.</p>
-<p>The <code>complete_old</code> data is stored in R as a <strong>data.frame</strong>, which is the most common way that R represents tabular data (data that can be stored in a table format, like a spreadsheet). We can check what <code>complete_old</code> is by using the <code>class()</code> function:</p>
+<hr class="half-width"><p>We just spent quite a bit of time learning how to create
+visualizations from the <code>complete_old</code> data, but we did not
+talk much about <strong>what</strong> this <code>complete_old</code>
+thing is. It’s important to understand how R thinks about, represents,
+and stores data in order for us to have a productive working
+relationship with R.</p>
+<p>The <code>complete_old</code> data is stored in R as a
+<strong>data.frame</strong>, which is the most common way that R
+represents tabular data (data that can be stored in a table format, like
+a spreadsheet). We can check what <code>complete_old</code> is by using
+the <code>class()</code> function:</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -308,7 +317,8 @@
 </h3>
 <pre class="output" tabindex="0"><code>[1] "data.frame"</code></pre>
 </div>
-<p>We can view the first few rows with the <code>head()</code> function, and the last few rows with the <code>tail()</code> function:</p>
+<p>We can view the first few rows with the <code>head()</code> function,
+and the last few rows with the <code>tail()</code> function:</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -357,8 +367,16 @@
 16877       Dipodomys  merriami Rodent          Control
 16878       Dipodomys  merriami Rodent          Control</code></pre>
 </div>
-<p>We used these functions with just one argument, the object <code>complete_old</code>, and we didn’t give the argument a name, like we often did with <code>ggplot2</code>. In R, a function’s arguments come in a particular order, and if you put them in the correct order, you don’t need to name them. In this case, the name of the argument is <code>x</code>, so we can name it if we want, but since we know it’s the first argument, we don’t need to.</p>
-<p>To learn more about a function, you can type a <code>?</code> in front of the name of the function, which will bring up the official documentation for that function:</p>
+<p>We used these functions with just one argument, the object
+<code>complete_old</code>, and we didn’t give the argument a name, like
+we often did with <code>ggplot2</code>. In R, a function’s arguments
+come in a particular order, and if you put them in the correct order,
+you don’t need to name them. In this case, the name of the argument is
+<code>x</code>, so we can name it if we want, but since we know it’s the
+first argument, we don’t need to.</p>
+<p>To learn more about a function, you can type a <code>?</code> in
+front of the name of the function, which will bring up the official
+documentation for that function:</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -373,14 +391,52 @@
 <h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#callout1"></a>
 </h3>
 <div class="callout-content">
-<p>Function documentation is written by the authors of the functions, so they can vary pretty widely in their style and readability. The first section, <strong>Description</strong>, gives you a concise description of what the function does, but it may not always be enough. The <strong>Arguments</strong> section defines all the arguments for the function and is usually worth reading thoroughly. Finally, the <strong>Examples</strong> section at the end will often have some helpful examples that you can run to get a sense of what the function is doing.</p>
-<p>Another great source of information is <strong>package vignettes</strong>. Many packages have vignettes, which are like tutorials that introduce the package, specific functions, or general methods. You can run <code>vignette(package = "package_name")</code> to see a list of vignettes in that package. Once you have a name, you can run <code>vignette("vignette_name", "package_name")</code> to view that vignette. You can also use a web browser to go to <code>https://cran.r-project.org/web/packages/package_name/vignettes/</code> where you will find a list of links to each vignette. Some packages will have their own websites, which often have nicely formatted vignettes and tutorials.</p>
-<p>Finally, learning to search for help is probably the most useful skill for any R user. The key skill is figuring out what you should actually search for. It’s often a good idea to start your search with <code>R</code> or <code>R programming</code>. If you have the name of a package you want to use, start with <code>R package_name</code>.</p>
-<p>Many of the answers you find will be from a website called Stack Overflow, where people ask programming questions and others provide answers. It is generally poor form to ask duplicate questions, so before you decide to post your own, do some thorough searching to see if it has been answered before (it likely has). If you do decide to post a question on Stack Overflow, or any other help forum, you will want to create a <strong>reproducible example</strong> or <strong>reprex</strong>. If you are asking a complicated question requiring your own data and a whole bunch of code, people probably won’t be able or willing to help you. However, if you can hone in on the specific thing you want help with, and create a minimal example using smaller, fake data, it will be much easier for others to help you. If you search <code>how to make a reproducible example in R</code>, you will find some great resources to help you out.</p>
+<p>Function documentation is written by the authors of the functions, so
+they can vary pretty widely in their style and readability. The first
+section, <strong>Description</strong>, gives you a concise description
+of what the function does, but it may not always be enough. The
+<strong>Arguments</strong> section defines all the arguments for the
+function and is usually worth reading thoroughly. Finally, the
+<strong>Examples</strong> section at the end will often have some
+helpful examples that you can run to get a sense of what the function is
+doing.</p>
+<p>Another great source of information is <strong>package
+vignettes</strong>. Many packages have vignettes, which are like
+tutorials that introduce the package, specific functions, or general
+methods. You can run <code>vignette(package = "package_name")</code> to
+see a list of vignettes in that package. Once you have a name, you can
+run <code>vignette("vignette_name", "package_name")</code> to view that
+vignette. You can also use a web browser to go to
+<code>https://cran.r-project.org/web/packages/package_name/vignettes/</code>
+where you will find a list of links to each vignette. Some packages will
+have their own websites, which often have nicely formatted vignettes and
+tutorials.</p>
+<p>Finally, learning to search for help is probably the most useful
+skill for any R user. The key skill is figuring out what you should
+actually search for. It’s often a good idea to start your search with
+<code>R</code> or <code>R programming</code>. If you have the name of a
+package you want to use, start with <code>R package_name</code>.</p>
+<p>Many of the answers you find will be from a website called Stack
+Overflow, where people ask programming questions and others provide
+answers. It is generally poor form to ask duplicate questions, so before
+you decide to post your own, do some thorough searching to see if it has
+been answered before (it likely has). If you do decide to post a
+question on Stack Overflow, or any other help forum, you will want to
+create a <strong>reproducible example</strong> or
+<strong>reprex</strong>. If you are asking a complicated question
+requiring your own data and a whole bunch of code, people probably won’t
+be able or willing to help you. However, if you can hone in on the
+specific thing you want help with, and create a minimal example using
+smaller, fake data, it will be much easier for others to help you. If
+you search <code>how to make a reproducible example in R</code>, you
+will find some great resources to help you out.</p>
 </div>
 </div>
 </div>
-<p>Some arguments are optional. For example, the <code>n</code> argument in <code>head()</code> specifies the number of rows to print. It defaults to 6, but we can override that by specifying a different number:</p>
+<p>Some arguments are optional. For example, the <code>n</code> argument
+in <code>head()</code> specifies the number of rows to print. It
+defaults to 6, but we can override that by specifying a different
+number:</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -436,7 +492,8 @@
 7  Peromyscus eremicus Rodent                  Control
  [ reached 'max' / getOption("max.print") -- omitted 3 rows ]</code></pre>
 </div>
-<p>Additionally, if we name them, we can put them in any order we want:</p>
+<p>Additionally, if we name them, we can put them in any order we
+want:</p>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -464,8 +521,13 @@
 7  Peromyscus eremicus Rodent                  Control
  [ reached 'max' / getOption("max.print") -- omitted 3 rows ]</code></pre>
 </div>
-<p>Generally, it’s good practice to start with the required arguments, like the data.frame whose rows you want to see, and then to name the optional arguments. If you are ever unsure, it never hurts to explicitly name an argument.</p>
-<p>Let’s get back to investigating our <code>complete_old</code> data.frame. We can get some useful summaries of each variable using the <code>summary()</code> function:</p>
+<p>Generally, it’s good practice to start with the required arguments,
+like the data.frame whose rows you want to see, and then to name the
+optional arguments. If you are ever unsure, it never hurts to explicitly
+name an argument.</p>
+<p>Let’s get back to investigating our <code>complete_old</code>
+data.frame. We can get some useful summaries of each variable using the
+<code>summary()</code> function:</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -500,7 +562,8 @@
                                                                             
                                                                             </code></pre>
 </div>
-<p>And, as we have already done, we can use <code>str()</code> to look at the structure of an object:</p>
+<p>And, as we have already done, we can use <code>str()</code> to look
+at the structure of an object:</p>
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -525,9 +588,21 @@
  $ taxa           : chr  "Rodent" "Rodent" "Rodent" "Rodent" ...
  $ plot_type      : chr  "Control" "Long-term Krat Exclosure" "Control" "Rodent Exclosure" ...</code></pre>
 </div>
-<p>We get quite a bit of useful information here. First, we are told that we have a data.frame of 16878 observations, or rows, and 13 variables, or columns.</p>
-<p>Next, we get a bit of information on each variable, including its type (<code>int</code> or <code>chr</code>) and a quick peek at the first 10 values. You might ask why there is a <code>$</code> in front of each variable. This is because the <code>$</code> is an operator that allows us to select individual columns from a data.frame.</p>
-<p>The <code>$</code> operator also allows you to use tab-completion to quickly select which variable you want from a given data.frame. For example, to get the <code>year</code> variable, we can type <code>complete_old$</code> and then hit <kbd>Tab</kbd>. We get a list of the variables that we can move through with up and down arrow keys. Hit <kbd>Enter</kbd> when you reach <code>year</code>, which should finish this code:</p>
+<p>We get quite a bit of useful information here. First, we are told
+that we have a data.frame of 16878 observations, or rows, and 13
+variables, or columns.</p>
+<p>Next, we get a bit of information on each variable, including its
+type (<code>int</code> or <code>chr</code>) and a quick peek at the
+first 10 values. You might ask why there is a <code>$</code> in front of
+each variable. This is because the <code>$</code> is an operator that
+allows us to select individual columns from a data.frame.</p>
+<p>The <code>$</code> operator also allows you to use tab-completion to
+quickly select which variable you want from a given data.frame. For
+example, to get the <code>year</code> variable, we can type
+<code>complete_old$</code> and then hit <kbd>Tab</kbd>. We get a list of
+the variables that we can move through with up and down arrow keys. Hit
+<kbd>Enter</kbd> when you reach <code>year</code>, which should finish
+this code:</p>
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -546,18 +621,47 @@
  [91] 1977 1977 1977 1977 1977 1977 1977 1977 1977 1977
  [ reached getOption("max.print") -- omitted 16778 entries ]</code></pre>
 </div>
-<p>What we get back is a whole bunch of numbers, the entries in the <code>year</code> column printed out in order.</p>
+<p>What we get back is a whole bunch of numbers, the entries in the
+<code>year</code> column printed out in order.</p>
 </section><section id="vectors-the-building-block-of-data"><h2 class="section-heading">Vectors: the building block of data<a class="anchor" aria-label="anchor" href="#vectors-the-building-block-of-data"></a>
 </h2>
-<hr class="half-width"><p>You might have noticed that our last result looked different from when we printed out the <code>complete_old</code> data.frame itself. That’s because it is not a data.frame, it is a <strong>vector</strong>. A vector is a 1-dimensional series of values, in this case a vector of numbers representing years.</p>
-<p>Data.frames are made up of vectors; each column in a data.frame is a vector. Vectors are the basic building blocks of all data in R. Basically, everything in R is a vector, a bunch of vectors stitched together in some way, or a function. Understanding how vectors work is crucial to understanding how R treats data, so we will spend some time learning about them.</p>
-<p>There are 4 main types of vectors (also known as <em>atomic vectors</em>):</p>
-<ol style="list-style-type: decimal"><li><p><code>"character"</code> for strings of characters, like our <code>genus</code> or <code>sex</code> columns. Each entry in a character vector is wrapped in quotes. In other programming languages, this type of data may be referred to as “strings”.</p></li>
-<li><p><code>"integer"</code> for integers. All the numeric values in <code>complete_old</code> are integers. You may sometimes see integers represented like <code>2L</code> or <code>20L</code>. The <code>L</code> indicates to R that it is an integer, instead of the next data type, <code>"numeric"</code>.</p></li>
-<li><p><code>"numeric"</code>, aka <code>"double"</code>, vectors can contain numbers including decimals. Other languages may refer to these as “float” or “floating point” numbers.</p></li>
-<li><p><code>"logical"</code> for <code>TRUE</code> and <code>FALSE</code>, which can also be represented as <code>T</code> and <code>F</code>. In other contexts, these may be referred to as “Boolean” data.</p></li>
-</ol><p>Vectors can only be of a <strong>single type</strong>. Since each column in a data.frame is a vector, this means an accidental character following a number, like <code>29,</code> can change the type of the whole vector. Mixing up vector types is one of the most common mistakes in R, and it can be tricky to figure out. It’s often very useful to check the types of vectors.</p>
-<p>To create a vector from scratch, we can use the <code>c()</code> function, putting values inside, separated by commas.</p>
+<hr class="half-width"><p>You might have noticed that our last result looked different from
+when we printed out the <code>complete_old</code> data.frame itself.
+That’s because it is not a data.frame, it is a <strong>vector</strong>.
+A vector is a 1-dimensional series of values, in this case a vector of
+numbers representing years.</p>
+<p>Data.frames are made up of vectors; each column in a data.frame is a
+vector. Vectors are the basic building blocks of all data in R.
+Basically, everything in R is a vector, a bunch of vectors stitched
+together in some way, or a function. Understanding how vectors work is
+crucial to understanding how R treats data, so we will spend some time
+learning about them.</p>
+<p>There are 4 main types of vectors (also known as <em>atomic
+vectors</em>):</p>
+<ol style="list-style-type: decimal"><li><p><code>"character"</code> for strings of characters, like our
+<code>genus</code> or <code>sex</code> columns. Each entry in a
+character vector is wrapped in quotes. In other programming languages,
+this type of data may be referred to as “strings”.</p></li>
+<li><p><code>"integer"</code> for integers. All the numeric values in
+<code>complete_old</code> are integers. You may sometimes see integers
+represented like <code>2L</code> or <code>20L</code>. The <code>L</code>
+indicates to R that it is an integer, instead of the next data type,
+<code>"numeric"</code>.</p></li>
+<li><p><code>"numeric"</code>, aka <code>"double"</code>, vectors can
+contain numbers including decimals. Other languages may refer to these
+as “float” or “floating point” numbers.</p></li>
+<li><p><code>"logical"</code> for <code>TRUE</code> and
+<code>FALSE</code>, which can also be represented as <code>T</code> and
+<code>F</code>. In other contexts, these may be referred to as “Boolean”
+data.</p></li>
+</ol><p>Vectors can only be of a <strong>single type</strong>. Since each
+column in a data.frame is a vector, this means an accidental character
+following a number, like <code>29,</code> can change the type of the
+whole vector. Mixing up vector types is one of the most common mistakes
+in R, and it can be tricky to figure out. It’s often very useful to
+check the types of vectors.</p>
+<p>To create a vector from scratch, we can use the <code>c()</code>
+function, putting values inside, separated by commas.</p>
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -569,14 +673,17 @@
 </h3>
 <pre class="output" tabindex="0"><code>[1]  1  2  5 12  4</code></pre>
 </div>
-<p>As you can see, those values get printed out in the console, just like with <code>complete_old$year</code>. To store this vector so we can continue to work with it, we need to assign it to an object.</p>
+<p>As you can see, those values get printed out in the console, just
+like with <code>complete_old$year</code>. To store this vector so we can
+continue to work with it, we need to assign it to an object.</p>
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">num</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">5</span>, <span class="fl">12</span>, <span class="fl">4</span><span class="op">)</span></span></code></pre>
 </div>
-<p>You can check what kind of object <code>num</code> is with the <code>class()</code> function.</p>
+<p>You can check what kind of object <code>num</code> is with the
+<code>class()</code> function.</p>
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -602,7 +709,10 @@
 </h3>
 <pre class="output" tabindex="0"><code>[1] "character"</code></pre>
 </div>
-<p>Remember that each entry, like <code>"apple"</code>, needs to be surrounded by quotes, and entries are separated with commas. If you do something like <code>"apple, pear, grape"</code>, you will have only a single entry containing that whole string.</p>
+<p>Remember that each entry, like <code>"apple"</code>, needs to be
+surrounded by quotes, and entries are separated with commas. If you do
+something like <code>"apple, pear, grape"</code>, you will have only a
+single entry containing that whole string.</p>
 <p>Finally, let’s make a logical vector:</p>
 <div class="codewrapper sourceCode" id="cb28">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -624,8 +734,11 @@
 <h3 class="callout-title">Challenge 1: Coercion<a class="anchor" aria-label="anchor" href="#challenge1"></a>
 </h3>
 <div class="callout-content">
-<p>Since vectors can only hold one type of data, something has to be done when we try to combine different types of data into one vector.</p>
-<ol style="list-style-type: decimal"><li>What type will each of these vectors be? Try to guess without running any code at first, then run the code and use <code>class()</code> to verify your answers.</li>
+<p>Since vectors can only hold one type of data, something has to be
+done when we try to combine different types of data into one vector.</p>
+<ol style="list-style-type: decimal"><li>What type will each of these vectors be? Try to guess without
+running any code at first, then run the code and use
+<code>class()</code> to verify your answers.</li>
 </ol><div class="codewrapper sourceCode" id="cb30">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -647,7 +760,7 @@
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -693,7 +806,8 @@
 </h3>
 <pre class="output" tabindex="0"><code>[1] "character"</code></pre>
 </div>
-<p>R will automatically convert values in a vector so that they are all the same type, a process called <strong>coercion</strong>.</p>
+<p>R will automatically convert values in a vector so that they are all
+the same type, a process called <strong>coercion</strong>.</p>
 </div>
 </div>
 </div>
@@ -703,10 +817,12 @@
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1-coercion" class="callout-inner">
-<h3 class="callout-title">Challenge 1: Coercion<em> (continued)</em><a class="anchor" aria-label="anchor" href="#challenge2"></a>
+<h3 class="callout-title">Challenge 1: Coercion<em>
+(continued)</em><a class="anchor" aria-label="anchor" href="#challenge2"></a>
 </h3>
 <div class="callout-content">
-<ol start="2" style="list-style-type: decimal"><li>How many values in <code>combined_logical</code> are <code>"TRUE"</code> (as a character)?</li>
+<ol start="2" style="list-style-type: decimal"><li>How many values in <code>combined_logical</code> are
+<code>"TRUE"</code> (as a character)?</li>
 </ol><div class="codewrapper sourceCode" id="cb39">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -723,7 +839,7 @@
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb40">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -747,7 +863,13 @@
 </h3>
 <pre class="output" tabindex="0"><code>[1] "character"</code></pre>
 </div>
-<p>Only one value is <code>"TRUE"</code>. Coercion happens when each vector is created, so the <code>TRUE</code> in <code>num_logi</code> becomes a <code>1</code>, while the <code>TRUE</code> in <code>char_logi</code> becomes <code>"TRUE"</code>. When these two vectors are combined, R doesn’t remember that the <code>1</code> in <code>num_logi</code> used to be a <code>TRUE</code>, it will just coerce the <code>1</code> to <code>"1"</code>.</p>
+<p>Only one value is <code>"TRUE"</code>. Coercion happens when each
+vector is created, so the <code>TRUE</code> in <code>num_logi</code>
+becomes a <code>1</code>, while the <code>TRUE</code> in
+<code>char_logi</code> becomes <code>"TRUE"</code>. When these two
+vectors are combined, R doesn’t remember that the <code>1</code> in
+<code>num_logi</code> used to be a <code>TRUE</code>, it will just
+coerce the <code>1</code> to <code>"1"</code>.</p>
 </div>
 </div>
 </div>
@@ -757,10 +879,14 @@
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1-coercion" class="callout-inner">
-<h3 class="callout-title">Challenge 1: Coercion<em> (continued)</em><a class="anchor" aria-label="anchor" href="#challenge3"></a>
+<h3 class="callout-title">Challenge 1: Coercion<em>
+(continued)</em><a class="anchor" aria-label="anchor" href="#challenge3"></a>
 </h3>
 <div class="callout-content">
-<ol start="3" style="list-style-type: decimal"><li>Now that you’ve seen a few examples of coercion, you might have started to see that there are some rules about how types get converted. There is a hierarchy to coercion. Can you draw a diagram that represents the hierarchy of what types get converted to other types?</li>
+<ol start="3" style="list-style-type: decimal"><li>Now that you’ve seen a few examples of coercion, you might have
+started to see that there are some rules about how types get converted.
+There is a hierarchy to coercion. Can you draw a diagram that represents
+the hierarchy of what types get converted to other types?</li>
 </ol></div>
 </div>
 </div>
@@ -771,25 +897,43 @@
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>logical → integer → numeric → character</p>
-<p>Logical vectors can only take on two values: <code>TRUE</code> or <code>FALSE</code>. Integer vectors can only contain integers, so <code>TRUE</code> and <code>FALSE</code> can be coerced to <code>1</code> and <code>0</code>. Numeric vectors can contain numbers with decimals, so integers can be coerced from, say, <code>6</code> to <code>6.0</code> (though R will still display a numeric <code>6</code> as <code>6</code>.). Finally, any string of characters can be represented as a character vector, so any of the other types can be coerced to a character vector.</p>
+<p>Logical vectors can only take on two values: <code>TRUE</code> or
+<code>FALSE</code>. Integer vectors can only contain integers, so
+<code>TRUE</code> and <code>FALSE</code> can be coerced to
+<code>1</code> and <code>0</code>. Numeric vectors can contain numbers
+with decimals, so integers can be coerced from, say, <code>6</code> to
+<code>6.0</code> (though R will still display a numeric <code>6</code>
+as <code>6</code>.). Finally, any string of characters can be
+represented as a character vector, so any of the other types can be
+coerced to a character vector.</p>
 </div>
 </div>
 </div>
 </div>
-<p>Coercion is not something you will often do intentionally; rather, when combining vectors or reading data into R, a stray character that you missed may change an entire numeric vector into a character vector. It is a good idea to check the <code>class()</code> of your results frequently, particularly if you are running into confusing error messages.</p>
+<p>Coercion is not something you will often do intentionally; rather,
+when combining vectors or reading data into R, a stray character that
+you missed may change an entire numeric vector into a character vector.
+It is a good idea to check the <code>class()</code> of your results
+frequently, particularly if you are running into confusing error
+messages.</p>
 </section><section id="missing-data"><h2 class="section-heading">Missing data<a class="anchor" aria-label="anchor" href="#missing-data"></a>
 </h2>
-<hr class="half-width"><p>One of the great things about R is how it handles missing data, which can be tricky in other programming languages. R represents missing data as <code>NA</code>, without quotes, in vectors of any type. Let’s make a numeric vector with an <code>NA</code> value:</p>
+<hr class="half-width"><p>One of the great things about R is how it handles missing data, which
+can be tricky in other programming languages. R represents missing data
+as <code>NA</code>, without quotes, in vectors of any type. Let’s make a
+numeric vector with an <code>NA</code> value:</p>
 <div class="codewrapper sourceCode" id="cb44">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">weights</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">25</span>, <span class="fl">34</span>, <span class="fl">12</span>, <span class="cn">NA</span>, <span class="fl">42</span><span class="op">)</span></span></code></pre>
 </div>
-<p>R doesn’t make assumptions about how you want to handle missing data, so if we pass this vector to a numeric function like <code>min()</code>, it won’t know what to do, so it returns <code>NA</code>:</p>
+<p>R doesn’t make assumptions about how you want to handle missing data,
+so if we pass this vector to a numeric function like <code>min()</code>,
+it won’t know what to do, so it returns <code>NA</code>:</p>
 <div class="codewrapper sourceCode" id="cb45">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -801,7 +945,10 @@
 </h3>
 <pre class="output" tabindex="0"><code>[1] NA</code></pre>
 </div>
-<p>This is a very good thing, since we won’t accidentally forget to consider our missing data. If we decide to exclude our missing values, many basic math functions have an argument to <strong>r</strong>e<strong>m</strong>ove them:</p>
+<p>This is a very good thing, since we won’t accidentally forget to
+consider our missing data. If we decide to exclude our missing values,
+many basic math functions have an argument to
+<strong>r</strong>e<strong>m</strong>ove them:</p>
 <div class="codewrapper sourceCode" id="cb47">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -815,7 +962,12 @@
 </div>
 </section><section id="vectors-as-arguments"><h2 class="section-heading">Vectors as arguments<a class="anchor" aria-label="anchor" href="#vectors-as-arguments"></a>
 </h2>
-<hr class="half-width"><p>A common reason to create a vector from scratch is to use in a function argument. The <code>quantile()</code> function will calculate a quantile for a given vector of numeric values. We set the quantile using the <code>probs</code> argument. We also need to set <code>na.rm = TRUE</code>, since there are <code>NA</code> values in the <code>weight</code> column.</p>
+<hr class="half-width"><p>A common reason to create a vector from scratch is to use in a
+function argument. The <code>quantile()</code> function will calculate a
+quantile for a given vector of numeric values. We set the quantile using
+the <code>probs</code> argument. We also need to set
+<code>na.rm = TRUE</code>, since there are <code>NA</code> values in the
+<code>weight</code> column.</p>
 <div class="codewrapper sourceCode" id="cb49">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -828,7 +980,11 @@
 <pre class="output" tabindex="0"><code>25% 
  24 </code></pre>
 </div>
-<p>Now we get back the 25% quantile value for weights. However, we often want to know more than one quantile. Luckily, the <code>probs</code> argument is <strong>vectorized</strong>, meaning it can take a whole vector of values. Let’s try getting the 25%, 50% (median), and 75% quantiles all at once.</p>
+<p>Now we get back the 25% quantile value for weights. However, we often
+want to know more than one quantile. Luckily, the <code>probs</code>
+argument is <strong>vectorized</strong>, meaning it can take a whole
+vector of values. Let’s try getting the 25%, 50% (median), and 75%
+quantiles all at once.</p>
 <div class="codewrapper sourceCode" id="cb51">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -841,8 +997,14 @@
 <pre class="output" tabindex="0"><code>25% 50% 75% 
  24  42  53 </code></pre>
 </div>
-<p>While the <code>c()</code> function is very flexible, it doesn’t necessarily scale well. If you want to generate a long vector from scratch, you probably don’t want to type everything out manually. There are a few functions that can help generate vectors.</p>
-<p>First, putting <code>:</code> between two numbers will generate a vector of integers starting with the first number and ending with the last. The <code>seq()</code> function allows you to generate similar sequences, but changing by any amount.</p>
+<p>While the <code>c()</code> function is very flexible, it doesn’t
+necessarily scale well. If you want to generate a long vector from
+scratch, you probably don’t want to type everything out manually. There
+are a few functions that can help generate vectors.</p>
+<p>First, putting <code>:</code> between two numbers will generate a
+vector of integers starting with the first number and ending with the
+last. The <code>seq()</code> function allows you to generate similar
+sequences, but changing by any amount.</p>
 <div class="codewrapper sourceCode" id="cb53">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -902,7 +1064,9 @@
 <pre class="output" tabindex="0"><code> [1] 0.00 0.01 0.02 0.03 0.04 0.05 0.06 0.07 0.08 0.09 0.10 0.11 0.12 0.13 0.14
 [16] 0.15 0.16 0.17 0.18 0.19</code></pre>
 </div>
-<p>Finally, the <code>rep()</code> function allows you to repeat a value, or even a whole vector, as many times as you want, and works with any type of vector.</p>
+<p>Finally, the <code>rep()</code> function allows you to repeat a
+value, or even a whole vector, as many times as you want, and works with
+any type of vector.</p>
 <div class="codewrapper sourceCode" id="cb61">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -964,7 +1128,7 @@
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb68">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1012,10 +1176,12 @@
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-2-creating-sequences" class="callout-inner">
-<h3 class="callout-title">Challenge 2: Creating sequences<em> (continued)</em><a class="anchor" aria-label="anchor" href="#challenge5"></a>
+<h3 class="callout-title">Challenge 2: Creating sequences<em>
+(continued)</em><a class="anchor" aria-label="anchor" href="#challenge5"></a>
 </h3>
 <div class="callout-content">
-<ol start="2" style="list-style-type: decimal"><li>Calculate the quantiles for the <code>complete_old</code> hindfoot lengths at every 5% level (0%, 5%, 10%, 15%, etc.)</li>
+<ol start="2" style="list-style-type: decimal"><li>Calculate the quantiles for the <code>complete_old</code> hindfoot
+lengths at every 5% level (0%, 5%, 10%, 15%, etc.)</li>
 </ol></div>
 </div>
 </div>
@@ -1026,7 +1192,7 @@
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb74">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1050,7 +1216,9 @@
 </div>
 </section><section id="building-with-vectors"><h2 class="section-heading">Building with vectors<a class="anchor" aria-label="anchor" href="#building-with-vectors"></a>
 </h2>
-<hr class="half-width"><p>We have now seen vectors in a few different forms: as columns in a data.frame and as single vectors. However, they can be manipulated into lots of other shapes and forms. Some other common forms are:</p>
+<hr class="half-width"><p>We have now seen vectors in a few different forms: as columns in a
+data.frame and as single vectors. However, they can be manipulated into
+lots of other shapes and forms. Some other common forms are:</p>
 <ul><li>matrices
 <ul><li>2-dimensional numeric representations</li>
 </ul></li>
@@ -1060,18 +1228,26 @@
 <li>lists
 <ul><li>lists are very flexible ways to store vectors</li>
 <li>a list can contain vectors of many different types and lengths</li>
-<li>an entry in a list can be another list, so lists can get deeply nested</li>
-<li>a data.frame is a type of list where each column is an individual vector and each vector has to be the same length, since a data.frame has an entry in every column for each row</li>
+<li>an entry in a list can be another list, so lists can get deeply
+nested</li>
+<li>a data.frame is a type of list where each column is an individual
+vector and each vector has to be the same length, since a data.frame has
+an entry in every column for each row</li>
 </ul></li>
 <li>factors
 <ul><li>a way to represent categorical data</li>
 <li>factors can be ordered or unordered</li>
-<li>they often <em>look</em> like character vectors, but behave differently</li>
-<li>under the hood, they are integers with character labels, called <strong>levels</strong>, for each integer</li>
+<li>they often <em>look</em> like character vectors, but behave
+differently</li>
+<li>under the hood, they are integers with character labels, called
+<strong>levels</strong>, for each integer</li>
 </ul></li>
 </ul><div class="section level3">
 <h3 id="factors">Factors<a class="anchor" aria-label="anchor" href="#factors"></a></h3>
-<p>We will spend a bit more time talking about factors, since they are often a challenging type of data to work with. We can create a factor from scratch by putting a character vector made using <code>c()</code> into the <code>factor()</code> function:</p>
+<p>We will spend a bit more time talking about factors, since they are
+often a challenging type of data to work with. We can create a factor
+from scratch by putting a character vector made using <code>c()</code>
+into the <code>factor()</code> function:</p>
 <div class="codewrapper sourceCode" id="cb76">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1086,7 +1262,8 @@
 <pre class="output" tabindex="0"><code>[1] male   female female male   female &lt;NA&gt;  
 Levels: female male</code></pre>
 </div>
-<p>We can inspect the levels of the factor using the <code>levels()</code> function:</p>
+<p>We can inspect the levels of the factor using the
+<code>levels()</code> function:</p>
 <div class="codewrapper sourceCode" id="cb78">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1098,7 +1275,10 @@ Levels: female male</code></pre>
 </h3>
 <pre class="output" tabindex="0"><code>[1] "female" "male"  </code></pre>
 </div>
-<p>The <strong><code>forcats</code></strong> package from the <code>tidyverse</code> has a lot of convenient functions for working with factors. We will show you a few common operations, but the <code>forcats</code> package has many more useful functions.</p>
+<p>The <strong><code>forcats</code></strong> package from the
+<code>tidyverse</code> has a lot of convenient functions for working
+with factors. We will show you a few common operations, but the
+<code>forcats</code> package has many more useful functions.</p>
 <div class="codewrapper sourceCode" id="cb80">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1140,11 +1320,19 @@ Levels: F M</code></pre>
 <pre class="output" tabindex="0"><code>[1] male      female    female    male      female    (Missing)
 Levels: female male (Missing)</code></pre>
 </div>
-<p>In general, it is a good practice to leave your categorical data as a <strong>character</strong> vector until you need to use a factor. Here are some reasons you might need a factor:</p>
+<p>In general, it is a good practice to leave your categorical data as a
+<strong>character</strong> vector until you need to use a factor. Here
+are some reasons you might need a factor:</p>
 <ol style="list-style-type: decimal"><li>Another function requires you to use a factor</li>
-<li>You are plotting categorical data and want to control the ordering of categories in the plot</li>
-</ol><p>Since factors can behave differently from character vectors, it is always a good idea to check what type of data you’re working with. You might use a new function for the first time and be confused by the results, only to realize later that it produced a factor as an output, when you thought it was a character vector.</p>
-<p>It is fairly straightforward to convert a factor to a character vector:</p>
+<li>You are plotting categorical data and want to control the ordering
+of categories in the plot</li>
+</ol><p>Since factors can behave differently from character vectors, it is
+always a good idea to check what type of data you’re working with. You
+might use a new function for the first time and be confused by the
+results, only to realize later that it produced a factor as an output,
+when you thought it was a character vector.</p>
+<p>It is fairly straightforward to convert a factor to a character
+vector:</p>
 <div class="codewrapper sourceCode" id="cb86">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1156,7 +1344,8 @@ Levels: female male (Missing)</code></pre>
 </h3>
 <pre class="output" tabindex="0"><code>[1] "male"   "female" "female" "male"   "female" NA      </code></pre>
 </div>
-<p>However, you need to be careful if you’re somehow working with a factor that has numbers as its levels:</p>
+<p>However, you need to be careful if you’re somehow working with a
+factor that has numbers as its levels:</p>
 <div class="codewrapper sourceCode" id="cb88">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1186,7 +1375,9 @@ Levels: female male (Missing)</code></pre>
 </div>
 </section><section id="assignment-objects-and-values"><h2 class="section-heading">Assignment, objects, and values<a class="anchor" aria-label="anchor" href="#assignment-objects-and-values"></a>
 </h2>
-<hr class="half-width"><p>We’ve already created quite a few objects in R using the <code>&lt;-</code> assignment arrow, but there are a few finer details worth talking about. First, let’s start with a quick challenge.</p>
+<hr class="half-width"><p>We’ve already created quite a few objects in R using the
+<code>&lt;-</code> assignment arrow, but there are a few finer details
+worth talking about. First, let’s start with a quick challenge.</p>
 <div id="challenge6" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -1195,7 +1386,8 @@ Levels: female male (Missing)</code></pre>
 <h3 class="callout-title">Challenge 3: Assignments and objects<a class="anchor" aria-label="anchor" href="#challenge6"></a>
 </h3>
 <div class="callout-content">
-<p>What is the value of <code>y</code> after running the following code?</p>
+<p>What is the value of <code>y</code> after running the following
+code?</p>
 <div class="codewrapper sourceCode" id="cb92">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1214,7 +1406,7 @@ Levels: female male (Missing)</code></pre>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb93">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1234,8 +1426,19 @@ Levels: female male (Missing)</code></pre>
 </div>
 </div>
 </div>
-<p>Understanding what’s going on here will help you avoid a lot of confusion when working in R. When we assign something to an object, the first thing that happens is the righthand side gets <em>evaluated</em>. The same thing happens when you run something in the console: if you type <code>x</code> into the console and hit <kbd>Enter</kbd>, R returns the value of <code>x</code>. So when we first ran the line <code>y &lt;- x</code>, <code>x</code> first gets evaluated to the value of <code>5</code>, and this gets assigned to <code>y</code>. The objects <code>x</code> and <code>y</code> are not actually linked to each other in any way, so when we change the value of <code>x</code> to <code>10</code>, <code>y</code> is unaffected.</p>
-<p>This also means you can run multiple nested operations, store intermediate values as separate objects, or overwrite values:</p>
+<p>Understanding what’s going on here will help you avoid a lot of
+confusion when working in R. When we assign something to an object, the
+first thing that happens is the righthand side gets <em>evaluated</em>.
+The same thing happens when you run something in the console: if you
+type <code>x</code> into the console and hit <kbd>Enter</kbd>, R returns
+the value of <code>x</code>. So when we first ran the line
+<code>y &lt;- x</code>, <code>x</code> first gets evaluated to the value
+of <code>5</code>, and this gets assigned to <code>y</code>. The objects
+<code>x</code> and <code>y</code> are not actually linked to each other
+in any way, so when we change the value of <code>x</code> to
+<code>10</code>, <code>y</code> is unaffected.</p>
+<p>This also means you can run multiple nested operations, store
+intermediate values as separate objects, or overwrite values:</p>
 <div class="codewrapper sourceCode" id="cb95">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1284,7 +1487,8 @@ Levels: female male (Missing)</code></pre>
 </h3>
 <pre class="output" tabindex="0"><code>[1] 25</code></pre>
 </div>
-<p>You will be naming a of objects in R, and there are a few common naming rules and conventions:</p>
+<p>You will be naming a of objects in R, and there are a few common
+naming rules and conventions:</p>
 <ul><li>make names clear without being too long
 <ul><li>
 <code>wkg</code> is probably too short</li>
@@ -1295,13 +1499,18 @@ Levels: female male (Missing)</code></pre>
 </ul></li>
 <li>names cannot start with a number</li>
 <li>names are case sensitive</li>
-<li>you cannot use the names of fundamental functions in R, like <code>if</code>, <code>else</code>, or <code>for</code>
-<ul><li>in general, avoid using names of common functions like <code>c</code>, <code>mean</code>, etc.</li>
+<li>you cannot use the names of fundamental functions in R, like
+<code>if</code>, <code>else</code>, or <code>for</code>
+<ul><li>in general, avoid using names of common functions like
+<code>c</code>, <code>mean</code>, etc.</li>
 </ul></li>
-<li>avoid dots <code>.</code> in names, as they have a special meaning in R, and may be confusing to others</li>
-<li>two common formats are <code>snake_case</code> and <code>camelCase</code>
+<li>avoid dots <code>.</code> in names, as they have a special meaning
+in R, and may be confusing to others</li>
+<li>two common formats are <code>snake_case</code> and
+<code>camelCase</code>
 </li>
-<li>be consistent, at least within a script, ideally within a whole project</li>
+<li>be consistent, at least within a script, ideally within a whole
+project</li>
 <li>you can use a style guide like <a href="https://google.github.io/styleguide/Rguide.xml" class="external-link">Google’s</a> or <a href="https://style.tidyverse.org/" class="external-link">tidyverse’s</a>
 </li>
 </ul><div id="keypoints1" class="callout keypoints">
@@ -1312,10 +1521,14 @@ Levels: female male (Missing)</code></pre>
 <h3 class="callout-title">Keypoints<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
 </h3>
 <div class="callout-content">
-<ul><li>functions like <code>head()</code>, <code>str()</code>, and <code>summary()</code> are useful for exploring data.frames</li>
-<li>most things in R are vectors, vectors stitched together, or functions</li>
-<li>make sure to use <code>class()</code> to check vector types, especially when using new functions</li>
-<li>factors can be useful, but behave differently from character vectors</li>
+<ul><li>functions like <code>head()</code>, <code>str()</code>, and
+<code>summary()</code> are useful for exploring data.frames</li>
+<li>most things in R are vectors, vectors stitched together, or
+functions</li>
+<li>make sure to use <code>class()</code> to check vector types,
+especially when using new functions</li>
+<li>factors can be useful, but behave differently from character
+vectors</li>
 </ul></div>
 </div>
 </div>
@@ -1371,9 +1584,9 @@ Levels: female male (Missing)</code></pre>
   "creativeWorkStatus": "active",
   "url": "https://carpentries-incubator.github.io/R-ecology-lesson/instructor/how-r-thinks-about-data.html",
   "identifier": "https://carpentries-incubator.github.io/R-ecology-lesson/instructor/how-r-thinks-about-data.html",
-  "dateCreated": "2022-10-14",
+  "dateCreated": "2023-03-15",
   "dateModified": "2023-03-14",
-  "datePublished": "2023-03-14"
+  "datePublished": "2023-03-15"
 }
 
   </script><script>
