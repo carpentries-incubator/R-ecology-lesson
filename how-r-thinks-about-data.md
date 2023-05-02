@@ -734,6 +734,14 @@ Levels: F M
 fct_explicit_na(sex)
 ```
 
+```{.warning}
+Warning: `fct_explicit_na()` was deprecated in forcats 1.0.0.
+ℹ Please use `fct_na_value_to_level()` instead.
+This warning is displayed once every 8 hours.
+Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+generated.
+```
+
 ```{.output}
 [1] male      female    female    male      female    (Missing)
 Levels: female male (Missing)

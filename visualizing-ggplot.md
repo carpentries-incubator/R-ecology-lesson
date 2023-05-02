@@ -153,7 +153,7 @@ ggplot(data = complete_old, mapping = aes(x = weight, y = hindfoot_length)) +
 ```
 
 ```{.warning}
-Warning: Removed 3081 rows containing missing values (geom_point).
+Warning: Removed 3081 rows containing missing values (`geom_point()`).
 ```
 
 <img src="fig/visualizing-ggplot-rendered-scatter-plot-1.png" width="600" height="600" style="display: block; margin: auto;" />
@@ -336,7 +336,7 @@ ggplot(data = complete_old, mapping = aes(x = plot_type, y = hindfoot_length)) +
 ```
 
 ```{.warning}
-Warning: Removed 2733 rows containing non-finite values (stat_boxplot).
+Warning: Removed 2733 rows containing non-finite values (`stat_boxplot()`).
 ```
 
 <img src="fig/visualizing-ggplot-rendered-boxplot-1.png" width="600" height="600" style="display: block; margin: auto;" />
@@ -524,11 +524,11 @@ myplot
 ```
 
 ```{.warning}
-Warning: Removed 2733 rows containing non-finite values (stat_boxplot).
+Warning: Removed 2733 rows containing non-finite values (`stat_boxplot()`).
 ```
 
 ```{.warning}
-Warning: Removed 2733 rows containing missing values (geom_point).
+Warning: Removed 2733 rows containing missing values (`geom_point()`).
 ```
 
 <img src="fig/visualizing-ggplot-rendered-unnamed-chunk-1-1.png" width="600" height="600" style="display: block; margin: auto;" />
