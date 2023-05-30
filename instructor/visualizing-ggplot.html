@@ -156,7 +156,7 @@
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsecurrent" aria-expanded="true" aria-controls="flush-collapsecurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
-        Data visualization with ggplot2
+        2. Data visualization with ggplot2
         </span>
       </button>
     </div><!--/div.accordion-header-->
@@ -640,12 +640,12 @@ variable (<code>plot_type</code>) to a component of the ggplot2 plot
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">complete_old</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">weight</span>, y <span class="op">=</span> <span class="va">hindfoot_length</span>, color <span class="op">=</span> <span class="va">plot_type</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_point</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/visualizing-ggplot-rendered-color-plot-type-1.png" width="600" height="600" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="challenge1" class="callout challenge">
+<figure><img src="../fig/visualizing-ggplot-rendered-color-plot-type-1.png" width="600" height="600" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="challenge-1-modifying-plots" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1-modifying-plots" class="callout-inner">
-<h3 class="callout-title">Challenge 1: Modifying plots<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Challenge 1: Modifying plots<a class="anchor" aria-label="anchor" href="#challenge-1-modifying-plots"></a>
 </h3>
 <div class="callout-content">
 <ol style="list-style-type: decimal"><li>Try modifying the plot so that the <code>shape</code> of the point
@@ -677,13 +677,13 @@ these data?</p>
 </div>
 </div>
 </div>
-<div id="challenge2" class="callout challenge">
+<div id="challenge-1-modifying-plots" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1-modifying-plots" class="callout-inner">
 <h3 class="callout-title">Challenge 1: Modifying plots<em>
-(continued)</em><a class="anchor" aria-label="anchor" href="#challenge2"></a>
+(continued)</em><a class="anchor" aria-label="anchor" href="#challenge-1-modifying-plots"></a>
 </h3>
 <div class="callout-content">
 <ol start="2" style="list-style-type: decimal"><li>Now try changing the plot so that the <code>color</code> of the
@@ -935,12 +935,12 @@ altogether, leaving only the black lines. To do this, we set
 <span>  <span class="fu">geom_boxplot</span><span class="op">(</span>outlier.shape <span class="op">=</span> <span class="cn">NA</span>, fill <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="../fig/visualizing-ggplot-rendered-fill-na-1.png" width="600" height="600" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Now we can see all the raw data and our boxplots on top.</p>
-<div id="challenge3" class="callout challenge">
+<div id="challenge-2-change-geoms" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-2-change-geoms" class="callout-inner">
-<h3 class="callout-title">Challenge 2: Change <code>geom</code>s<a class="anchor" aria-label="anchor" href="#challenge3"></a>
+<h3 class="callout-title">Challenge 2: Change <code>geom</code>s<a class="anchor" aria-label="anchor" href="#challenge-2-change-geoms"></a>
 </h3>
 <div class="callout-content">
 <p>Violin plots are similar to boxplots- try making one using
@@ -978,13 +978,13 @@ example we might search for <code>R ggplot2 violin plot</code>.</p>
 </div>
 </div>
 </div>
-<div id="challenge4" class="callout challenge">
+<div id="challenge-2-change-geoms" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-2-change-geoms" class="callout-inner">
 <h3 class="callout-title">Challenge 2: Change <code>geom</code>s<em>
-(continued)</em><a class="anchor" aria-label="anchor" href="#challenge4"></a>
+(continued)</em><a class="anchor" aria-label="anchor" href="#challenge-2-change-geoms"></a>
 </h3>
 <div class="callout-content">
 <p>For an <em>extra challenge</em>, , make the color of the points and
@@ -1207,12 +1207,12 @@ do this using the <code>labs()</code> function:</p>
 titles of various legends using <code>labs()</code>. For example,
 <code>labs(color = "Plot type")</code> would change the title of a color
 scale legend to “Plot type”.</p>
-<div id="challenge5" class="callout challenge">
+<div id="challenge-3-customizing-a-plot" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-3-customizing-a-plot" class="callout-inner">
-<h3 class="callout-title">Challenge 3: Customizing a plot<a class="anchor" aria-label="anchor" href="#challenge5"></a>
+<h3 class="callout-title">Challenge 3: Customizing a plot<a class="anchor" aria-label="anchor" href="#challenge-3-customizing-a-plot"></a>
 </h3>
 <div class="callout-content">
 <p>Modify the previous plot by adding a descriptive subtitle. Increase
@@ -1330,12 +1330,12 @@ inches.</p>
 <code class="sourceCode R"><span><span class="fu">ggsave</span><span class="op">(</span>filename <span class="op">=</span> <span class="st">"images/rodent_size_plots.jpg"</span>, plot <span class="op">=</span> <span class="va">finalplot</span>,</span>
 <span>       height <span class="op">=</span> <span class="fl">6</span>, width <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></span></code></pre>
 </div>
-<div id="discussion1" class="callout discussion">
+<div id="challenge-4-make-your-own-plot" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
 <div id="challenge-4-make-your-own-plot" class="callout-inner">
-<h3 class="callout-title">Challenge 4: Make your own plot<a class="anchor" aria-label="anchor" href="#discussion1"></a>
+<h3 class="callout-title">Challenge 4: Make your own plot<a class="anchor" aria-label="anchor" href="#challenge-4-make-your-own-plot"></a>
 </h3>
 <div class="callout-content">
 <p>Try making your own plot! You can run <code>str(complete_old)</code>
@@ -1402,9 +1402,9 @@ appearance, and the <code>theme()</code> function to fine-tune</li>
         <p>Materials licensed under <a href="../LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.11.16" class="external-link">sandpaper (0.11.16)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.12.2" class="external-link">sandpaper (0.12.2)</a>,
         <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.5.3)</a>,
-      and <a href="https://github.com/carpentries/varnish/tree/0.2.16" class="external-link">varnish (0.2.16)</a>.</p>
+      and <a href="https://github.com/carpentries/varnish/tree/0.2.17" class="external-link">varnish (0.2.17)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1426,7 +1426,7 @@ appearance, and the <code>theme()</code> function to fine-tune</li>
   "identifier": "https://carpentries-incubator.github.io/R-ecology-lesson/instructor/visualizing-ggplot.html",
   "dateCreated": "2023-03-28",
   "dateModified": "2023-05-02",
-  "datePublished": "2023-05-16"
+  "datePublished": "2023-05-30"
 }
 
   </script><script>

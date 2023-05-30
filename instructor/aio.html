@@ -1157,12 +1157,12 @@ variable (<code>plot_type</code>) to a component of the ggplot2 plot
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">complete_old</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">weight</span>, y <span class="op">=</span> <span class="va">hindfoot_length</span>, color <span class="op">=</span> <span class="va">plot_type</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_point</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/visualizing-ggplot-rendered-color-plot-type-1.png" width="600" height="600" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="challenge1" class="callout challenge">
+<figure><img src="../fig/visualizing-ggplot-rendered-color-plot-type-1.png" width="600" height="600" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="challenge-1-modifying-plots" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1-modifying-plots" class="callout-inner">
-<h3 class="callout-title">Challenge 1: Modifying plots<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Challenge 1: Modifying plots<a class="anchor" aria-label="anchor" href="#challenge-1-modifying-plots"></a>
 </h3>
 <div class="callout-content">
 <ol style="list-style-type: decimal">
@@ -1197,13 +1197,13 @@ these data?</p>
 </div>
 </div>
 </div>
-<div id="challenge2" class="callout challenge">
+<div id="challenge-1-modifying-plots" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1-modifying-plots" class="callout-inner">
 <h3 class="callout-title">Challenge 1: Modifying plots<em>
-(continued)</em><a class="anchor" aria-label="anchor" href="#challenge2"></a>
+(continued)</em><a class="anchor" aria-label="anchor" href="#challenge-1-modifying-plots"></a>
 </h3>
 <div class="callout-content">
 <ol start="2" style="list-style-type: decimal">
@@ -1463,12 +1463,12 @@ altogether, leaving only the black lines. To do this, we set
 <span>  <span class="fu">geom_boxplot</span><span class="op">(</span>outlier.shape <span class="op">=</span> <span class="cn">NA</span>, fill <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="../fig/visualizing-ggplot-rendered-fill-na-1.png" width="600" height="600" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Now we can see all the raw data and our boxplots on top.</p>
-<div id="challenge3" class="callout challenge">
+<div id="challenge-2-change-geoms" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-2-change-geoms" class="callout-inner">
-<h3 class="callout-title">Challenge 2: Change <code>geom</code>s<a class="anchor" aria-label="anchor" href="#challenge3"></a>
+<h3 class="callout-title">Challenge 2: Change <code>geom</code>s<a class="anchor" aria-label="anchor" href="#challenge-2-change-geoms"></a>
 </h3>
 <div class="callout-content">
 <p>Violin plots are similar to boxplots- try making one using
@@ -1507,13 +1507,13 @@ example we might search for <code>R ggplot2 violin plot</code>.</p>
 </div>
 </div>
 </div>
-<div id="challenge4" class="callout challenge">
+<div id="challenge-2-change-geoms" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-2-change-geoms" class="callout-inner">
 <h3 class="callout-title">Challenge 2: Change <code>geom</code>s<em>
-(continued)</em><a class="anchor" aria-label="anchor" href="#challenge4"></a>
+(continued)</em><a class="anchor" aria-label="anchor" href="#challenge-2-change-geoms"></a>
 </h3>
 <div class="callout-content">
 <p>For an <em>extra challenge</em>, , make the color of the points and
@@ -1751,12 +1751,12 @@ do this using the <code>labs()</code> function:</p>
 titles of various legends using <code>labs()</code>. For example,
 <code>labs(color = "Plot type")</code> would change the title of a color
 scale legend to “Plot type”.</p>
-<div id="challenge5" class="callout challenge">
+<div id="challenge-3-customizing-a-plot" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-3-customizing-a-plot" class="callout-inner">
-<h3 class="callout-title">Challenge 3: Customizing a plot<a class="anchor" aria-label="anchor" href="#challenge5"></a>
+<h3 class="callout-title">Challenge 3: Customizing a plot<a class="anchor" aria-label="anchor" href="#challenge-3-customizing-a-plot"></a>
 </h3>
 <div class="callout-content">
 <p>Modify the previous plot by adding a descriptive subtitle. Increase
@@ -1879,12 +1879,12 @@ inches.</p>
 <code class="sourceCode R"><span><span class="fu">ggsave</span><span class="op">(</span>filename <span class="op">=</span> <span class="st">"images/rodent_size_plots.jpg"</span>, plot <span class="op">=</span> <span class="va">finalplot</span>,</span>
 <span>       height <span class="op">=</span> <span class="fl">6</span>, width <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></span></code></pre>
 </div>
-<div id="discussion1" class="callout discussion">
+<div id="challenge-4-make-your-own-plot" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
 <div id="challenge-4-make-your-own-plot" class="callout-inner">
-<h3 class="callout-title">Challenge 4: Make your own plot<a class="anchor" aria-label="anchor" href="#discussion1"></a>
+<h3 class="callout-title">Challenge 4: Make your own plot<a class="anchor" aria-label="anchor" href="#challenge-4-make-your-own-plot"></a>
 </h3>
 <div class="callout-content">
 <p>Try making your own plot! You can run <code>str(complete_old)</code>
@@ -2410,12 +2410,12 @@ single entry containing that whole string.</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] "logical"</code></pre>
 </div>
-<div id="challenge1" class="callout challenge">
+<div id="challenge-1-coercion" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1-coercion" class="callout-inner">
-<h3 class="callout-title">Challenge 1: Coercion<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Challenge 1: Coercion<a class="anchor" aria-label="anchor" href="#challenge-1-coercion"></a>
 </h3>
 <div class="callout-content">
 <p>Since vectors can only hold one type of data, something has to be
@@ -2446,7 +2446,7 @@ running any code at first, then run the code and use
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2498,13 +2498,13 @@ the same type, a process called <strong>coercion</strong>.</p>
 </div>
 </div>
 </div>
-<div id="challenge2" class="callout challenge">
+<div id="challenge-1-coercion" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1-coercion" class="callout-inner">
 <h3 class="callout-title">Challenge 1: Coercion<em>
-(continued)</em><a class="anchor" aria-label="anchor" href="#challenge2"></a>
+(continued)</em><a class="anchor" aria-label="anchor" href="#challenge-1-coercion"></a>
 </h3>
 <div class="callout-content">
 <ol start="2" style="list-style-type: decimal">
@@ -2527,7 +2527,7 @@ the same type, a process called <strong>coercion</strong>.</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb40">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2562,13 +2562,13 @@ coerce the <code>1</code> to <code>"1"</code>.</p>
 </div>
 </div>
 </div>
-<div id="challenge3" class="callout challenge">
+<div id="challenge-1-coercion" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1-coercion" class="callout-inner">
 <h3 class="callout-title">Challenge 1: Coercion<em>
-(continued)</em><a class="anchor" aria-label="anchor" href="#challenge3"></a>
+(continued)</em><a class="anchor" aria-label="anchor" href="#challenge-1-coercion"></a>
 </h3>
 <div class="callout-content">
 <ol start="3" style="list-style-type: decimal">
@@ -2587,7 +2587,7 @@ the hierarchy of what types get converted to other types?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>logical → integer → numeric → character</p>
 <p>Logical vectors can only take on two values: <code>TRUE</code> or
@@ -2796,12 +2796,12 @@ any type of vector.</p>
 <pre class="output" tabindex="0"><code> [1]  1  1  1  1  2  2  2  2  3  3  3  3  4  4  4  4  5  5  5  5  6  6  6  6  7
 [26]  7  7  7  8  8  8  8  9  9  9  9 10 10 10 10</code></pre>
 </div>
-<div id="challenge4" class="callout challenge">
+<div id="challenge-2-creating-sequences" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-2-creating-sequences" class="callout-inner">
-<h3 class="callout-title">Challenge 2: Creating sequences<a class="anchor" aria-label="anchor" href="#challenge4"></a>
+<h3 class="callout-title">Challenge 2: Creating sequences<a class="anchor" aria-label="anchor" href="#challenge-2-creating-sequences"></a>
 </h3>
 <div class="callout-content">
 <ol style="list-style-type: decimal">
@@ -2822,7 +2822,7 @@ any type of vector.</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb68">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2865,13 +2865,13 @@ any type of vector.</p>
 </div>
 </div>
 </div>
-<div id="challenge5" class="callout challenge">
+<div id="challenge-2-creating-sequences" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-2-creating-sequences" class="callout-inner">
 <h3 class="callout-title">Challenge 2: Creating sequences<em>
-(continued)</em><a class="anchor" aria-label="anchor" href="#challenge5"></a>
+(continued)</em><a class="anchor" aria-label="anchor" href="#challenge-2-creating-sequences"></a>
 </h3>
 <div class="callout-content">
 <ol start="2" style="list-style-type: decimal">
@@ -2888,7 +2888,7 @@ lengths at every 5% level (0%, 5%, 10%, 15%, etc.)</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb74">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3089,12 +3089,12 @@ factor that has numbers as its levels:</p>
 <p>We’ve already created quite a few objects in R using the
 <code>&lt;-</code> assignment arrow, but there are a few finer details
 worth talking about. First, let’s start with a quick challenge.</p>
-<div id="challenge6" class="callout challenge">
+<div id="challenge-3-assignments-and-objects" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-3-assignments-and-objects" class="callout-inner">
-<h3 class="callout-title">Challenge 3: Assignments and objects<a class="anchor" aria-label="anchor" href="#challenge6"></a>
+<h3 class="callout-title">Challenge 3: Assignments and objects<a class="anchor" aria-label="anchor" href="#challenge-3-assignments-and-objects"></a>
 </h3>
 <div class="callout-content">
 <p>What is the value of <code>y</code> after running the following
@@ -3117,7 +3117,7 @@ code?</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb93">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3719,12 +3719,12 @@ and whose hindfoot length values are not <code>NA</code>. The
 # … with 12,769 more rows, 2 more variables: taxa &lt;chr&gt;, plot_type &lt;chr&gt;, and
 #   abbreviated variable names ¹​record_id, ²​species_id, ³​hindfoot_length</code></pre>
 </div>
-<div id="challenge1" class="callout challenge">
+<div id="challenge-1-filtering-and-selecting" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1-filtering-and-selecting" class="callout-inner">
-<h3 class="callout-title">Challenge 1: Filtering and selecting<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Challenge 1: Filtering and selecting<a class="anchor" aria-label="anchor" href="#challenge-1-filtering-and-selecting"></a>
 </h3>
 <div class="callout-content">
 <ol style="list-style-type: decimal">
@@ -3753,13 +3753,13 @@ years from 1980 to 1985.</li>
 </div>
 </div>
 </div>
-<div id="challenge2" class="callout challenge">
+<div id="challenge-1-filtering-and-selecting" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1-filtering-and-selecting" class="callout-inner">
 <h3 class="callout-title">Challenge 1: Filtering and selecting<em>
-(continued)</em><a class="anchor" aria-label="anchor" href="#challenge2"></a>
+(continued)</em><a class="anchor" aria-label="anchor" href="#challenge-1-filtering-and-selecting"></a>
 </h3>
 <div class="callout-content">
 <ol start="2" style="list-style-type: decimal">
@@ -3939,12 +3939,12 @@ with your final result, go back and add the assignment arrow statement
 at the start. This approach is very interactive, allowing you to see the
 results of each step as you build the pipeline, and produces nicely
 readable code.</p>
-<div id="challenge3" class="callout challenge">
+<div id="challenge-2-using-pipes" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-2-using-pipes" class="callout-inner">
-<h3 class="callout-title">Challenge 2: Using pipes<a class="anchor" aria-label="anchor" href="#challenge3"></a>
+<h3 class="callout-title">Challenge 2: Using pipes<a class="anchor" aria-label="anchor" href="#challenge-2-using-pipes"></a>
 </h3>
 <div class="callout-content">
 <p>Use the surveys data to make a data.frame that has the columns
@@ -4261,12 +4261,12 @@ into one:</p>
 #   taxa &lt;chr&gt;, plot_type &lt;chr&gt;, and abbreviated variable names ¹​species_id,
 #   ²​hindfoot_length</code></pre>
 </div>
-<div id="challenge4" class="callout challenge">
+<div id="challenge-3-plotting-date" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-3-plotting-date" class="callout-inner">
-<h3 class="callout-title">Challenge 3: Plotting date<a class="anchor" aria-label="anchor" href="#challenge4"></a>
+<h3 class="callout-title">Challenge 3: Plotting date<a class="anchor" aria-label="anchor" href="#challenge-3-plotting-date"></a>
 </h3>
 <div class="callout-content">
 <p>Because the <code>ggplot()</code> function takes the data as its
@@ -4696,12 +4696,12 @@ group, the mean weight is calculated. However, instead of reporting only
 one row per group, the mean weight for each group is added to each row
 in that group. For each row in a group (like DM species ID + M sex), you
 will see the same value in <code>mean_weight</code>.</p>
-<div id="challenge5" class="callout challenge">
+<div id="challenge-4-making-a-time-series" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-4-making-a-time-series" class="callout-inner">
-<h3 class="callout-title">Challenge 4: Making a time series<a class="anchor" aria-label="anchor" href="#challenge5"></a>
+<h3 class="callout-title">Challenge 4: Making a time series<a class="anchor" aria-label="anchor" href="#challenge-4-making-a-time-series"></a>
 </h3>
 <div class="callout-content">
 <ol style="list-style-type: decimal">
@@ -4749,13 +4749,13 @@ sex caught on each day in the <code>surveys</code> data.</li>
 </div>
 </div>
 </div>
-<div id="challenge6" class="callout challenge">
+<div id="challenge-4-making-a-time-series" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-4-making-a-time-series" class="callout-inner">
 <h3 class="callout-title">Challenge 4: Making a time series<em>
-(continued)</em><a class="anchor" aria-label="anchor" href="#challenge6"></a>
+(continued)</em><a class="anchor" aria-label="anchor" href="#challenge-4-making-a-time-series"></a>
 </h3>
 <div class="callout-content">
 <ol start="2" style="list-style-type: decimal">
@@ -5170,9 +5170,9 @@ thoughtfully</li>
         <p>Materials licensed under <a href="../LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.11.16" class="external-link">sandpaper (0.11.16)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.12.2" class="external-link">sandpaper (0.12.2)</a>,
         <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.5.3)</a>,
-      and <a href="https://github.com/carpentries/varnish/tree/0.2.16" class="external-link">varnish (0.2.16)</a>.</p>
+      and <a href="https://github.com/carpentries/varnish/tree/0.2.17" class="external-link">varnish (0.2.17)</a>.</p>
 			</div>
 		</footer>
 </div> <!-- / div.container -->
@@ -5194,8 +5194,8 @@ thoughtfully</li>
   "url": "https://carpentries-incubator.github.io/R-ecology-lesson/instructor/aio.html",
   "identifier": "https://carpentries-incubator.github.io/R-ecology-lesson/instructor/aio.html",
   "dateCreated": "2023-03-28",
-  "dateModified": "2023-05-16",
-  "datePublished": "2023-05-16"
+  "dateModified": "2023-05-30",
+  "datePublished": "2023-05-30"
 }
 
   </script><script>
